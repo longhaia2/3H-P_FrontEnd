@@ -1,1 +1,36 @@
-<p>registration works!</p>
+<app-header></app-header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Đăng ký</title>
+  <link rel="stylesheet" href="registration.component.css">
+</head>
+
+<body>
+
+<form action="/action_page.php" style="max-width:500px;margin:auto">
+  <h1 align="center">Đăng ký</h1>
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Tên đăng nhập" name="usrnm">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Mật khẩu" name="psw">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Nhập lại mật khẩu" name="psw">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email">
+  </div>
+
+  <button type="submit" style="color: #151414; font-size: larger" class="btn">Đăng ký</button>
+</form>
+
+</body>
+<app-footer></app-footer>

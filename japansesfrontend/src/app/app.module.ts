@@ -26,6 +26,8 @@ import { HomepageComponent } from './user/homepage/homepage.component';
 import { CompetitionComponent } from './user/competition/competition.component';
 import { WaitroomComponent } from './user/waitroom/waitroom.component';
 import { ChallengetogetgerComponent } from './user/challengetogetger/challengetogetger.component';
+import { ChoosevocabularyComponent } from './user/choosevocabulary/choosevocabulary.component';
+import { ChoosegrammarComponent } from './user/choosegrammar/choosegrammar.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { ChallengetogetgerComponent } from './user/challengetogetger/challengeto
     HomepageComponent,
     CompetitionComponent,
     WaitroomComponent,
-    ChallengetogetgerComponent
+    ChallengetogetgerComponent,
+    ChoosevocabularyComponent,
+    ChoosegrammarComponent
   ],
   imports: [
     BrowserModule,
