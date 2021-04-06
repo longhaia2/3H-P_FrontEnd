@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Danh sách user</title>
+  <div th:replace="admin/init_admin :: header"></div>
+  <style>
+    #img_user{
+      width: 45px;
+      height: 45px;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <app-sidebar></app-sidebar>
+    <div th:replace="admin/sidebar :: content"></div>
+    <div th:replace="admin/header :: content"></div>
+
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h2> Quản lí từ vựng </h2>
+          </div>
+        </div>
+
+        <table style="background-color: white" class="table">
+
+          <thead>
+
+          <tr>
+            <th>Từ Vựng</th>
+            <th >
+              <select style="color: black ; background: #68b31f"  id="trinhdo" class="form-control">
+                <option>Trình độ</option>
+                <option>N5</option>
+                <option>N4</option>
+                <option>N3</option>
+                <option>N2</option>
+                <option>N1</option>
+              </select>
+            </th>
+            <th>Bài</th>
+            <th>
+              <select style="color: black ; background: #68b31f"  id="bai" class="form-control">
+                <option>Chọn Bài</option>
+                <option>Bài 1</option>
+                <option>Bài 2</option>
+                <option>Bài 3</option>
+                <option>Bài 4</option>
+                <option>Bài 5</option>
+              </select>
+            </th>
+            <th>
+              <button type="button" class="btn btn-primary"onclick="dieu_huong4()">Xem</button>
+              <script>
+                function dieu_huong4(){
+                  location.assign("tuvung/xemtuvung.html");
+                }
+              </script>
+            </th>
+          </tr>
+
+          <tr>
+            <th>Ngữ Pháp</th>
+            <th >
+              <select style="color: black ; background: #68b31f"  id="trinhdo1" class="form-control">
+                <option>Trình độ</option>
+                <option>N5</option>
+                <option>N4</option>
+                <option>N3</option>
+                <option>N2</option>
+                <option>N1</option>
+              </select>
+            </th>
+            <th>Bài</th>
+            <th>
+              <select style="color: black ; background: #68b31f"  id="bai1" class="form-control">
+                <option>Chọn Bài</option>
+                <option>Bài 1</option>
+                <option>Bài 2</option>
+                <option>Bài 3</option>
+                <option>Bài 4</option>
+                <option>Bài 5</option>
+              </select>
+            </th>
+            <th>
+              <button type="button" class="btn btn-primary"onclick="dieu_huong4()">Xem</button>
+              <script>
+                function dieu_huong4(){
+                  location.assign("tuvung/xemtuvung.html");
+                }
+              </script>
+            </th>
+
+          </tr>
+
+          <tr>
+            <th>Ngữ Pháp</th>
+            <th >
+              <select style="color: black ; background: #68b31f"  id="trinhdo11" class="form-control">
+                <option>Trình độ</option>
+                <option>N5</option>
+                <option>N4</option>
+                <option>N3</option>
+                <option>N2</option>
+                <option>N1</option>
+              </select>
+            </th>
+            <th>Bài</th>
+            <th>
+              <select style="color: black ; background: #68b31f"  id="bai11" class="form-control">
+                <option>Chọn Bài</option>
+                <option>Bài 1</option>
+                <option>Bài 2</option>
+                <option>Bài 3</option>
+                <option>Bài 4</option>
+                <option>Bài 5</option>
+              </select>
+            </th>
+            <th>
+              <button type="button" class="btn btn-primary"onclick="dieu_huong4()">Xem</button>
+              <script>
+                function dieu_huong4(){
+                  location.assign("tuvung/xemtuvung.html");
+                }
+              </script>
+            </th>
+
+          </tr>
+          <tr>
+            <th>Tài liêu thi</th>
+            <th >
+              <select style="color: black ; background: #68b31f"  id="trinhdo12" class="form-control">
+                <option>Trình độ</option>
+                <option>N5</option>
+                <option>N4</option>
+                <option>N3</option>
+                <option>N2</option>
+                <option>N1</option>
+              </select>
+            </th>
+            <th>Bài Học</th>
+            <th>
+              <select style="color: black ; background: #68b31f"  id="bai12" class="form-control">
+                <option>Chọn Bài</option>
+                <option>Bài 1</option>
+                <option>Bài 2</option>
+                <option>Bài 3</option>
+                <option>Bài 4</option>
+                <option>Bài 5</option>
+              </select>
+            </th>
+            <th>
+              <button type="button" class="btn btn-primary"onclick="dieu_huong4()">Xem</button>
+              <script>
+                function dieu_huong4(){
+                  location.assign("tuvung/xemtuvung.html");
+                }
+              </script>
+            </th>
+          </tr>
+
+          </thead>
+
+        </table>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="x_title">
+            </div>
+          </div>
+        </div></div>
+    </div>
+  </div></div>
+
+<app-footer></app-footer>
+</body>
+</html>
