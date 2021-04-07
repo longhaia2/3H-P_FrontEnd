@@ -158,6 +158,7 @@ button.btn-showMenu {
     position: relative;
     display: flex;
     margin: 0;
+    color: white;
 }
 
 .menu-left::before {
@@ -240,6 +241,8 @@ button.btn-showMenu {
     flex-basis: 100px;
     margin: 10px;
     text-align: center;
+
+    color: white;
 }
 
 .menu-left li>ul>li>a {
@@ -349,7 +352,8 @@ button.btn-showMenu {
     height: 100%;
 }
 
-/* 
+/*
+
 .banner-rightImage a {
     width: 100%;
     height: 100%;
@@ -496,7 +500,7 @@ button.btn-showMenu {
 }
 
 .study-sliderItem {
-    height: 200px;
+    height: 300px;
     background-color: var(--primary-color);
     margin-top: 10px;
     margin-left: 6px;
@@ -514,6 +518,17 @@ button.btn-showMenu {
     text-transform: uppercase;
     font-size: 1.2rem;
 }
+.class-sectionTitle1, .test {
+height: 50px;
+width: 300px;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 10px 0;
+  padding-left: 3%;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
 
 .study-listChemistry, .news-list, .test-list {
     height: 258px;
@@ -1251,3 +1266,4 @@ button.btn-showMenu {
 .card-body a:hover{
     color: #52f518;
 }
+
