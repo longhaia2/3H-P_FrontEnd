@@ -35,7 +35,7 @@ import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/mana
     RegistrationComponent,
     LoginComponent,
     ReviewgrammarComponent,
-    HistoryComponent
+    HistoryComponent,
     HeaderComponent,
     FooterComponent,
     MenuComponent,
