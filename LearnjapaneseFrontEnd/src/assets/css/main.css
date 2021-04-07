@@ -241,6 +241,7 @@ button.btn-showMenu {
     flex-basis: 100px;
     margin: 10px;
     text-align: center;
+
     color: white;
 }
 
@@ -352,6 +353,7 @@ button.btn-showMenu {
 }
 
 /*
+
 .banner-rightImage a {
     width: 100%;
     height: 100%;
@@ -1264,3 +1266,4 @@ width: 300px;
 .card-body a:hover{
     color: #52f518;
 }
+
