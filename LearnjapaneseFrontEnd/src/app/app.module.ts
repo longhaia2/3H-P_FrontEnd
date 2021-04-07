@@ -16,10 +16,8 @@ import { LoginComponent } from './Hien/login/login.component';
 import { ReviewgrammarComponent } from './Hien/reviewgrammar/reviewgrammar.component';
 import { HistoryComponent } from './Hien/history/history.component';
 import { HeaderComponent } from './Hai/header/header.component';
-import { FooterComponent } from './Hai/footer/footer.component';
 import { MenuComponent } from './Hai/menu/menu.component';
 import { HomepageComponent } from './Hai/homepage/homepage.component';
-import { SidebarComponent } from './Hai/sidebar/sidebar.component';
 import { TestjlptComponent } from './Hai/usertest/testjlpt/testjlpt.component';
 import { ListtestjlptComponent } from './Hai/usertest/listtestjlpt/listtestjlpt.component';
 import { StarttestjlptComponent } from './Hai/usertest/starttestjlpt/starttestjlpt.component';
@@ -48,7 +46,7 @@ import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/mana
     RegistrationComponent,
     LoginComponent,
     ReviewgrammarComponent,
-    HistoryComponent
+    HistoryComponent,
     HeaderComponent,
     FooterComponent,
     MenuComponent,
