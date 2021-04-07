@@ -26,7 +26,7 @@
 body {
     font-size: small;
     height: 100%;
-    background: #fff;
+    background: pink;
     color: var(--black);
     line-height: 1.4;
     box-sizing: border-box;
@@ -314,7 +314,7 @@ a:active, input:active, select:active, textarea:active {
 }
 
 label {
-    width: 120px;
+    width: 200px;
     display: inline-block;
 }
 
