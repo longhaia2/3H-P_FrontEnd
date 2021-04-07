@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Hai/header/header.component';
 import { FooterComponent } from './Hai/footer/footer.component';
@@ -43,6 +42,7 @@ import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/mana
   imports: [
     BrowserModule,
     RouterModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
