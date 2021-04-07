@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+
+import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
+import { SidebarComponent } from './Thuan/sidebar/sidebar.component';
+import { FooterComponent } from './Thuan/footer/footer.component';
+import { DangnhapComponent } from './Thuan/dangnhap/dangnhap.component';
+import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
+import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
 import { VocabularyComponent } from './Hien/vocabulary/vocabulary.component';
 import { GrammarComponent } from './Hien/grammar/grammar.component';
 import { ReviewvocabularyComponent } from './Hien/reviewvocabulary/reviewvocabulary.component';
@@ -26,9 +33,15 @@ import { ManageraddquestionComponent } from './Hai/admin/managerquestion/manager
 import { ManagerlistquestionComponent } from './Hai/admin/managerquestion/managerlistquestion/managerlistquestion.component';
 import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+    QuanlibaihocComponent,
+    DangnhapComponent,
+    AddlessonComponent,
+    EditbaihocComponent,
+
     VocabularyComponent,
     GrammarComponent,
     ReviewvocabularyComponent,
