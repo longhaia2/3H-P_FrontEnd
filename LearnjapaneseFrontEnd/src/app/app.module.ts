@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { VocabularyComponent } from './Hien/vocabulary/vocabulary.component';
+import { GrammarComponent } from './Hien/grammar/grammar.component';
+import { ReviewvocabularyComponent } from './Hien/reviewvocabulary/reviewvocabulary.component';
+import { RegistrationComponent } from './Hien/registration/registration.component';
+import { LoginComponent } from './Hien/login/login.component';
+import { ReviewgrammarComponent } from './Hien/reviewgrammar/reviewgrammar.component';
+import { HistoryComponent } from './Hien/history/history.component';
 import { HeaderComponent } from './Hai/header/header.component';
 import { FooterComponent } from './Hai/footer/footer.component';
 import { MenuComponent } from './Hai/menu/menu.component';
@@ -22,6 +29,13 @@ import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/mana
 @NgModule({
   declarations: [
     AppComponent,
+    VocabularyComponent,
+    GrammarComponent,
+    ReviewvocabularyComponent,
+    RegistrationComponent,
+    LoginComponent,
+    ReviewgrammarComponent,
+    HistoryComponent
     HeaderComponent,
     FooterComponent,
     MenuComponent,
