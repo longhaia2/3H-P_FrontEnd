@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
-import { SidebarComponent } from './Thuan/sidebar/sidebar.component';
-import { FooterComponent } from './Thuan/footer/footer.component';
 import { DangnhapComponent } from './Thuan/dangnhap/dangnhap.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
@@ -16,7 +14,7 @@ import { LoginComponent } from './Hien/login/login.component';
 import { ReviewgrammarComponent } from './Hien/reviewgrammar/reviewgrammar.component';
 import { HistoryComponent } from './Hien/history/history.component';
 import { HeaderComponent } from './Hai/header/header.component';
-import { FooterComponent } from './Hai/footer/footer.component';
+// import { FooterComponent } from './Hai/footer/footer.component';
 import { MenuComponent } from './Hai/menu/menu.component';
 import { HomepageComponent } from './Hai/homepage/homepage.component';
 import { SidebarComponent } from './Hai/sidebar/sidebar.component';
@@ -32,6 +30,7 @@ import { ManageraddtestComponent } from './Hai/admin/managertest/manageraddtest/
 import { ManageraddquestionComponent } from './Hai/admin/managerquestion/manageraddquestion/manageraddquestion.component';
 import { ManagerlistquestionComponent } from './Hai/admin/managerquestion/managerlistquestion/managerlistquestion.component';
 import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
+import {FooterComponent} from './Hai/footer/footer.component';
 
 
 @NgModule({
@@ -41,7 +40,6 @@ import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/mana
     DangnhapComponent,
     AddlessonComponent,
     EditbaihocComponent,
-
     VocabularyComponent,
     GrammarComponent,
     ReviewvocabularyComponent,
@@ -64,7 +62,8 @@ import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/mana
     ManageraddtestComponent,
     ManageraddquestionComponent,
     ManagerlistquestionComponent,
-    ManageraddquestionfortestComponent
+    ManageraddquestionfortestComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
