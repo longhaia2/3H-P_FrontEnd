@@ -35,6 +35,7 @@ import { ManageraddquestionComponent } from './Hai/admin/managerquestion/manager
 import { ManagerlistquestionComponent } from './Hai/admin/managerquestion/managerlistquestion/managerlistquestion.component';
 import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
 import {FooterComponent} from './Hai/footer/footer.component';
+import {SidebarComponent} from "./Hai/sidebar/sidebar.component";
 
 
 @NgModule({
@@ -61,7 +62,6 @@ import {FooterComponent} from './Hai/footer/footer.component';
     FooterComponent,
     MenuComponent,
     HomepageComponent,
-    SidebarComponent,
     TestjlptComponent,
     ListtestjlptComponent,
     StarttestjlptComponent,
@@ -73,7 +73,8 @@ import {FooterComponent} from './Hai/footer/footer.component';
     ManageraddquestionComponent,
     ManagerlistquestionComponent,
     ManageraddquestionfortestComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
