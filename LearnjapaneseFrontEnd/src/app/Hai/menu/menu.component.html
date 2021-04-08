@@ -6,26 +6,27 @@
       <div class="row">
         <div class="col-md-8 col-12">
           <ul class="menu-left">
-            <li><a th:href="@{/}">Trang chủ</a></li>
+            <li><a [routerLink]="['/page-home']">Trang chủ</a></li>
             <li>
               <a href="#">Học tập</a>
               <ul>
-                <li>N1</li>
-                <li>N2</li>
-                <li>N3</li>
-                <li>N4</li>
-                <li>N5</li>
-                <li>Bảng Chữ Cái</li>
-                <li>Các Bộ Hán Tự Cơ Bản</li>
+                <li [routerLink]="['/study/N1']">N1</li>
+                <li [routerLink]="['/study/N2']">N2</li>
+                <li [routerLink]="['/study/N3']">N3</li>
+                <li [routerLink]="['/study/N4']">N4</li>
+                <li [routerLink]="['/study/N5']">N5</li>
+                <li [routerLink]="['/study/alphabet']">Bảng Chữ Cái</li>
+                <li [routerLink]="['/study/kanji']">Các Bộ Hán Tự Cơ Bản</li>
 
 <!--                <li th:each="item:${listClass}">-->
 <!--                  <a th:href="@{'/monhoc?class_id=' +${item.id}}" th:text="${item.classname}"></a>-->
 <!--                </li>-->
               </ul>
             </li>
-            <li><a th:href="@{/kiemtra/list-class}">kiểm tra</a></li>
+            <li><a [routerLink]="['/page-test']">kiểm tra</a></li>
+            <li><a th:href="@{/tintuc/list-news}">Thách đấu</a></li>
             <li><a th:href="@{/tintuc/list-news}">Tin tức</a></li>
-            <li><a th:href="@{/contact}">Liên hệ</a></li>
+            <li><a [routerLink]="['/infor']">Giới thiệu</a></li>
           </ul>
         </div>
         <div class="col-md-4 col-12">

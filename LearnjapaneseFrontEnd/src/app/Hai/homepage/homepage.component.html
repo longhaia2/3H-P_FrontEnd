@@ -97,7 +97,7 @@
                    aria-selected="false">N4</a>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="study-tabBtn" id="pills-contact-tab" data-toggle="pill"
+                <a class="study-tabBtn" id="pills-contact-tab6" data-toggle="pill"
                    href="#pills-contact" role="tab" aria-controls="pills-contact"
                    aria-selected="false">N5</a>
               </li>
@@ -110,7 +110,7 @@
                     <a th:href="@{'/monhoc?class_id='+${item.id}}">
                       <img th:src="@{/image/classroom/{image}(image=${item.image})}">
 
-                      <img src="../../../assets/image/nihongo/minaN1.png" height="300px"/></a>
+                      <img [routerLink]="['/study/N1']" src="../../../assets/image/nihongo/minaN1.png" height="300px"/></a>
                   </div>
                 </div>
 
@@ -122,7 +122,7 @@
                     <a th:href="@{'/monhoc?class_id='+${item.id}}">
                       <img th:src="@{/image/classroom/{image}(image=${item.image})}">
 
-                      <img src="../../../assets/image/nihongo/N2.png" height="300px"/></a>
+                      <img [routerLink]="['/study/N2']" src="../../../assets/image/nihongo/N2.png" height="300px"/></a>
                   </div>
                 </div>
               </div>
@@ -133,7 +133,7 @@
                     <a th:href="@{'/monhoc?class_id='+${item.id}}">
                       <img th:src="@{/image/classroom/{image}(image=${item.image})}">
 
-                      <img src="../../../assets/image/nihongo/minaN3.jpg" height="300px"/></a>
+                      <img [routerLink]="['/study/N3']" src="../../../assets/image/nihongo/minaN3.jpg" height="300px"/></a>
                   </div>
                 </div>
               </div>
@@ -141,10 +141,10 @@
                    aria-labelledby="pills-contact-tab">
                 <div class="study-slider">
                   <div class="study-sliderItem" th:each="item:${listClassTHPT}">
-                    <a th:href="@{'/monhoc?class_id='+${item.id}}">
-                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">
+                    <a >
+<!--                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
 
-                      <img src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
+                      <img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
                   </div>
                 </div>
               </div> <div class="tab-pane  fade " id="pills-contact5" role="tabpanel"
@@ -154,7 +154,7 @@
                   <a th:href="@{'/monhoc?class_id='+${item.id}}">
                     <img th:src="@{/image/classroom/{image}(image=${item.image})}">
 
-                    <img src="../../../assets/image/nihongo/minan5.jpg" height="300px"/></a>
+                    <img [routerLink]="['/study/N5']" src="../../../assets/image/nihongo/minan5.jpg" height="300px"/></a>
                 </div>
               </div>
             </div>
@@ -212,23 +212,23 @@
     </section>
 
     <!-- test -->
-    <section class="test">
-      <div class="section-header">
-        <h2 class="section-title">Kiểm tra</h2>
-        <div class="section-img">
-          <img th:src="@{/image/test.png}" alt="">
-        </div>
-      </div>
-      <div class="test-slider">
-        <div class="test-sliderItem" th:each="item:${listSubject}">
-          <div class="subject" >
-            <a th:href="@{/lophoc/list-class(subjectId=${item.id})}">
-              <img th:src="@{/image/subject/{image}(image=${item.image})}">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+<!--    <section class="test">-->
+<!--      <div class="section-header">-->
+<!--        <h2 class="section-title">Kiểm tra</h2>-->
+<!--        <div class="section-img">-->
+<!--          <img th:src="@{/image/test.png}" alt="">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="test-slider">-->
+<!--        <div class="test-sliderItem" th:each="item:${listSubject}">-->
+<!--          <div class="subject" >-->
+<!--            <a th:href="@{/lophoc/list-class(subjectId=${item.id})}">-->
+<!--              <img th:src="@{/image/subject/{image}(image=${item.image})}">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
     <!-- news -->
     <section class="news">
       <div class="section-header">

@@ -26,7 +26,7 @@
 body {
     font-size: small;
     height: 100%;
-    background: pink;
+    background: white;
     color: var(--black);
     line-height: 1.4;
     box-sizing: border-box;
