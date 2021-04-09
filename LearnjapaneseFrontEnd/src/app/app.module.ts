@@ -35,7 +35,7 @@ import { ManageraddquestionComponent } from './Hai/admin/managerquestion/manager
 import { ManagerlistquestionComponent } from './Hai/admin/managerquestion/managerlistquestion/managerlistquestion.component';
 import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
 import {FooterComponent} from './Hai/footer/footer.component';
-import {SidebarComponent} from "./Hai/sidebar/sidebar.component";
+import {SidebarComponent} from './Hai/sidebar/sidebar.component';
 import {ManagerRoutingModule} from './Hai/manager-routing.module';
 import { TestN1Component } from './Hai/usertest/test-n1/test-n1.component';
 import { TestN2Component } from './Hai/usertest/test-n2/test-n2.component';
@@ -57,8 +57,9 @@ import { WaitlchallengeComponent } from './Hai/challenge/waitlchallenge/waitlcha
 import { CreatechallengeComponent } from './Hai/challenge/createchallenge/createchallenge.component';
 import { CompetitionComponent } from './Hai/challenge/competition/competition.component';
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
-
-
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
+import { DetailComponent } from './Thuan/quanlibaihoc/detail/detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,15 +115,17 @@ import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompe
     WaitlchallengeComponent,
     CreatechallengeComponent,
     CompetitionComponent,
-    EndcompetitionComponent
+    EndcompetitionComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     ManagerRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,118 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+<!--  <title>Quản lí bài học</title>-->
+<!--  <div th:replace="admin/init_admin :: header"></div>-->
+<!--</head>-->
+
+<!--<body class="nav-md">-->
+<!--<div class="container body">-->
+<!--  <div class="main_container">-->
+
+<!--    <div th:replace="admin/sidebar :: content"></div>-->
+<!--    <div th:replace="admin/header :: content"></div>-->
+
+<!--    <div class="right_col" role="main">-->
+<!--      &lt;!&ndash; top tiles &ndash;&gt;-->
+<!--      <div class="">-->
+<!--        <div class="page-title">-->
+<!--          <div class="title_left">-->
+<!--            <h1> <small>Danh sách bài học</small></h1>-->
+<!--          </div>-->
+
+<!--&lt;!&ndash;          <div class="title_right">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-md-5 col-sm-5   form-group pull-right top_search">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="input-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" class="form-control" placeholder="Search for...">&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="input-group-btn">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <button class="btn btn-default" type="button">Go!</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </span>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        </div>-->
+
+<!--        <div class="clearfix"></div>-->
+
+<!--        <div class="row">-->
+<!--          <div class="col-md-12">-->
+<!--            <div class="x_title">-->
+<!--              <div class="clearfix"></div>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <form th:action="@{/lesson/list-lesson}" method="get">-->
+<!--&lt;!&ndash;                <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <input class="form-control" name="lessonName" type="text" th:value="${lsn}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+
+<!--            <div class="tile-body">-->
+<!--              <div class="table-responsive">-->
+<!--                <table class="table table-bordered" id="sampleTable">-->
+<!--                  <thead>-->
+<!--                  <tr>-->
+<!--                    <th>STT</th>-->
+<!--                    <th>Tên bài học</th>-->
+<!--                    <th>Học phần</th>-->
+<!--                    <th>Trình độ</th>-->
+<!--                    <th>Mô tả</th>-->
+<!--                    <th>Nội dung</th>-->
+<!--                  </tr>-->
+<!--                  </thead>-->
+<!--                  <tbody th:if="${pageInfo.content != null}">-->
+<!--                  <tr th:each=" row,iterStat: ${pageInfo.content}">-->
+<!--                    <td ><input type="number" class="form-control" [(ngModel)]="lesson.id" name="id" placeholder="id"></td>-->
+<!--                    <td ><input type="number" class="form-control" [(ngModel)]="lesson.baihoc" name="id" placeholder="baihoc"></td>-->
+<!--                    <td ><input type="number" class="form-control" [(ngModel)]="lesson.hocphan" name="id" placeholder="hocphan"></td>-->
+<!--                    <td ><input type="number" class="form-control" [(ngModel)]="lesson.trinhdo" name="id" placeholder="trinhdo"></td>-->
+<!--                    <td><input type="number" class="form-control" [(ngModel)]="lesson.mota" name="id" placeholder="mota"></td>-->
+<!--                    <td ><input type="number" class="form-control" [(ngModel)]="lesson.noidung" name="id" placeholder="noidug"></td>-->
+<!--                  </tr>-->
+<!--                  </tbody>-->
+<!--                </table>-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </form>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div></div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- </body>-->
+
+<!--</html>-->
+
+<form class="addform" >
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label >stt</label>
+      <input type="number" class="form-control"  [(ngModel)]="lesson.id" name="id" placeholder="ID">
+    </div>
+    <div class="form-group col-md-4">
+      <label >baihoc</label>
+      <input type="text" class="form-control" [(ngModel)]="lesson.baihoc" name="baihoc" placeholder="baihoc">
+    </div>
+    <div class="form-group col-md-4">
+      <label >hocphan</label>
+      <input type="number" class="form-control" [(ngModel)]="lesson.hocphan" name="hocphan" placeholder="từ vựng">
+    </div>
+    <div class="form-group col-md-4">
+      <label >trinhdo</label>
+      <input type="number" class="form-control" [(ngModel)]="lesson.trinhdo" name="trình độ" placeholder="N5">
+    </div>
+    <div class="form-group col-md-4">
+      <label >mota</label>
+      <input type="number" class="form-control" [(ngModel)]="lesson.mota" name="mota" placeholder="dễ">
+    </div>
+  </div>
+</form>
+<style>
+  .addform{
+    width: 50%;
+    margin: 10% auto;
+  }
+</style>
