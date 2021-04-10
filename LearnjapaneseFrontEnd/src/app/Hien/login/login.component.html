@@ -1,0 +1,45 @@
+
+  <link rel="stylesheet" href="login.component.css">
+<!--</head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--  <title>Đăng nhập</title>-->
+<!-- -->
+
+<body>
+<div id="logreg-forms">
+  <form class="form-signin" th:action="@{/login}" method="post">
+    <h1 class="mb-4" style="text-align: center"> Đăng nhập</h1>
+
+    <div align="center" th:if="${not #strings.isEmpty(error)}" >
+      <p style="font-size: 14px; color: #FF1C19;" th:text="${error}"></p>
+    </div>
+    <div align="center" th:if="${not #strings.isEmpty(success)}" >
+      <p style="font-size: 14px; color: #0837a2;" th:text="${success}"></p>
+    </div>
+    <input type="tendangnhap" id="inputtendangnhap" class="form-control"
+           placeholder="Tên đăng nhập" name="tendangnhap">
+    <input type="Mật khẩu" id="inputmatkhau" class="form-control" placeholder="Mật khẩu" name="matkhau"><br>
+    <label>
+      <input type="checkbox"  name="remember" width="200px"> Ghi nhớ mật khẩu.
+    </label>
+
+    <button class="btn btn-success btn-block" type="submit"><i class="fa fa-sign-in-alt"></i>  Đăng nhập</button>
+    <div align="center" th:if="${param.error}">
+      <p style="font-size: 14px; color: #FF1C19;">Tên đăng nhập hoặc mật khẩu không đúng.</p>
+    </div>
+    <p style="text-align:center">  Hoặc  </p>
+    <div class="social-login">
+      <button class="btn facebook-btn social-btn" type="button" ><a th:href="@{/oauth2/authorization/facebook}" ><i class="fa fa-facebook-f"></i> Đăng nhập Facebook</a> </button>
+      <button class="btn google-btn social-btn" type="button" style="margin-left: 10px"><a th:href="@{/oauth2/authorization/google}"><i class="fa fa-google-plus-official"></i> Đăng nhập Google+</a></button>
+    </div>
+
+
+    <hr>
+    <button class="btn btn-primary btn-block" type="button" id="btn-signup" [routerLink]="['/registration']"><i class="fa fa-user-plus" ></i> Đăng kí tài khoản.</button>
+  </form>
+
+  <br>
+</div>
+</body>
