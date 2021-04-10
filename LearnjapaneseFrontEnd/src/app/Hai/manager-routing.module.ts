@@ -19,10 +19,10 @@ import {StudyN5Component} from './study/study-n5/study-n5.component';
 import {StudyAlphabetComponent} from './study/study-alphabet/study-alphabet.component';
 import {StudyKanjiComponent} from './study/study-kanji/study-kanji.component';
 import {InformationComponent} from './information/information.component';
-import {QuanlibaihocComponent} from "../Thuan/quanlibaihoc/quanlibaihoc.component";
-import {AddlessonComponent} from "../Thuan/quanlibaihoc/addlesson/addlesson.component";
-import {DetailComponent} from "../Thuan/quanlibaihoc/detail/detail.component";
-import {EditbaihocComponent} from "../Thuan/quanlibaihoc/editbaihoc/editbaihoc.component";
+import {ListchallengeComponent} from './challenge/listchallenge/listchallenge.component';
+import {LoginComponent} from '../Hien/login/login.component';
+import {RegistrationComponent} from '../Hien/registration/registration.component';
+import {CreateroomComponent} from './challenge/createroom/createroom.component';
 
 
 const routes: Routes = [
@@ -44,16 +44,14 @@ const routes: Routes = [
   {path: 'study/alphabet', component: StudyAlphabetComponent},
   {path: 'study/kanji', component: StudyKanjiComponent},
   {path: 'infor', component: InformationComponent},
-  {path: 'admin/lesson/list', component: QuanlibaihocComponent},
-  {path: 'admin/lesson/add', component: AddlessonComponent},
-  {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
-  {path: 'admin/lesson/detail/:id', component: DetailComponent},
-
+  {path: 'listchalenge', component: ListchallengeComponent},
+  {path: 'challenge/add', component: CreateroomComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registration', component: RegistrationComponent},
 ];
 
 @NgModule({
   declarations: [],
-  exports: [RouterModule],
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
