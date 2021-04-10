@@ -54,7 +54,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { InformationComponent } from './Hai/information/information.component';
 import { ListchallengeComponent } from './Hai/challenge/listchallenge/listchallenge.component';
 import { WaitlchallengeComponent } from './Hai/challenge/waitlchallenge/waitlchallenge.component';
-import { CreatechallengeComponent } from './Hai/challenge/createchallenge/createchallenge.component';
 import { CompetitionComponent } from './Hai/challenge/competition/competition.component';
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
 import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.component';
@@ -62,6 +61,10 @@ import { FooteradminComponent } from './Manh/footeradmin/footeradmin.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
+import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
+import {FormsModule} from '@angular/forms';
+import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -118,22 +121,22 @@ import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
     InformationComponent,
     ListchallengeComponent,
     WaitlchallengeComponent,
-    CreatechallengeComponent,
     CompetitionComponent,
     EndcompetitionComponent,
     SidebaradminComponent,
     FooteradminComponent,
     DetailuserComponent,
-
+    SidebarchallengeComponent,
+    CreateroomComponent,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    ManagerRoutingModule,
-    MatTabsModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        ManagerRoutingModule,
+        MatTabsModule,
+        FormsModule,
+        HttpClientModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

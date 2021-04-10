@@ -22,6 +22,10 @@ import {InformationComponent} from './information/information.component';
 import {AdduserComponent} from "../Manh/adduser/adduser.component";
 import {ManageruserComponent} from "../Manh/manageruser/manageruser.component";
 import {DetailuserComponent} from "../Manh/detailuser/detailuser.component";
+import {ListchallengeComponent} from './challenge/listchallenge/listchallenge.component';
+import {LoginComponent} from '../Hien/login/login.component';
+import {RegistrationComponent} from '../Hien/registration/registration.component';
+import {CreateroomComponent} from './challenge/createroom/createroom.component';
 
 
 const routes: Routes = [
@@ -43,10 +47,13 @@ const routes: Routes = [
   {path: 'study/alphabet', component: StudyAlphabetComponent},
   {path: 'study/kanji', component: StudyKanjiComponent},
   {path: 'infor', component: InformationComponent},
-  {path: 'admin/manageuser/add', component: AdduserComponent},
+ {path: 'admin/manageuser/add', component: AdduserComponent},
   {path: 'admin/manageuser', component: ManageruserComponent},
   {path: 'admin/manageuser/detailuser/:id', component: DetailuserComponent},
-
+  {path: 'listchalenge', component: ListchallengeComponent},
+  {path: 'challenge/add', component: CreateroomComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registration', component: RegistrationComponent},
 ];
 
 @NgModule({

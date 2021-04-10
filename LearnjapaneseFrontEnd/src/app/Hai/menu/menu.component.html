@@ -24,14 +24,14 @@
               </ul>
             </li>
             <li><a [routerLink]="['/page-test']">kiểm tra</a></li>
-            <li><a th:href="@{/tintuc/list-news}">Thách đấu</a></li>
+            <li><a [routerLink]="['/listchalenge']">Thách đấu</a></li>
             <li><a th:href="@{/tintuc/list-news}">Tin tức</a></li>
             <li><a [routerLink]="['/infor']">Giới thiệu</a></li>
           </ul>
         </div>
         <div class="col-md-4 col-12">
           <div class="menu-right">
-            <a class=" btn-login" id="link-login" th:href="@{/login}">
+            <a class=" btn-login" id="link-login" [routerLink]="['/login']">
               <i class="fa fa-user"></i> ĐĂNG NHẬP
             </a>
             <div class="dropdown" id="div-account" sec:authorize="isAuthenticated()">
