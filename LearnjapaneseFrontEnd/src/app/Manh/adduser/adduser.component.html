@@ -8,9 +8,9 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container" >
+
     <app-sidebaradmin></app-sidebaradmin>
-    <div th:replace="admin/sidebar :: content"></div>
-    <div th:replace="admin/header :: content"></div>
+    <app-headeradmin></app-headeradmin>
 
     <div class="right_col" role="main">
       <!-- top tiles -->
@@ -94,7 +94,7 @@
                 </div>
                 <div class="text-center mt-3">
                   <button class="btn btn-success" type="submit" id="btnAddUser">Thêm User</button>
-                  <a class="btn btn-danger" th:href="@{/admin/user/list-user}">Hủy bỏ</a>
+                  <a class="btn btn-danger" [routerLink]="['/admin/manage/user']">Hủy bỏ</a>
                 </div>
               </div>
             </div>
@@ -103,10 +103,8 @@
       </div>
     </div>
     <!-- page content -->
-  </div>
 </div>
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
+
 <script>
   $(document).ready(function () {
     $('#userManager').addClass("active");
@@ -118,6 +116,6 @@
   });
 
 </script>
-<app-footeradmin></app-footeradmin>
+</div>
 </body>
 </html>

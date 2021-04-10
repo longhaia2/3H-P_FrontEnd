@@ -10,7 +10,8 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <app-sidebar></app-sidebar>
+    <app-sidebaradmin></app-sidebaradmin>
+    <app-headeradmin></app-headeradmin>
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
 
@@ -116,7 +117,7 @@
 
                 <div class="text-center mt-3">
                   <button class="btn btn-success" id="btnAddLesson" type="submit">Thêm bài học</button>
-                  <a th:href="@{/lesson/list-lesson}" class="btn btn-danger">Hủy bỏ</a>
+                  <a [routerLink]="['/admin/lesson']"  class="btn btn-danger">Hủy bỏ</a>
                 </div>
               </div>
             </div>
@@ -127,7 +128,6 @@
     <!-- page content -->
   </div>
 </div>
-
 <div th:replace="admin/footer :: content"></div>
 <div th:replace="admin/init_admin :: script"></div>
 <script th:src="@{/ckeditor/ckeditor.js}" type="text/javascript"></script>
@@ -142,6 +142,6 @@
   });
 
 </script>
-<app-footer></app-footer>
+
 </body>
 </html>

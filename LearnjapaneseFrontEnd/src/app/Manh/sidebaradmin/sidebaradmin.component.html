@@ -29,17 +29,17 @@
           <h3>General</h3>
           <ul class="nav side-menu">
             <li id="homeManager" sec:authorize="hasAnyAuthority('ADMIN')">
-              <a  th:href="@{/admin/home}"><i class="fa fa-home" ></i> Home</a>
+              <a [routerLink]="['/admin-home']" ><i class="fa fa-home" ></i> Home</a>
             </li>
 
             <li id="userManager" sec:authorize="hasAnyAuthority('ADMIN')">
-              <a th:href="@{/admin/user/list-user}"><i class="fa fa-users" ></i> Quản lý user</a>
+              <a [routerLink]="['/admin/manage/user']"><i class="fa fa-users" ></i> Quản lý user</a>
             </li>
             <li id="lessonManager">
-              <a th:href="@{/lesson/list-lesson}"><i class="fa fa-file-text"></i> Quản lý bài học</a>
+              <a [routerLink]="['/admin/lesson']"><i class="fa fa-file-text"></i> Quản lý bài học</a>
             </li>
             <li id="examManager">
-              <a th:href="@{/exam/list-exam}"><i class="fa fa-file-pdf-o"></i> Quản lý đề thi</a>
+              <a [routerLink]="['/admin/exam']"><i class="fa fa-file-pdf-o"></i> Quản lý đề thi</a>
             </li>
             <li id="questionManager">
               <a th:href="@{/question/search-question}"><i class="fa fa-question-circle-o"></i> Quản lý câu hỏi</a>

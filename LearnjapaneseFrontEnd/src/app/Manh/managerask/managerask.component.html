@@ -12,8 +12,7 @@
 <div class="container body">
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
-    <div th:replace="admin/sidebar :: content"></div>
-    <div th:replace="admin/header :: content"></div>
+    <app-headeradmin></app-headeradmin>
 
     <div class="right_col" role="main">
       <!-- top tiles -->
@@ -128,8 +127,6 @@
     </div>
   </div>
 </div>
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
 <script>
   $('#error').delay(5000).fadeOut(1000);
   $('#questionManager').addClass("active");
@@ -223,6 +220,6 @@
   }
 
 </script>
-<app-footeradmin></app-footeradmin>
+
 </body>
 </html>
