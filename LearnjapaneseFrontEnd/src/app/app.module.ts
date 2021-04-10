@@ -57,6 +57,11 @@ import { WaitlchallengeComponent } from './Hai/challenge/waitlchallenge/waitlcha
 import { CreatechallengeComponent } from './Hai/challenge/createchallenge/createchallenge.component';
 import { CompetitionComponent } from './Hai/challenge/competition/competition.component';
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
+import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.component';
+import { FooteradminComponent } from './Manh/footeradmin/footeradmin.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 
 
 @NgModule({
@@ -89,6 +94,7 @@ import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompe
     StarttestjlptComponent,
     EndtestjlptComponent,
     ManagerquestionComponent,
+    ManageruserComponent,
     ManagertestComponent,
     ManagerlisttestComponent,
     ManageraddtestComponent,
@@ -115,12 +121,18 @@ import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompe
     CreatechallengeComponent,
     CompetitionComponent,
     EndcompetitionComponent,
+    SidebaradminComponent,
+    FooteradminComponent,
+    DetailuserComponent,
+
   ],
   imports: [
     BrowserModule,
     RouterModule,
     ManagerRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

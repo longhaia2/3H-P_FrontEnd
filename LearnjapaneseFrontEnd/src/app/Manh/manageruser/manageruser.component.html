@@ -15,7 +15,7 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <app-sidebar></app-sidebar>
+    <app-sidebaradmin></app-sidebaradmin>
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
 
@@ -70,7 +70,7 @@
                   <div class="col-lg-2 col-sm-12 col-xs-3">
                     <label>&nbsp;</label>
                     <div>
-                      <a th:href="@{/admin/user/add-user}" class="btn btn-success"><i class="fa fa-plus"></i> Thêm user</a>
+              <button class="btn-add" type="add" [routerLink]="['/admin/manageuser/add' ]">Thêm User</button>
                     </div>
                   </div>
                 </div>
@@ -93,7 +93,7 @@
                 <table class="table table-bordered" id="sampleTable">
                   <thead>
                   <tr>
-                    <th>STT</th>
+                    <th>ID</th>
                     <th>Username</th>
                     <th>Fullname</th>
                     <th>Email</th>
@@ -102,13 +102,14 @@
                   </tr>
                   </thead>
                   <tbody th:if="${pageInfo.content != null}">
-                  <tr th:each=" row,iterStat: ${pageInfo.content}">
-                    <td th:text="${iterStat.count}">1</td>
-                    <td th:text="${row.username}">manhtuan201</td>
-                    <td th:text="${row.fullname}">Hoàng Tuấn Mạnh</td>
-                    <td th:text="${row.email}">hoangtuanmanh201@gmail.com</td>
-                    <td th:text="${row.phone}">0977113546</td>
-                    <td th:if="${row.gender == null}">Nam</td>
+                  <tr *ngFor="let user of Users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.fullname}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.sodth}}</td>
+                    <td>{{user.gioitinh}}</td>
+
 
                     <td>
                       <div class="dropdown">
@@ -117,87 +118,17 @@
                           <i class="fa fa-cog"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a  class="dropdown-item" th:href="@{/admin/user/detail/{id}(id=${row.id})}" ><i class="fa fa-info-circle" ></i> Chi tiết</a>
+                          <button type="add" [routerLink]="['/admin/manageuser/detailuser' ,user.id]" > Chi tiết</button>
                           <div class="dropdown-divider"></div>
-
-                          <a class="dropdown-item" th:href="@{/admin/user/delete(id=${row.id},status=${row.status})}" id="confirmDelete1"> <i class="fa fa-trash-o"></i> Xóa</a>
+                          <button type="delete" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
                         </div>
                       </div>
 
                     </td>
                   </tr>
-                  <tr>
-                    <td th:text="${iterStat.count}">2</td>
-                    <td th:text="${row.username}">thuanha</td>
-                    <td th:text="${row.fullname}">Hà Văn Thuận</td>
-                    <td th:text="${row.email}">hathuan702@gmail.com</td>
-                    <td th:text="${row.phone}">0748893546</td>
-                    <td th:if="${row.gender == null}">Nam</td>
 
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle"
-                                type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-cog"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a  class="dropdown-item" th:href="@{/admin/user/detail/{id}(id=${row.id})}" ><i class="fa fa-info-circle" ></i> Chi tiết</a>
-                          <div class="dropdown-divider"></div>
 
-                          <a class="dropdown-item" th:href="@{/admin/user/delete(id=${row.id},status=${row.status})}" id="confirmDelete2"> <i class="fa fa-trash-o"></i> Xóa</a>
-                        </div>
-                      </div>
 
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td th:text="${iterStat.count}">3</td>
-                    <td th:text="${row.username}">haiha</td>
-                    <td th:text="${row.fullname}">Hà Long Hải</td>
-                    <td th:text="${row.email}">HaiHaa2@gmail.com</td>
-                    <td th:text="${row.phone}">074433546</td>
-                    <td th:if="${row.gender == null}">Nam</td>
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle"
-                                type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-cog"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a  class="dropdown-item" th:href="@{/admin/user/detail/{id}(id=${row.id})}" ><i class="fa fa-info-circle" ></i> Chi tiết</a>
-                          <div class="dropdown-divider"></div>
-
-                          <a class="dropdown-item" th:href="@{/admin/user/delete(id=${row.id},status=${row.status})}" id="confirmDelete3"> <i class="fa fa-trash-o"></i> Xóa</a>
-                        </div>
-                      </div>
-
-                    </td>
-                  </tr>
-                  <tr>
-                    <td th:text="${iterStat.count}">4</td>
-                    <td th:text="${row.username}">dieuhien</td>
-                    <td th:text="${row.fullname}">Phan Thị Diệu Hiền</td>
-                    <td th:text="${row.email}">dieuhien@gmail.com</td>
-                    <td th:text="${row.phone}">0977777777</td>
-                    <td th:if="${row.gender == null}">Nữ</td>
-
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle"
-                                type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-cog"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a  class="dropdown-item" th:href="@{/admin/user/detail/{id}(id=${row.id})}" ><i class="fa fa-info-circle" ></i> Chi tiết</a>
-                          <div class="dropdown-divider"></div>
-
-                          <a class="dropdown-item" th:href="@{/admin/user/delete(id=${row.id},status=${row.status})}" id="confirmDelete4"> <i class="fa fa-trash-o"></i> Xóa</a>
-                        </div>
-                      </div>
-
-                    </td>
-                  </tr>
                   </tbody>
                 </table>
                 <div th:replace="admin/pagging::content">
@@ -227,6 +158,6 @@
     });
   });
 </script>
-<app-footer></app-footer>
+<app-footeradmin></app-footeradmin>
 </body>
 </html>
