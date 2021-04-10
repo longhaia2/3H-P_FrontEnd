@@ -54,9 +54,12 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { InformationComponent } from './Hai/information/information.component';
 import { ListchallengeComponent } from './Hai/challenge/listchallenge/listchallenge.component';
 import { WaitlchallengeComponent } from './Hai/challenge/waitlchallenge/waitlchallenge.component';
-import { CreatechallengeComponent } from './Hai/challenge/createchallenge/createchallenge.component';
 import { CompetitionComponent } from './Hai/challenge/competition/competition.component';
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
+import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
+import {FormsModule} from '@angular/forms';
+import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -112,16 +115,19 @@ import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompe
     InformationComponent,
     ListchallengeComponent,
     WaitlchallengeComponent,
-    CreatechallengeComponent,
     CompetitionComponent,
     EndcompetitionComponent,
+    SidebarchallengeComponent,
+    CreateroomComponent,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    ManagerRoutingModule,
-    MatTabsModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        ManagerRoutingModule,
+        MatTabsModule,
+        FormsModule,
+        HttpClientModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -19,6 +19,10 @@ import {StudyN5Component} from './study/study-n5/study-n5.component';
 import {StudyAlphabetComponent} from './study/study-alphabet/study-alphabet.component';
 import {StudyKanjiComponent} from './study/study-kanji/study-kanji.component';
 import {InformationComponent} from './information/information.component';
+import {ListchallengeComponent} from './challenge/listchallenge/listchallenge.component';
+import {LoginComponent} from '../Hien/login/login.component';
+import {RegistrationComponent} from '../Hien/registration/registration.component';
+import {CreateroomComponent} from './challenge/createroom/createroom.component';
 
 
 const routes: Routes = [
@@ -39,7 +43,11 @@ const routes: Routes = [
   {path: 'study/N5', component: StudyN5Component},
   {path: 'study/alphabet', component: StudyAlphabetComponent},
   {path: 'study/kanji', component: StudyKanjiComponent},
-  {path: 'infor', component: InformationComponent}
+  {path: 'infor', component: InformationComponent},
+  {path: 'listchalenge', component: ListchallengeComponent},
+  {path: 'challenge/add', component: CreateroomComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registration', component: RegistrationComponent},
 ];
 
 @NgModule({

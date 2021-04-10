@@ -116,7 +116,7 @@ dl dd {
 
 th, td {
     /*borders and padding to make the table readable*/
-    border: 1px solid #000;
+    border: 1px solid #007bff73;
     padding: .5em;
 }
 
