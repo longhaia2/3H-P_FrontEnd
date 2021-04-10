@@ -22,6 +22,7 @@ import { HistoryComponent } from './Hien/history/history.component';
 import { HeaderComponent } from './Hai/header/header.component';
 import { MenuComponent } from './Hai/menu/menu.component';
 import { HomepageComponent } from './Hai/homepage/homepage.component';
+import { SidebarComponent } from './Hai/sidebar/sidebar.component';
 import { TestjlptComponent } from './Hai/usertest/testjlpt/testjlpt.component';
 import { ListtestjlptComponent } from './Hai/usertest/listtestjlpt/listtestjlpt.component';
 import { StarttestjlptComponent } from './Hai/usertest/starttestjlpt/starttestjlpt.component';
@@ -35,7 +36,6 @@ import { ManageraddquestionComponent } from './Hai/admin/managerquestion/manager
 import { ManagerlistquestionComponent } from './Hai/admin/managerquestion/managerlistquestion/managerlistquestion.component';
 import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
 import {FooterComponent} from './Hai/footer/footer.component';
-import {SidebarComponent} from './Hai/sidebar/sidebar.component';
 import {ManagerRoutingModule} from './Hai/manager-routing.module';
 import { TestN1Component } from './Hai/usertest/test-n1/test-n1.component';
 import { TestN2Component } from './Hai/usertest/test-n2/test-n2.component';
@@ -54,13 +54,18 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { InformationComponent } from './Hai/information/information.component';
 import { ListchallengeComponent } from './Hai/challenge/listchallenge/listchallenge.component';
 import { WaitlchallengeComponent } from './Hai/challenge/waitlchallenge/waitlchallenge.component';
-import { CreatechallengeComponent } from './Hai/challenge/createchallenge/createchallenge.component';
 import { CompetitionComponent } from './Hai/challenge/competition/competition.component';
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
-import {HttpClientModule} from '@angular/common/http';
+import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.component';
+import { FooteradminComponent } from './Manh/footeradmin/footeradmin.component';
+import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import { CKEditorModule } from 'ng2-ckeditor';
-import { DetailComponent } from './Thuan/quanlibaihoc/detail/detail.component';
+import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
+import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
+import {FormsModule} from '@angular/forms';
+import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -86,11 +91,13 @@ import { DetailComponent } from './Thuan/quanlibaihoc/detail/detail.component';
     FooterComponent,
     MenuComponent,
     HomepageComponent,
+    SidebarComponent,
     TestjlptComponent,
     ListtestjlptComponent,
     StarttestjlptComponent,
     EndtestjlptComponent,
     ManagerquestionComponent,
+    ManageruserComponent,
     ManagertestComponent,
     ManagerlisttestComponent,
     ManageraddtestComponent,
@@ -98,7 +105,6 @@ import { DetailComponent } from './Thuan/quanlibaihoc/detail/detail.component';
     ManagerlistquestionComponent,
     ManageraddquestionfortestComponent,
     FooterComponent,
-    SidebarComponent,
     TestN1Component,
     TestN2Component,
     TestN3Component,
@@ -115,20 +121,23 @@ import { DetailComponent } from './Thuan/quanlibaihoc/detail/detail.component';
     InformationComponent,
     ListchallengeComponent,
     WaitlchallengeComponent,
-    CreatechallengeComponent,
     CompetitionComponent,
     EndcompetitionComponent,
-    DetailComponent
+    SidebaradminComponent,
+    FooteradminComponent,
+    DetailuserComponent,
+    SidebarchallengeComponent,
+    CreateroomComponent,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    ManagerRoutingModule,
-    MatTabsModule,
-    HttpClientModule,
-    FormsModule,
-    CKEditorModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        ManagerRoutingModule,
+        MatTabsModule,
+        FormsModule,
+        HttpClientModule
+    ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
