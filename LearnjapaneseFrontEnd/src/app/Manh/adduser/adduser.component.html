@@ -8,6 +8,7 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container" >
+    <app-sidebaradmin></app-sidebaradmin>
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
 
@@ -27,80 +28,66 @@
             </div>
           </div>
           <br>
-          <form class="col-md-12" th:action="@{/admin/user/add-user}" method="post" enctype="multipart/form-data">
-            <div class="col-md-4 border-right">
-              <div class="d-flex flex-column align-items-center text-center">
-                <span class="font-weight-bold mt-2">Hình đại diện </span>
-                <input type="file" name="image" id="fileImage" style="overflow: hidden"/>
-                <div class="col-md-12 col-sm-12 mt-3">
-                  <img id="imgPreview" style="width: 150px;height: 150px">
-                </div>
-              </div>
-            </div>
+          <form (ngSubmit)="add()" class="col-md-12"  method="post" enctype="multipart/form-data">
+
             <div class="col-md-8 border-right">
               <div class="p-3">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="text-right">Thông tin tài khoản</h4>
                 </div>
-                <div class="bg-danger" id="error"
-                     th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
-                </div>
+<!--                <div class="bg-danger" id="error"-->
+<!--                     th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">-->
+<!--                </div>-->
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Username (viết liền không dấu và kí tự thường)</label>
-                    <input type="text" class="form-control" name="username" id="usernameUser" th:value="${us}">
+                    <input type="text" [(ngModel)]="us.username" class="form-control" name="username" id="usernameUser" >
                     <span id="vld-username" class="span-vld hide">Username không được để trống.</span>
                   </div>
                   <div class="col-md-6">
                     <label class="labels">Fullname</label>
-                    <input type="text" class="form-control" name="fullname" id="fullnameUser" th:value="${full}">
+                    <input type="text" [(ngModel)]="us.fullname" class="form-control" name="fullname" id="fullnameUser" >
 
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Email</label>
-                    <input type="text" class="form-control" name="email" id="emailUser" th:value="${emailAdd}">
+                    <input type="text" [(ngModel)]="us.email" class="form-control" name="email" id="emailUser" >
                     <span id="vld-email" class="span-vld hide">Email không được để trống hoẵ sai định dạng.</span>
                   </div>
                   <div class="col-md-6">
                     <label class="labels">Password</label>
-                    <input type="password" class="form-control" name="password" id="passwordUser">
+                    <input type="password" [(ngModel)]="us.password" class="form-control" name="password" id="passwordUser">
                     <span id="vld-pass" class="span-vld hide">Password không được để trống.</span>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Số điện thoại</label>
-                    <input type="text" class="form-control" name="phone" id="phoneUser" th:value="${ph}" >
+                    <input type="text" [(ngModel)]="us.sodth" class="form-control" name="phone" id="phoneUser" th:value="${ph}" >
                     <span id="vld-phone" class="span-vld hide">Số điện thoại sai định dạng.</span>
                   </div>
-                  <div class="col-md-6">
-                    <label class="labels">Địa chỉ</label>
-                    <input type="text" class="form-control" name="address" th:value="${add}" >
-                  </div>
+
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Giới tính</label>
-                    <select class="col-md-12 p-2" name="gender" >
-                      <option value="1" th:text="Nam"></option>`
-                      <option value="0" th:text="Nữ"></option>
+                    <select class="col-md-12 p-2" name="gt" id="gtinh"[(ngModel)]="us.gioitinh"  >
+                      <option value="Nam">Nam</option>`
+                      <option value="Nữ">Nữ</option>
                     </select>
                   </div>
-                  <div class="col-md-6">
-                    <label class="labels">Sinh nhật</label>
-                    <input id="datepicker" class="form-control" name="birthday" />
-                  </div>
+
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Quyền</label>
-                    <select class="form-control" name="role" id="roleUser">
+                    <select class="form-control" [(ngModel)]="us.quyen" name="role" id="roleUser">
                       <option value="">Tùy chọn</option>
-                      <option value="1">Admin</option>
-                      <option value="2">User</option>
-                      <option value="3">Manager</option>
+                      <option value="Admin">Admin</option>
+                      <option value="User">User</option>
+                      <option value="Manager">Manager</option>
                     </select>
                     <span id="vld-roleUser" class="span-vld hide">Vui lòng chọn quyền cho tài khoản.</span>
                   </div>
@@ -131,6 +118,6 @@
   });
 
 </script>
-
+<app-footeradmin></app-footeradmin>
 </body>
 </html>

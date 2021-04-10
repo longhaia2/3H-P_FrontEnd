@@ -56,6 +56,11 @@ import { ListchallengeComponent } from './Hai/challenge/listchallenge/listchalle
 import { WaitlchallengeComponent } from './Hai/challenge/waitlchallenge/waitlchallenge.component';
 import { CompetitionComponent } from './Hai/challenge/competition/competition.component';
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
+import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.component';
+import { FooteradminComponent } from './Manh/footeradmin/footeradmin.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
 import {FormsModule} from '@angular/forms';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
@@ -92,6 +97,7 @@ import {HttpClientModule} from '@angular/common/http';
     StarttestjlptComponent,
     EndtestjlptComponent,
     ManagerquestionComponent,
+    ManageruserComponent,
     ManagertestComponent,
     ManagerlisttestComponent,
     ManageraddtestComponent,
@@ -117,6 +123,9 @@ import {HttpClientModule} from '@angular/common/http';
     WaitlchallengeComponent,
     CompetitionComponent,
     EndcompetitionComponent,
+    SidebaradminComponent,
+    FooteradminComponent,
+    DetailuserComponent,
     SidebarchallengeComponent,
     CreateroomComponent,
   ],
