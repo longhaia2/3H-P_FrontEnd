@@ -8,7 +8,7 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <app-sidebar></app-sidebar>
+
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
 
@@ -37,7 +37,6 @@
         <div class="row">
           <div class="col-md-12">
             <div class="x_title">
-              <h5>Tùy chọn tìm kiếm</h5>
               <div class="clearfix"></div>
             </div>
             <div>
@@ -79,8 +78,8 @@
                   <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
                     <label>&nbsp;</label>
                     <div>
-                      <!--                      <a th:href="@{/lesson/add-lesson}" class="btn btn-success"><i class="fa fa-plus"></i> Thêm mới</a>-->
-                      <button type="add" id="them" class="btn btn-success">Thêm mới
+<!--                      <a th:href="@{/lesson/add-lesson}" class="btn btn-success"><i class="fa fa-plus"></i> Thêm mới</a>-->
+                      <button type="add" [routerLink]="['/admin/lesson/add']" id="them" class="btn btn-success">Thêm mới
                       </button>
                     </div>
                   </div>
@@ -103,30 +102,28 @@
                     <th>Tên bài học</th>
                     <th>Học phần</th>
                     <th>Trình độ</th>
+                    <th>Mô tả</th>
                     <th>Tùy chọn</th>
                   </tr>
                   </thead>
-                  <tbody th:if="${pageInfo.content != null}">
-                  <tr th:each=" row,iterStat: ${pageInfo.content}">
-                    <td th:text="${iterStat.count}">1</td>
-                    <td th:text="${#strings.substring(row.lessonName,0,15)+'...'}">Bài 1</td>
-                    <td th:text="${row.subject.name}">Từ vựng</td>
-                    <td th:text="${row.classroom.classname}">N5</td>
+                  <tbody >
+                  <tr *ngFor="let lesson of lesson">
+                    <td>{{lesson.id}}</td>
+                    <td >{{lesson.baihoc}}</td>
+                    <td >{{lesson.hocphan}}</td>
+                    <td >{{lesson.trinhdo}}</td>
+                    <td >{{lesson.mota}}</td>
                     <td>
-                      <div>
-                        <button type="submit" id="btnxoa" class="btn btn-success">Xóa
-                        </button>
-                      </div>
 
-                      <!--                        <button class="btn btn-success dropdown-toggle"-->
-                      <!--                                type="button" id="dropdownMenuButton">-->
-                      <!--                          <i class="fa fa-cog">Xóa</i>-->
-                      <!--                        </button>-->
-                      <!--&lt;!&ndash;                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">&ndash;&gt;-->
-                      <!--&lt;!&ndash;                          <a class="dropdown-item" th:href="@{/lesson/update-lesson/{id}(id=${row.id})}"><i class="fa fa-edit" ></i> Cập nhật</a>&ndash;&gt;-->
-                      <!--&lt;!&ndash;                          <div class="dropdown-divider"></div>&ndash;&gt;-->
-                      <!--&lt;!&ndash;                          <a class="dropdown-item" th:href="@{/lesson/delete-lesson(id=${row.id},status=${row.status})}" id="confirmDelete"> <i class="fa fa-trash-o"></i> Xóa</a>&ndash;&gt;-->
-                      <!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+                        <button (click)="delete(lesson.id)" class="badge badge-danger mr-2" >delete</button>
+
+                        <button  [routerLink]="['/admin/lesson/edit',lesson.id]"style="margin-left: 10px "class="badge badge-primary mr-2">update
+                        </button>
+
+                        <button  style="margin-left: 10px" class="badge badge-info mr-2"  [routerLink]="['/admin/lesson/detail',lesson.id]">detail
+                        </button>
+
+
                     </td>
                   </tr>
                   </tbody>
@@ -139,7 +136,7 @@
         <div class="clearfix"></div>
       </div>
     </div>
-    <!-- page content -->
+
   </div>
 </div>
 <div th:replace="admin/modal_confirm::content"></div>
@@ -153,6 +150,5 @@
     $('#lessonManager').addClass("active");
   });
 </script>
-<app-footer></app-footer>
 </body>
 </html>
