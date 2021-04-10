@@ -88,11 +88,14 @@
                     <span id="vld-classId" class="span-vld hide"> Vui lòng chọn lớp học </span>
                   </div>
                 </div>
-
                 <div class="row mt-3">
                   <div class="col-md-12">
                     <label class="labels">Nội dung bài học</label>
                     <br>
+                    <ckeditor name="checkeditor"
+                    [(ngModel)]="ls.noidung">
+                  </ckeditor>
+                    <textarea type="text" name="content" id="content"  class="form-control" rows="10" cols="55"></textarea>
                     <div class="col-md-4 ">
                       <div class="mt-5">
                         <div class="form-group align-content-center">
@@ -112,7 +115,13 @@
                   </div>
 
                 </div>
-
+<!--                  <input type="text"-->
+<!--                         class="form-control" name="" id="" aria-describedby="helpId" placeholder="">-->
+<!--                  <small id="helpId" class="form-text text-muted">Help text</small>-->
+                <div class="text-center mt-3">
+                  <button class="btn btn-success" id="btnAddLesson"  type="submit"  >Thêm bài học</button>
+                  <a  class="btn btn-danger">Hủy bỏ</a>
+                <h3>heloo</h3>
 
                 <div class="text-center mt-3">
                   <button class="btn btn-success" id="btnAddLesson" type="submit">Thêm bài học</button>
@@ -136,11 +145,9 @@
     $('#lessonManager').addClass("active");
     CKEDITOR.replace('content')
   });
-
   $('#btnAddLesson').click(function (){
     var title= $('')
   });
-
 </script>
 <app-footer></app-footer>
 </body>
