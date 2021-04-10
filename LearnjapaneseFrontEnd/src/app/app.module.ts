@@ -62,8 +62,8 @@ import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
 import {FormsModule} from '@angular/forms';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
-import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
+import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component';
 
 
 @NgModule({
@@ -126,8 +126,8 @@ import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
     DetailuserComponent,
     SidebarchallengeComponent,
     CreateroomComponent,
-    HeaderadminComponent,
     HomeadminComponent,
+    HeaderadminComponent,
   ],
     imports: [
         BrowserModule,
