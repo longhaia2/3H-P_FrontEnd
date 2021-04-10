@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Thêm câu hỏi</title>
-  <div th:replace="admin/init_admin :: header"></div>
+
   <meta th:name="_csrf" th:content="${_csrf.token}"/>
   <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
@@ -11,8 +11,7 @@
 <div class="container body">
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
-    <div th:replace="admin/sidebar :: content"></div>
-    <div th:replace="admin/header :: content"></div>
+    <app-headeradmin></app-headeradmin>
 
     <div class="right_col" role="main">
       <!-- top tiles -->
@@ -81,7 +80,7 @@
                 <span class="span-vld hide" id="vldAddQuestion">Vui lòng nhập đầy đủ thông tin</span>
                 <div class="mt-5 text-center">
                   <button class="btn btn-success" type="submit" id="btnAddQuestiontoExam">Thêm câu hỏi</button>
-                  <a class="btn btn-danger" th:href="@{'/question/list-question-by-subject-class?subjectId='+${subjectId}+'&classId='+${classId}}" >Hủy bỏ</a>
+                  <a class="btn btn-danger" [routerLink]="['/admin/lesson']" >Hủy bỏ</a>
                 </div>
               </form>
             </div>
@@ -127,7 +126,6 @@
     </div>
   </div>
 </div>
-<div th:replace="admin/footer :: content"></div>
 <div th:replace="admin/init_admin :: script"></div>
 <script>
   $('#error').delay(5000).fadeOut(1000);
@@ -222,6 +220,5 @@
   }
 
 </script>
-<app-footeradmin></app-footeradmin>
 </body>
 </html>

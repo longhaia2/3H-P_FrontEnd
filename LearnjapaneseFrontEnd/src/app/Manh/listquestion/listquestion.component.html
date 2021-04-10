@@ -9,6 +9,7 @@
 <div class="container body">
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
+    <app-headeradmin></app-headeradmin>
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
 
@@ -104,11 +105,10 @@
   </div>
 </div>
 <div th:replace="admin/modal_confirm::content"></div>
-<div th:replace="admin/footer :: content"></div>
 <div th:replace="admin/init_admin :: script"></div>
 <script>
   $("#questionManager").addClass("active");
 </script>
-<app-footeradmin></app-footeradmin>
+
 </body>
 </html>

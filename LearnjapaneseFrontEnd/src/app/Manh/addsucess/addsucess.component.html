@@ -2,16 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Danh sách câu hỏi</title>
-  <div th:replace="admin/init_admin :: header"></div>
+
 </head>
 
 <body class="nav-md">
 <div class="container body">
-  <app-sidebar></app-sidebar>
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
-    <div th:replace="admin/sidebar :: content"></div>
-    <div th:replace="admin/header :: content"></div>
+    <app-headeradmin></app-headeradmin>
 
     <div class="right_col" role="main">
       <!-- top tiles -->
@@ -104,13 +102,10 @@
     <!-- page content -->
   </div>
 </div>
-<div th:replace="admin/modal_confirm::content"></div>
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
 <script>
   $("#questionManager").addClass("active");
 </script>
-<app-footeradmin></app-footeradmin>
+
 </body>
 </html>
 
