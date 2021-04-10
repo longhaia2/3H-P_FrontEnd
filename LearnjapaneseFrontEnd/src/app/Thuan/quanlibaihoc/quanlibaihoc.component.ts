@@ -25,4 +25,19 @@ export class QuanlibaihocComponent implements OnInit {
 detail(id: number){
     this.router.navigate(['/detail',id])
 }
+  delete(id: number) {
+    this.lessonService.delete(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
+  }
+
+  //ham update du lieu
+   updatelesson(id: number){
+    this.router.navigate(['/edit',id])
+  }
 }
+

@@ -22,6 +22,7 @@ import {InformationComponent} from './information/information.component';
 import {QuanlibaihocComponent} from "../Thuan/quanlibaihoc/quanlibaihoc.component";
 import {AddlessonComponent} from "../Thuan/quanlibaihoc/addlesson/addlesson.component";
 import {DetailComponent} from "../Thuan/quanlibaihoc/detail/detail.component";
+import {EditbaihocComponent} from "../Thuan/quanlibaihoc/editbaihoc/editbaihoc.component";
 
 
 const routes: Routes = [
@@ -45,7 +46,7 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
   {path: 'admin/lesson/list', component: QuanlibaihocComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
-  {path: 'admin/lesson/edit/:id', component: InformationComponent},
+  {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
   {path: 'admin/lesson/detail/:id', component: DetailComponent},
 
 ];

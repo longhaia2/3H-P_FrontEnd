@@ -19,6 +19,7 @@ export class AddlessonComponent implements OnInit {
   ngOnInit(): void {
     this.ls=new Lesson();
   }
+  ckeditorContent ;
 
   add(){
     this.lsService.create(this.ls).subscribe(data=>{

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <title>Cập nhật bài học</title>
+  <title>Thêm bài học</title>
   <div th:replace="admin/init_admin :: header"></div>
   <meta th:name="_csrf" th:content="${_csrf.token}"/>
   <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
@@ -10,7 +10,7 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <app-sidebar></app-sidebar>
+
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
 
@@ -19,7 +19,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3><small>Update bài học</small></h3>
+            <h3><small>Quản Lý Thêm Bài Học </small></h3>
           </div>
         </div>
 
@@ -32,41 +32,52 @@
             </div>
           </div>
           <br>
-          <div class="col-md-9 border-right">
-            <form th:action="@{/lesson/update-lesson}" method="post">
-              <input type="text" class="form-control" hidden  name="lessonId" th:value="${lesson.id}" >
+          <form method="post" enctype="multipart/form-data">
+
+            <div class="col-md-12" style="margin-left: 180px">
               <div class="p-3">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4 class="text-right">Chỉnh sửa bài học</h4>
+                  <h4 class="text-right">Thêm mới bài học</h4>
                 </div>
-                <div class="bg-danger" id="error"
-                     th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
+                <div class="col-md-12">
+                  <label class="labels">ID</label>
+                  <input type="text" [(ngModel)]="lesson.mota" class="form-control"  name="description"  id="id">
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-12">
                     <label class="labels">Tên bài học</label>
-                    <input type="text" class="form-control"  name="lessonname" th:value="${lesson.lessonName}" >
+                    <input type="text" [(ngModel)]="lesson.baihoc" class="form-control"  name="lessonName" id="lessonName" >
+                    <span id="vld-lessonName" class="span-vld hide"> Tên bài học không được để trống </span>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-12">
+                    <label class="labels">Mô tả bài học</label>
+                    <input type="text" [(ngModel)]="lesson.mota" class="form-control"  name="description"  id="descriptionLesson">
+                    <span id="vld-descriptionLesson" class="span-vld hide"> Mô tả bài học không được để trống </span>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label>Học phần</label>
-                    <select class="form-control" name="subjectId">
-                      <option>Từ vựng
-                      </option>
-                      <option>Ngữ pháp</option>
+                    <select [(ngModel)]="lesson.hocphan" class="form-control" name="subjectId" id="subjectId">
+                      <!--                      <option value="">Tùy chọn</option>-->
+                      <option value="Từ vựng">Từ vựng</option>
+                      <option value="Ngữ pháp">Ngữ pháp</option>
                     </select>
+                    <span id="vld-subjectId" class="span-vld hide"> Vui lòng chọn môn học </span>
                   </div>
                   <div class="col-md-6">
                     <label>Trình độ</label>
-                    <select class="form-control" name="classId">
-                      <option>Tùy chọn</option>
-                      <option>N5</option>
-                      <option>N4</option>
-                      <option>N3</option>
-                      <option>N2</option>
-                      <option>N1</option>
+                    <select [(ngModel)]="lesson.trinhdo" class="form-control" name="classId" id="classId">
+                      <!--                      <option value="">Tùy chọn</option>-->
+                      <option value="N5">N5</option>
+                      <option value="N4">N4</option>
+                      <option value="N3">N3</option>
+                      <option value="N2">N2</option>
+                      <option value="N1">N1</option>
                     </select>
+                    <span id="vld-classId" class="span-vld hide"> Vui lòng chọn lớp học </span>
                   </div>
                 </div>
 
@@ -74,25 +85,28 @@
                   <div class="col-md-12">
                     <label class="labels">Nội dung bài học</label>
                     <br>
-                    <textarea type="text" name="content" id="content"  class="form-control" rows="10" cols="55">
-                                    </textarea>
+                    <input type="text" [(ngModel)]="lesson.noidung" class="form-control"  name="noidung"  id="noidung"><ckeditor
+                    [(ngModel)]="ckeditorContent">
+                  </ckeditor>
                   </div>
                 </div>
+
                 <div class="text-center mt-3">
-                  <button class="btn btn-success" id="btnUpdateLesson" type="submit">Update bài học</button>
-                  <a th:href="@{/lesson/list-lesson}" class="btn btn-danger">Hủy bỏ</a>
+                  <button (click)="updatelesson()" class="btn btn-success" id="btnAddLesson"  type="submit"  >Update</button>
+                  <a  class="btn btn-danger">Hủy bỏ</a>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+
+          </form>
         </div>
       </div>
     </div>
     <!-- page content -->
   </div>
 </div>
-<div th:replace="admin/footer :: content"></div>
 
+<div th:replace="admin/footer :: content"></div>
 <div th:replace="admin/init_admin :: script"></div>
 <script th:src="@{/ckeditor/ckeditor.js}" type="text/javascript"></script>
 <script>
@@ -100,6 +114,11 @@
     $('#lessonManager').addClass("active");
     CKEDITOR.replace('content')
   });
+
+  $('#btnAddLesson').click(function (){
+    var title= $('')
+  });
+
 </script>
 <app-footer></app-footer>
 </body>

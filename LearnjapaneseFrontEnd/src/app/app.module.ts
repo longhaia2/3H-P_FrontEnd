@@ -59,7 +59,9 @@ import { CompetitionComponent } from './Hai/challenge/competition/competition.co
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
+import { CKEditorModule } from 'ng2-ckeditor';
 import { DetailComponent } from './Thuan/quanlibaihoc/detail/detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,7 +126,8 @@ import { DetailComponent } from './Thuan/quanlibaihoc/detail/detail.component';
     ManagerRoutingModule,
     MatTabsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CKEditorModule
   ],
   bootstrap: [AppComponent]
 })
