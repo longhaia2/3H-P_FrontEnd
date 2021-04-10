@@ -10,6 +10,8 @@ export class DangnhapComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+  ckeditorContent;
 
 }

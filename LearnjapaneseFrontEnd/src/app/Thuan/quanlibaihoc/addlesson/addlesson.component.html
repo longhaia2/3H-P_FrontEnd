@@ -60,7 +60,7 @@
                   <div class="col-md-6">
                     <label>Học phần</label>
                     <select [(ngModel)]="ls.hocphan" class="form-control" name="subjectId" id="subjectId">
-                      <option value="">Tùy chọn</option>
+<!--                      <option value="">Tùy chọn</option>-->
                       <option value="Từ vựng">Từ vựng</option>
                       <option value="Ngữ pháp">Ngữ pháp</option>
                     </select>
@@ -69,7 +69,7 @@
                   <div class="col-md-6">
                     <label>Trình độ</label>
                     <select [(ngModel)]="ls.trinhdo" class="form-control" name="classId" id="classId">
-                      <option value="">Tùy chọn</option>
+<!--                      <option value="">Tùy chọn</option>-->
                       <option value="N5">N5</option>
                       <option value="N4">N4</option>
                       <option value="N3">N3</option>
@@ -84,12 +84,14 @@
                   <div class="col-md-12">
                     <label class="labels">Nội dung bài học</label>
                     <br>
-                    <input type="text" [(ngModel)]="ls.noidung" class="form-control"  name="noidung"  id="noidung"></div>
-
+                    <ckeditor [(ngModel)]="ls.noidung"
+                    [(ngModel)]="ckeditorContent">
+                  </ckeditor>
+                  </div>
                 </div>
 
                 <div class="text-center mt-3">
-                  <button class="btn btn-success" id="btnAddLesson" type="submit"  >Thêm bài học</button>
+                  <button class="btn btn-success" id="btnAddLesson"  type="submit"  >Thêm bài học</button>
                   <a  class="btn btn-danger">Hủy bỏ</a>
                 </div>
               </div>

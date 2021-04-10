@@ -115,13 +115,12 @@
                     <td >{{lesson.mota}}</td>
                     <td>
 
-                        <button  class="badge badge-danger mr-2" >delete
+                        <button (click)="delete(lesson.id)" class="badge badge-danger mr-2" >delete</button>
+
+                        <button  [routerLink]="['/admin/lesson/edit',lesson.id]"style="margin-left: 10px "class="badge badge-primary mr-2">update
                         </button>
 
-                        <button style="margin-left: 10px "class="badge badge-primary mr-2">update
-                        </button>
-
-                        <button  style="margin-left: 10px" class="badge badge-info mr-2"  [routerLink]="['/admin/lesson/detail/:id']">detail
+                        <button  style="margin-left: 10px" class="badge badge-info mr-2"  [routerLink]="['/admin/lesson/detail',lesson.id]">detail
                         </button>
 
 
