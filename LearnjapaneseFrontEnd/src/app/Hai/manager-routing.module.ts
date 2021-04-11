@@ -35,6 +35,12 @@ import {ManageraddquestionfortestComponent} from './admin/managertest/manageradd
 import {ManageraddquestionComponent} from './admin/managerquestion/manageraddquestion/manageraddquestion.component';
 import {ManagertestComponent} from './admin/managertest/managertest.component';
 import {ManagerlisttestComponent} from './admin/managertest/managerlisttest/managerlisttest.component';
+import {ManageraddtestComponent} from './admin/managertest/manageraddtest/manageraddtest.component';
+import {ManagerexamComponent} from './admin/managerexam/managerexam.component';
+import {ManagerexamaddComponent} from './admin/managerexam/managerexamadd/managerexamadd.component';
+import {ManagerexameditComponent} from './admin/managerexam/managerexamedit/managerexamedit.component';
+import {ListquestionComponent} from '../Hien/listquestion/listquestion.component';
+import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 
 
 const routes: Routes = [
@@ -67,8 +73,11 @@ const routes: Routes = [
   {path: 'admin/lesson', component: QuanlibaihocComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
   {path: 'admin/lesson/edit', component: EditbaihocComponent},
-  {path: 'admin/exam', component: ManagerlisttestComponent},
-  {path: 'admin/exam/add', component: ManageraddquestionfortestComponent},
+  {path: 'admin/exam', component: ManagerexamComponent},
+  {path: 'admin/exam/add', component: ManagerexamaddComponent},
+  {path: 'admin/exam/edit', component: ManagerexameditComponent},
+  {path: 'admin/question', component: ListquestionComponent},
+  {path: 'admin/question/add', component: AddquestionComponent},
 ];
 
 @NgModule({
