@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"  lang="en">
 <head>
   <title>Thông tin đề thi</title>
-<!--  <div th:replace="fragments/init_lib :: header"></div>-->
+  <script src="../../../../assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"></script>
+  <!--  <div th:replace="fragments/init_lib :: header"></div>-->
 </head>
 
 <body>
@@ -56,7 +61,10 @@
 </main>
 <div th:replace="fragments/footer :: content"></div>
 <div th:replace="fragments/init_lib :: script"></div>
+
 <script type="text/javascript" th:src="@{/js/exam.js}"></script>
+<script src="../../../../assets/js/exam.js"></script>
+
 <script>
   $('#btnStart').on('click', function(event) {
     var acc =$('#dropdownMenuButton').val();

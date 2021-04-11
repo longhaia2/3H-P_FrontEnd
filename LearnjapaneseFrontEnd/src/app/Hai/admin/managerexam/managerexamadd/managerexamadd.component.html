@@ -16,7 +16,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h2> <small>Thêm mới đề thi</small></h2>
+            <h2> Thêm mới đề thi</h2>
           </div>
         </div>
 
@@ -48,24 +48,28 @@
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6 col-sm-12 ">
-                    <label>Môn học</label>
-                    <select class="form-control" name="subjectId" id="subjectId">
+                    <label>Vui lòng chọn môn học</label>
+                    <select class="form-control" name="classId" id="classId">
                       <option value="">Tùy chọn</option>
-                      <option th:each="item : ${listSubject}"
-                              th:value="${item.id}" th:text="${item.name}">
-                      </option>
+                      <option value="Từ vựng">Từ vựng</option>
+                      <option value="Ngữ pháp">Ngữ pháp</option>
+                      <option value="Ngữ pháp">Đề JPLT</option>
+                      <option value="Ngữ pháp">Đề Thử Thách Cùng Nhau</option>
                     </select>
                     <span id="vld-subjectId" class="span-vld hide">Vui lòng chọn môn học.</span>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <label>Lớp</label>
-                    <select class="form-control" name="classId" id="classId">
+
+                    <span id="vld-classId" class="span-vld hide">Vui lòng chọn trình độ.</span>
+                    <select class="form-control" name="level" id="level">
                       <option value="">Tùy chọn</option>
-                      <option th:each="item : ${listClass}"
-                              th:value="${item.id}" th:text="${item.classname}">
-                      </option>
+                      <option value="Từ vựng">N1</option>
+                      <option value="Ngữ pháp">N2</option>
+                      <option value="Ngữ pháp">N3</option>
+                      <option value="Ngữ pháp">N4</option>
+                      <option value="Ngữ pháp">N5</option>
                     </select>
-                    <span id="vld-classId" class="span-vld hide">Vui lòng chọn lớp học.</span>
                   </div>
                 </div>
                 <div class="row mt-2">
@@ -90,7 +94,7 @@
                 </div>
                 <div class="text-center mt-3">
                   <button class="btn btn-success" type="submit" id="btnAddExam">Thêm đề thi</button>
-                  <a class="btn btn-danger" th:href="@{/exam/list-exam}">Bỏ qua</a>
+                  <a class="btn btn-danger" [routerLink]="['/admin/exam']">Bỏ qua</a>
                 </div>
               </div>
             </form>
