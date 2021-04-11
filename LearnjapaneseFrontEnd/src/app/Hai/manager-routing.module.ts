@@ -23,7 +23,6 @@ import {AdduserComponent} from "../Manh/adduser/adduser.component";
 import {ManageruserComponent} from "../Manh/manageruser/manageruser.component";
 import {DetailuserComponent} from "../Manh/detailuser/detailuser.component";
 import {ListchallengeComponent} from './challenge/listchallenge/listchallenge.component';
-import {LoginComponent} from '../Hien/login/login.component';
 import {RegistrationComponent} from '../Hien/registration/registration.component';
 import {CreateroomComponent} from './challenge/createroom/createroom.component';
 import {HomeadminComponent} from './admin/homeadmin/homeadmin.component';
@@ -41,6 +40,8 @@ import {ManagerexamaddComponent} from './admin/managerexam/managerexamadd/manage
 import {ManagerexameditComponent} from './admin/managerexam/managerexamedit/managerexamedit.component';
 import {ListquestionComponent} from '../Hien/listquestion/listquestion.component';
 import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
+import {LoginComponent} from '../_services/login/login.component';
+import {RegisterComponent} from '../_services/register/register.component';
 
 
 const routes: Routes = [
@@ -67,7 +68,6 @@ const routes: Routes = [
   {path: 'admin/manage/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent},
   {path: 'challenge/add', component: CreateroomComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'admin-home', component: HomeadminComponent},
   {path: 'admin/lesson', component: QuanlibaihocComponent},
@@ -79,6 +79,8 @@ const routes: Routes = [
   {path: 'admin/question', component: ListquestionComponent},
   {path: 'admin/question/add', component: AddquestionComponent},
   {path: 'exam', component: StarttestjlptComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({

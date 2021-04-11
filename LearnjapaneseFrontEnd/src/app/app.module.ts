@@ -16,7 +16,6 @@ import { VocabularyComponent } from './Hien/vocabulary/vocabulary.component';
 import { GrammarComponent } from './Hien/grammar/grammar.component';
 import { ReviewvocabularyComponent } from './Hien/reviewvocabulary/reviewvocabulary.component';
 import { RegistrationComponent } from './Hien/registration/registration.component';
-import { LoginComponent } from './Hien/login/login.component';
 import { ReviewgrammarComponent } from './Hien/reviewgrammar/reviewgrammar.component';
 import { HistoryComponent } from './Hien/history/history.component';
 import { HeaderComponent } from './Hai/header/header.component';
@@ -67,8 +66,15 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
+import { RegisterComponent } from './_services/register/register.component';
+import { HomeComponent } from './_services/home/home.component';
+import { ProfileComponent } from './_services/profile/profile.component';
+import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './_services/board-user/board-user.component';
 
-
+import {authInterceptorProviders} from './_helpers/auth.interceptor';
+import {LoginComponent} from './_services/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +92,6 @@ import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedi
     GrammarComponent,
     ReviewvocabularyComponent,
     RegistrationComponent,
-    LoginComponent,
     ReviewgrammarComponent,
     HistoryComponent,
     HeaderComponent,
@@ -134,6 +139,13 @@ import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedi
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+    LoginComponent,
   ],
     imports: [
         BrowserModule,
@@ -143,7 +155,7 @@ import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedi
         FormsModule,
         HttpClientModule
     ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
