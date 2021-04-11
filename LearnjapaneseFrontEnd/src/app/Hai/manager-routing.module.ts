@@ -78,6 +78,7 @@ const routes: Routes = [
   {path: 'admin/exam/edit', component: ManagerexameditComponent},
   {path: 'admin/question', component: ListquestionComponent},
   {path: 'admin/question/add', component: AddquestionComponent},
+  {path: 'exam', component: StarttestjlptComponent},
 ];
 
 @NgModule({
