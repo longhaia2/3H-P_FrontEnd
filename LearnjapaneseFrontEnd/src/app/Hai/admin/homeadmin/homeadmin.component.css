@@ -1,0 +1,9 @@
+
+ .tile-stats .count, .tile-stats h3, .tile-stats p {
+   position: relative;
+   margin: 0;
+   margin-left: 10px;
+   z-index: 5;
+   padding: 0;
+   height: 40px;
+ }

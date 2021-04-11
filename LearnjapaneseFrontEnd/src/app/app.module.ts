@@ -4,8 +4,8 @@ import { AppComponent } from './app.component';
 import { ManageruserComponent } from './Manh/manageruser/manageruser.component';
 import { AdduserComponent } from './Manh/adduser/adduser.component';
 import { ManageraskComponent } from './Manh/managerask/managerask.component';
-import { ListquestionComponent } from './Manh/listquestion/listquestion.component';
-import { AddquestionComponent } from './Manh/addquestion/addquestion.component';
+import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
+import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
 
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
@@ -64,6 +64,9 @@ import {FormsModule} from '@angular/forms';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
 import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component';
+import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
+import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
+import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
 
 
 @NgModule({
@@ -128,6 +131,9 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
     CreateroomComponent,
     HomeadminComponent,
     HeaderadminComponent,
+    ManagerexamComponent,
+    ManagerexamaddComponent,
+    ManagerexameditComponent,
   ],
     imports: [
         BrowserModule,
