@@ -21,10 +21,10 @@
               <a >
                 <div class="test-listItem">
                   <div class="img">
-                    <img th:src="@{/image/subject/{image}(image=${item.getExam_subject().image})}" alt="">
+                    <img  alt="">
                   </div>
                   <div class="content">
-                    <h6 class="title">Xin chào: <span th:text="${item.codeExam}"></span></h6>
+                    <h6 class="title">Xin chào: {{logName}}<span ></span></h6>
                     <div>
                       <div >Hãy sẵn sàng để thi đấu</div>
                       <img style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png">

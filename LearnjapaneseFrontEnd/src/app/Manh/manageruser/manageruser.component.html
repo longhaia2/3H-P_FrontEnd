@@ -17,8 +17,6 @@
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
-    <div th:replace="admin/sidebar :: content"></div>
-    <div th:replace="admin/header :: content"></div>
 
     <div class="right_col" role="main">
       <!-- top tiles -->
@@ -102,14 +100,14 @@
                     <th>Giới tính</th>
                   </tr>
                   </thead>
-                  <tbody th:if="${pageInfo.content != null}">
+                  <tbody >
                   <tr *ngFor="let user of Users">
                     <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
-                    <td>{{user.fullname}}</td>
+                    <td>{{user.fullName}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{user.sodth}}</td>
-                    <td>{{user.gioitinh}}</td>
+                    <td>{{user.phoneNumber}}</td>
+                    <td>{{user.gender}}</td>
 
 
                     <td>

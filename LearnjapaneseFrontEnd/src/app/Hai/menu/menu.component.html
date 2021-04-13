@@ -8,7 +8,7 @@
           <ul class="menu-left">
             <li><a [routerLink]="['/page-home']">Trang chủ</a></li>
             <li>
-              <a href="#">Học tập</a>
+              <a >Học tập</a>
               <ul>
                 <li [routerLink]="['/study/N1']">N1</li>
                 <li [routerLink]="['/study/N2']">N2</li>
@@ -31,24 +31,31 @@
         </div>
         <div class="col-md-4 col-12">
           <div class="menu-right">
-            <a class=" btn-login" id="link-login" [routerLink]="['/login']">
-              <i class="fa fa-user"></i> ĐĂNG NHẬP
-            </a>
-            <div class="dropdown" id="div-account" sec:authorize="isAuthenticated()">
-              <a class="dropdown-toggle btn-login" id="dropdownMenuButton"
-                 type="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user"></i>
-<!--                [[${#request.userPrincipal.principal.fullname}]]-->
-                <input hidden th:value="${#request.userPrincipal.principal.username}">
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" th:href="@{/admin/home}"><i class="fa fa-cogs"></i> Quản lí</a>
-                <a class="dropdown-item" th:href="@{/user/profile}"><i class="fa fa-user-circle-o"></i> Profile</a>
-                <a class="dropdown-item" th:href="@{/info/exam-user}"><i class="fa fa-check-square-o"></i> Kết quả thi</a>
-                <a class="dropdown-item" th:href="@{/logout}"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+              <div *ngIf="userNameDsp; else block">
+            <div> <i  style="font-size: 20px">Xin chào: {{userNameDsp}} </i>
+              <div class="dropdown" id="div-account" sec:authorize="isAuthenticated()" style="margin-left: 10px;font-size: 20px">
+                <a class="dropdown-toggle btn-login" id="dropdownMenuButton"
+                   type="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user"></i>
+                  <!--                [[${#request.userPrincipal.principal.fullname}]]-->
+                  <input hidden th:value="${#request.userPrincipal.principal.username}">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" th:href="@{/admin/home}"><i class="fa fa-cogs"></i> Quản lí</a>
+                  <a class="dropdown-item" ><i class="fa fa-user-circle-o"></i> Profile</a>
+                  <a class="dropdown-item" ><i class="fa fa-check-square-o"></i> Kết quả thi</a>
+                  <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                </div>
+              </div>
               </div>
             </div>
+            <ng-template #block> <i class="fa fa-user"></i>
+              <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP</a>
+            </ng-template>
+
+
+
             <div th:if="${param.logout}" id="msg-logout"></div>
           </div>
         </div>

@@ -17,18 +17,19 @@ export class AdduserComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    // @ts-ignore
     this.us=new User();
   }
-  adđ() {}
 
   add(){
     this.userService.create(this.us).subscribe(data=>{
       this.us=data;
       alert("thành công");
-    })
-    // @ts-ignore
+    });
     this.us=new User();
+    window.location.reload();
+  }
+  onSbubmit(){
+    this.add();
   }
 
 }

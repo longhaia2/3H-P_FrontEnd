@@ -16,10 +16,12 @@ export class ListchallengeComponent implements OnInit {
 
   ngOnInit(): void {
     this.list();
+
   }
   list(){
     this.roomsv.findAll().subscribe(data =>{
       this.challenge = data;
+      console.log(data);
     });
   }
 
