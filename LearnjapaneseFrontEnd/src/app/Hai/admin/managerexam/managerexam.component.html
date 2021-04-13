@@ -33,7 +33,7 @@
               <div class="clearfix"></div>
             </div>
             <div>
-              <form th:action="@{/exam/list-exam}" method="get">
+              <form >
                 <div class="row">
                   <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
                     <label>Mã đề thi</label>
@@ -45,8 +45,7 @@
                     <label>Học Phần</label>
                     <select class="form-control" name="subjectId">
                       <option value="">Tùy chọn</option>
-                      <option th:each="item : ${listSubject}"
-                              th:value="${item.id}" th:text="${item.name}">
+                      <option >
                       </option>
                     </select>
                   </div>
@@ -54,8 +53,7 @@
                     <label>Trình Độ</label>
                     <select class="form-control" name="classId">
                       <option value="">Tùy chọn</option>
-                      <option th:each="item : ${listClass}"
-                              th:value="${item.id}" th:text="${item.classname}">
+                      <option >
                       </option>
                     </select>
                   </div>
@@ -86,10 +84,10 @@
         <div class="row">
           <div class="col-md-12">
             <div class="bg-success col-md-12" id="success"
-                 th:if="${not #strings.isEmpty(success)}" th:text="${success}" style="color: white;padding: 10px">
+                 style="color: white;padding: 10px">
             </div>
             <div class="bg-danger col-md-12" id="error"
-                 th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
+                  style="color: white;padding: 10px">
             </div>
             <div class="tile-body">
               <div class="table-responsive">
@@ -102,19 +100,18 @@
                     <th>Trình độ</th>
                     <th>Số câu hỏi</th>
                     <th>Time(phút)</th>
-                    <!--                    <th>Views</th>-->
-                    <!--                    <th>Trạng thái</th>-->
                     <th>Tùy chọn</th>
                   </tr>
                   </thead>
-                  <tbody th:if="${pageInfo.content != null}">
-                  <tr th:each=" row,iterStat: ${pageInfo.content}">
-                    <td th:text="${iterStat.count}"></td>
-                    <td th:text="${row.codeExam}"></td>
-                    <td th:text="${row.exam_subject.name}"></td>
-                    <td th:text="${row.exam_classroom.classname}"></td>
-                    <td th:text="${row.totalQuestion}"></td>
-                    <td th:text="${row.timeOut}"></td>
+                  <tbody >
+                  <tr *ngFor="let exam of ex">
+                    <td>{{exam.id}}</td>
+                    <td>{{exam.codeExam}}</td>
+                    <td>{{exam.term}}</td>
+                    <td>{{exam.level}}</td>
+                    <td>{{exam.totalQuestion}}</td>
+                    <td>{{exam.timeOut}}</td>
+
                     <!--                    <td th:text="${row.views}"></td>-->
                     <!--                    <td th:if="${row.status==1}">-->
                     <!--                      <a th:href="@{/exam/update-status(examId=${row.id},status=${row.status})}" id="confirmDisable" class="btn btn-success" title="Active"><i class="fa fa-check"></i></a>-->
@@ -133,7 +130,7 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" th:href="@{/exam/update-exam/{id}(id=${row.id})}"><i class="fa fa-edit" ></i> Cập nhật</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" th:href="@{/exam/delete-exam(examId=${row.id},status=${row.status})}" id="confirmDelete"> <i class="fa fa-trash-o"></i> Xóa</a>
+                          <a class="dropdown-item" (click)="delete(exam.id)"  id="confirmDelete"> <i class="fa fa-trash-o"></i> Xóa</a>
                         </div>
                       </div>
                     </td>
@@ -150,11 +147,7 @@
     <!-- page content -->
   </div>
 </div>
-<div th:replace="admin/modal_confirm::content"></div>
-<div th:replace="admin/modal_active::content"></div>
-<div th:replace="admin/modal_disable::content"></div>
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
+
 <script>
   $(document).ready(function () {
     $('#examManager').addClass("active");

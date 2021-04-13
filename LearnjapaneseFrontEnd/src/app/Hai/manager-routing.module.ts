@@ -42,10 +42,11 @@ import {ListquestionComponent} from '../Hien/listquestion/listquestion.component
 import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
+import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'page-home'},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'page-home', component: HomepageComponent},
   {path: 'page-test', component: ListtestjlptComponent},
   {path: 'start-test', component: StarttestjlptComponent},
@@ -68,7 +69,7 @@ const routes: Routes = [
   {path: 'admin/manage/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent},
   {path: 'challenge/add', component: CreateroomComponent},
-  {path: 'registration', component: RegistrationComponent},
+  {path: 'challenge/wait', component: WaitlchallengeComponent},
   {path: 'admin-home', component: HomeadminComponent},
   {path: 'admin/lesson', component: QuanlibaihocComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},

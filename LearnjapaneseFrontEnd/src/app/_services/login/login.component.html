@@ -7,7 +7,7 @@
 <!--  <title>Đăng nhập</title>-->
 <!-- -->
 
-<body>
+<body style="width: 500px;margin-left: 500px;margin-top: 100px;">
 <div id="logreg-forms">
   <div class="col-md-12">
   <form class="form-signin">
@@ -68,8 +68,7 @@
     Login failed: {{ errorMessage }}
   </div>
   <div class="alert alert-success" *ngIf="isLoggedIn">
-    Logged in as {{ roles }}.
-    Dang nhap thanh cong
+    Logged in as {{ roles }}
   </div>
 </div>
 

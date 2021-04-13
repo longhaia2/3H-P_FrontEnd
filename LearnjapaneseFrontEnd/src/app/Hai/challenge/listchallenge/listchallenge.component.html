@@ -37,22 +37,13 @@
                 <tbody>
                 <tr *ngFor="let roomChallenge of challenge">
                   <td>{{roomChallenge.room_id}}</td>
-                  <td></td>
-                  <td>{{roomChallenge.room_name}}</td>
+                  <td [routerLink]="['/challenge/wait']"  >{{roomChallenge.userCreate}}</td>
+                  <td [routerLink]="['/challenge/wait']" >{{roomChallenge.room_name}}</td>
                   <td>{{roomChallenge.level}}</td>
                   <td>{{roomChallenge.time +' Phút'}}</td>
                   <td></td>
                   <td></td>
                 </tr>
-<!--                <tr>-->
-<!--                  <td>1</td>-->
-<!--                  <td>kenneth</td>-->
-<!--                  <td><a href="" title="Cick để vào phòng">Có ngon nhàu dô</a></td>-->
-<!--                  <td>N2</td>-->
-<!--                  <td>10 phút</td>-->
-<!--                  <td>4/4</td>-->
-<!--                  <td>Đang chơi</td>-->
-<!--                </tr>-->
 
                 </tbody>
 
