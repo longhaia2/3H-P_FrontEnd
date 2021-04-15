@@ -34,7 +34,7 @@
     "ngx-pagination": "^5.0.0",
 >>>>>>> origin/hai
     "rxjs": "~6.6.0",
-    "tslib": "^2.1.0",
+    "tslib": "^2.2.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
