@@ -52,17 +52,14 @@
               <form th:action="@{/admin/user/list-user}" method="get">
                 <div class="row">
                   <div class="col-lg-2 col-sm-12 col-xs-3">
-                    <label>Username</label>
                     <div>
-                      <input class="form-control" name="username" type="text" th:value="${us}">
                     </div>
                   </div>
 
                   <div class="col-lg-2 col-sm-12 col-xs-3">
                     <label>&nbsp;</label>
                     <div>
-                      <button type="submit" id="btnSearch" class="btn btn-success">Tìm kiếm
-                      </button>
+
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-12  col-xs-3">
@@ -83,48 +80,37 @@
         <br>
         <div class="row">
           <div class="col-md-12">
-            <div class="bg-success col-md-12" id="success"
-                 th:if="${not #strings.isEmpty(success)}" th:text="${success}" style="color: white;padding: 10px">
+            <div  class="col-md-4">
+
+              <input class="form-control" type="text" name="username" [(ngModel)]="username" (ngModelChange)="search()" placeholder="Tìm kiếm theo tên đăng nhập" >
             </div>
-            <div class="bg-success col-md-12" id="error"
-                 th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
-            </div>
+
             <div class="tile-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="sampleTable">
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Username</th>
-                    <th>Fullname</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Họ và tên</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Giới tính</th>
+                    <th>Tùy chọn</th>
                   </tr>
                   </thead>
-                  <tbody th:if="${pageInfo.content != null}">
+                  <tbody >
                   <tr *ngFor="let user of Users">
                     <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
                     <td>{{user.fullname}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{user.sodth}}</td>
-                    <td>{{user.gioitinh}}</td>
-
-
+                    <td>{{user.phoneNumber}}</td>
+                    <td>{{user.gender}}</td>
                     <td>
-                      <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle"
-                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-cog"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <button type="add" [routerLink]="['/admin/manageuser/detailuser' ,user.id]" > Chi tiết</button>
+                          <button type="submit"  style="border-radius: 12px;width: 50px ; background-color: #00aeef"  class="badge badge-danger mr-2" [routerLink]="['/admin/user/detail' ,user.id]" > Chi tiết</button>
                           <div class="dropdown-divider"></div>
-                          <button type="delete" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
-                        </div>
-                      </div>
-
+                          <button type="delete" style="border-radius: 12px;width: 50px" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
                     </td>
                   </tr>
 

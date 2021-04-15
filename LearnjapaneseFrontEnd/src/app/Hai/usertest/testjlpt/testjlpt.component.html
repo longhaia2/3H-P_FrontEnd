@@ -24,9 +24,10 @@
     <section class="container">
       <div id="timer">
         <span><i class="fa fa-clock-o"></i></span>
-        <span id="hours">00</span> :
-        <span id="minutes">00</span> :
-        <span id="seconds">00</span>
+
+        <countdown [config]="{ leftTime: 3600, format: 'm:s' }"></countdown>
+
+
       </div>
     </section>
     <section class="main-exam container">

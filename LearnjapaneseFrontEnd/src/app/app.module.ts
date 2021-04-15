@@ -7,7 +7,6 @@ import { ManageraskComponent } from './Manh/managerask/managerask.component';
 import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
 import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
-
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
 import { DangnhapComponent } from './Thuan/dangnhap/dangnhap.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
@@ -67,7 +66,19 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
+import { ProfileComponent } from './Manh/profile/profile.component';
+import {CountdownModule} from "ngx-countdown";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import { AngularFireDatabaseModule} from "@angular/fire/database";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
+
+
+
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 
 @NgModule({
   declarations: [
@@ -134,6 +145,8 @@ import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedi
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
+    ProfileComponent,
+
   ],
     imports: [
         BrowserModule,
@@ -141,7 +154,13 @@ import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedi
         ManagerRoutingModule,
         MatTabsModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+      CountdownModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      AngularFireDatabaseModule,
+      FlexLayoutModule,
+
+
     ],
   providers: [],
   bootstrap: [AppComponent]

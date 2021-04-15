@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ManageruserComponent implements OnInit {
 
   Users: User[];
-  private username: string;
+  username: any;
   elseBlock: any;
   constructor(private Userservice: UserServiceService,private route: ActivatedRoute,
               private router: Router) { }
@@ -24,6 +24,16 @@ export class ManageruserComponent implements OnInit {
   // get username(): string{
   //   return this.username;
   // }
+  search(){
+    if(this.username == ""){
+      this.ngOnInit();
+    }else {
+      this.Users=this.Users.filter(res=>{
+        return res.username.toLocaleLowerCase().match(this.username.toLocaleLowerCase())
+      })
+    }
+
+  }
   reloadData() {
     this.Userservice.findAll().subscribe(data => {
       this.Users = data;

@@ -64,7 +64,7 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
  {path: 'admin/manage/user/add', component: AdduserComponent},
   {path: 'admin/manage/user', component: ManageruserComponent},
-  {path: 'admin/manage/user/detail/:id', component: DetailuserComponent},
+  {path: 'admin/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent},
   {path: 'challenge/add', component: CreateroomComponent},
   {path: 'login', component: LoginComponent},

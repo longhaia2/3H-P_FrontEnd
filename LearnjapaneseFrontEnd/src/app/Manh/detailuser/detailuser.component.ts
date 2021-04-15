@@ -12,8 +12,7 @@ import {User} from "../modelm/user";
 })
 export class DetailuserComponent implements OnInit {
   id: number;
-  user: User;
-  private user_name:string;
+  us : User=new User();
 
   constructor(private Userservice: UserServiceService, private route: ActivatedRoute,
               private  router: Router) {
@@ -22,7 +21,7 @@ export class DetailuserComponent implements OnInit {
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
     this.Userservice.get(this.id).subscribe(data=>{
-      this.user=data
+      this.us=data
     },error => console.log(error));
   }
 }

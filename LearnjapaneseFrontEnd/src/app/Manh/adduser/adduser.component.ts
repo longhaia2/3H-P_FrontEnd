@@ -20,7 +20,6 @@ export class AdduserComponent implements OnInit {
     // @ts-ignore
     this.us=new User();
   }
-  adđ() {}
 
   add(){
     this.userService.create(this.us).subscribe(data=>{
