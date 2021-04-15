@@ -34,7 +34,10 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         alert('Đăng nhập thành công');
         this.roles = this.tokenStorage.getUser().roles;
-      this.router.navigate(['page-home'])
+        if(data.role === 'ROLE_ADMIN'){
+          return this.router.navigate(['admin-home']);
+        }
+      this.router.navigate(['page-home']);
       },
       err => {
         this.errorMessage = err.error.message;

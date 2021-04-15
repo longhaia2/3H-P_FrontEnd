@@ -5,7 +5,6 @@ import {HomepageComponent} from './homepage/homepage.component';
 import {ListtestjlptComponent} from './usertest/listtestjlpt/listtestjlpt.component';
 import {StarttestjlptComponent} from './usertest/starttestjlpt/starttestjlpt.component';
 import {TestjlptComponent} from './usertest/testjlpt/testjlpt.component';
-import {EndtestjlptComponent} from './usertest/endtestjlpt/endtestjlpt.component';
 import {TestN1Component} from './usertest/test-n1/test-n1.component';
 import {TestN2Component} from './usertest/test-n2/test-n2.component';
 import {TestN3Component} from './usertest/test-n3/test-n3.component';
@@ -19,25 +18,20 @@ import {StudyN5Component} from './study/study-n5/study-n5.component';
 import {StudyAlphabetComponent} from './study/study-alphabet/study-alphabet.component';
 import {StudyKanjiComponent} from './study/study-kanji/study-kanji.component';
 import {InformationComponent} from './information/information.component';
-import {AdduserComponent} from "../Manh/adduser/adduser.component";
-import {ManageruserComponent} from "../Manh/manageruser/manageruser.component";
-import {DetailuserComponent} from "../Manh/detailuser/detailuser.component";
+import {AdduserComponent} from '../Manh/adduser/adduser.component';
+import {ManageruserComponent} from '../Manh/manageruser/manageruser.component';
+import {DetailuserComponent} from '../Manh/detailuser/detailuser.component';
 import {ListchallengeComponent} from './challenge/listchallenge/listchallenge.component';
-import {RegistrationComponent} from '../Hien/registration/registration.component';
 import {CreateroomComponent} from './challenge/createroom/createroom.component';
 import {HomeadminComponent} from './admin/homeadmin/homeadmin.component';
 import {QuanlibaihocComponent} from '../Thuan/quanlibaihoc/quanlibaihoc.component';
 import {AddlessonComponent} from '../Thuan/quanlibaihoc/addlesson/addlesson.component';
 import {EditbaihocComponent} from '../Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
-import {ManagerlistquestionComponent} from './admin/managerquestion/managerlistquestion/managerlistquestion.component';
 import {ManageraddquestionfortestComponent} from './admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
-import {ManageraddquestionComponent} from './admin/managerquestion/manageraddquestion/manageraddquestion.component';
-import {ManagertestComponent} from './admin/managertest/managertest.component';
 import {ManagerlisttestComponent} from './admin/managertest/managerlisttest/managerlisttest.component';
-import {DetailComponent} from "../Thuan/quanlibaihoc/detail/detail.component";
-import {LessondetailhomeComponent} from "../Thuan/lessondetailhome/lessondetailhome.component";
-import {HomelessonComponent} from "../Thuan/homelesson/homelesson.component";
-import {ManageraddtestComponent} from './admin/managertest/manageraddtest/manageraddtest.component';
+import {DetailComponent} from '../Thuan/quanlibaihoc/detail/detail.component';
+import {LessondetailhomeComponent} from '../Thuan/lessondetailhome/lessondetailhome.component';
+import {HomelessonComponent} from '../Thuan/homelesson/homelesson.component';
 import {ManagerexamComponent} from './admin/managerexam/managerexam.component';
 import {ManagerexamaddComponent} from './admin/managerexam/managerexamadd/managerexamadd.component';
 import {ManagerexameditComponent} from './admin/managerexam/managerexamedit/managerexamedit.component';
@@ -50,7 +44,7 @@ import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent},
   {path: 'page-test', component: ListtestjlptComponent},
   {path: 'start-test', component: StarttestjlptComponent},
