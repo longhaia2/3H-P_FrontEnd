@@ -37,8 +37,8 @@
                 <tbody>
                 <tr *ngFor="let roomChallenge of challenge">
                   <td>{{roomChallenge.room_id}}</td>
-                  <td [routerLink]="['/challenge/wait']"  >{{roomChallenge.userCreate}}</td>
-                  <td [routerLink]="['/challenge/wait']" >{{roomChallenge.room_name}}</td>
+                  <td (click)="add()" >{{roomChallenge.userCreate}}</td>
+                  <td (click)="details(roomChallenge.room_id)" >{{roomChallenge.room_name}}</td>
                   <td>{{roomChallenge.level}}</td>
                   <td>{{roomChallenge.time +' Phút'}}</td>
                   <td></td>
