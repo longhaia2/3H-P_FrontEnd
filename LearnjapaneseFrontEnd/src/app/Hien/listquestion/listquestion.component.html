@@ -52,7 +52,7 @@
                 <table class="table table-bordered" id="sampleTable">
                   <thead>
                   <tr>
-                    <th>STT</th>
+                    <th>ID</th>
                     <th>Nội dung câu hỏi</th>
                     <th>Đáp án A</th>
                     <th>Đáp án B</th>
@@ -62,30 +62,24 @@
                     <th>Tùy chọn</th>
                   </tr>
                   </thead>
-                  <tbody th:if="${pageInfo.content != null}">
-                  <tr th:each=" row,iterStat: ${pageInfo.content}">
-                    <td th:text="${iterStat.count}"></td>
-                    <td th:text="${#strings.substring(row.content,0,10)+'...'}"></td>
-                    <td th:text="${row.ansA}"></td>
-                    <td th:text="${row.ansB}"></td>
-                    <td th:text="${row.ansC}"></td>
-                    <td th:text="${row.ansD}"></td>
-                    <td>
-                      <select class="form-control" name="ansCorrect">
-                        <option value="1">A</option>
-                        <option value="2">B</option>
-                        <option value="3">C</option>
-                        <option value="4">D</option>
-                      </select>
-                    </td>
+                  <tbody >
+                  <tr *ngFor="let qs of question">
+                    <td>{{qs.id}}</td>
+                    <td>{{qs.content}}</td>
+                    <td style="width: 100px;">{{qs.ansA}}</td>
+                    <td style="width: 100px;">{{qs.ansB}}</td>
+                    <td style="width: 100px;">{{qs.ansC}}</td>
+                    <td style="width: 100px;">{{qs.ansD}}</td>
+                    <td style="width: 100px;">{{qs.ansCorrect}}</td>
 
                     <!--                    <td th:if="${row.ansCorrect=='1'}">A</td>-->
                     <!--                    <td th:if="${row.ansCorrect=='2'}">B</td>-->
                     <!--                    <td th:if="${row.ansCorrect=='3'}">C</td>-->
                     <!--                    <td th:if="${row.ansCorrect=='4'}">D</td>-->
+                    <>
+<!--                      <a th:href="@{/question/update-question/{questionId}(questionId=${row.id})}"><i class="fa fa-edit btn btn-success" ></i></a>-->
                     <td>
-                      <a th:href="@{/question/update-question/{questionId}(questionId=${row.id})}"><i class="fa fa-edit btn btn-success" ></i></a>
-                      <a th:href="@{/question/delete-question(questionId=${row.id},subjectId=${subjectId},classId= ${classId})}" id="confirmDelete"><i  class="fa fa-trash-o btn btn-danger"></i></a>
+                    <button (click)="delete(qs.id)" class="badge badge-danger mr-2" >delete></button>>
                     </td>
                   </tr>
                   </tbody>

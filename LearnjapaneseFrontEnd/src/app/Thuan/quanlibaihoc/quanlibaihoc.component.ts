@@ -18,9 +18,9 @@ export class QuanlibaihocComponent implements OnInit {
     this.reloadData();
   }
   reloadData(){
-    this.lessonService.findAll().subscribe(data =>{
-      this.lesson =data;
-    });
+      this.lessonService.findAll().subscribe(data =>{
+        this.lesson =data;
+      });
   }
 detail(id: number){
     this.router.navigate(['/detail',id])

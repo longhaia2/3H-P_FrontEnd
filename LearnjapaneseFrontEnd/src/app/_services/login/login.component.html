@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="login.component.css">
 <!--</head>-->
 <!--  <meta charset="UTF-8">-->
 <!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
@@ -7,7 +6,8 @@
 <!--  <title>Đăng nhập</title>-->
 <!-- -->
 
-<body style="width: 500px;margin-left: 500px;margin-top: 100px;">
+
+<body style="width: 500px;margin-left: 500px;margin-top: 100px; background-image: url('../../../assets/image/background_login.jpg') " >
 <div id="logreg-forms">
   <div class="col-md-12">
   <form class="form-signin">
@@ -33,7 +33,7 @@
         class="alert alert-danger"
         role="alert"
         *ngIf="f.submitted && username.invalid">
-        Ten dang nhap khong duoc de trong
+        Tên đăng nhập không được để trống.
       </div>
     <input type="password"
            id="password"
@@ -50,14 +50,14 @@
         role="alert"
         *ngIf="f.submitted && password.invalid"
       >
-        <div *ngIf="password.errors.required">Password is required</div>
+        <div *ngIf="password.errors.required">Không được để trống mật khẩu</div>
         <div *ngIf="password.errors.minlength">
-          Mat khau it nhat 6 ky tu
+          Mật khẩu ít nhất 6 ký tự.
         </div>
       </div>
 <div class="form-group">
   <button class="btn btn-primary btn-block">
-    Login
+    Đăng nhập
   </button>
 </div>
 <div class="form-group">
@@ -71,16 +71,15 @@
     Logged in as {{ roles }}
   </div>
 </div>
-
-       Hoặc
+      <p style="text-align:center">Hoặc</p>
     <div class="social-login">
-      <button class="btn facebook-btn social-btn" type="button" ><a  ><i class="fa fa-facebook-f"></i> Đăng nhập Facebook</a> </button>
-      <button class="btn google-btn social-btn" type="button" style="margin-left: 10px"><a ><i class="fa fa-google-plus-official"></i> Đăng nhập Google+</a></button>
+      <button class="btn facebook-btn social-btn" type="button" style="color: white; background: blue; margin-left: 20px" ><a  ><i class="fa fa-facebook-f"></i> Đăng nhập Facebook</a> </button>
+      <button class="btn google-btn social-btn" type="button" style="margin-left: 50px; color: white; background: red"><a ><i class="fa fa-google-plus-official"></i> Đăng nhập Google+</a></button>
     </div>
 
 
     <hr>
-    <button class="btn btn-primary btn-block" type="button" id="btn-signup" [routerLink]="['/registration']"><i class="fa fa-user-plus" ></i> Đăng kí tài khoản.</button>
+    <button class="btn btn-primary btn-block" type="button" id="btn-signup" [routerLink]="['/register']"><i class="fa fa-user-plus" ></i> Đăng kí tài khoản.</button>
   </form>
   </form>
 </div>

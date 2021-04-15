@@ -1,9 +1,9 @@
 export class Question {
   id: number;
-  contentQs: string;
-  resultsA: string;
-   resultB: string;
-  resultC: string;
-  resultD: string;
-  resultRight: string;
+  content: string;
+  ansA: string;
+  ansB: string;
+  ansC: string;
+  ansD: string;
+  ansCorrect: string;
 }

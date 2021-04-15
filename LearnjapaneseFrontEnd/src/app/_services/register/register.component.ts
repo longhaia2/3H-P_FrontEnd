@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,17 +14,19 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
     this.authService.register(this.form).subscribe(
-      data =>{
+      data => {
         console.log(data);
-        this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.isSuccessful = true;
+        alert('Đăng ký thành công');
+        this.router.navigate(['page-home'])
       },
       err => {
         this.errorMessage = err.error.message;
@@ -31,5 +34,4 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-
 }
