@@ -39,21 +39,21 @@
               <b><span class="question-no">1</span> Câu hỏi số 1</b>
             </div>
             <div class="content">
-              <div class="content-ans">
-                <input type="radio" name=""  value="" title="">
+              <div  class="content-ans">
+                <input type="radio"  name=""  value="a" title="">
                 <span>Câu trả lời 1</span>
               </div>
               <div class="content-ans">
-                <input type="radio" name="" value="" title="">
-                <span>Câu trả lời 1</span>
+                <input  type="radio" name="" value="b" title="">
+                <span>Câu trả lời 2</span>
               </div>
               <div class="content-ans">
-                <input type="radio" name=""  value="" title="">
-                <span>Câu trả lời 1</span>
+                <input  type="radio" name=""  value="c" title="">
+                <span>Câu trả lời 3</span>
               </div>
               <div class="content-ans">
-                <input type="radio" name="" value="" title="">
-                <span>Câu trả lời 1</span>
+                <input  type="radio" name="" value="d" title="">
+                <span>Câu trả lời 4</span>
               </div>
             </div>
           </div>
@@ -63,10 +63,12 @@
 
     <section class="test-more container">
       <div class="row">
+
         <div class="col-md-12 col-sm-12">
-          <a class="btn-pre btn btn-primary">Câu hỏi trước</a>
-          <a class="btn-finish btn btn-success">Hoàn Thành Bài Thi</a>
-          <a class="btn-next btn btn-primary">Câu hỏi tiếp theo</a>
+          <a class="btn-finish btn btn-success" (click)="demo()">Test</a>
+<!--          <a class="btn-pre btn btn-primary">Câu hỏi trước</a>-->
+<!--          <a class="btn-finish btn btn-success">Hoàn Thành Bài Thi</a>-->
+<!--          <a class="btn-next btn btn-primary">Câu hỏi tiếp theo</a>-->
         </div>
       </div>
     </section>
@@ -92,29 +94,7 @@
 </main>
 <app-footer></app-footer>
 <!--<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>-->
-<script>
-  var exam_id = [[${examId}]];
-  var test_id = [[${testId}]];
-  var exam_data = '[[${dataExam}]]';
-  var _dataJson = JSON.parse(exam_data.replace(/&quot;/g,'"'));
-  var timeOut= [[${timeOut}]];
 
-  $(document).ready(function (){
-
-    // $(".btn-finish").click(function (){
-    //     $('#exampleModal').modal();
-    //     if($('#btnEnd').click(function (){
-    //         console.log("btn yes");
-    //         $('#exampleModal').modal('hide');
-    //         return false;
-    //     }));
-    //     else{
-    //         return false;
-    //     }
-    // })
-  });
-
-</script>
 <script src="../../../../assets/js/exam.js"></script>
 <script type="text/javascript" th:src="@{/js/exam.js}"></script>
 </body>

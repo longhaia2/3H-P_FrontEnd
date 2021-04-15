@@ -1,9 +1,13 @@
+// @ts-ignore
 import { Injectable } from '@angular/core';
+// @ts-ignore
 import {HttpClient} from '@angular/common/http';
 import {Question} from '../model/question';
+// @ts-ignore
 import {Observable} from 'rxjs';
 
 
+// @ts-ignore
 @Injectable()
 export class QuestionServiceService {
   url = 'http://localhost:8080/question';
@@ -16,5 +20,9 @@ export class QuestionServiceService {
   }
   get(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/question/all'}/${id}`);
+  }
+
+    delete(id): Observable<any> {
+      return this.http.delete(`${'http://localhost:8080/question/delete'}/${id}`);
   }
 }

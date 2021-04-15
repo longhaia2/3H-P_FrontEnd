@@ -1,7 +1,8 @@
 export class RoomChallenge {
   room_id : number;
-  room_name : String;
-  level : String;
-  pass : String;
-  time : String;
+  room_name : string;
+  userCreate : string;
+  level : string;
+  pass : string;
+  time : string;
 }

@@ -1,8 +1,8 @@
 export class Lesson {
-  id:number;
-  baihoc: string;
-  hocphan: string;
-  trinhdo:string;
-  mota:string;
-  noidung:string;
+  id: number;
+  lesson: string;
+  term:string;
+  level: string;
+  description :string;
+  content:string;
 }

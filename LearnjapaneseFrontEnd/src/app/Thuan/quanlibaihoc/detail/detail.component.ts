@@ -12,7 +12,7 @@ import {error} from "@angular/compiler/src/util";
 })
 export class DetailComponent implements OnInit {
   id:number;
-  lesson: Lesson=new Lesson();
+  ls: Lesson=new Lesson();
 
   constructor(private lessonService: LessonServiceService, private  route: ActivatedRoute,
   private  router: Router) { }
@@ -20,7 +20,8 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.lessonService.get(this.id).subscribe(data=>{
-      this.lesson = data
+      this.ls = data
     }, error => console.log(error));
   }
 }
+

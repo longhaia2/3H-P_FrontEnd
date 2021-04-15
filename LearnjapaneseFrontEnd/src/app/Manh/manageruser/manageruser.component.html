@@ -17,8 +17,6 @@
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
-    <div th:replace="admin/sidebar :: content"></div>
-    <div th:replace="admin/header :: content"></div>
 
     <div class="right_col" role="main">
       <!-- top tiles -->
@@ -103,10 +101,15 @@
                   <tr *ngFor="let user of Users">
                     <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
-                    <td>{{user.fullname}}</td>
+                    <td>{{user.fullName}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.phoneNumber}}</td>
                     <td>{{user.gender}}</td>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/hai
                     <td>
                           <button type="submit"  style="border-radius: 12px;width: 50px ; background-color: #00aeef"  class="badge badge-danger mr-2" [routerLink]="['/admin/user/detail' ,user.id]" > Chi tiết</button>
                           <div class="dropdown-divider"></div>

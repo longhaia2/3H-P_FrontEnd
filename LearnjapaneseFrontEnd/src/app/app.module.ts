@@ -8,14 +8,12 @@ import { ListquestionComponent } from './Hien/listquestion/listquestion.componen
 import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
-import { DangnhapComponent } from './Thuan/dangnhap/dangnhap.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
 import { VocabularyComponent } from './Hien/vocabulary/vocabulary.component';
 import { GrammarComponent } from './Hien/grammar/grammar.component';
 import { ReviewvocabularyComponent } from './Hien/reviewvocabulary/reviewvocabulary.component';
 import { RegistrationComponent } from './Hien/registration/registration.component';
-import { LoginComponent } from './Hien/login/login.component';
 import { ReviewgrammarComponent } from './Hien/reviewgrammar/reviewgrammar.component';
 import { HistoryComponent } from './Hien/history/history.component';
 import { HeaderComponent } from './Hai/header/header.component';
@@ -60,12 +58,20 @@ import {HttpClientModule} from "@angular/common/http";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
 import {FormsModule} from '@angular/forms';
+import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
 import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component';
+import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {NgxPaginationModule} from "ngx-pagination";
+
+import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
+import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
+<<<<<<< HEAD
 import { ProfileComponent } from './Manh/profile/profile.component';
 import {CountdownModule} from "ngx-countdown";
 import {AngularFireModule} from "@angular/fire";
@@ -80,6 +86,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // @ts-ignore
 // @ts-ignore
 
+=======
+import { RegisterComponent } from './_services/register/register.component';
+import { HomeComponent } from './_services/home/home.component';
+import { ProfileComponent } from './_services/profile/profile.component';
+import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './_services/board-user/board-user.component';
+
+import {authInterceptorProviders} from './_helpers/auth.interceptor';
+import {LoginComponent} from './_services/login/login.component';
+>>>>>>> origin/hai
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,14 +107,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddquestionComponent,
     AddsucessComponent,
     QuanlibaihocComponent,
-    DangnhapComponent,
     AddlessonComponent,
     EditbaihocComponent,
     VocabularyComponent,
     GrammarComponent,
     ReviewvocabularyComponent,
     RegistrationComponent,
-    LoginComponent,
     ReviewgrammarComponent,
     HistoryComponent,
     HeaderComponent,
@@ -142,11 +157,25 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CreateroomComponent,
     HomeadminComponent,
     HeaderadminComponent,
+    DetailComponent,
+    LessondetailhomeComponent,
+      HomelessonComponent,
+
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
+<<<<<<< HEAD
     ProfileComponent,
 
+=======
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+    LoginComponent,
+>>>>>>> origin/hai
   ],
     imports: [
         BrowserModule,
@@ -154,6 +183,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         ManagerRoutingModule,
         MatTabsModule,
         FormsModule,
+<<<<<<< HEAD
         HttpClientModule,
       CountdownModule,
       AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -161,8 +191,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       FlexLayoutModule,
 
 
+=======
+      CKEditorModule,
+        HttpClientModule,
+      Ng2SearchPipeModule,
+      NgxPaginationModule
+>>>>>>> origin/hai
     ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

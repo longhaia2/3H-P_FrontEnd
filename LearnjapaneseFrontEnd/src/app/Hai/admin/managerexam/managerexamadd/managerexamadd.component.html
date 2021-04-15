@@ -31,7 +31,7 @@
           <br>
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <form th:action="@{/exam/add-exam}" method="post">
+            <form (ngSubmit)="onSubmint()" method="post">
               <div class="p-3">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="text-right">Thông tin đề thi</h4>
@@ -42,14 +42,21 @@
                 <div class="row mt-2">
                   <div class="col-md-12 col-sm-12">
                     <label class="labels">Tiêu đề </label>
-                    <input type="text" class="form-control" name="title" id="titleExam">
+                    <input [(ngModel)]="ex.title" type="text" class="form-control" name="title" id="titleExam">
                     <span id="vld-titleExam" class="span-vld hide">Tiêu đề bài thi không được để trống </span>
                   </div>
                 </div>
                 <div class="row mt-2">
+                  <div class="col-md-12 col-sm-12">
+                    <label class="labels">Mã Đề Thi</label>
+                    <input [(ngModel)]="ex.codeExam" type="text" class="form-control" name="title" id="idExam">
+                    <span id="vld-idExam" class="span-vld hide">Tiêu đề bài thi không được để trống </span>
+                  </div>
+                </div>
+                <div class="row mt-2">
                   <div class="col-md-6 col-sm-12 ">
-                    <label>Vui lòng chọn môn học</label>
-                    <select class="form-control" name="classId" id="classId">
+                    <label>Loại đề thi</label>
+                    <select [(ngModel)]="ex.term" class="form-control" name="classId" id="classId">
                       <option value="">Tùy chọn</option>
                       <option value="Từ vựng">Từ vựng</option>
                       <option value="Ngữ pháp">Ngữ pháp</option>
@@ -59,35 +66,35 @@
                     <span id="vld-subjectId" class="span-vld hide">Vui lòng chọn môn học.</span>
                   </div>
                   <div class="col-md-6 col-sm-12">
-                    <label>Lớp</label>
+                    <label>Trình độ</label>
 
                     <span id="vld-classId" class="span-vld hide">Vui lòng chọn trình độ.</span>
-                    <select class="form-control" name="level" id="level">
+                    <select [(ngModel)]="ex.level" class="form-control" name="level" id="level">
                       <option value="">Tùy chọn</option>
-                      <option value="Từ vựng">N1</option>
-                      <option value="Ngữ pháp">N2</option>
-                      <option value="Ngữ pháp">N3</option>
-                      <option value="Ngữ pháp">N4</option>
-                      <option value="Ngữ pháp">N5</option>
+                      <option value="N1">N1</option>
+                      <option value="N2">N2</option>
+                      <option value="N3">N3</option>
+                      <option value="N4">N4</option>
+                      <option value="N5">N5</option>
                     </select>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6 col-sm-12">
                     <label class="labels">Số câu hỏi</label>
-                    <input type="number" class="form-control" name="totalQuestion" id="totalQuestionExam"  >
+                    <input [(ngModel)]="ex.totalQuestion" type="number" class="form-control" name="totalQuestion" id="totalQuestionExam"  >
                     <span id="vld-totalQuestionExam" class="span-vld hide">Số câu hỏi không được để trống </span>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <label class="labels">Thời gian (phút)</label>
-                    <input type="number" class="form-control" name="timeOut" id="timeoutExam" >
+                    <input [(ngModel)]="ex.timeOut" type="number" class="form-control" name="timeOut" id="timeoutExam" >
                     <span id="vld-timeoutExam" class="span-vld hide">Thời gian bài thi không được để trống </span>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-12 col-sm-12">
                     <label class="labels">Nội dung</label>
-                    <textarea type="text" class="form-control" name="content" id="contentExam" cols="7" rows="5"></textarea>
+                    <textarea [(ngModel)]="ex.content" type="text" class="form-control" name="content" id="contentExam" cols="7" rows="5"></textarea>
                     <span id="vld-contentExam" class="span-vld hide">Nội dung bài thi không được để trống </span>
 
                   </div>
