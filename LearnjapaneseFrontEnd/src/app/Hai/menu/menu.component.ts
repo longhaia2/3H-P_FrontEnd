@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TokenStorageService} from '../../_services/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  @Input('userNameDsp') userNameDsp: string;
+
+  constructor( private tokenStorage: TokenStorageService, private  router: Router) { }
 
   ngOnInit(): void {
+
   }
 
+  logout(): void {
+    this.tokenStorage.signOut();
+    alert('Đăng xuất thành công!');
+    // @ts-ignore
+    this.router.navigate(['page-home']);
+    // window.location.reload();
+  }
 }

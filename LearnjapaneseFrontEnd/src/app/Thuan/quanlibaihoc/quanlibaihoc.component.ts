@@ -20,6 +20,7 @@ export class QuanlibaihocComponent implements OnInit {
     this.reloadData();
   }
   reloadData(){
+
     this.lessonService.findAll().subscribe(data =>{
       this.ls =data;
     });
@@ -42,6 +43,7 @@ detail(id: number){
    updatelesson(id: number){
     this.router.navigate(['/edit',id])
   }
+  
   Search() {
     if (this.description == "") {
       this.ngOnInit();

@@ -13,8 +13,8 @@
     <app-sidebaradmin></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
 
-    <div th:replace="admin/sidebar :: content"></div>
-    <div th:replace="admin/header :: content"></div>
+    <app-sidebaradmin></app-sidebaradmin>
+    <app-headeradmin></app-headeradmin>
 
     <div class="right_col" role="main">
       <!-- top tiles -->
@@ -87,8 +87,10 @@
 
                 <div class="text-center mt-3">
                   <button class="btn btn-success" id="btnAddLesson"  type="submit"  >Thêm bài học</button>
+
                   &nbsp;  &nbsp;
-                  <a  class="btn btn-danger"[routerLink]="['/admin/lesson']">Hủy bỏ</a>
+                  <a  class="btn btn-danger" [routerLink]="['/admin/lesson']">Hủy bỏ</a>
+
                 </div>
               </div>
             </div>
@@ -98,8 +100,5 @@
     </div>
   </div>
 </div>
-
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
 </body>
 </html>

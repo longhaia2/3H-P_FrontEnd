@@ -769,30 +769,30 @@ width: 300px;
     background-color: rgba(193, 190, 190, 0.65);
 }
 
-/*--------------footer-----------------*/
+/*--------------footer-home-----------------*/
 
-.footer {
+.footer-home {
     background-color: var(--primary-color);
     padding-top: 20px;
     margin-top: 30px;
 }
-.footer .footer-main .item h3,h6{
+.footer-home .footer-home-main .item h3,h6{
     color: white;
 }
-.footer .footer-main .item p a{
+.footer-home .footer-home-main .item p a{
     color: white;
     font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;;
 }
-.footer .footer-main .item p{
+.footer-home .footer-home-main .item p{
     color: white;
     font-size: 14px;
 }
-.footer .footer-main .item p a:hover{
+.footer-home .footer-home-main .item p a:hover{
     color: rgb(80, 207, 108);
 }
-.footer-copyright{
+.footer-home-copyright{
     color: white;
     font-size: 14px;
 }
@@ -987,17 +987,17 @@ width: 300px;
     font-size: 14px;
     padding: 0px 0px 0px 20px;
 }
-.footer_lesson .view p{
+.footer-home_lesson .view p{
     font-size: 14px;
     padding-left: 20px;
     color: #25d03f;
 }
-.footer_lesson .share a{
+.footer-home_lesson .share a{
     padding: 7px;
     width: 20px;
     height: 20px;
 }
-.footer_lesson .share a > i{
+.footer-home_lesson .share a > i{
     text-align: center;
     width: 30px;
     height: 30px;

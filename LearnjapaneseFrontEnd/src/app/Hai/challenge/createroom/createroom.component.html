@@ -1,7 +1,7 @@
 
 <body>
 <app-header></app-header>
-<app-menu></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 <main class="class">
   <div class="container">
     <!-- banner -->
@@ -75,7 +75,9 @@
                   <tr>
                     <td>  <input [(ngModel)]="cl.pass" type="password"   class="form-control" id="pwd" placeholder="Có thể tạo mật khẩu hoặc không"></td>
                   </tr>
-                  <th><br><button (click)="add()" type="button" class="btn btn-success" style="margin-left: 33%;">Tạo Phòng</button>
+                  <th>
+<!--                    <input type="hidden" [(ngModel)]="cl.userCreate" id="userCreate" name="user_create">-->
+                    <br><button (click)="add()" type="button" class="btn btn-success" style="margin-left: 33%;">Tạo Phòng</button>
                     <button type="button" class="btn btn-danger" [routerLink]="['/listchalenge']" style="margin-left: 20px;">Thoát </button>
                   </th>
                   </tbody>

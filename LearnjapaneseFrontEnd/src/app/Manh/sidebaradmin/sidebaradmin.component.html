@@ -42,7 +42,7 @@
               <a [routerLink]="['/admin/exam']"><i class="fa fa-file-pdf-o"></i> Quản lý đề thi</a>
             </li>
             <li id="questionManager">
-              <a th:href="@{/question/search-question}"><i class="fa fa-question-circle-o"></i> Quản lý câu hỏi</a>
+              <a th:href="@{/question/search-question}" [routerLink]="['/admin/question']"><i class="fa fa-question-circle-o"></i> Quản lý câu hỏi</a>
             </li>
             <li id="newsManager">
               <a><i class="fa fa-newspaper-o"></i> Quản lý tin tức <span class="fa fa-chevron-down"></span></a>

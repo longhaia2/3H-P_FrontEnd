@@ -4,8 +4,8 @@ import { AppComponent } from './app.component';
 import { ManageruserComponent } from './Manh/manageruser/manageruser.component';
 import { AdduserComponent } from './Manh/adduser/adduser.component';
 import { ManageraskComponent } from './Manh/managerask/managerask.component';
-import { ListquestionComponent } from './Manh/listquestion/listquestion.component';
-import { AddquestionComponent } from './Manh/addquestion/addquestion.component';
+import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
+import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
 
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
@@ -15,7 +15,6 @@ import { VocabularyComponent } from './Hien/vocabulary/vocabulary.component';
 import { GrammarComponent } from './Hien/grammar/grammar.component';
 import { ReviewvocabularyComponent } from './Hien/reviewvocabulary/reviewvocabulary.component';
 import { RegistrationComponent } from './Hien/registration/registration.component';
-import { LoginComponent } from './Hien/login/login.component';
 import { ReviewgrammarComponent } from './Hien/reviewgrammar/reviewgrammar.component';
 import { HistoryComponent } from './Hien/history/history.component';
 import { HeaderComponent } from './Hai/header/header.component';
@@ -70,8 +69,18 @@ import {NgxPaginationModule} from "ngx-pagination";
 
 import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
 import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
+import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
+import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
+import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
+import { RegisterComponent } from './_services/register/register.component';
+import { HomeComponent } from './_services/home/home.component';
+import { ProfileComponent } from './_services/profile/profile.component';
+import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './_services/board-user/board-user.component';
 
-
+import {authInterceptorProviders} from './_helpers/auth.interceptor';
+import {LoginComponent} from './_services/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +97,6 @@ import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
     GrammarComponent,
     ReviewvocabularyComponent,
     RegistrationComponent,
-    LoginComponent,
     ReviewgrammarComponent,
     HistoryComponent,
     HeaderComponent,
@@ -134,9 +142,19 @@ import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
     HomeadminComponent,
     HeaderadminComponent,
     DetailComponent,
-
     LessondetailhomeComponent,
       HomelessonComponent,
+
+    ManagerexamComponent,
+    ManagerexamaddComponent,
+    ManagerexameditComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+    LoginComponent,
   ],
     imports: [
         BrowserModule,
@@ -149,7 +167,7 @@ import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
       Ng2SearchPipeModule,
       NgxPaginationModule
     ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
