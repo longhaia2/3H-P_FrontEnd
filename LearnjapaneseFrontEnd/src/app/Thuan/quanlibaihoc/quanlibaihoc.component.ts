@@ -10,7 +10,9 @@ import {ActivatedRoute, Router} from "@angular/router";
   providers: [LessonServiceService]
 })
 export class QuanlibaihocComponent implements OnInit {
-  lesson: Lesson[];
+  ls: Lesson[];
+  description: any;
+  p : number = 1;
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
   private router: Router){}
 
@@ -19,25 +21,35 @@ export class QuanlibaihocComponent implements OnInit {
   }
   reloadData(){
     this.lessonService.findAll().subscribe(data =>{
-      this.lesson =data;
+      this.ls =data;
     });
   }
 detail(id: number){
     this.router.navigate(['/detail',id])
 }
   delete(id: number) {
-    this.lessonService.delete(id)
-      .subscribe(
+    alert("bạn có muốn xóa hay không ");
+    this.lessonService.delete(id).subscribe(
         data => {
           console.log(data);
           this.reloadData();
-        },
-        error => console.log(error));
-  }
 
-  //ham update du lieu
+        },
+
+        error => console.log(error));
+    alert("xóa thành công");
+  }
    updatelesson(id: number){
     this.router.navigate(['/edit',id])
+  }
+  Search() {
+    if (this.description == "") {
+      this.ngOnInit();
+    } else {
+      this.ls = this.ls.filter( rs=>{
+        return rs.description.toLocaleLowerCase().match(this.description.toLocaleLowerCase());
+      });
+    }
   }
 }
 

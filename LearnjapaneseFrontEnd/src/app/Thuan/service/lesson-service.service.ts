@@ -4,8 +4,6 @@ import {Lesson} from "../model/lesson";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable()
-  // providedIn: 'root'
-
 export class LessonServiceService {
 
   url = 'http://localhost:8080/lesson';
@@ -17,12 +15,16 @@ export class LessonServiceService {
     return this.http.get<Lesson[]>(this.url + "/all");
   }
 
+  findByidlessson(level,idLesson): Observable<Lesson[]> {
+    return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson'}/${level}/lesson/${idLesson}`);
+  }
+
   create(data): Observable<any> {
     return this.http.post<Lesson>(this.url + '/add', data);
   }
 
   get(id): Observable<any> {
-    return this.http.get(`${'http://localhost:8080/lesson/'}/${id}`);
+    return this.http.get(`${'http://localhost:8080/lesson'}/${id}`);
   }
 
   delete(id): Observable<any> {
@@ -30,6 +32,6 @@ export class LessonServiceService {
   }
 
   update(id, data): Observable<any> {
-    return this.http.put(`${'http://localhost:8080/lesson/'}/${id}`, data);
+    return this.http.put(`${'http://localhost:8080/lesson'}/${id}`, data);
   }
 }

@@ -3,13 +3,15 @@
 <head>
   <title>Quản lí bài học</title>
   <div th:replace="admin/init_admin :: header"></div>
+  <link rel="stylesheet" href="quanlibaihoc.component.css">
 </head>
 
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
+    <app-sidebaradmin></app-sidebaradmin>
 <app-headeradmin></app-headeradmin>
-    <app-headeradmin></app-headeradmin>
+
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
 
@@ -18,73 +20,30 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3> <small>Danh sách bài học</small></h3>
+            <h1>Danh sách bài học</h1>
+            <br>
           </div>
 
           <div class="title_right">
             <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                </span>
-              </div>
             </div>
           </div>
         </div>
-
         <div class="clearfix"></div>
 
         <div class="row">
-          <div class="col-md-12">
-            <div class="x_title">
-              <div class="clearfix"></div>
-            </div>
             <div>
-              <form th:action="@{/lesson/list-lesson}" method="get">
-                <div class="row">
-                  <div class="col-lg-3 col-sm-12 col-sm-4 col-xs-3">
-                    <label>Tên bài học</label>
+              <form  >
+                  <div class="col-lg-12 col-sm-12 col-sm-4 col-xs-3">
                     <div>
-                      <input class="form-control" name="lessonName" type="text" th:value="${lsn}">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
-                    <label>Học phần</label>
-                    <select class="form-control" name="subjectId">
-                      <option value="">Tùy chọn</option>
-                      <option>Từ vựng</option>
-                      <option>Ngữ pháp</option>
-                    </select>
-                  </div>
-                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
-                    <label>Trình độ</label>
-                    <select class="form-control" name="classId">
-                      <option value="">Tùy chọn</option>
-                      <option>N5</option>
-                      <option>N4</option>
-                      <option>N3</option>
-                      <option>N2</option>
-                      <option>N1</option>
-                    </select>
-                  </div>
-                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
-                    <label>&nbsp;</label>
-                    <div>
-                      <button type="submit" id="btnSearch" class="btn btn-success">Tìm kiếm
+                      <button  type="add" [routerLink]="['/admin/lesson/add']" id="them" class="btn btn-success">Thêm mới
                       </button>
+                      <br>
+                      <br>
+                      <input style="width: 300px" class="form-control" name="description" type="text" [(ngModel)]="description"  (ngModelChange)="Search()" placeholder="Nhập tên bài học để tìm"  >
                     </div>
+
                   </div>
-                  <div class="col-lg-1 col-sm-12 col-sm-4 col-xs-3"></div>
-                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
-                    <label>&nbsp;</label>
-                    <div>
-<!--                      <a th:href="@{/lesson/add-lesson}" class="btn btn-success"><i class="fa fa-plus"></i> Thêm mới</a>-->
-                      <button type="add" [routerLink]="['/admin/lesson/add']" id="them" class="btn btn-success">Thêm mới
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </form>
             </div>
           </div>
@@ -99,7 +58,7 @@
                 <table class="table table-bordered" id="sampleTable">
                   <thead>
                   <tr>
-                    <th>STT</th>
+                    <th>Id</th>
                     <th>Tên bài học</th>
                     <th>Học phần</th>
                     <th>Trình độ</th>
@@ -108,23 +67,21 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let lesson of lesson">
+<!--                  <tr *ngFor="let lesson of ls | paginate:{itemsPerPage:3, currentPage:p};">-->
+                  <tr *ngFor="let lesson of ls">
                     <td>{{lesson.id}}</td>
-                    <td >{{lesson.baihoc}}</td>
-                    <td >{{lesson.hocphan}}</td>
-                    <td >{{lesson.trinhdo}}</td>
-                    <td >{{lesson.mota}}</td>
+                    <td >{{lesson.lesson}}</td>
+                    <td >{{lesson.term}}</td>
+                    <td >{{lesson.level}}</td>
+                    <td >{{lesson.description}}</td>
                     <td>
+                      <button  type="add" (click)="delete(lesson.id) " class="btn btn-success">Xóa
+                      </button>
+<!--                        <button (click)="delete(lesson.id)" class="badge badge-danger mr-2" >delete</button>-->
+                        <button  class ="btn btn-success"  [routerLink]="['/admin/lesson/edit',lesson.id]"style="margin-left: 10px">Sửa</button>
 
-                        <button (click)="delete(lesson.id)" class="badge badge-danger mr-2" >delete</button>
-
-                        <button  [routerLink]="['/admin/lesson/edit',lesson.id]"style="margin-left: 10px "class="badge badge-primary mr-2">update
+                        <button  style="margin-left: 10px"  class ="btn btn-success"  [routerLink]="['/admin/lesson/detail',lesson.id]">Chi tiết
                         </button>
-
-                        <button  style="margin-left: 10px" class="badge badge-info mr-2"  [routerLink]="['/admin/lesson/detail',lesson.id]">detail
-                        </button>
-
-
                     </td>
                   </tr>
                   </tbody>
@@ -137,19 +94,15 @@
         <div class="clearfix"></div>
       </div>
     </div>
-
   </div>
-</div>
+
+<!--<pagination-controls style="margin-left: 250px" (pageChange)="p = $event"></pagination-controls>-->
+
 <div th:replace="admin/modal_confirm::content"></div>
 <div th:replace="admin/modal_active::content"></div>
 <div th:replace="admin/modal_disable::content"></div>
 <div th:replace="admin/footer :: content"></div>
 
-<div th:replace="admin/init_admin :: script"></div>
-<script>
-  $(document).ready(function () {
-    $('#lessonManager').addClass("active");
-  });
-</script>
 </body>
+
 </html>

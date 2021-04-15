@@ -9,7 +9,6 @@ import { AddquestionComponent } from './Manh/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
 
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
-import { DangnhapComponent } from './Thuan/dangnhap/dangnhap.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
 import { VocabularyComponent } from './Hien/vocabulary/vocabulary.component';
@@ -61,9 +60,16 @@ import {HttpClientModule} from "@angular/common/http";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
 import {FormsModule} from '@angular/forms';
+import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
 import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component';
+import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {NgxPaginationModule} from "ngx-pagination";
+
+import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
+import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 
 
 @NgModule({
@@ -76,7 +82,6 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
     AddquestionComponent,
     AddsucessComponent,
     QuanlibaihocComponent,
-    DangnhapComponent,
     AddlessonComponent,
     EditbaihocComponent,
     VocabularyComponent,
@@ -128,6 +133,10 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
     CreateroomComponent,
     HomeadminComponent,
     HeaderadminComponent,
+    DetailComponent,
+
+    LessondetailhomeComponent,
+      HomelessonComponent,
   ],
     imports: [
         BrowserModule,
@@ -135,7 +144,10 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
         ManagerRoutingModule,
         MatTabsModule,
         FormsModule,
-        HttpClientModule
+      CKEditorModule,
+        HttpClientModule,
+      Ng2SearchPipeModule,
+      NgxPaginationModule
     ],
   providers: [],
   bootstrap: [AppComponent]

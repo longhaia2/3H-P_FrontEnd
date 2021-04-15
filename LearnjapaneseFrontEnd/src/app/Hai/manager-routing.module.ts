@@ -35,6 +35,9 @@ import {ManageraddquestionfortestComponent} from './admin/managertest/manageradd
 import {ManageraddquestionComponent} from './admin/managerquestion/manageraddquestion/manageraddquestion.component';
 import {ManagertestComponent} from './admin/managertest/managertest.component';
 import {ManagerlisttestComponent} from './admin/managertest/managerlisttest/managerlisttest.component';
+import {DetailComponent} from "../Thuan/quanlibaihoc/detail/detail.component";
+import {LessondetailhomeComponent} from "../Thuan/lessondetailhome/lessondetailhome.component";
+import {HomelessonComponent} from "../Thuan/homelesson/homelesson.component";
 
 
 const routes: Routes = [
@@ -56,7 +59,7 @@ const routes: Routes = [
   {path: 'study/alphabet', component: StudyAlphabetComponent},
   {path: 'study/kanji', component: StudyKanjiComponent},
   {path: 'infor', component: InformationComponent},
- {path: 'admin/manage/user/add', component: AdduserComponent},
+  {path: 'admin/manage/user/add', component: AdduserComponent},
   {path: 'admin/manage/user', component: ManageruserComponent},
   {path: 'admin/manage/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent},
@@ -65,14 +68,17 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'admin-home', component: HomeadminComponent},
   {path: 'admin/lesson', component: QuanlibaihocComponent},
+  {path: 'admin/lesson/detail/:id', component: DetailComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
-  {path: 'admin/lesson/edit', component: EditbaihocComponent},
+  {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
+  {path: 'study/N5/:lesson/:term/:id', component: LessondetailhomeComponent},
+  {path: 'study/N5/bai', component: HomelessonComponent},
   {path: 'admin/exam', component: ManagerlisttestComponent},
   {path: 'admin/exam/add', component: ManageraddquestionfortestComponent},
 ];
 
 @NgModule({
-  declarations: [],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
