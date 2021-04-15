@@ -16,4 +16,7 @@ export class ChallengeServiceService {
   findAll(): Observable<RoomChallenge[]> {
     return this.http.get<RoomChallenge[]>(this.url+'/list');
   }
+  get(id): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/challenge/room'}/${id}`);
+  }
 }

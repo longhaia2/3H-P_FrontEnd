@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-4 col-12">
           <div class="menu-right">
-              <div *ngIf="userNameDsp; else block">
+              <div *ngIf="userNameDsp!=null; else elseBlock">
             <div> <i  style="font-size: 20px">Xin chào: {{userNameDsp}} </i>
               <div class="dropdown" id="div-account" sec:authorize="isAuthenticated()" style="margin-left: 10px;font-size: 20px">
                 <a class="dropdown-toggle btn-login" id="dropdownMenuButton"
@@ -43,7 +43,7 @@
                   <input hidden th:value="${#request.userPrincipal.principal.username}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" th:href="@{/admin/home}"><i class="fa fa-cogs"></i> Quản lí</a>
+                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" ><i class="fa fa-cogs"></i> Quản lí</a>
                   <a class="dropdown-item" ><i class="fa fa-user-circle-o"></i> Profile</a>
                   <a class="dropdown-item" ><i class="fa fa-check-square-o"></i> Kết quả thi</a>
                   <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
@@ -51,7 +51,9 @@
               </div>
               </div>
             </div>
-            <ng-template #block> <i class="fa fa-user"></i>
+<!--            <a class=" btn-login" id="link-login1" [routerLink]="['/login']">ĐĂNG NHẬP</a>-->
+            <ng-template #elseBlock>
+<!--              <i class="fa fa-user"></i>-->
               <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP</a>
             </ng-template>
 
