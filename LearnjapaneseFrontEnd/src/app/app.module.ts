@@ -9,7 +9,6 @@ import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
 
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
-import { DangnhapComponent } from './Thuan/dangnhap/dangnhap.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
 import { VocabularyComponent } from './Hien/vocabulary/vocabulary.component';
@@ -60,9 +59,16 @@ import {HttpClientModule} from "@angular/common/http";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
 import {FormsModule} from '@angular/forms';
+import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
 import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component';
+import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {NgxPaginationModule} from "ngx-pagination";
+
+import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
+import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
@@ -85,7 +91,6 @@ import {LoginComponent} from './_services/login/login.component';
     AddquestionComponent,
     AddsucessComponent,
     QuanlibaihocComponent,
-    DangnhapComponent,
     AddlessonComponent,
     EditbaihocComponent,
     VocabularyComponent,
@@ -136,6 +141,10 @@ import {LoginComponent} from './_services/login/login.component';
     CreateroomComponent,
     HomeadminComponent,
     HeaderadminComponent,
+    DetailComponent,
+    LessondetailhomeComponent,
+      HomelessonComponent,
+
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
@@ -153,7 +162,10 @@ import {LoginComponent} from './_services/login/login.component';
         ManagerRoutingModule,
         MatTabsModule,
         FormsModule,
-        HttpClientModule
+      CKEditorModule,
+        HttpClientModule,
+      Ng2SearchPipeModule,
+      NgxPaginationModule
     ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

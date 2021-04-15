@@ -15,7 +15,7 @@
           <img th:src="@{/image/user/{image}(image=${image})}" class="img-circle profile_img">
         </div>
         <div class="profile_info">
-          <span>Welcome,</span>
+          <span>Chào vanthuan,</span>
           <h2 th:text="${username}"></h2>
         </div>
       </div>
@@ -26,10 +26,10 @@
       <!-- sidebar menu -->
       <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
         <div class="menu_section">
-          <h3>General</h3>
+          <h3>Trang quản lý</h3>
           <ul class="nav side-menu">
             <li id="homeManager" sec:authorize="hasAnyAuthority('ADMIN')">
-              <a [routerLink]="['/admin-home']" ><i class="fa fa-home" ></i> Home</a>
+              <a [routerLink]="['/admin-home']" ><i class="fa fa-home" ></i> Trang chủ</a>
             </li>
 
             <li id="userManager" sec:authorize="hasAnyAuthority('ADMIN')">
