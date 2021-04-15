@@ -69,7 +69,7 @@ const routes: Routes = [
   {path: 'admin/manage/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent},
   {path: 'challenge/add', component: CreateroomComponent},
-  {path: 'challenge/wait', component: WaitlchallengeComponent},
+  {path: 'challenge/wait/:id', component: WaitlchallengeComponent},
   {path: 'admin-home', component: HomeadminComponent},
   {path: 'admin/lesson', component: QuanlibaihocComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
