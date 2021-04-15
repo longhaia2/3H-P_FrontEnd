@@ -8,7 +8,7 @@
 </head>
 
 <body class="nav-md">
-<div class="container body">
+<div class="container body">s
   <div class="main_container">
     <div th:replace="admin/sidebar :: content"></div>
     <div th:replace="admin/header :: content"></div>
@@ -47,41 +47,38 @@
           <div class="row">
             <div class="col-md-12 mt-3">
               <label class="labels">Nội dung câu hỏi</label>
-              <textarea type="text" class="form-control" name="content" cols="10" rows="3" id="contentQuestion" ></textarea>
+              <textarea [ngModel]="qs.content" type="text" class="form-control" name="content" cols="10" rows="3" id="contentQuestion" ></textarea>
             </div>
 
             <div class="col-md-6 mt-3">
               <label class="labels">Đáp án A</label>
-              <input type="text" class="form-control" name="ansA"  >
+              <input [ngModel]="qs.ansA" type="text" class="form-control" name="ansA"  >
             </div>
 
             <div class="col-md-6 mt-3">
               <label class="labels">Đáp án B</label>
-              <input type="text" class="form-control" name="ansB"  >
+              <input [ngModel]="qs.ansB" type="text" class="form-control" name="ansB"  >
             </div>
 
             <div class="col-md-6 mt-3">
               <label class="labels">Đáp án C</label>
-              <input type="text" class="form-control" name="ansC">
+              <input [ngModel]="qs.ansC" type="text" class="form-control" name="ansC">
             </div>
 
             <div class="col-md-6 mt-3">
               <label class="labels">Đáp án D</label>
-              <input type="text" class="form-control" name="ansD">
+              <input [ngModel]="qs.ansD" type="text" class="form-control" name="ansD">
             </div>
             <div class="col-md-6 mt-3">
-              <label class="labels">Đáp án đúng</label>
-              <select class="form-control" name="ansCorrect">
-                <option value="1">A</option>
-                <option value="2">B</option>
-                <option value="3">C</option>
-                <option value="4">D</option>
-              </select>
+              <div class="col-md-6 mt-3">
+                <label class="labels">Đáp án Đúng </label>
+                <input [ngModel]="qs.ansCorrect" type="text" class="form-control" name="ansCorrect">
+              </div>
             </div>
           </div>
           <span class="span-vld hide" id="vldAddQuestion">Vui lòng nhập đầy đủ thông tin</span>
           <div class="mt-5 text-center">
-            <button class="btn btn-success" type="submit" id="btnAddQuestiontoExam">Thêm câu hỏi</button>
+            <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam">Thêm câu hỏi</button>
             <a class="btn btn-danger"  [routerLink]="['/admin/question']" th:href="@{'/question/list-question-by-subject-class?subjectId='+${subjectId}+'&classId='+${classId}}" >Hủy bỏ</a>
           </div>
           <!--              </form>-->
