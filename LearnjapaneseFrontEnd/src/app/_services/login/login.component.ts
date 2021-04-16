@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        alert('Đăng nhập thành công');
+        // alert('Đăng nhập thành công');
         this.roles = this.tokenStorage.getUser().roles;
         if(data.role === 'ROLE_ADMIN'){
           return this.router.navigate(['admin-home']);
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
+
     );
   }
 

@@ -21,7 +21,6 @@ export class HomelessonComponent implements OnInit {
   }
 
   reloadData() {
-
     this.lessonService.findByidlessson("N5","Bai1").subscribe(data => {
       this.ls = data;
     });

@@ -117,7 +117,7 @@
                           <i class="fa fa-cog"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <button type="add" [routerLink]="['/admin/manageuser/detailuser' ,user.id]" > Chi tiết</button>
+                          <button type="add" [routerLink]="['/admin/manage/user/detail/' ,user.id]" > Chi tiết</button>
                           <div class="dropdown-divider"></div>
                           <button type="delete" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
                         </div>
@@ -140,10 +140,6 @@
       <!-- page content -->
     </div>
   </div>
-  <div th:replace="admin/modal_confirm::content"></div>
-  <div th:replace="admin/modal_active::content"></div>
-  <div th:replace="admin/modal_disable::content"></div>
-  <div th:replace="admin/footer :: content"></div>
 </div>
 <div th:replace="admin/init_admin :: script"></div>
 <script>

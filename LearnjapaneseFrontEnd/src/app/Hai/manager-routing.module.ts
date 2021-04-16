@@ -27,8 +27,6 @@ import {HomeadminComponent} from './admin/homeadmin/homeadmin.component';
 import {QuanlibaihocComponent} from '../Thuan/quanlibaihoc/quanlibaihoc.component';
 import {AddlessonComponent} from '../Thuan/quanlibaihoc/addlesson/addlesson.component';
 import {EditbaihocComponent} from '../Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
-import {ManageraddquestionfortestComponent} from './admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
-import {ManagerlisttestComponent} from './admin/managertest/managerlisttest/managerlisttest.component';
 import {DetailComponent} from '../Thuan/quanlibaihoc/detail/detail.component';
 import {LessondetailhomeComponent} from '../Thuan/lessondetailhome/lessondetailhome.component';
 import {HomelessonComponent} from '../Thuan/homelesson/homelesson.component';
@@ -75,8 +73,6 @@ const routes: Routes = [
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
   {path: 'study/N5/:lesson/:term/:id', component: LessondetailhomeComponent},
   {path: 'study/N5/bai', component: HomelessonComponent},
-  {path: 'admin/exam', component: ManagerlisttestComponent},
-  {path: 'admin/exam/add', component: ManageraddquestionfortestComponent},
   {path: 'admin/lesson/edit', component: EditbaihocComponent},
   {path: 'admin/exam', component: ManagerexamComponent},
   {path: 'admin/exam/add', component: ManagerexamaddComponent},

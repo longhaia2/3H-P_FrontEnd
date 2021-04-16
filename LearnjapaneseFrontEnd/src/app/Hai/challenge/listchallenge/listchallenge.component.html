@@ -38,9 +38,9 @@
                 <tr *ngFor="let roomChallenge of challenge">
                   <td>{{roomChallenge.room_id}}</td>
                   <td (click)="add()" >{{roomChallenge.userCreate}}</td>
-                  <td (click)="details(roomChallenge.room_id)" >{{roomChallenge.room_name}}</td>
+                  <td (click)="add()" >{{roomChallenge.room_name}}</td>
                   <td>{{roomChallenge.level}}</td>
-                  <td>{{roomChallenge.time +' Phút'}}</td>
+                  <td>{{roomChallenge.time +'Phút'}}</td>
                   <td></td>
                   <td></td>
                 </tr>
