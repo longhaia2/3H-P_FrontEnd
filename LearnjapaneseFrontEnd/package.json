@@ -26,13 +26,10 @@
     "@firebase/util": "^1.0.0",
     "firebase": "^8.4.1",
     "jquery": "^3.6.0",
-<<<<<<< HEAD
     "ngx-countdown": "^11.0.3",
-=======
     "ng2-ckeditor": "^1.3.3",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^5.0.0",
->>>>>>> origin/hai
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.3"
