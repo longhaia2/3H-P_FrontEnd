@@ -7,7 +7,6 @@ import { ManageraskComponent } from './Manh/managerask/managerask.component';
 import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
 import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
-
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
@@ -72,6 +71,22 @@ import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
+<<<<<<< HEAD
+import { ProfileComponent } from './Manh/profile/profile.component';
+import {CountdownModule} from "ngx-countdown";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import { AngularFireDatabaseModule} from "@angular/fire/database";
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
+
+
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+
+=======
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
 import { ProfileComponent } from './_services/profile/profile.component';
@@ -81,6 +96,7 @@ import { BoardUserComponent } from './_services/board-user/board-user.component'
 
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
+>>>>>>> origin/hai
 @NgModule({
   declarations: [
     AppComponent,
@@ -148,6 +164,10 @@ import {LoginComponent} from './_services/login/login.component';
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
+<<<<<<< HEAD
+    ProfileComponent,
+
+=======
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
@@ -155,6 +175,7 @@ import {LoginComponent} from './_services/login/login.component';
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
+>>>>>>> origin/hai
   ],
     imports: [
         BrowserModule,
@@ -162,10 +183,20 @@ import {LoginComponent} from './_services/login/login.component';
         ManagerRoutingModule,
         MatTabsModule,
         FormsModule,
+<<<<<<< HEAD
+        HttpClientModule,
+      CountdownModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      AngularFireDatabaseModule,
+      FlexLayoutModule,
+
+
+=======
       CKEditorModule,
         HttpClientModule,
       Ng2SearchPipeModule,
       NgxPaginationModule
+>>>>>>> origin/hai
     ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
