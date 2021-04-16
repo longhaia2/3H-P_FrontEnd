@@ -4,14 +4,11 @@
   <title>Thêm user</title>
   <div th:replace="admin/init_admin :: header"></div>
 </head>
-
 <body class="nav-md">
 <div class="container body">
   <div class="main_container" >
-
     <app-sidebaradmin></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
-
     <div class="right_col" role="main">
       <!-- top tiles -->
       <div class="">
@@ -29,48 +26,31 @@
           </div>
           <br>
           <form  class="col-md-12"  method="post" enctype="multipart/form-data">
-
             <div class="col-md-8 border-right">
               <div class="p-3">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="text-right">Thông tin tài khoản</h4>
                 </div>
-<!--                <div class="bg-danger" id="error"-->
-<!--                     th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">-->
-<!--                </div>-->
+                <!--                <div class="bg-danger" id="error"-->
+                <!--                     th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">-->
+                <!--                </div>-->
                 <div class="row mt-2">
                   <div class="col-md-6">
-<<<<<<< HEAD
-                    <label class="labels">Tên đăng nhập (viết liền không dấu và kí tự thường)</label>
-                    <input type="text" [(ngModel)]="us.username" maxlength="15" class="form-control" name="username" id="usernameUser" >
-                    <span id="vld-username" class="span-vld hide">Username không được để trống.</span>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="labels">Họ và tên</label>
-                    <input type="text" [(ngModel)]="us.fullname" maxlength="20" class="form-control" name="fullname" id="fullnameUser" >
-=======
                     <label class="labels">Username (viết liền không dấu và kí tự thường)</label>
                     <input type="text" [(ngModel)]="us.username" class="form-control">
-<!--                    <input type="text" [(ngModel)]="us.username" class="form-control" name="username" id="usernameUser" >-->
+                    <!--                    <input type="text" [(ngModel)]="us.username" class="form-control" name="username" id="usernameUser" >-->
                     <span id="vld-username" class="span-vld hide">Username không được để trống.</span>
                   </div>
                   <div class="col-md-6">
                     <label class="labels">Fullname</label>
-                    <input type="text" [(ngModel)]="us.fullName" class="form-control"  >
->>>>>>> origin/hai
-
+                    <input type="text" [(ngModel)]="us.username" class="form-control"  >
                   </div>
                 </div>
-                <div class="row mt-2">S
+                <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Email</label>
-<<<<<<< HEAD
-                    <input type="email" [(ngModel)]="us.email" class="form-control" name="email" id="emailUser" >
-                    <span id="vld-email" class="span-vld hide">Email không được để trống hoặc sai định dạng.</span>
-=======
                     <input type="text" [(ngModel)]="us.email" class="form-control"  >
                     <span id="vld-email" class="span-vld hide">Email không được để trống hoẵ sai định dạng.</span>
->>>>>>> origin/hai
                   </div>
                   <div class="col-md-6">
                     <label class="labels">Password</label>
@@ -81,41 +61,20 @@
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Số điện thoại</label>
-<<<<<<< HEAD
-                    <input type="number" [(ngModel)]="us.phoneNumber" maxlength="10" minlength="10" class="form-control" name="phone" id="phoneUser" th:value="${ph}" >
-=======
                     <input type="number" [(ngModel)]="us.phoneNumber" class="form-control"   >
->>>>>>> origin/hai
                     <span id="vld-phone" class="span-vld hide">Số điện thoại sai định dạng.</span>
                   </div>
-
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Giới tính</label>
-<<<<<<< HEAD
-                    <select class="gt" name="gt" id="gtinh"[(ngModel)]="us.gender"  >
-                      <option value="Nam">Nam</option>`
-=======
                     <select class="col-md-12 p-2" name="gt" id="gtinh"[(ngModel)]="us.gender"  >
                       <option value="Nam">Nam</option>
->>>>>>> origin/hai
                       <option value="Nữ">Nữ</option>
                     </select>
                   </div>
-
                 </div>
                 <div class="row mt-2">
-<<<<<<< HEAD
-<!--                  <div class="col-md-6">-->
-<!--                    <label class="labels">Quyền</label>-->
-<!--                    <select class="form-control" [(ngModel)]="us.role" name="role" id="roleUser">-->
-<!--                      <option value="">Tùy chọn</option>-->
-<!--                      <option value=2>Admin</option>-->
-<!--                      <option value=1>User</option>-->
-<!--                    </select>-->
-<!--                  </div>-->
-=======
                   <div class="col-md-6">
                     <label class="labels">Quyền</label>
                     <select  [(ngModel)]="us.role" name="role" id="role_id">
@@ -126,7 +85,6 @@
                     </select>
                     <span id="vld-roleUser" class="span-vld hide">Vui lòng chọn quyền cho tài khoản.</span>
                   </div>
->>>>>>> origin/hai
                 </div>
                 <div class="text-center mt-3">
                   <button class="btn btn-success" (click)="add()" type="submit" id="btnAddUser">Thêm User</button>
@@ -139,8 +97,7 @@
       </div>
     </div>
     <!-- page content -->
-</div>
-
+  </div>
 </div>
 </body>
 </html>

@@ -29,6 +29,7 @@
           </div>
         </div>
 
+
         <div class="clearfix"></div>
         <div class="col-md-2 col-sm-12">
           <label>&nbsp;</label>
@@ -53,6 +54,8 @@
                   <thead>
                   <tr>
                     <th>ID</th>
+                    <th>Học phần</th>
+                    <th>Trình độ</th>
                     <th>Nội dung câu hỏi</th>
                     <th>Đáp án A</th>
                     <th>Đáp án B</th>
@@ -65,6 +68,8 @@
                   <tbody >
                   <tr *ngFor="let qs of question">
                     <td>{{qs.id}}</td>
+                    <td>{{qs.term}}</td>
+                    <td>{{qs.level}}</td>
                     <td>{{qs.content}}</td>
                     <td style="width: 100px;">{{qs.ansA}}</td>
                     <td style="width: 100px;">{{qs.ansB}}</td>
@@ -79,7 +84,7 @@
                     <>
 <!--                      <a th:href="@{/question/update-question/{questionId}(questionId=${row.id})}"><i class="fa fa-edit btn btn-success" ></i></a>-->
                     <td>
-                    <button (click)="delete(qs.id)" class="badge badge-danger mr-2" >delete></button>>
+                    <button (click)="delete(qs.id)" style="background: red" >delete</button>
                     </td>
                   </tr>
                   </tbody>
