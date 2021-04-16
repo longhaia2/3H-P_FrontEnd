@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Thêm bài học</title>
+  <div th:replace="admin/init_admin :: header"></div>
+  <meta th:name="_csrf" th:content="${_csrf.token}"/>
+  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <app-sidebaradmin></app-sidebaradmin>
+    <app-headeradmin></app-headeradmin>
+    <div th:replace="admin/sidebar :: content"></div>
+    <div th:replace="admin/header :: content"></div>
+
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h1>Quản Lý Thêm Bài Học </h1>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row" >
+          <div class="col-md-8">
+
+          </div>
+          <br>
+          <form  method="post" enctype="multipart/form-data">
+
+            <div class="col-md-8" style="margin-left: 180px">
+              <div class="p-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Chi tiết bài học</h4>
+                </div>
+                <div class="form-group col-md-4">
+                  <label >stt</label>
+                  <input type="number" class="form-control"  [(ngModel)]="ls.id" name="id" >
+                </div>
+                <div class="form-group col-md-4">
+                  <label >baihoc</label>
+                  <input type="text" class="form-control" [(ngModel)]="ls.lesson" name="baihoc" >
+                </div>
+                <div class="form-group col-md-4">
+                  <label >hocphan</label>
+                  <input class="form-control" [(ngModel)]="ls.term" name="hocphan" >
+                </div>
+                <div class="form-group col-md-4">
+                  <label >trinhdo</label>
+                  <input  class="form-control" [(ngModel)]="ls.level" name="trình độ" >
+                </div>
+                <div class="form-group col-md-4">
+                  <label >mota</label>
+                  <input  class="form-control" [(ngModel)]="ls.description" name="mota" >
+                </div>
+                <div class="form-group col-md-8">
+                  <label >nọi dung</label>
+                  <!--      <input  class="form-control" [(ngModel)]="ls.noidung" name="ndung" placeholder="vsdsdfsfafqwfq"-->
+                  <div class="panel-body" [innerHtml]='ls.content'>
+                  </div>
+
+                </div>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- page content -->
+  </div>
+</div>
+
+<div th:replace="admin/footer :: content"></div>
+<div th:replace="admin/init_admin :: script"></div>
+</body>
+</html>
