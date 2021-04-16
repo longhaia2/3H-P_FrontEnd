@@ -15,6 +15,7 @@ export class ListchallengeComponent implements OnInit {
   cl: RoomChallenge;
   rom: RoomUsers;
   public logName: string;
+  id: number;
   challenge: RoomChallenge[];
 
   constructor(private roomsv: ServiceService, private route: ActivatedRoute, private router: Router) {
@@ -31,15 +32,18 @@ export class ListchallengeComponent implements OnInit {
     });
   }
 
+
   add() {
     this.cl = new RoomChallenge();
     this.rom = new RoomUsers();
     let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
     this.rom.user_id = user_id['userId'];
     this.rom.room_id = this.cl.room_id;
-    this.router.navigate(['challenge/wait']);
-  }
-  details(id: number){
-    this.router.navigate(['/challenge/wait',id])
+
+    this.roomsv.addroom(this.rom).subscribe(data=>{
+      console.log(data);
+      this.rom=data;
+      this.router.navigate(['challenge/wait', this.id]);
+    })
   }
 }

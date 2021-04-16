@@ -17,8 +17,8 @@ export class ServiceService {
   findAll(): Observable<RoomChallenge[]> {
     return this.http.get<RoomChallenge[]>(this.url+'/list');
   }
-  add(data):Observable<any>{
-    return this.http.post<RoomUsers>(this.url+'/request',data);
+  addroom(data):Observable<any>{
+    return this.http.post<RoomUsers>(this.url+'/room-user',data);
   }
   get(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/challenge/room'}/${id}`);

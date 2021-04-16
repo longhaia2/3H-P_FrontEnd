@@ -105,13 +105,14 @@
                     <td>{{user.email}}</td>
                     <td>{{user.phoneNumber}}</td>
                     <td>{{user.gender}}</td>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/hai
                     <td>
-                          <button type="submit"  style="border-radius: 12px;width: 50px ; background-color: #00aeef"  class="badge badge-danger mr-2" [routerLink]="['/admin/user/detail' ,user.id]" > Chi tiết</button>
+                      <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle"
+                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <button type="add" [routerLink]="['/admin/manage/user/detail/' ,user.id]" > Chi tiết</button>
                           <div class="dropdown-divider"></div>
                           <button type="delete" style="border-radius: 12px;width: 50px" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
                     </td>
@@ -131,10 +132,6 @@
       <!-- page content -->
     </div>
   </div>
-  <div th:replace="admin/modal_confirm::content"></div>
-  <div th:replace="admin/modal_active::content"></div>
-  <div th:replace="admin/modal_disable::content"></div>
-  <div th:replace="admin/footer :: content"></div>
 </div>
 <div th:replace="admin/init_admin :: script"></div>
 <script>
