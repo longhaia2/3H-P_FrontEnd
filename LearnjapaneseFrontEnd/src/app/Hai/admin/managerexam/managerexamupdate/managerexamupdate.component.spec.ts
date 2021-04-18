@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagerexameditComponent } from './managerexamedit.component';
+import { ManagerexamupdateComponent } from './managerexamupdate.component';
 
-describe('ManagerexameditComponent', () => {
-  let component: ManagerexameditComponent;
-  let fixture: ComponentFixture<ManagerexameditComponent>;
+describe('ManagerexamupdateComponent', () => {
+  let component: ManagerexamupdateComponent;
+  let fixture: ComponentFixture<ManagerexamupdateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManagerexameditComponent ]
+      declarations: [ ManagerexamupdateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagerexameditComponent);
+    fixture = TestBed.createComponent(ManagerexamupdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

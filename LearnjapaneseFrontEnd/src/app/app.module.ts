@@ -70,7 +70,6 @@ import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetail
 import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
-import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
 import {CountdownModule} from "ngx-countdown";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
@@ -94,6 +93,8 @@ import { BoardUserComponent } from './_services/board-user/board-user.component'
 
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
+import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamupdate/managerexamupdate.component';
+import { UserupdateComponent } from './Manh/userupdate/userupdate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -161,7 +162,6 @@ import {LoginComponent} from './_services/login/login.component';
 
     ManagerexamComponent,
     ManagerexamaddComponent,
-    ManagerexameditComponent,
     ProfileComponent,
     RegisterComponent,
     HomeComponent,
@@ -170,6 +170,8 @@ import {LoginComponent} from './_services/login/login.component';
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
+    ManagerexamupdateComponent,
+    UserupdateComponent,
 
   ],
     imports: [

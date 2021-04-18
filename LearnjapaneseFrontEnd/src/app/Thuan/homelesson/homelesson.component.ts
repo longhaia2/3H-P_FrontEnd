@@ -21,13 +21,13 @@ export class HomelessonComponent implements OnInit {
   }
 
   reloadData() {
-    this.lessonService.findByidlessson("N5","Bai1").subscribe(data => {
+    this.lessonService.findByidlessson("N1","Bai 2").subscribe(data => {
       this.ls = data;
     });
   }
-  //
-  // detail(id: number) {
-  //   this.router.navigate(['/detail', id])
-  // }
+
+  detail(id: number) {
+    this.router.navigate(['/detail', id])
+  }
 
 }

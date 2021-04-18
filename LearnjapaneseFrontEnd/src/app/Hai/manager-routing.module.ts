@@ -32,12 +32,13 @@ import {LessondetailhomeComponent} from '../Thuan/lessondetailhome/lessondetailh
 import {HomelessonComponent} from '../Thuan/homelesson/homelesson.component';
 import {ManagerexamComponent} from './admin/managerexam/managerexam.component';
 import {ManagerexamaddComponent} from './admin/managerexam/managerexamadd/managerexamadd.component';
-import {ManagerexameditComponent} from './admin/managerexam/managerexamedit/managerexamedit.component';
 import {ListquestionComponent} from '../Hien/listquestion/listquestion.component';
 import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
+import {ManagerexamupdateComponent} from "./admin/managerexam/managerexamupdate/managerexamupdate.component";
+import {UserupdateComponent} from "../Manh/userupdate/userupdate.component";
 
 
 
@@ -71,17 +72,18 @@ const routes: Routes = [
   {path: 'admin/lesson/detail/:id', component: DetailComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
-  {path: 'study/N5/:lesson/:term/:id', component: LessondetailhomeComponent},
+  {path: 'study/:level/:lesson/:term/:id', component: LessondetailhomeComponent},
   {path: 'study/N5/bai', component: HomelessonComponent},
   {path: 'admin/lesson/edit', component: EditbaihocComponent},
   {path: 'admin/exam', component: ManagerexamComponent},
   {path: 'admin/exam/add', component: ManagerexamaddComponent},
-  {path: 'admin/exam/edit', component: ManagerexameditComponent},
   {path: 'admin/question', component: ListquestionComponent},
   {path: 'admin/question/add', component: AddquestionComponent},
   {path: 'exam', component: StarttestjlptComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent},
+  {path: 'admin/user/edit/:id', component: UserupdateComponent},
 
 ];
 
