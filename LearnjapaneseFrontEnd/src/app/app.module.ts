@@ -94,6 +94,10 @@ import { BoardUserComponent } from './_services/board-user/board-user.component'
 
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
+import { StarttestjnptN4Component } from './Hai/usertest/starttestjnpt-n4/starttestjnpt-n4.component';
+import { StarttestjnptN3Component } from './Hai/usertest/starttestjnpt-n3/starttestjnpt-n3.component';
+import { StarttestjnptN2Component } from './Hai/usertest/starttestjnpt-n2/starttestjnpt-n2.component';
+import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/starttestjnpt-n1.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -170,6 +174,10 @@ import {LoginComponent} from './_services/login/login.component';
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
+    StarttestjnptN4Component,
+    StarttestjnptN3Component,
+    StarttestjnptN2Component,
+    StarttestjnptN1Component,
 
   ],
     imports: [
