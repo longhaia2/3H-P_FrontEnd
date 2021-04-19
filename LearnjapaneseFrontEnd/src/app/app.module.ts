@@ -70,8 +70,6 @@ import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
-<<<<<<< HEAD
-import { ProfileComponent } from './Manh/profile/profile.component';
 import {CountdownModule} from "ngx-countdown";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
@@ -85,23 +83,23 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // @ts-ignore
 // @ts-ignore
 
-=======
+
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
 import { ProfileComponent } from './_services/profile/profile.component';
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
-
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
-<<<<<<< HEAD
->>>>>>> origin/hai
-=======
 import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {AlertModule} from "ngx-bootstrap/alert";
->>>>>>> c21c36c (Hai commit)
+import { StarttestjnptN4Component } from './Hai/usertest/starttestjnpt-n4/starttestjnpt-n4.component';
+import { StarttestjnptN3Component } from './Hai/usertest/starttestjnpt-n3/starttestjnpt-n3.component';
+import { StarttestjnptN2Component } from './Hai/usertest/starttestjnpt-n2/starttestjnpt-n2.component';
+import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/starttestjnpt-n1.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -135,6 +133,7 @@ import {AlertModule} from "ngx-bootstrap/alert";
     ManagerlisttestComponent,
     ManageraddtestComponent,
     ManageraddquestionComponent,
+
     ManagerlistquestionComponent,
     ManageraddquestionfortestComponent,
     FooterComponent,
@@ -169,10 +168,7 @@ import {AlertModule} from "ngx-bootstrap/alert";
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
-<<<<<<< HEAD
     ProfileComponent,
-
-=======
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
@@ -180,8 +176,11 @@ import {AlertModule} from "ngx-bootstrap/alert";
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
-<<<<<<< HEAD
->>>>>>> origin/hai
+    StarttestjnptN4Component,
+    StarttestjnptN3Component,
+    StarttestjnptN2Component,
+    StarttestjnptN1Component,
+
   ],
     imports: [
         BrowserModule,
@@ -189,23 +188,17 @@ import {AlertModule} from "ngx-bootstrap/alert";
         ManagerRoutingModule,
         MatTabsModule,
         FormsModule,
-<<<<<<< HEAD
         HttpClientModule,
       CountdownModule,
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireDatabaseModule,
       FlexLayoutModule,
-
-
-=======
       CKEditorModule,
-        HttpClientModule,
       Ng2SearchPipeModule,
       NgxPaginationModule
->>>>>>> origin/hai
+
     ],
   providers: [authInterceptorProviders],
-=======
     QuizComponent,
   ],
   imports: [
@@ -223,7 +216,6 @@ import {AlertModule} from "ngx-bootstrap/alert";
   providers: [authInterceptorProviders,
               Title
               ],
->>>>>>> c21c36c (Hai commit)
   bootstrap: [AppComponent]
 })
 export class AppModule { }
