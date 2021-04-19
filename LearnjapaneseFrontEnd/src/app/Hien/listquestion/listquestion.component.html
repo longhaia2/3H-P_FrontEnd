@@ -76,15 +76,8 @@
                     <td style="width: 100px;">{{qs.ansC}}</td>
                     <td style="width: 100px;">{{qs.ansD}}</td>
                     <td style="width: 100px;">{{qs.ansCorrect}}</td>
-
-                    <!--                    <td th:if="${row.ansCorrect=='1'}">A</td>-->
-                    <!--                    <td th:if="${row.ansCorrect=='2'}">B</td>-->
-                    <!--                    <td th:if="${row.ansCorrect=='3'}">C</td>-->
-                    <!--                    <td th:if="${row.ansCorrect=='4'}">D</td>-->
-                    <>
-<!--                      <a th:href="@{/question/update-question/{questionId}(questionId=${row.id})}"><i class="fa fa-edit btn btn-success" ></i></a>-->
                     <td>
-                    <button (click)="delete(qs.id)" style="background: red" >delete</button>
+                    <button (click)="delete(qs.id)" style="background: red" >Xóa câu hỏi</button>
                     </td>
                   </tr>
                   </tbody>

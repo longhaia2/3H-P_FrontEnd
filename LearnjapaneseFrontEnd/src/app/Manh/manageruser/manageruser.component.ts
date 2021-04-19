@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-manageruser',
-  templateUrl: './manageruser.component.html',
+  templateUrl:  './manageruser.component.html',
   styleUrls: ['./manageruser.component.css'],
   providers: [UserServiceService]
 

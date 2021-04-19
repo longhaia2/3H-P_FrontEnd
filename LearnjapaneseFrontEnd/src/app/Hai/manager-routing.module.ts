@@ -38,6 +38,7 @@ import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
+import {ReviewgrammarComponent} from "../Hien/reviewgrammar/reviewgrammar.component";
 
 
 
@@ -82,6 +83,8 @@ const routes: Routes = [
   {path: 'exam', component: StarttestjlptComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'question/list/:id', component: ReviewgrammarComponent},
+
 
 ];
 

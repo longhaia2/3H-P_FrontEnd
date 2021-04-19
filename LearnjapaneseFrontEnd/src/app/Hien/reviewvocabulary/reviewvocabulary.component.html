@@ -1,5 +1,8 @@
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
 <head>
+  <title>Thi Online</title>
+  <div th:replace="fragments/init_lib :: header"></div>
   <meta charset="UTF-8">
   <title>Ôn tập từ vựng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,6 +11,8 @@
 
 </head>
 <body>
+<app-header></app-header>
+<app-menu></app-menu>
 <h1 align="center" style="color: #151414; font-size: x-large"> Ôn tập từ vựng bài 1</h1>
   <div class="form">
     <input type="text" style="font-size: 30px" name="question" autocomplete="off" required/>
