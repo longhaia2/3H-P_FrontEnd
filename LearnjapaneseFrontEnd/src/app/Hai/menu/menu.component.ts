@@ -19,9 +19,10 @@ export class MenuComponent implements OnInit {
 
   logout(): void {
     this.tokenStorage.signOut();
-    alert('Đăng xuất thành công!');
+    confirm('Bạn thật sự muốn đăng xuất?');
     // @ts-ignore
-    this.router.navigate(['page-home']);
-    // window.location.reload();
+    // this.router.navigate(['page-home']);
+    window.location.reload();
+
   }
 }

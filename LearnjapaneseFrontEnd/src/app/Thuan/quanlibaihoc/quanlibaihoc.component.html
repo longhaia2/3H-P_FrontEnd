@@ -65,8 +65,8 @@
                   </tr>
                   </thead>
                   <tbody >
-<!--                  <tr *ngFor="let lesson of ls | paginate:{itemsPerPage:3, currentPage:p};">-->
-                  <tr *ngFor="let lesson of ls">
+                  <tr *ngFor="let lesson of ls | paginate:{itemsPerPage:3, currentPage:p};">
+<!--                  <tr *ngFor="let lesson of ls">-->
                     <td>{{lesson.id}}</td>
                     <td >{{lesson.lesson}}</td>
                     <td >{{lesson.term}}</td>
@@ -83,6 +83,7 @@
                     </td>
                   </tr>
                   </tbody>
+                  <pagination-controls style="margin-left: 250px" (pageChange)="p = $event"></pagination-controls>
                 </table>
                 <div th:replace="admin/pagging::content"></div>
               </div>
@@ -94,7 +95,7 @@
     </div>
   </div>
 
-<!--<pagination-controls style="margin-left: 250px" (pageChange)="p = $event"></pagination-controls>-->
+
 
 <div th:replace="admin/modal_confirm::content"></div>
 <div th:replace="admin/modal_active::content"></div>

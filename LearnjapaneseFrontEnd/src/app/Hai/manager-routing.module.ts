@@ -38,12 +38,14 @@ import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
+import {CompetitionComponent} from "./challenge/competition/competition.component";
+import {EndcompetitionComponent} from "./challenge/endcompetition/endcompetition.component";
 
 
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
-  {path: 'page-home', component: HomepageComponent},
+  {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},
   {path: 'page-test', component: ListtestjlptComponent},
   {path: 'start-test', component: StarttestjlptComponent},
   {path: 'test', component: TestjlptComponent},
@@ -82,6 +84,8 @@ const routes: Routes = [
   {path: 'exam', component: StarttestjlptComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'competition', component: CompetitionComponent},
+  {path: 'end', component: EndcompetitionComponent},
 
 ];
 

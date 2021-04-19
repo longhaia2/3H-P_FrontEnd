@@ -178,6 +178,7 @@ button.btn-showMenu {
 }
 
 .menu-left li a {
+    font-size: 14px;
     display: inline-block;
     width: 100%;
     text-align: center;

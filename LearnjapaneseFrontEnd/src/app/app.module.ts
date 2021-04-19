@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ManageruserComponent } from './Manh/manageruser/manageruser.component';
 import { AdduserComponent } from './Manh/adduser/adduser.component';
@@ -57,7 +57,7 @@ import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.componen
 import {HttpClientModule} from "@angular/common/http";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
@@ -65,7 +65,6 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
 import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
-
 import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
 import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
@@ -96,7 +95,13 @@ import { BoardUserComponent } from './_services/board-user/board-user.component'
 
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
+<<<<<<< HEAD
 >>>>>>> origin/hai
+=======
+import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
+import {BsDropdownModule} from "ngx-bootstrap/dropdown";
+import {AlertModule} from "ngx-bootstrap/alert";
+>>>>>>> c21c36c (Hai commit)
 @NgModule({
   declarations: [
     AppComponent,
@@ -175,6 +180,7 @@ import {LoginComponent} from './_services/login/login.component';
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
+<<<<<<< HEAD
 >>>>>>> origin/hai
   ],
     imports: [
@@ -199,6 +205,25 @@ import {LoginComponent} from './_services/login/login.component';
 >>>>>>> origin/hai
     ],
   providers: [authInterceptorProviders],
+=======
+    QuizComponent,
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule,
+    ManagerRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    CKEditorModule,
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+  ],
+  providers: [authInterceptorProviders,
+              Title
+              ],
+>>>>>>> c21c36c (Hai commit)
   bootstrap: [AppComponent]
 })
 export class AppModule { }
