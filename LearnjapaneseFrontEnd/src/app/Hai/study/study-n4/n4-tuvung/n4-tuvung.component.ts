@@ -4,13 +4,14 @@ import {Lesson} from "../../../../Thuan/model/lesson";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-n1-nguphap',
-  templateUrl: './n1-nguphap.component.html',
-  styleUrls: ['./n1-nguphap.component.css'],
+  selector: 'app-n4-tuvung',
+  templateUrl: './n4-tuvung.component.html',
+  styleUrls: ['./n4-tuvung.component.css'],
   providers: [LessonServiceService]
 })
-export class N1NguphapComponent  implements OnInit {
+export class N4TuvungComponent  implements OnInit {
   ls: Lesson[];
+
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
               private router: Router) {
   }
@@ -20,11 +21,8 @@ export class N1NguphapComponent  implements OnInit {
   }
 
   reloadData() {
-    this.lessonService.findByidlevel("N1","Ngữ pháp").subscribe(data => {
+    this.lessonService.findByidlevel("N4", "Từ vựng").subscribe(data => {
       this.ls = data;
     });
   }
-
-
-
 }

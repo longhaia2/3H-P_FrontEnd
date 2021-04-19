@@ -82,7 +82,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
-
+// @ts-ignore
+// @ts-ignore
+// @ts-ignor
 
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
@@ -97,10 +99,19 @@ import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamu
 import { UserupdateComponent } from './Manh/userupdate/userupdate.component';
 import {ProfileComponent} from "./Manh/profile/profile.component";
 import { HomeTvn1Component } from './Hai/study/study-n1/home-tvn1/home-tvn1.component';
-import { N4tuvungComponent } from './Hai/study/study-n4/n4tuvung/n4tuvung.component';
 import { N1TuvungComponent } from './Hai/study/study-n1/n1-tuvung/n1-tuvung.component';
 import { N1NguphapComponent } from './Hai/study/study-n1/n1-nguphap/n1-nguphap.component';
 import { HomeNpn1Component } from './Hai/study/study-n1/home-npn1/home-npn1.component';
+import { N5TuvungComponent } from './Hai/study/study-n5/n5-tuvung/n5-tuvung.component';
+import { N5NguphapComponent } from './Hai/study/study-n5/n5-nguphap/n5-nguphap.component';
+import { HomeTvn5Component } from './Hai/study/study-n5/home-tvn5/home-tvn5.component';
+import { HomeNpn5Component } from './Hai/study/study-n5/home-npn5/home-npn5.component';
+import { N4TuvungComponent } from './Hai/study/study-n4/n4-tuvung/n4-tuvung.component';
+import { N4NguphapComponent } from './Hai/study/study-n4/n4-nguphap/n4-nguphap.component';
+import { N3TuvungComponent } from './Hai/study/study-n3/n3-tuvung/n3-tuvung.component';
+import { N3NguphapComponent } from './Hai/study/study-n3/n3-nguphap/n3-nguphap.component';
+import { N2TuvungComponent } from './Hai/study/study-n2/n2-tuvung/n2-tuvung.component';
+import { N2NguphapComponent } from './Hai/study/study-n2/n2-nguphap/n2-nguphap.component';
 
 
 @NgModule({
@@ -176,12 +187,20 @@ import { HomeNpn1Component } from './Hai/study/study-n1/home-npn1/home-npn1.comp
     LoginComponent,
     ManagerexamupdateComponent,
     UserupdateComponent,
-
     HomeTvn1Component,
-    N4tuvungComponent,
     N1TuvungComponent,
     N1NguphapComponent,
     HomeNpn1Component,
+    N5TuvungComponent,
+    N5NguphapComponent,
+    HomeTvn5Component,
+    HomeNpn5Component,
+    N4TuvungComponent,
+    N4NguphapComponent,
+    N3TuvungComponent,
+    N3NguphapComponent,
+    N2TuvungComponent,
+    N2NguphapComponent,
 
 
   ],

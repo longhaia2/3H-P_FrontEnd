@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { N4tuvungComponent } from './n4tuvung.component';
+import { N3NguphapComponent } from './n3-nguphap.component';
 
-describe('N4tuvungComponent', () => {
-  let component: N4tuvungComponent;
-  let fixture: ComponentFixture<N4tuvungComponent>;
+describe('N3NguphapComponent', () => {
+  let component: N3NguphapComponent;
+  let fixture: ComponentFixture<N3NguphapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ N4tuvungComponent ]
+      declarations: [ N3NguphapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(N4tuvungComponent);
+    fixture = TestBed.createComponent(N3NguphapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

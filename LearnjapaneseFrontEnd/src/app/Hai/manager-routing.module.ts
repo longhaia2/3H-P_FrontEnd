@@ -41,8 +41,19 @@ import {HomeTvn1Component} from "./study/study-n1/home-tvn1/home-tvn1.component"
 import {N1TuvungComponent} from "./study/study-n1/n1-tuvung/n1-tuvung.component";
 import {HomeNpn1Component} from "./study/study-n1/home-npn1/home-npn1.component";
 import {N1NguphapComponent} from "./study/study-n1/n1-nguphap/n1-nguphap.component";
+import {N5TuvungComponent} from "./study/study-n5/n5-tuvung/n5-tuvung.component";
+import {N5NguphapComponent} from "./study/study-n5/n5-nguphap/n5-nguphap.component";
+import {HomeTvn5Component} from "./study/study-n5/home-tvn5/home-tvn5.component";
+import {HomeNpn5Component} from "./study/study-n5/home-npn5/home-npn5.component";
+import {N4TuvungComponent} from "./study/study-n4/n4-tuvung/n4-tuvung.component";
+import {N4NguphapComponent} from "./study/study-n4/n4-nguphap/n4-nguphap.component";
+import {N3NguphapComponent} from "./study/study-n3/n3-nguphap/n3-nguphap.component";
+import {N2TuvungComponent} from "./study/study-n2/n2-tuvung/n2-tuvung.component";
+import {N2NguphapComponent} from "./study/study-n2/n2-nguphap/n2-nguphap.component";
 
 
+// @ts-ignore
+// @ts-ignore
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent},
@@ -87,7 +98,22 @@ const routes: Routes = [
   {path: 'study/N1/nguphap', component: N1NguphapComponent},
   {path: 'study/tuvung/:level/:lesson/:id', component: HomeTvn1Component},
   {path: 'study/nguphap/:level/:lesson/:id', component: HomeNpn1Component},
-
+  {path: 'study/N5/tuvung', component: N5TuvungComponent},
+  {path: 'study/N5/nguphap', component: N5NguphapComponent},
+  {path: 'study/tuvung/:level/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/nguphap/:level/:lesson/:id', component: HomeNpn1Component},
+  {path: 'study/N4/tuvung', component: N4TuvungComponent},
+  {path: 'study/N4/nguphap', component: N4NguphapComponent},
+  {path: 'study/tuvung/:level/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/nguphap/:level/:lesson/:id', component: HomeNpn1Component},
+  {path: 'study/N3/tuvung', component: N3NguphapComponent},
+  {path: 'study/N3/nguphap', component: N3NguphapComponent},
+  {path: 'study/tuvung/:level/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/nguphap/:level/:lesson/:id', component: HomeNpn1Component},
+  {path: 'study/N2/tuvung', component: N2TuvungComponent},
+  {path: 'study/N2/nguphap', component: N2NguphapComponent},
+  {path: 'study/tuvung/:level/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/nguphap/:level/:lesson/:id', component: HomeNpn1Component},
 ];
 
 @NgModule({
