@@ -101,7 +101,7 @@
                   <tr *ngFor="let user of Users">
                     <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
-                    <td>{{user.fullName}}</td>
+                    <td>{{user.fullname}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.phoneNumber}}</td>
                     <td>{{user.gender}}</td>
@@ -115,7 +115,9 @@
                           <button type="add" [routerLink]="['/admin/manage/user/detail/' ,user.id]" > Chi tiết</button>
                           <div class="dropdown-divider"></div>
                           <button type="delete" style="border-radius: 12px;width: 50px" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
-                    </td>
+
+                        </div>
+                      </div>
                   </tr>
 
 
