@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Danh sách user</title>
-  <app-headeradmin></app-headeradmin>
   <style>
     #img_user{
       width: 45px;
@@ -140,17 +139,6 @@
   <div th:replace="admin/modal_disable::content"></div>
   <div th:replace="admin/footer :: content"></div>
 </div>
-<div th:replace="admin/init_admin :: script"></div>
-<script>
-  $("#userManager").addClass("active");
-  //for delete user
-  $(document).ready(function () {
-    $('#datepicker').datepicker({
-      iconsLibrary: 'fontawesome',
-      uiLibrary: 'bootstrap4',
-      format: 'dd-mm-yyyy'
-    });
-  });
-</script>
+<div ></div>
 </body>
 </html>

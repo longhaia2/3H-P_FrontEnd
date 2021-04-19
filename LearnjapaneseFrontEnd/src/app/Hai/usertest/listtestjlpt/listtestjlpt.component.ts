@@ -11,6 +11,12 @@ import {Question} from "../../../Hien/model/question";
 })
 export class ListtestjlptComponent implements OnInit {
 
+  public logName:string;
+  constructor() { }
+
+  ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem("auth-user"));
+    this.logName = userName['username'];
   id:number;
   qs: Question=new Question();
 
@@ -22,5 +28,6 @@ export class ListtestjlptComponent implements OnInit {
     this.grammar.get(this.id).subscribe(data=>{
       this.qs = data
     }, error => console.log(error));
+
   }
 }

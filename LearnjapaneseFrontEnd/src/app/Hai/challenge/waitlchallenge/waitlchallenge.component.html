@@ -1,6 +1,6 @@
 
 <app-header></app-header>
-<app-menu></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 
 <main class="class">
   <div class="container">
@@ -19,8 +19,7 @@
 <!--              viết vòng lặp-->
               <a *ngFor="let us of user" >
                 <div class="test-listItem">
-                  <div class="img">
-                    <img src="../../../../assets/image/avatargame.jpg" height="512" width="512"/></div>
+                  <button (click)="startQuiz()">Start</button>
                   <div class="content">
                     <h6 class="title" >Xin chào: {{us.username}} <span ></span></h6>
                     <div>

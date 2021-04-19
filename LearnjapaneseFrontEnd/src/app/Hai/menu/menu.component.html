@@ -19,9 +19,6 @@
                 <li [routerLink]="['/study/alphabet']">Bảng Chữ Cái</li>
                 <li [routerLink]="['/study/kanji']">Các Bộ Hán Tự Cơ Bản</li>
 
-<!--                <li th:each="item:${listClass}">-->
-<!--                  <a th:href="@{'/monhoc?class_id=' +${item.id}}" th:text="${item.classname}"></a>-->
-<!--                </li>-->
               </ul>
             </li>
             <li><a [routerLink]="['/page-test']">kiểm tra</a></li>
@@ -31,35 +28,37 @@
           </ul>
         </div>
         <div class="col-md-4 col-12">
-          <div class="menu-right">
-              <div *ngIf="userNameDsp!=null; else elseBlock">
-            <div> <i  style="font-size: 20px">Xin chào: {{userNameDsp}} </i>
-              <div class="dropdown" id="div-account" sec:authorize="isAuthenticated()" style="margin-left: 10px;font-size: 20px">
-                <a class="dropdown-toggle btn-login" id="dropdownMenuButton"
-                   type="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user"></i>
-                  <!--                [[${#request.userPrincipal.principal.fullname}]]-->
-                  <input hidden th:value="${#request.userPrincipal.principal.username}">
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" ><i class="fa fa-cogs"></i> Quản lí</a>
-                  <a class="dropdown-item" ><i class="fa fa-user-circle-o"></i> Profile</a>
-                  <a class="dropdown-item" ><i class="fa fa-check-square-o"></i> Kết quả thi</a>
-                  <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
-                </div>
-              </div>
-              </div>
+          <div  class="menu-right">
+            <div *ngIf="userNameDsp==null; else elseBlock">
+              <div> <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP</a></div>
             </div>
+
 <!--            <a class=" btn-login" id="link-login1" [routerLink]="['/login']">ĐĂNG NHẬP</a>-->
             <ng-template #elseBlock>
-<!--              <i class="fa fa-user"></i>-->
-              <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP</a>
+              <table >
+                <thead>
+                <tr style="border: 1px solid #f8f9fa;">
+                  <th style="border: 1px solid #f8f9fa;"><div> <i  style="font-size: 20px">Xin chào: {{userNameDsp}} </i></div></th>
+                  <th style="border: 1px solid #f8f9fa;" ><div class="dropdown" id="div-account" style="margin-left: 10px;font-size: 20px">
+                    <a class="dropdown-toggle btn-login" id="dropdownMenuButton"
+                       type="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-user"></i>
+                      <!--                [[${#request.userPrincipal.principal.fullname}]]-->
+                      <input hidden th:value="${#request.userPrincipal.principal.username}">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <!--                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" ><i class="fa fa-cogs"></i> Quản lí</a>-->
+                      <a class="dropdown-item" ><i class="fa fa-user-circle-o"></i> Profile</a>
+                      <a class="dropdown-item" ><i class="fa fa-check-square-o"></i> Kết quả thi</a>
+                      <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                    </div>
+                  </div></th>
+                </tr>
+                </thead>
+              </table>
             </ng-template>
 
-
-
-            <div th:if="${param.logout}" id="msg-logout"></div>
           </div>
         </div>
       </div>
