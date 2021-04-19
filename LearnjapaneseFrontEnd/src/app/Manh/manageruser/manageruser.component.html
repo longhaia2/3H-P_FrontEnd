@@ -11,13 +11,13 @@
     }
   </style>
 </head>
-
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
-
+    <div th:replace="admin/sidebar :: content"></div>
+    <div th:replace="admin/header :: content"></div>
     <div class="right_col" role="main">
       <!-- top tiles -->
       <div class="">
@@ -25,7 +25,6 @@
           <div class="title_left">
             <h3> <small>Danh sách người dùng</small></h3>
           </div>
-
           <div class="title_right">
             <div class="col-md-5 col-sm-5   form-group pull-right top_search">
               <div class="input-group">
@@ -37,9 +36,7 @@
             </div>
           </div>
         </div>
-
         <div class="clearfix"></div>
-
         <div class="row">
           <div class="col-md-12">
             <div class="x_title">
@@ -53,20 +50,17 @@
                     <div>
                     </div>
                   </div>
-
                   <div class="col-lg-2 col-sm-12 col-xs-3">
                     <label>&nbsp;</label>
                     <div>
-
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-12  col-xs-3">
-
                   </div>
                   <div class="col-lg-2 col-sm-12 col-xs-3">
                     <label>&nbsp;</label>
                     <div>
-              <button class="btn-add" type="add" [routerLink]="['/admin/manage/user/add' ]">Thêm User</button>
+                      <!--                      <button class="btn-add" type="add" [routerLink]="['/admin/manage/user/add' ]">Thêm User</button>-->
                     </div>
                   </div>
                 </div>
@@ -79,10 +73,13 @@
         <div class="row">
           <div class="col-md-12">
             <div  class="col-md-4">
-
+              <button  type="add" [routerLink]="['/admin/manage/user/add' ]" class="btn btn-success">Thêm User
+              </button>
+              <br>
+              <br>
               <input class="form-control" type="text" name="username" [(ngModel)]="username" (ngModelChange)="search()" placeholder="Tìm kiếm theo tên đăng nhập" >
+              <br>
             </div>
-
             <div class="tile-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="sampleTable">
@@ -106,20 +103,14 @@
                     <td>{{user.phoneNumber}}</td>
                     <td>{{user.gender}}</td>
                     <td>
-                      <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle"
-                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-cog"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <button type="add" [routerLink]="['/admin/manage/user/detail/' ,user.id]" > Chi tiết</button>
-                          <div class="dropdown-divider"></div>
-                          <button type="delete" style="border-radius: 12px;width: 50px" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
+                      <button  type="add" (click)="delete(user.id) " class="btn btn-success">Xóa
+                      </button>
+                      <button  type="add" [routerLink]="['/admin/user/detail' ,user.id]" class="btn btn-success">Chi tiết
+                      </button>
+                      <!--                      <button type="submit"  style="border-radius: 12px;width: 50px ; background-color: #00aeef"  class="badge badge-danger mr-2" [routerLink]="['/admin/user/detail' ,user.id]" > Chi tiết</button>-->
+                      <!--                      <button type="delete" style="border-radius: 12px;width: 50px" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>-->
                     </td>
                   </tr>
-
-
-
                   </tbody>
                 </table>
                 <div th:replace="admin/pagging::content">
@@ -132,6 +123,10 @@
       <!-- page content -->
     </div>
   </div>
+  <div th:replace="admin/modal_confirm::content"></div>
+  <div th:replace="admin/modal_active::content"></div>
+  <div th:replace="admin/modal_disable::content"></div>
+  <div th:replace="admin/footer :: content"></div>
 </div>
 <div th:replace="admin/init_admin :: script"></div>
 <script>

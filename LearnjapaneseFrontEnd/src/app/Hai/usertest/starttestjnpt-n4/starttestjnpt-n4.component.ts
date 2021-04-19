@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../../Manh/modelm/user";
-import {Exam} from "../../admin/model/Exam";
-import {UserServiceService} from "../../../Manh/servicem/user-service.service";
 import {ExamserviceService} from "../../admin/serviceadmin/examservice.service";
+import {Exam} from "../../admin/model/Exam";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-starttestjlpt',
-  templateUrl: './starttestjlpt.component.html',
-  styleUrls: ['./starttestjlpt.component.css'],
-  providers: [ExamserviceService]
+  selector: 'app-starttestjnpt-n4',
+  templateUrl: './starttestjnpt-n4.component.html',
+  styleUrls: ['./starttestjnpt-n4.component.css'],  providers: [ExamserviceService]
 
 })
-export class StarttestjlptComponent implements OnInit {
+export class StarttestjnptN4Component implements OnInit {
   id:number;
   ex : Exam=new Exam();
-
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private  router: Router) { }
 
@@ -25,6 +21,5 @@ export class StarttestjlptComponent implements OnInit {
       this.ex=data
     },error => console.log(error));
   }
-
 
 }
