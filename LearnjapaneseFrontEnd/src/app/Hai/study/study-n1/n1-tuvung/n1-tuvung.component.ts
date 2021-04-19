@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {LessonServiceService} from "../service/lesson-service.service";
-import {Lesson} from "../model/lesson";
+import {LessonServiceService} from "../../../../Thuan/service/lesson-service.service";
+import {Lesson} from "../../../../Thuan/model/lesson";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-homelesson',
-  templateUrl: './homelesson.component.html',
-  styleUrls: ['./homelesson.component.css'],
+  selector: 'app-n1-tuvung',
+  templateUrl: './n1-tuvung.component.html',
+  styleUrls: ['./n1-tuvung.component.css'] ,
   providers: [LessonServiceService]
 })
-export class HomelessonComponent implements OnInit {
+export class N1TuvungComponent  implements OnInit {
   ls: Lesson[];
-
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
               private router: Router) {
   }
@@ -21,7 +20,7 @@ export class HomelessonComponent implements OnInit {
   }
 
   reloadData() {
-    this.lessonService.findByidlessson("N1","Bai 2").subscribe(data => {
+    this.lessonService.findByidlevel("N1","Từ vựng").subscribe(data => {
       this.ls = data;
     });
   }

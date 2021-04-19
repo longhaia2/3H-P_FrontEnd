@@ -1,7 +1,6 @@
 
 <head>
   <title>Lớp học</title>
-  <!--  <div th:replace="fragments/init_lib :: header"></div>-->
 </head>
 <body>
 <app-header></app-header>
@@ -9,7 +8,7 @@
 <main class="class">
   <div class="container">
     <!-- banner -->
-    <div class="banner exam-banner5">
+    <div class="banner exam-banner1">
     </div>
     <!-- class content-->
     <section class="class-content">
@@ -18,8 +17,16 @@
           <div class="class-left">
             <!-- list-subject -->
             <div class="class-sectionTitle">
+
               <span>みんなの日本語第</span>
+
             </div>
+            <h1>Các bài học:</h1>
+            <tr *ngFor="let lson of ls; index as i">
+
+              <td style="font-size: 15px; color: black;width: 550px" class="item1" [routerLink]="['/study/tuvung',lson.level,lson.lesson, lson.id]">
+                <span class="label1">Phần {{i+1}} : {{lson.lesson}}</span></td>
+            </tr>
 
           </div>
         </div>
@@ -28,6 +35,8 @@
     </section>
   </div>
 </main>
-<app-footer></app-footer>
+
 </body>
+
+
 

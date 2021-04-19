@@ -1,8 +1,6 @@
 
 <head>
   <title>Lớp học</title>
-  <link rel="stylesheet" href="homelesson.component.css">
-  <!--  <link rel="stylesheet" href="homepagelesson.component.css">-->
 </head>
 <body>
 <app-header></app-header>
@@ -21,22 +19,25 @@
             <div class="class-sectionTitle">
 
               <span>みんなの日本語第</span>
+
             </div>
+            <h1>Các bài học:</h1>
             <tr *ngFor="let lson of ls; index as i">
-              <div class="item-wrap">
-                <a class="item1" [routerLink]="['/study',lson.level,lson.lesson,lson.term, lson.id]" [ngClass]="{'nguphap': lson.term == 'Ngữ pháp', 'tuvung' : lson.term == 'Từ vựng' }">
-                <span class="label1">Phần {{i+1}} : {{lson.term}}</span></a>
-              </div>
+
+              <td style="font-size: 15px; color: black;width: 550px" class="item1" [routerLink]="['/study/nguphap',lson.level,lson.lesson, lson.id]">
+                <span class="label1">Phần {{i+1}} : {{lson.lesson}}</span></td>
             </tr>
 
           </div>
         </div>
-<app-sidebar-lesson></app-sidebar-lesson>
+        <app-sidebar-lesson></app-sidebar-lesson>
       </div>
     </section>
   </div>
 </main>
 
 </body>
+
+
 
 

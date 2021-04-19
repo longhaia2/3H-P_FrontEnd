@@ -7,29 +7,34 @@ import { User } from '../modelm/user';
   selector: 'app-userupdate',
   templateUrl: './userupdate.component.html',
   styleUrls: ['./userupdate.component.css'],
-  providers:[UserServiceService]
+  // providers:[UserServiceService]
 })
 export class UserupdateComponent implements OnInit {
 
-  id:number;
-  us: User=new User();
-
-  constructor(private userSV: UserServiceService,private route: ActivatedRoute,
-              private router: Router) { }
-
-  ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
-    console.log('====================');
-    console.log(this.id);
-    this.userSV.get(this.id).subscribe(data=>{
-      this.us = data
-    },error => console.log(error));
+//   id:number;
+//   us: User=new User();
+//
+//   constructor(private userSV: UserServiceService,private route: ActivatedRoute,
+//               private router: Router) { }
+  constructor() {
   }
-  updateUser(){
-    this.userSV.update(this.id,this.us).subscribe(data=>{
-      console.log(data);
-      this.router.navigate(['list']);
-      alert("thành công");
-    },error => console.log(error));
+  ngOnInit(): void {
   }
 }
+
+//
+//   ngOnInit(): void {
+//     this.id=this.route.snapshot.params['id'];
+//     console.log('====================');
+//     console.log(this.id);
+//     this.userSV.get(this.id).subscribe(data=>{
+//       this.us = data
+//     },error => console.log(error));
+//   }
+//   updateUser(){
+//     this.userSV.update(this.id,this.us).subscribe(data=>{
+//       console.log(data);
+//       this.router.navigate(['list']);
+//       alert("thành công");
+//     },error => console.log(error));
+//   }

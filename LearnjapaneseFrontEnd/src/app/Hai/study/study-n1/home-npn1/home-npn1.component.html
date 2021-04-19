@@ -1,17 +1,17 @@
 
 <head>
   <title>Lớp học</title>
-  <!--  <div th:replace="fragments/init_lib :: header"></div>-->
+
 </head>
 <body>
 <app-header></app-header>
 <app-menu></app-menu>
 <main class="class">
   <div class="container">
-    <!-- banner -->
-    <div class="banner exam-banner5">
+
+    <div class="banner exam-banner1">
     </div>
-    <!-- class content-->
+
     <section class="class-content">
       <div class="row">
         <div class="col-md-8 col-12">
@@ -20,14 +20,18 @@
             <div class="class-sectionTitle">
               <span>みんなの日本語第</span>
             </div>
-
+            <div style="margin-left: 80px" class="panel-body" [innerHtml]='ls.content'></div>
           </div>
         </div>
         <app-sidebar-lesson></app-sidebar-lesson>
+
       </div>
     </section>
   </div>
 </main>
-<app-footer></app-footer>
+
 </body>
+
+
+
 

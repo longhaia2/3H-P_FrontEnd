@@ -28,8 +28,6 @@ import {QuanlibaihocComponent} from '../Thuan/quanlibaihoc/quanlibaihoc.componen
 import {AddlessonComponent} from '../Thuan/quanlibaihoc/addlesson/addlesson.component';
 import {EditbaihocComponent} from '../Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
 import {DetailComponent} from '../Thuan/quanlibaihoc/detail/detail.component';
-import {LessondetailhomeComponent} from '../Thuan/lessondetailhome/lessondetailhome.component';
-import {HomelessonComponent} from '../Thuan/homelesson/homelesson.component';
 import {ManagerexamComponent} from './admin/managerexam/managerexam.component';
 import {ManagerexamaddComponent} from './admin/managerexam/managerexamadd/managerexamadd.component';
 import {ListquestionComponent} from '../Hien/listquestion/listquestion.component';
@@ -38,8 +36,11 @@ import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
 import {ManagerexamupdateComponent} from "./admin/managerexam/managerexamupdate/managerexamupdate.component";
-import {UserupdateComponent} from "../Manh/userupdate/userupdate.component";
-
+import {ProfileComponent} from "../Manh/profile/profile.component";
+import {HomeTvn1Component} from "./study/study-n1/home-tvn1/home-tvn1.component";
+import {N1TuvungComponent} from "./study/study-n1/n1-tuvung/n1-tuvung.component";
+import {HomeNpn1Component} from "./study/study-n1/home-npn1/home-npn1.component";
+import {N1NguphapComponent} from "./study/study-n1/n1-nguphap/n1-nguphap.component";
 
 
 const routes: Routes = [
@@ -72,8 +73,6 @@ const routes: Routes = [
   {path: 'admin/lesson/detail/:id', component: DetailComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
-  {path: 'study/:level/:lesson/:term/:id', component: LessondetailhomeComponent},
-  {path: 'study/N5/bai', component: HomelessonComponent},
   {path: 'admin/lesson/edit', component: EditbaihocComponent},
   {path: 'admin/exam', component: ManagerexamComponent},
   {path: 'admin/exam/add', component: ManagerexamaddComponent},
@@ -83,7 +82,11 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent},
-  {path: 'admin/user/edit/:id', component: UserupdateComponent},
+  {path: 'admin/user/edit/:id', component: ProfileComponent},
+  {path: 'study/N1/tuvung', component: N1TuvungComponent},
+  {path: 'study/N1/nguphap', component: N1NguphapComponent},
+  {path: 'study/tuvung/:level/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/nguphap/:level/:lesson/:id', component: HomeNpn1Component},
 
 ];
 
