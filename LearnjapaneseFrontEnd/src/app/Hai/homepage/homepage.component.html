@@ -14,10 +14,6 @@
 <app-menu [userNameDsp]="logName"></app-menu>
 <main class="home">
   <div class="container">
-<<<<<<< HEAD
-
-=======
->>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
     <section class="study">
       <div class="section-header">
         <h2 class="section-title">Học tập</h2>
@@ -120,7 +116,6 @@
             <div class="study-rightTitle">
               <span><i class="fa fa-file-text" ></i> Danh sách bài kiểm tra mới</span>
             </div>
-<<<<<<< HEAD
             <div class="news-list">
               <a *ngFor="let exa of ex| paginate:{itemsPerPage:4, currentPage: p};" >
                 <a th:each="item:${userScore}">
@@ -141,7 +136,7 @@
                       </h5>
 
                     </div>
-=======
+
             <div class="study-listChemistry">
               <a th:href="@{/kiemtra/info(examId=${item.id})}" th:each="item:${listExam}">
                 <div class="study-chemistryItem" >
@@ -154,15 +149,16 @@
                       &nbsp;&nbsp; <i class="fa fa-clock-o" ></i> Thời gian: <span th:text="${item.timeOut} +' phút'"> </span>
                     </h3>
                     <span>Mã đề :<span th:text="${item.codeExam}"></span> - <span class="description" th:text="${item.title}"></span></span>
->>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
+
                   </div>
-                </a>
+                </div>
               </a >
               <br><br>
               <pagination-controls style="margin-left: 250px; margin-bottom: 20px" (pageChange)="p = $event"></pagination-controls>
             </div>
+
+
           </div>
-        </div>
       <div class="row">
         <div class="col-md-12 col-12">
           <div class="study-banner">
@@ -187,12 +183,13 @@
           </div>
         </div>
       </div>
+                </a>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-<<<<<<< HEAD
-=======
-
->>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
     <section class="news">
       <div class="section-header">
         <h2 class="section-title">Tin tức</h2>
@@ -283,10 +280,7 @@
         </div>
       </div>
     </section>
-<<<<<<< HEAD
-=======
 
->>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
   </div>
 </main>
 <app-footer></app-footer>
