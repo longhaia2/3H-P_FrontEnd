@@ -1,0 +1,253 @@
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<link rel="stylesheet" href="homepage.component.css">
+<head>
+  <title>Home</title>
+
+  <div th:replace="fragments/init_lib :: header"></div>
+  <script th:src="@{https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
+<body>
+<app-header></app-header>
+<app-menu [userNameDsp]="logName"></app-menu>
+<main class="home">
+  <div class="container">
+    <section class="study">
+      <div class="section-header">
+        <h2 class="section-title">Học tập</h2>
+        <div class="section-img">
+          <img th:src="@{/image/study.png}" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="news-leftTitle">
+            <span><i class="fa fa-graduation-cap" ></i> Danh sách lớp học</span>
+          </div>
+          <div class="study-left">
+            <ul class="nav study-tabHeader" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="study-tabBtn active" id="pills-home-tab" data-toggle="pill"
+                   href="#pills-home" role="tab" aria-controls="pills-home"
+                   aria-selected="true">N1</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="study-tabBtn" id="pills-profile-tab" data-toggle="pill"
+                   href="#pills-profile" role="tab" aria-controls="pills-profile"
+                   aria-selected="false">N2 </a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="study-tabBtn" id="pills-contact-tab4" data-toggle="pill"
+                   href="#pills-contact" role="tab" aria-controls="pills-contact"
+                   aria-selected="false">N3</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="study-tabBtn" id="pills-contact-tab5" data-toggle="pill"
+                   href="#pills-contact" role="tab" aria-controls="pills-contact"
+                   aria-selected="false">N4</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="study-tabBtn" id="pills-contact-tab6" data-toggle="pill"
+                   href="#pills-contact" role="tab" aria-controls="pills-contact"
+                   aria-selected="false">N5</a>
+              </li>
+            </ul>
+            <div class="tab-content study-tabContent" id="pills-tabContent">
+              <div class="tab-pane  fade active show" id="pills-home" role="tabpanel"
+                   aria-labelledby="pills-home-tab">
+                <div class="study-slider">
+                  <div class="study-sliderItem" th:each="item:${listClassTH}">
+                    <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">
+
+                      <img [routerLink]="['/study/N1']" src="../../../assets/image/nihongo/minaN1.png" height="300px"/></a>
+                  </div>
+                </div>
+
+              </div>
+              <div class="tab-pane fade " id="pills-profile" role="tabpanel"
+                   aria-labelledby="pills-profile-tab">
+                <div class="study-slider">
+                  <div class="study-sliderItem" th:each="item:${listClassTHCS}">
+                    <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">
+
+                      <img [routerLink]="['/study/N2']" src="../../../assets/image/nihongo/N2.png" height="300px"/></a>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane  fade " id="pills-contact" role="tabpanel"
+                   aria-labelledby="pills-contact-tab">
+                <div class="study-slider">
+                  <div class="study-sliderItem" th:each="item:${listClassTHPT}">
+                    <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">
+
+                      <img [routerLink]="['/study/N3']" src="../../../assets/image/nihongo/minaN3.jpg" height="300px"/></a>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane  fade " id="pills-contact4" role="tabpanel"
+                   aria-labelledby="pills-contact-tab">
+                <div class="study-slider">
+                  <div class="study-sliderItem" th:each="item:${listClassTHPT}">
+                    <a >
+                      <img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
+                  </div>
+                </div>
+              </div> <div class="tab-pane  fade " id="pills-contact5" role="tabpanel"
+                          aria-labelledby="pills-contact-tab">
+              <div class="study-slider">
+                <div class="study-sliderItem" th:each="item:${listClassTHPT}">
+                  <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                    <img th:src="@{/image/classroom/{image}(image=${item.image})}">
+
+                    <img [routerLink]="['/study/N5']" src="../../../assets/image/nihongo/minan5.jpg" height="300px"/></a>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="study-right">
+            <div class="study-rightTitle">
+              <span><i class="fa fa-file-text" ></i> Danh sách bài kiểm tra mới</span>
+            </div>
+            <div class="study-listChemistry">
+              <a th:href="@{/kiemtra/info(examId=${item.id})}" th:each="item:${listExam}">
+                <div class="study-chemistryItem" >
+                  <div class="img">
+                    <img th:src="@{/image/subject/{image}(image=${item.getExam_subject().image})}" alt="">
+                  </div>
+                  <div class="content">
+                    <h3 class="title" style="font-size: 108%;">
+                      Môn học: <span style="color: #65d258" th:text="${item.getExam_subject().name}"></span>
+                      &nbsp;&nbsp; <i class="fa fa-clock-o" ></i> Thời gian: <span th:text="${item.timeOut} +' phút'"> </span>
+                    </h3>
+                    <span>Mã đề :<span th:text="${item.codeExam}"></span> - <span class="description" th:text="${item.title}"></span></span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-12">
+          <div class="study-banner">
+            <div class="study-banner--1">
+              <div class="item-banner">
+                <img src="../../../assets/image/learn1.png">
+                <p>Học tập mọi lúc, mọi nơi</p>
+              </div>
+            </div>
+            <div class="study-banner--2">
+              <div class="item-banner">
+                <img src="../../../assets/image/learn2.png">
+                <p>Ôn tập đầy đủ các môn học</p>
+              </div>
+            </div>
+            <div class="study-banner--3">
+              <div class="item-banner">
+                <img src="../../../assets/image/learn3.jpg">
+                <p>Học tập dễ dàng, hiệu quả</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="news">
+      <div class="section-header">
+        <h2 class="section-title">Tin tức</h2>
+        <div class="section-img">
+          <img th:src="@{/image/newspaper.png}" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-12">
+          <div class="news-left">
+            <div class="news-leftTitle">
+              <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách bài học mới</span>
+            </div>
+            <div class="news-list">
+              <a th:href="@{/noidungbaihoc(lessonId=${item.id})}" th:each="item:${lessonList}">
+                <div class="news-listItem">
+                  <div class="img">
+                    <img th:src="@{/image/lesson/{image}(image=${item.image})}" alt="">
+                  </div>
+                  <div class="content">
+                    <h3 class="title">
+                      Môn học: <span th:text="${item.getSubject().name}"></span>
+                    </h3>
+                    <span class="description">
+                                           Nội dung : <span th:text="${item.lessonName}"></span>
+                                        </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="news-left">
+            <div class="news-leftTitle">
+              <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách điểm cao</span>
+            </div>
+            <div class="news-list">
+              <a th:each="item:${userScore}">
+                <div class="news-listItem">
+                  <div class="img">
+                    <img th:src="@{/image/user/{image}(image=${item.userResult.image})}" alt="">
+                  </div>
+                  <div class="content">
+                    <h5 class="title" style="font-size: 100%">
+                      Môn học: <span th:text="${item.exam_result.exam_subject.name}"></span> --
+                      <span th:text="${item.exam_result.exam_classroom.classname}"></span>
+                    </h5>
+                    <span class="description">
+                                           Thành viên : <span th:text="${item.userResult.fullname}"></span><br>Số điểm: <span th:text="${item.score}"></span>
+                                        </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="news-right">
+            <div class="news-rightTitle">
+              <span><i class="fa fa-newspaper-o" ></i> Danh sách tin tức mới</span>
+            </div>
+            <div class="news-list">
+              <a th:href="@{/tintuc(newsId=${item.id})}" th:each="item:${listNews}">
+                <div class="news-listItem">
+                  <div class="img">
+                    <img th:src="@{/image/news/{image}(image=${item.image})}" alt="">
+                  </div>
+                  <div class="content">
+                    <h4 class="title" th:text="${item.title}">
+                    </h4>
+                    <span class="description">
+                                            <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}"></span>
+                                        </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+<app-footer></app-footer>
+<!--<div th:replace="fragments/footer :: content"></div>-->
+<!--<div th:replace="fragments/init_lib :: script"></div>-->
+</body>
+</html>

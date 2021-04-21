@@ -1,0 +1,51 @@
+.tuvung {
+  background-image: url(../../../assets/image/lesson/5.png);
+}
+.nguphap{
+  background-image: url(../../../assets/image/lesson/6.png);
+}
+#ontv {
+  background-image: url(../../../assets/image/lesson/8.png);
+}
+#onnn{
+  background-image: url(../../../assets/image/lesson/10.png);
+}
+.item1 {
+  width: 199px;
+  border: #CCC 1px solid;
+  margin: 15px;
+  float: left;
+  display: block;
+  overflow: hidden;
+  height: 150px;
+  padding-top: 110px;
+  text-align: center;
+  background-position: 15px 8px;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  line-height: 12px;
+}
+a {
+  color: #0a5c8c;
+  -webkit-transition: color 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out;
+  -o-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+  -webkit-tap-highlight-color: rgba(10,92,140,0.5);
+}
+a {
+  text-decoration: none;
+}
+a {
+  color: #08c;
+  text-decoration: none;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.item-wrap {
+  float: left;
+  text-align: left;
+}

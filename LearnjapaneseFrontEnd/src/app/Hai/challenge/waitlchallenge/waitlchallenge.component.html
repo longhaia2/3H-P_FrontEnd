@@ -1,0 +1,48 @@
+
+<app-header></app-header>
+<app-menu [userNameDsp]="logName"></app-menu>
+
+<main class="class">
+  <div class="container">
+    <!-- banner -->
+    <div class="banner exam-banner9">
+    </div>
+    <!-- class content-->
+    <section class="class-content">
+      <div class="row">
+        <div class="col-md-8 col-12">
+          <div class="class-left">
+            <div class="class-sectionTitle">
+              <span>PHÒNG CHỜ THI ĐẤU</span>
+            </div>
+            <div class="test-list" >
+              <button [disabled]="!ready" (click)="startQuiz()" style="width: 200px; margin-bottom: 10px;background-color: aquamarine;">Bắt đầu</button>
+<!--              viết vòng lặp-->
+              <a *ngFor="let us of user, let i = index" >
+                <div class="test-listItem">
+                  <div class="content" >
+                    <input [hidden]="i+1">
+                   <div *ngIf="set">
+                     <h6 class="title" [hidden]="setroom(i)" style="font-size: 20px;color: chartreuse;">Chủ phòng: {{us.username}}</h6>
+                     <h2 style="color: aquamarine"> Mọi người hãy sẵn sàng để chiến nhé!!!</h2>
+                   </div>
+                    <div *ngIf="!set">
+                      <h6 class="title"  [hidden]="setroom(i)" >Xin Chào: {{us.username}} <span ></span></h6>
+                      <div >Hãy sẵn sàng để thi đấu</div>
+                     <div (click)="settrue()"><img *ngIf="!ready" style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
+                    <div (click)="setfalse()" > <img *ngIf="ready"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px; margin-top: 10px"/></div> </div>
+
+                  </div>
+                </div>
+              </a>
+            </div>
+            </div>
+          </div>
+        <app-sidebar></app-sidebar>
+      </div>
+    </section>
+  </div>
+</main>
+<app-footer></app-footer>
+
+

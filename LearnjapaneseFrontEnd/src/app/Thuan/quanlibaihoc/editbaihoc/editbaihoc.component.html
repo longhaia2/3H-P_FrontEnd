@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Thêm bài học</title>
+  <div th:replace="admin/init_admin :: header"></div>
+  <meta th:name="_csrf" th:content="${_csrf.token}"/>
+  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+<app-sidebaradmin></app-sidebaradmin>
+    <app-headeradmin></app-headeradmin>
+    <div th:replace="admin/sidebar :: content"></div>
+    <div th:replace="admin/header :: content"></div>
+
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h1>Quản Lý Thêm Bài Học </h1>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row" >
+          <div class="col-md-8">
+
+          </div>
+          <br>
+          <form  method="post" enctype="multipart/form-data">
+
+            <div class="col-md-8" style="margin-left: 180px">
+              <div class="p-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Cập nhật bài học</h4>
+                </div>
+                <div class="row mt-2">
+                <div class="col-md-12">
+                  <label class="labels">ID</label>
+                  <input type="text" [(ngModel)]="ls.id" class="form-control"  name="id"  id="id">
+                </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-12">
+                    <label class="labels">Tên bài học</label>
+                    <input type="text" [(ngModel)]="ls.lesson" class="form-control"  name="lessonName" id="lessonName" >
+                    <span id="vld-lessonName" class="span-vld hide"> Tên bài học không được để trống </span>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-12">
+                    <label class="labels">Mô tả</label>
+                    <input type="text" [(ngModel)]="ls.description" class="form-control"  name="description"  id="descriptionLesson">
+                    <span id="vld-descriptionLesson" class="span-vld hide"> Mô tả bài học không được để trống </span>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label>Học phần</label>
+                    <select [(ngModel)]="ls.term" class="form-control" name="subjectId" id="subjectId">
+                      <!--                      <option value="">Tùy chọn</option>-->
+                      <option value="Từ vựng">Từ vựng</option>
+                      <option value="Ngữ pháp">Ngữ pháp</option>
+                    </select>
+                    <span id="vld-subjectId" class="span-vld hide"> Vui lòng chọn môn học </span>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Trình độ</label>
+                    <select [(ngModel)]="ls.level" class="form-control" name="classId" id="classId">
+                      <!--                      <option value="">Tùy chọn</option>-->
+                      <option value="N5">N5</option>
+                      <option value="N4">N4</option>
+                      <option value="N3">N3</option>
+                      <option value="N2">N2</option>
+                      <option value="N1">N1</option>
+                    </select>
+                    <span id="vld-classId" class="span-vld hide"> Vui lòng chọn lớp học </span>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label class="labels">Nội dung bài học</label>
+                    <br>
+                    <ckeditor name="checkeditor"
+                              [(ngModel)]="ls.content">
+                    </ckeditor>
+                  </div>
+                </div>
+
+                <div class="text-center mt-3">
+                  <button (click)="updateLesson()" class="btn btn-success" id="btnAddLesson"  type="submit"  >Update</button>
+                  &nbsp;&nbsp;
+                  <a  class="btn btn-danger"[routerLink]="['/admin/lesson']">Hủy bỏ</a>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- page content -->
+  </div>
+</div>
+
+<div th:replace="admin/footer :: content"></div>
+<div th:replace="admin/init_admin :: script"></div>
+</body>
+</html>
