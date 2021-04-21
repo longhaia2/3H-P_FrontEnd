@@ -1,0 +1,58 @@
+[
+  {
+    "_id": 1,
+    "question": "Who is the current president of the United States of America?",
+    "questionImg": "",
+    "options": [
+      {
+        "_id": "1",
+        "text": "Barack Obama"
+      },
+      {
+        "_id": "2",
+        "text": "Donald Trump"
+      },
+      {
+        "_id": "3",
+        "text": "George Bush"
+      },  {
+        "_id": "4",
+        "text": "Hải"
+      }
+    ],
+    "rightAnswer": {
+      "_id": "2",
+      "text": "Donald Trump"
+    },
+    "explanation": "Explain answer here!",
+    "answerImage": ""
+  },
+  {
+    "_id": 1,
+    "question": "Ai đẹp trai nhất?",
+    "questionImg": "",
+    "options": [
+      {
+        "_id": "1",
+        "text": "Hiền"
+      },
+      {
+        "_id": "2",
+        "text": "Hải"
+      },
+      {
+        "_id": "3",
+        "text": "Thuận"
+      },{
+        "_id": "4",
+        "text": "Mạnh"
+      }
+    ],
+    "rightAnswer": {
+      "_id": "2",
+      "text": "Hải"
+    },
+    "explanation": "Explain answer here!",
+    "answerImage": ""
+  }
+]
