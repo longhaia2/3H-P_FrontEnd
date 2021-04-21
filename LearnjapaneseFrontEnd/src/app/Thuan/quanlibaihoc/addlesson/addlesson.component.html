@@ -22,7 +22,7 @@
 
           </div>
           <br>
-          <form (ngSubmit)="add()" method="post" enctype="multipart/form-data">
+          <form [formGroup]="submitForm"  (ngSubmit)="add()" method="post" enctype="multipart/form-data">
 
             <div class="col-md-8" style="margin-left: 180px">
               <div class="p-2">
@@ -32,46 +32,51 @@
                 <div class="row mt-2">
                   <div class="col-md-12">
                     <label class="labels">Tên bài học</label>
-                    <input type="text" [(ngModel)]="ls.lesson" class="form-control"   name="lessonName" id="lessonName" ng-required="$scope.uid">
-<!--                    <span  id="vld-lessonName" class="span-vld hide"> Tên bài học không được để trống </span>-->
+                    <input  type="text" [(ngModel)]="ls.lesson" class="form-control"  formControlName="baihoc"  name="lessonName" id="lessonName" ng-required="$scope.uid">
+                    <span class="error" *ngIf="baihoc.invalid && baihoc.touched" > Tên bài học không được để trống </span>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-12">
                     <label class="labels">Mô tả bài học</label>
-                    <input type="text" [(ngModel)]="ls.description" ng-required="$scope.uid" class="form-control"  name="description"  id="descriptionLesson"/>
-                    <span id="vld-descriptionLesson" class="span-vld hide"> Mô tả bài học không được để trống </span>
+                    <input type="text" [(ngModel)]="ls.description" ng-required="$scope.uid" class="form-control"formControlName="mota"   name="description"  id="descriptionLesson"/>
+                    <span class="error" *ngIf="mota.invalid && mota.touched"> Mô tả bài học không được để trống </span>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label>Học phần</label>
-                    <select [(ngModel)]="ls.term" class="form-control" name="subjectId" id="subjectId">
-                      <option value="">Tùy chọn</option>
+                    <select [(ngModel)]="ls.term" class="form-control"formControlName="hocphan"   name="subjectId" id="subjectId">
+<!--                      <option value="">Tùy chọn</option>-->
                       <option value="Từ vựng">Từ vựng</option>
                       <option value="Ngữ pháp">Ngữ pháp</option>
                     </select>
-                    <span id="vld-subjectId" class="span-vld hide"> Vui lòng chọn môn học </span>
+                    <span class="error" *ngIf="hocphan.invalid && hocphan.touched"> Vui lòng chọn học phần </span>
                   </div>
                   <div class="col-md-6">
                     <label>Trình độ</label>
-                    <select [(ngModel)]="ls.level" class="form-control" name="classId" id="classId">
-                      <option value="">Tùy chọn</option>
+                    <select  [(ngModel)]="ls.level" class="form-control"formControlName="trinhdo"   name="classId" id="classId">
+<!--                      <option  value="">Tùy chọn</option>-->
                       <option value="N5">N5</option>
                       <option value="N4">N4</option>
                       <option value="N3">N3</option>
                       <option value="N2">N2</option>
                       <option value="N1">N1</option>
                     </select>
+                    <span class="error" *ngIf="trinhdo.invalid && trinhdo.touched"> Vui lòng chọn trinh dộ </span>
+
                   </div>
                 </div>
                 <div class="row mt-3">
                   <div class="col-md-12">
                     <label class="labels">Nội dung bài học</label>
                     <br>
-                    <ckeditor name="checkeditor"
+                    <a>
+                    <ckeditor formControlName="noidung"
                     [(ngModel)]="ls.content">
-                  </ckeditor>
+                    </ckeditor>
+                    <span class="error" *ngIf="noidung.invalid && noidung.touched"> Nội dung không được để trống </span>
+                    </a>
                   </div>
                 </div>
 

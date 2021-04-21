@@ -15,9 +15,6 @@ export class ManagerexamComponent implements OnInit {
   ex:Exam[];
   constructor(private examserviceService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
-// (private lessonService: LessonServiceService, private route: ActivatedRoute,
-//   private router: Router){}
-
   ngOnInit(): void {
 this.list();
   }

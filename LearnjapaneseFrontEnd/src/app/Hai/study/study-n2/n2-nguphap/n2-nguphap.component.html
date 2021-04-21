@@ -21,8 +21,7 @@
             </div>
             <h1>Các bài học:</h1>
             <tr *ngFor="let lson of ls; index as i">
-
-              <td style="font-size: 15px; color: black;width: 550px" class="item1" [routerLink]="['/study/nguphap',lson.level,lson.lesson, lson.id]">
+              <td style="font-size: 15px; color: black;width: 550px" class="item1" [routerLink]="['/study/',lson.level,'ngphap',lson.lesson, lson.id]">
                 <span class="label1">Phần {{i+1}} : {{lson.lesson}}</span></td>
             </tr>
 

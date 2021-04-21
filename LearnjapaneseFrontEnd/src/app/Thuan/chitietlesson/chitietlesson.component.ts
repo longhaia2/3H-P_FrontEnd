@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {LessonServiceService} from "../../../../Thuan/service/lesson-service.service";
-import {Lesson} from "../../../../Thuan/model/lesson";
+import {LessonServiceService} from "../service/lesson-service.service";
+import {Lesson} from "../model/lesson";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-home-npn5',
-  templateUrl: './home-npn5.component.html',
-  styleUrls: ['./home-npn5.component.css'],
+  selector: 'app-chitietlesson',
+  templateUrl: './chitietlesson.component.html',
+  styleUrls: ['./chitietlesson.component.css'],
   providers: [LessonServiceService]
 })
-export class HomeNpn5Component implements OnInit {
+export class ChitietlessonComponent implements OnInit {
   id:number;
   ls: Lesson=new Lesson();
 
@@ -18,7 +18,6 @@ export class HomeNpn5Component implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-
     this.lessonService.get(this.id).subscribe(data=>{
       this.ls = data
     }, error => console.log(error));
