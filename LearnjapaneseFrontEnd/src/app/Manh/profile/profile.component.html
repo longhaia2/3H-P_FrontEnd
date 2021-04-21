@@ -1,101 +1,236 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  lang="en">
-<head>
-  <title>Profile</title>
-  <div th:replace="fragments/init_lib :: header"></div>
-</head>
-<body>
-<div th:replace="fragments/header :: content"></div>
-<div th:replace="fragments/menu :: content"></div>
-<main class="home">
-  <div class="container">
-    <div class="row mt-4">
-      <div class="col-md-5 border-right">
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="d-flex flex-column align-items-center text-center">
-            <form method="post" th:action="@{/profile/update-image-user}" enctype="multipart/form-data">
-              <input type="text" name="userId" th:value="${us.id}" hidden>
-              <h4 class="mb-5">Update hình ảnh</h4>
-              <img [src]="(featuredPhotoStream | async)?.u" alt="Featured Photo 1" >
-              <input type="file" (change)="featuredPhotoSelected($event)" name="image" id="fileImage" style="overflow: hidden"/>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org"  lang="en">-->
+<!--<head>-->
+<!--  <title>Profile</title>-->
+<!--  <div th:replace="fragments/init_lib :: header"></div>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:replace="fragments/header :: content"></div>-->
+<!--<div th:replace="fragments/menu :: content"></div>-->
+<!--<main class="home">-->
+<!--  <div class="container">-->
+<!--    <div class="row mt-4">-->
+<!--      <div class="col-md-5 border-right">-->
+<!--        <div class="d-flex justify-content-center align-items-center">-->
+<!--          <div class="d-flex flex-column align-items-center text-center">-->
+<!--            <form method="post" th:action="@{/profile/update-image-user}" enctype="multipart/form-data">-->
+<!--              <input type="text" name="userId" th:value="${us.id}" hidden>-->
+<!--              <h4 class="mb-5">Update hình ảnh</h4>-->
+<!--              <img [src]="(featuredPhotoStream | async)?.u" alt="Featured Photo 1">-->
+<!--              <input [(ngModel)]="us.Image" type="file" (change)="featuredPhotoSelected($event)" name="image" id="fileImage" style="overflow: hidden"/>-->
 
-              <div class="col-md-12 col-sm-12 mt-3">
-                <img id="imgPreview" style="width: 63%;" th:src="@{/image/user/{image}(image=${us.image})}">
-              </div>
-              <input type="submit" value="Cập nhật ảnh" id="btnUpdateImage" class="btn btn-success mt-3">
-            </form>
+<!--              <div class="col-md-12 col-sm-12 mt-3">-->
+<!--                <img id="imgPreview" style="width: 63%;" th:src="@{/image/user/{image}(image=${us.image})}">-->
+<!--              </div>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-4 border-right">-->
+<!--        <div class="">-->
+<!--          <form th:action="@{/profile/update-user}" method="post"  >-->
+<!--            <div class="col-md-8 border-right">-->
+<!--              <div class="p-3">-->
+<!--                <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--                  <h4 class="text-right">Thay đổi thông tin người dùng</h4>-->
+<!--                </div>-->
+<!--                <div class="row mt-2">-->
+<!--                  <div class="col-md-6">-->
+<!--                    <label class="labels">Tên đăng nhập (viết liền không dấu và kí tự thường)</label>-->
+<!--                    <input type="text" [(ngModel)]="us.username" maxlength="15" class="form-control" name="username" id="usernameUser" >-->
+<!--                    <span id="vld-username" class="span-vld hide">Username không được để trống.</span>-->
+<!--                  </div>-->
+<!--                  <div class="col-md-6">-->
+<!--                    <label class="labels">Họ và tên</label>-->
+<!--                    <input type="text" [(ngModel)]="us.fullName" maxlength="20" class="form-control" name="fullname" id="fullnameUser" >-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="row mt-2">S-->
+<!--                  <div class="col-md-6">-->
+<!--                    <label class="labels">Email</label>-->
+<!--                    <input type="email" [(ngModel)]="us.email" class="form-control" name="email" id="emailUser" >-->
+<!--                    <span id="vld-email" class="span-vld hide">Email không được để trống hoặc sai định dạng.</span>-->
+<!--                  </div>-->
+<!--                  <div class="col-md-6">-->
+<!--                    <label class="labels">Password</label>-->
+<!--                    <input type="password" [(ngModel)]="us.password" class="form-control" name="password" id="passwordUser">-->
+<!--                    <span id="vld-pass" class="span-vld hide">Password không được để trống.</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="row mt-2">-->
+<!--                  <div class="col-md-6">-->
+<!--                    <label class="labels">Số điện thoại</label>-->
+<!--                    <input type="number" [(ngModel)]="us.phoneNumber" maxlength="10" minlength="10" class="form-control" name="phone" id="phoneUser" th:value="${ph}" >-->
+<!--                    <span id="vld-phone" class="span-vld hide">Số điện thoại sai định dạng.</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="row mt-2">-->
+<!--                  <div class="col-md-6">-->
+<!--                    <label class="labels">Giới tính</label>-->
+<!--                    <select class="gt" name="gt" id="gtinh"[(ngModel)]="us.gender"  >-->
+<!--                      <option value="Nam">Nam</option>`-->
+<!--                      <option value="Nữ">Nữ</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="row mt-2">-->
+
+<!--                </div>-->
+<!--                <div class="text-center mt-3">-->
+<!--                  <button (click)="updateUser()" class="btn btn-success" type="submit" id="btnAddUser">Sửa</button>-->
+<!--                  <a class="btn btn-danger" [routerLink]="['/admin/manage/user']">Hủy bỏ</a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; Modal &ndash;&gt;-->
+<!--  <div class="modal fade" id="exampleModal" tabindex="-1"-->
+<!--       role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <h5 class="modal-title text-danger" id="exampleModalLabel">Thông báo ! </h5>-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="modal-body"><h3>Vui lòng chọn hình ảnh để update.</h3></div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</main>-->
+<!--<div th:replace="fragments/footer :: content"></div>-->
+<!--<div th:replace="fragments/init_lib :: script"></div>-->
+<!--<script>-->
+<!--  $('#datepicker').datepicker({-->
+<!--    iconsLibrary: 'fontawesome',-->
+<!--    uiLibrary: 'bootstrap4',-->
+<!--    format: 'dd-mm-yyyy'-->
+<!--  });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Sửa user</title>
+  <div th:replace="admin/init_admin :: header"></div>
+</head>
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container" >
+    <app-sidebaradmin></app-sidebaradmin>
+    <app-headeradmin></app-headeradmin>
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3> <small>Thay đổi User</small></h3>
           </div>
         </div>
-      </div>
-      <div class="col-md-4 border-right">
-        <div class="">
-          <form th:action="@{/profile/update-user}" method="post"  >
-            <div class="d-flex justify-content-center align-items-center mb-3">
-              <h4 class="text-right">Thông tin tài khoản</h4>
+        <div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="x_title">
+              <div class="clearfix"></div>
             </div>
-            <div class="bg-danger" id="error"
-                 th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
-            </div>
-            <div class="bg-success" id="success"
-                 th:if="${not #strings.isEmpty(success)}" th:text="${success}" style="color: white;padding: 10px">
-            </div>
-            <input type="text" hidden="true" name="userId" th:value="${us.id}">
-            <div class="row mt-3">
-              <div class="col-md-12 mt-2">
-                <label class="labels">Username</label>
-                <input type="text" class="form-control" name="username" th:value="${us.username}" readonly>
-              </div>
-              <div class="col-md-12 mt-2" >
-                <label class="labels">Fullname</label>
-                <input type="text" class="form-control" name="fullname"  th:value="${us.fullname}" >
-              </div>
-              <div class="col-md-12 mt-2">
-                <label class="labels">Email</label>
-                <input type="text" class="form-control" name="email" th:value="${us.email}" readonly >
-              </div>
-              <div class="col-md-12 mt-2">
-                <label class="labels">Số điện thoại</label>
-                <input type="text" class="form-control" name="phone" th:value="${us.phone}" >
-              </div>
+          </div>
+          <br>
+          <form class="col-md-12"  method="post" enctype="multipart/form-data">
+            <div class="col-md-8 border-right">
+              <div class="p-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Thay đổi thông tin người dùng</h4>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">Tên đăng nhập (viết liền không dấu và kí tự thường)</label>
+                    <input type="text" [(ngModel)]="us.username" maxlength="15" class="form-control" name="username" id="usernameUser" >
+                    <span id="vld-username" class="span-vld hide">Username không được để trống.</span>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Họ và tên</label>
+                    <input type="text" [(ngModel)]="us.fullName" maxlength="20" class="form-control" name="fullname" id="fullnameUser" >
+                  </div>
+                </div>
+                <div class="row mt-2">S
+                  <div class="col-md-6">
+                    <label class="labels">Email</label>
+                    <input type="email" [(ngModel)]="us.email" class="form-control" name="email" id="emailUser" >
+                    <span id="vld-email" class="span-vld hide">Email không được để trống hoặc sai định dạng.</span>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Password</label>
+                    <input type="password" [(ngModel)]="us.password" class="form-control" name="password" id="passwordUser">
+                    <span id="vld-pass" class="span-vld hide">Password không được để trống.</span>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">Số điện thoại</label>
+                    <input type="number" [(ngModel)]="us.phoneNumber" maxlength="10" minlength="10" class="form-control" name="phone" id="phoneUser" th:value="${ph}" >
+                    <span id="vld-phone" class="span-vld hide">Số điện thoại sai định dạng.</span>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">Giới tính</label>
+                    <select class="gt" name="gt" id="gtinh"[(ngModel)]="us.gender"  >
+                      <option value="Nam">Nam</option>`
+                      <option value="Nữ">Nữ</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <div method="post" th:action="@{/profile/update-image-user}" enctype="multipart/form-data">-->
+                      <input type="text" name="userId" th:value="${us.id}" hidden>
+                      <h4 class="mb-5">Update hình ảnh</h4>
+                      <img [src]="(featuredPhotoStream | async)?.u" alt="Featured Photo 1">
+                      <input type="file" (change)="featuredPhotoSelected($event)" name="image" id="fileImage" style="overflow: hidden"/>
 
-
-            </div>
-            <div class="mt-3 text-center">
-              <button class="btn btn-success" type="submit">Lưu thông tin</button>
+                      <div class="col-md-12 col-sm-12 mt-3">
+                        <img id="imgPreview" [(ngModel)]="us.Image"  style="width: 63%;" th:src="@{/image/user/{image}(image=${us.image})}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-3">
+                  <button (click)="updateUser()" class="btn btn-success" type="submit" id="btnAddUser">Sửa</button>
+                  <a class="btn btn-danger" [routerLink]="['/admin/manage/user']">Hủy bỏ</a>
+                </div>
+              </div>
             </div>
           </form>
         </div>
       </div>
-
     </div>
+    <!-- page content -->
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1"
-       role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-danger" id="exampleModalLabel">Thông báo ! </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body"><h3>Vui lòng chọn hình ảnh để update.</h3></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-<div th:replace="fragments/footer :: content"></div>
-<div th:replace="fragments/init_lib :: script"></div>
-<script>
-  $('#datepicker').datepicker({
-    iconsLibrary: 'fontawesome',
-    uiLibrary: 'bootstrap4',
-    format: 'dd-mm-yyyy'
-  });
-</script>
+  <script>
+    $(document).ready(function () {
+      $('#userManager').addClass("active");
+      $('#datepicker').datepicker({
+        iconsLibrary: 'fontawesome',
+        uiLibrary: 'bootstrap4',
+        format: 'dd-mm-yyyy'
+      });
+    });
+  </script>
+</div>
 </body>
 </html>

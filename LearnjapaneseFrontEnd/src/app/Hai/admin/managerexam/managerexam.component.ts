@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ExamserviceService} from '../serviceadmin/examservice.service';
 import {Exam} from '../model/Exam';
+import {LessonServiceService} from "../../../Thuan/service/lesson-service.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-managerexam',
@@ -11,8 +13,8 @@ import {Exam} from '../model/Exam';
 export class ManagerexamComponent implements OnInit {
 
   ex:Exam[];
-  constructor(private examserviceService: ExamserviceService) { }
-
+  constructor(private examserviceService: ExamserviceService, private route: ActivatedRoute,
+              private router: Router) { }
   ngOnInit(): void {
 this.list();
   }
@@ -28,5 +30,9 @@ this.list();
     alert("Xóa thành công")
     window.location.reload();
   }
+  updateEx(id: number){
+    this.router.navigate(['/edit',id])
+  }
+
 
 }

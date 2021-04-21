@@ -66,16 +66,16 @@ import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
 
-import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
-import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
+
+
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
-import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
 import {CountdownModule} from "ngx-countdown";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import { AngularFireDatabaseModule} from "@angular/fire/database";
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {ReactiveFormsModule} from '@angular/forms'
 
 
 
@@ -83,17 +83,38 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
-
+// @ts-ignore
+// @ts-ignore
+// @ts-ignor
 
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
-import { ProfileComponent } from './_services/profile/profile.component';
+
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
 
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
+import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamupdate/managerexamupdate.component';
+import { UserupdateComponent } from './Manh/userupdate/userupdate.component';
+import {ProfileComponent} from "./Manh/profile/profile.component";
+import { HomeTvn1Component } from './Hai/study/study-n1/home-tvn1/home-tvn1.component';
+import { N1TuvungComponent } from './Hai/study/study-n1/n1-tuvung/n1-tuvung.component';
+import { N1NguphapComponent } from './Hai/study/study-n1/n1-nguphap/n1-nguphap.component';
+import { HomeNpn1Component } from './Hai/study/study-n1/home-npn1/home-npn1.component';
+import { N5TuvungComponent } from './Hai/study/study-n5/n5-tuvung/n5-tuvung.component';
+import { N5NguphapComponent } from './Hai/study/study-n5/n5-nguphap/n5-nguphap.component';
+import { N4TuvungComponent } from './Hai/study/study-n4/n4-tuvung/n4-tuvung.component';
+import { N4NguphapComponent } from './Hai/study/study-n4/n4-nguphap/n4-nguphap.component';
+import { N3TuvungComponent } from './Hai/study/study-n3/n3-tuvung/n3-tuvung.component';
+import { N3NguphapComponent } from './Hai/study/study-n3/n3-nguphap/n3-nguphap.component';
+import { N2TuvungComponent } from './Hai/study/study-n2/n2-tuvung/n2-tuvung.component';
+import { N2NguphapComponent } from './Hai/study/study-n2/n2-nguphap/n2-nguphap.component';
+import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -156,25 +177,38 @@ import {LoginComponent} from './_services/login/login.component';
     HomeadminComponent,
     HeaderadminComponent,
     DetailComponent,
-    LessondetailhomeComponent,
-      HomelessonComponent,
-
     ManagerexamComponent,
     ManagerexamaddComponent,
-    ManagerexameditComponent,
     ProfileComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
+    ManagerexamupdateComponent,
+    UserupdateComponent,
+    HomeTvn1Component,
+    N1TuvungComponent,
+    N1NguphapComponent,
+    HomeNpn1Component,
+    N5TuvungComponent,
+    N5NguphapComponent,
+    N4TuvungComponent,
+    N4NguphapComponent,
+    N3TuvungComponent,
+    N3NguphapComponent,
+    N2TuvungComponent,
+    N2NguphapComponent,
+    ChitietlessonComponent,
+  
+
 
   ],
     imports: [
         BrowserModule,
         RouterModule,
+        ReactiveFormsModule,
         ManagerRoutingModule,
         MatTabsModule,
         FormsModule,

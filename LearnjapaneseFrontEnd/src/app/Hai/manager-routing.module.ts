@@ -28,19 +28,32 @@ import {QuanlibaihocComponent} from '../Thuan/quanlibaihoc/quanlibaihoc.componen
 import {AddlessonComponent} from '../Thuan/quanlibaihoc/addlesson/addlesson.component';
 import {EditbaihocComponent} from '../Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
 import {DetailComponent} from '../Thuan/quanlibaihoc/detail/detail.component';
-import {LessondetailhomeComponent} from '../Thuan/lessondetailhome/lessondetailhome.component';
-import {HomelessonComponent} from '../Thuan/homelesson/homelesson.component';
 import {ManagerexamComponent} from './admin/managerexam/managerexam.component';
 import {ManagerexamaddComponent} from './admin/managerexam/managerexamadd/managerexamadd.component';
-import {ManagerexameditComponent} from './admin/managerexam/managerexamedit/managerexamedit.component';
 import {ListquestionComponent} from '../Hien/listquestion/listquestion.component';
 import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
+import {ManagerexamupdateComponent} from "./admin/managerexam/managerexamupdate/managerexamupdate.component";
+import {ProfileComponent} from "../Manh/profile/profile.component";
+import {HomeTvn1Component} from "./study/study-n1/home-tvn1/home-tvn1.component";
+import {N1TuvungComponent} from "./study/study-n1/n1-tuvung/n1-tuvung.component";
+import {HomeNpn1Component} from "./study/study-n1/home-npn1/home-npn1.component";
+import {N1NguphapComponent} from "./study/study-n1/n1-nguphap/n1-nguphap.component";
+import {N5TuvungComponent} from "./study/study-n5/n5-tuvung/n5-tuvung.component";
+import {N5NguphapComponent} from "./study/study-n5/n5-nguphap/n5-nguphap.component";
+import {N4TuvungComponent} from "./study/study-n4/n4-tuvung/n4-tuvung.component";
+import {N4NguphapComponent} from "./study/study-n4/n4-nguphap/n4-nguphap.component";
+import {N3NguphapComponent} from "./study/study-n3/n3-nguphap/n3-nguphap.component";
+import {N2TuvungComponent} from "./study/study-n2/n2-tuvung/n2-tuvung.component";
+import {N2NguphapComponent} from "./study/study-n2/n2-nguphap/n2-nguphap.component";
+import {ChitietlessonComponent} from "../Thuan/chitietlesson/chitietlesson.component";
+import {N3TuvungComponent} from "./study/study-n3/n3-tuvung/n3-tuvung.component";
 
 
-
+// @ts-ignore
+// @ts-ignore
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent},
@@ -71,18 +84,37 @@ const routes: Routes = [
   {path: 'admin/lesson/detail/:id', component: DetailComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
-  {path: 'study/N5/:lesson/:term/:id', component: LessondetailhomeComponent},
-  {path: 'study/N5/bai', component: HomelessonComponent},
   {path: 'admin/lesson/edit', component: EditbaihocComponent},
   {path: 'admin/exam', component: ManagerexamComponent},
   {path: 'admin/exam/add', component: ManagerexamaddComponent},
-  {path: 'admin/exam/edit', component: ManagerexameditComponent},
   {path: 'admin/question', component: ListquestionComponent},
   {path: 'admin/question/add', component: AddquestionComponent},
   {path: 'exam', component: StarttestjlptComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-
+  {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent},
+  {path: 'admin/user/edit/:id', component: ProfileComponent},
+  {path: 'study/N1/tuvung', component: N1TuvungComponent},
+  {path: 'study/N1/nguphap', component: N1NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpn1Component},
+  {path: 'study/N5/tuvung', component: N5TuvungComponent},
+  {path: 'study/N5/nguphap', component: N5NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpn1Component},
+  {path: 'study/N4/tuvung', component: N4TuvungComponent},
+  {path: 'study/N4/nguphap', component: N4NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpn1Component},
+  {path: 'study/N3/tuvung', component: N3TuvungComponent},
+  {path: 'study/N3/nguphap', component: N3NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpn1Component},
+  {path: 'study/N2/tuvung', component: N2TuvungComponent},
+  {path: 'study/N2/nguphap', component: N2NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvn1Component},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpn1Component},
+  {path: 'home/lesson/chitietlesson/:id', component: ChitietlessonComponent},
 ];
 
 @NgModule({
