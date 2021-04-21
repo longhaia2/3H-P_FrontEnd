@@ -38,22 +38,17 @@ import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
-import {CompetitionComponent} from "./challenge/competition/competition.component";
-import {EndcompetitionComponent} from "./challenge/endcompetition/endcompetition.component";
 import {ReviewgrammarComponent} from "../Hien/reviewgrammar/reviewgrammar.component";
-import {StarttestjnptN1Component} from "./usertest/starttestjnpt-n1/starttestjnpt-n1.component";
-import {StarttestjnptN2Component} from "./usertest/starttestjnpt-n2/starttestjnpt-n2.component";
-import {StarttestjnptN3Component} from "./usertest/starttestjnpt-n3/starttestjnpt-n3.component";
-import {StarttestjnptN4Component} from "./usertest/starttestjnpt-n4/starttestjnpt-n4.component";
-
+import {VocabularyComponent} from "../Hien/vocabulary/vocabulary.component";
+import {ReviewvocabularyComponent} from "../Hien/reviewvocabulary/reviewvocabulary.component";
 
 
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
-  {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},
+  {path: 'page-home', component: HomepageComponent},
   {path: 'page-test', component: ListtestjlptComponent},
-  {path: 'N5/start-test', component: StarttestjlptComponent},
+  {path: 'start-test', component: StarttestjlptComponent},
   {path: 'test', component: TestjlptComponent},
   {path: 'test/N1', component: TestN1Component},
   {path: 'test/N2', component: TestN2Component},
@@ -90,15 +85,9 @@ const routes: Routes = [
   {path: 'exam', component: StarttestjlptComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'competition', component: CompetitionComponent},
-  {path: 'end', component: EndcompetitionComponent},
-  {path: 'question/list/:id', component: ReviewgrammarComponent},
-  {path: 'exam/N5/:id', component: StarttestjlptComponent},
-  {path: 'exam/N4/:id', component: StarttestjnptN4Component},
-  {path: 'exam/N3/:id', component: StarttestjnptN3Component},
-  {path: 'exam/N2/:id', component: StarttestjnptN2Component},
-  {path: 'exam/N1/:id', component: StarttestjnptN1Component},
-  {path: 'exam/N5/dd/testjnpt', component: TestjlptComponent},
+  {path: 'vocabulary/exam/list/:id', component: ReviewvocabularyComponent},
+  {path: 'grammar/exam/list/:id', component: ReviewgrammarComponent},
+
 
 
 ];

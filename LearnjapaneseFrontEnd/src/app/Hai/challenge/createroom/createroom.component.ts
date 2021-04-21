@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {RoomChallenge} from '../model/RoomChallenge';
 import {ServiceService} from '../../service.service';
 import {Router} from '@angular/router';
-import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-createroom',
@@ -14,9 +13,7 @@ export class CreateroomComponent implements OnInit {
 
   cl:RoomChallenge;
   public logName:string;
-  constructor(private csService: ServiceService, private router: Router, private title: Title) {
-    this.title.setTitle("Tạo Phòng Chiến");
-  }
+  constructor(private csService: ServiceService, private router: Router) { }
 
 
 
@@ -27,19 +24,13 @@ export class CreateroomComponent implements OnInit {
     this.logName = userName['username'];
   }
   add(){
-    if(this.logName==null){
-      alert("Bạn vui lòng đăng nhập");
-      this.router.navigate(['login']);
-    }
-    else {
-      this.csService.create(this.cl).subscribe(data => {
-        console.log(data);
-        this.cl = data;
-        alert("Thành Công");
-        this.router.navigate(['challenge/wait', this.cl.room_id])
+    this.csService.create(this.cl).subscribe(data=>{
+      console.log(data);
+      this.cl=data;
+      alert("Thành Công");
+      this.router.navigate(['challenge/wait'])
 
-      })
-    };
+    });
     this.cl = new RoomChallenge();
   }
   onSubmint(){

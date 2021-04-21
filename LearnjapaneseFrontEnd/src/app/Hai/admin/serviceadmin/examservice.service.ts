@@ -23,18 +23,4 @@ export class ExamserviceService {
   delete(id): Observable<any>{
     return this.http.delete(`${'http://localhost:8080/exam/delete'}/${id}`);
   }
-
-
-
-
-
-  get(id): Observable<any> {
-    return this.http.get(`${'http://localhost:8080/exam'}/${id}`);
-  }
-
-  findBylevel(level): Observable<Exam[]> {
-    return this.http.get<Exam[]>(`${'http://localhost:8080/exam'}/pp/${level}`);
-  }
-
-
 }

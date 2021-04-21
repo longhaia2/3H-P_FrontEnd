@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {LessonServiceService} from "../service/lesson-service.service";
 import {Lesson} from "../model/lesson";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-lessondetailhome',
@@ -15,9 +14,7 @@ export class LessondetailhomeComponent implements OnInit {
   ls: Lesson=new Lesson();
 
   constructor(private lessonService: LessonServiceService, private  route: ActivatedRoute,
-              private  router: Router, private title: Title) {
-    this.title.setTitle("Danh Sách Bài Học")
-  }
+              private  router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];

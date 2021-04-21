@@ -69,4 +69,6 @@
   background-color: #aef1d44f;
 }
 
-
+.validAnswer {
+  color: green;
+}

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {BrowserModule, Title} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ManageruserComponent } from './Manh/manageruser/manageruser.component';
 import { AdduserComponent } from './Manh/adduser/adduser.component';
@@ -57,7 +57,7 @@ import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.componen
 import {HttpClientModule} from "@angular/common/http";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
@@ -65,6 +65,7 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
 import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
+
 import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
 import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
@@ -90,16 +91,9 @@ import { ProfileComponent } from './_services/profile/profile.component';
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
+
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
-import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
-import {BsDropdownModule} from "ngx-bootstrap/dropdown";
-import {AlertModule} from "ngx-bootstrap/alert";
-import { StarttestjnptN4Component } from './Hai/usertest/starttestjnpt-n4/starttestjnpt-n4.component';
-import { StarttestjnptN3Component } from './Hai/usertest/starttestjnpt-n3/starttestjnpt-n3.component';
-import { StarttestjnptN2Component } from './Hai/usertest/starttestjnpt-n2/starttestjnpt-n2.component';
-import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/starttestjnpt-n1.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -176,10 +170,6 @@ import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/startt
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
-    StarttestjnptN4Component,
-    StarttestjnptN3Component,
-    StarttestjnptN2Component,
-    StarttestjnptN1Component,
 
   ],
     imports: [
@@ -199,23 +189,6 @@ import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/startt
 
     ],
   providers: [authInterceptorProviders],
-    QuizComponent,
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    ManagerRoutingModule,
-    MatTabsModule,
-    FormsModule,
-    CKEditorModule,
-    HttpClientModule,
-    Ng2SearchPipeModule,
-    NgxPaginationModule,
-    ReactiveFormsModule,
-  ],
-  providers: [authInterceptorProviders,
-              Title
-              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

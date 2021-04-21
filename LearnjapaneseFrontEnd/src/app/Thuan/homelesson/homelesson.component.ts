@@ -12,7 +12,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class HomelessonComponent implements OnInit {
   ls: Lesson[];
 
-
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
               private router: Router) {
   }

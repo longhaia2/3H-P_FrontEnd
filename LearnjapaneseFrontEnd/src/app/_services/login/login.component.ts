@@ -32,12 +32,17 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        console.log(data.error);
+        if (data.error === "403 FORBIDDEN"){
+          alert(data.message);
+          return this.router.navigate(['login']);
+        }
         // alert('Đăng nhập thành công');
         this.roles = this.tokenStorage.getUser().roles;
         if(data.role === 'ROLE_ADMIN'){
           return this.router.navigate(['admin-home']);
         }
-      this.router.navigate(['page-home']);
+      return this.router.navigate(['page-home']);
       },
       err => {
         this.errorMessage = err.error.message;

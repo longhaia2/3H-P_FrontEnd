@@ -27,25 +27,29 @@ export class ReviewgrammarComponent implements OnInit {
     this.service.get(this.qs).subscribe(data => {
       this.qs = data;
       this.selectedAS = new Array(this.qs.length);
-      console.log("abc: "+this.qs.length);
-      for (let i =0; i< this.qs.length; i++){
-        this.selectedAS[i] = "not select";
-      }
     }, error => console.log(error));
 
 
   }
 
   resultQS() {
-
-    var i = 0;
-      for (let rs of this.qs) {
-        if (rs.ansCorrect.trim() === this.selectedAS[i].trim()) {
-          i++;
-    }
-    }
-    alert('Bạn đã làm đúng ' + i + ' câu');
-  }
+  //
+  //   ;    var i = 0
+  //     for (let rs of this.qs) {
+  //       if (rs.ansCorrect === this.selectedAS[i]) {
+  //         i++;
+  //   }
+  //   }
+  //   alert('Bạn đã làm đúng ' + i + ' câu');
+  // }
+    var countCorrect = 0;
+    for (let i =0; i < this.qs.length;i++) {
+    if (this.qs[i].ansCorrect === this.selectedAS[i]) {
+    countCorrect++;
+      }
+      }
+        alert('Bạn đã làm đúng ' + countCorrect + ' câu');
+      }
 
   selectAt(index, value) {
     console.log("index: "+index + " -- value: "+value);
