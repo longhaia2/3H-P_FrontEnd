@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-study-kanji',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./study-kanji.component.css']
 })
 export class StudyKanjiComponent implements OnInit {
+  public logName:string;
 
-  constructor() { }
+  constructor(private title: Title) {
+    this.title.setTitle("Học Kanji");
+  }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem("auth-user"));
+    this.logName = userName['username'];
+
   }
 
 }

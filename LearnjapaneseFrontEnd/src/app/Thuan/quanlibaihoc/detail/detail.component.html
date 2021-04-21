@@ -40,24 +40,23 @@
                 </div>
                 <div class="form-group col-md-4">
                   <label >stt</label>
-
-                  <label type="number" class="form-control"  name="id" >{{ls.id}}</label>
+                  <input type="number" class="form-control"  [(ngModel)]="ls.id" name="id" >
                 </div>
                 <div class="form-group col-md-4">
                   <label >baihoc</label>
-                  <div type="text" class="form-control"  name="baihoc" >{{ls.lesson}}</div>
+                  <input type="text" class="form-control" [(ngModel)]="ls.lesson" name="baihoc" >
                 </div>
                 <div class="form-group col-md-4">
                   <label >hocphan</label>
-                  <label class="form-control"  name="hocphan" >{{ls.term}}</label>
+                  <input class="form-control" [(ngModel)]="ls.term" name="hocphan" >
                 </div>
                 <div class="form-group col-md-4">
                   <label >trinhdo</label>
-                  <label  class="form-control"  name="trình độ" >{{ls.level}}</label>
+                  <input  class="form-control" [(ngModel)]="ls.level" name="trình độ" >
                 </div>
                 <div class="form-group col-md-4">
                   <label >mota</label>
-                  <label  class="form-control"  name="mota" >{{ls.description}}</label>
+                  <input  class="form-control" [(ngModel)]="ls.description" name="mota" >
                 </div>
                 <div class="form-group col-md-8">
                   <label >nọi dung</label>

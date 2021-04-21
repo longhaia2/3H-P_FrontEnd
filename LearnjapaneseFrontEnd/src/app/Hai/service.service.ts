@@ -23,4 +23,7 @@ export class ServiceService {
   get(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/challenge/room'}/${id}`);
   }
+  getroom(id_room): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/challenge'}/${id_room}`);
+  }
 }

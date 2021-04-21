@@ -1,7 +1,7 @@
 
 <body>
 <app-header></app-header>
-<app-menu></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 <main class="class">
   <div class="container">
     <!-- banner -->
@@ -18,7 +18,7 @@
             <div class="text-right" ><br>
 
               <div class="btn-group" style="z-index: 1;">
-                <input  type="search" name="" id="ctr-search-room" onkeyup="return filter_room();" style="margin-right: 10px" class="text-center form-control" value="" title="" placeholder="Tìm theo tên mã phòng">
+                <input  type="search" name="" id="ctr-search-room" [(ngModel)]="room_id" (ngModelChange)="Search()" style="margin-right: 10px" class="text-center form-control" value="" title="" placeholder="Tìm theo mã phòng">
               </div>
               <a [routerLink]="['/challenge/add']" class="click"><img src="../../../../assets/image/ctr-lr-create-btn.png" style="height: 40px;width: 100px;margin-right: 10px;margin-bottom: 5px"/></a>
               <a href="" data-toggle="modal" class="click" onclick="open_find_room();"><img src="../../../../assets/image/ctr-lr-join-btn.png" style="height: 40px;width: 100px;margin-right: 10px;margin-bottom: 5px"></a>
@@ -26,7 +26,7 @@
             <div>
               <table class="table"><thead>
               <tr style="background-color: #007bff52;" >
-                <th>Số</th>
+                <th>Mã phòng</th>
                 <th>Chủ phòng</th>
                 <th>Tên phòng</th>
                 <th>Trình độ</th>
@@ -35,10 +35,10 @@
                 <th>Trạng thái</th>
               </tr></thead>
                 <tbody>
-                <tr *ngFor="let roomChallenge of challenge">
+                  <tr *ngFor="let roomChallenge of challenge | paginate:{itemsPerPage:8, currentPage:p};">
                   <td>{{roomChallenge.room_id}}</td>
-                  <td (click)="add()" >{{roomChallenge.userCreate}}</td>
-                  <td (click)="add()" >{{roomChallenge.room_name}}</td>
+                  <td (click)="add(roomChallenge.room_id)"  ><a >{{roomChallenge.userCreate}}</a></td>
+                    <td  (click)="add(roomChallenge.room_id)"  >{{roomChallenge.room_name}}</td>
                   <td>{{roomChallenge.level}}</td>
                   <td>{{roomChallenge.time +'Phút'}}</td>
                   <td></td>
@@ -48,6 +48,7 @@
                 </tbody>
 
               </table>
+              <pagination-controls  (pageChange)="p = $event"></pagination-controls>
 
             </div>
           </div>

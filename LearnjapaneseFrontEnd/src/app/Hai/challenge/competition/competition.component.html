@@ -1,12 +1,12 @@
+<!-- QUIZ STILL GOING -->
 
 <body>
 <app-header></app-header>
-<app-menu></app-menu>
-
+<app-menu [userNameDsp]="logName"></app-menu>
 <main class="class">
   <div class="container">
     <!-- banner -->
-    <div >
+    <div class="banner exam-banner9">
     </div>
     <!-- class content-->
     <section class="class-content">
@@ -16,114 +16,121 @@
             <div class="class-sectionTitle">
               <span>THI ĐẤU</span>
             </div>
-            <main class="home">
-              <div class="container">
-                <div class="infomation-exam">
+            <div class="quiz"  class="container mt-5" *ngIf="!quizOver" >
+              <h5 style="text-align: center"  >
+                <div id="timer">
+                  <span><i class="fa fa-clock-o"></i></span>
+                  <countdown [config]="{ leftTime: 600, format: 'm:s' }"></countdown>
                 </div>
-              </div>
-              <input
-                type="hidden"
-                th:name="${_csrf.parameterName}"
-                th:value="${_csrf.token}" />
-              <div class="container exam-test">
-                <section class="container">
-                  <div id="timer">
-                    <span><i class="fa fa-clock-o"></i></span>
-                    <span id="hours">00</span> :
-                    <span id="minutes">00</span> :
-                    <span id="seconds">00</span>
+              </h5>
+              <div class="card mt-5">
+                <div class="card-header">
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      [style.width.%]="(currentIndex * 100) / questions.length"
+                      aria-valuenow="(currentIndex * 100) / questions.length"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      {{ (currentIndex * 100) / questions.length | number: "1.0-0" }}%
+                    </div>
                   </div>
-                </section>
-                <section class="main-exam container">
-                  <h2 style="text-align: center;font-size: 20px">Bài thi : môn <span th:text="${subjectName}"></span></h2>
-                  <div class="exam-content">
-                    <div class="list-question">
-                      <div class="item-question">
-                        <div class="title">
-                          <b><span class="question-no">1</span> Câu hỏi số 1</b>
+                </div>
+<!--                <img-->
+<!--                  class="card-img-top"-->
+<!--                  *ngIf="currentQuestion.questionImg"-->
+<!--                  src="{{ currentQuestion.questionImg }}"-->
+<!--                />-->
+                <div class="card-body">
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <div class="justify-content-md-center" *ngIf="!showExplanation">
+                    <div class="row" *ngFor="let qs of questions; let i = index " value="{{qs}}">
+                      <div class="row"  *ngIf="!quizOver && i == currentIndex">
+                        <div class="quiz"  class="container mt-5" >
+                          <h3 style="text-align: center"  >
+                            {{qs.content}} ({{ currentIndex }} / {{ questions.length }})
+                          </h3>
                         </div>
-                        <div class="content">
-                          <div class="content-ans">
-                            <input type="radio" name=""  value="" title="">
-                            <span>Câu trả lời 1</span>
-                          </div>
-                          <div class="content-ans">
-                            <input type="radio" name="" value="" title="">
-                            <span>Câu trả lời 1</span>
-                          </div>
-                          <div class="content-ans">
-                            <input type="radio" name=""  value="" title="">
-                            <span>Câu trả lời 1</span>
-                          </div>
-                          <div class="content-ans">
-                            <input type="radio" name="" value="" title="">
-                            <span>Câu trả lời 1</span>
-                          </div>
-                        </div>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction"
+                          style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,qs.ansA)">
+                          {{qs.ansA}}
+                        </button>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;" (click)="selectAt(i,qs.ansB)">{{ qs.ansB}}
+                        </button>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;" (click)="selectAt(i,qs.ansC)">{{ qs.ansC}}
+                        </button>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;" (click)="selectAt(i,qs.ansD)">{{ qs.ansD}}
+                        </button>
                       </div>
                     </div>
                   </div>
-                </section>
-
-                <section class="test-more container">
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12">
-<!--                      <a class="btn-pre btn btn-primary">Câu hỏi trước</a>-->
-                      <a class="btn-finish btn btn-success">Hoàn Thành Bài Thi</a>
-                      <a class="btn-next btn btn-primary">Câu hỏi tiếp theo</a>
-                    </div>
-                  </div>
-                </section>
-              </div>
-              <div class="modal fade" id="exampleModal" tabindex="-1"
-                   role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title text-danger" id="exampleModalLabel">Kết thúc bài thi!</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                  <div class="row justify-content-md-center" *ngIf="showExplanation">
+                    <div class="col-sm-12 col-lg-8">
+                      <div class="alert alert-danger" *ngIf="!hasAnsweredCorrectly" role="alert">
+                        Bạn trả lời sai rồi, Đúng là:
+                        {{ currentQuestion.ansCorrect }}
+                      </div>
+                      <div class="alert alert-success" *ngIf="hasAnsweredCorrectly" role="alert">
+                        Bạn đang làm tốt!
+                      </div>
+<!--                      <img-->
+<!--                        class="card-img-top"-->
+<!--                        *ngIf="currentQuestion.answerImage"-->
+<!--                        src="{{ currentQuestion.answerImage }}"-->
+<!--                      />-->
+<!--                      <p class="text-justify mt-2">{{ currentQuestion.explanation }}</p>-->
+                      <button
+                        class="btn btn-block btn-info cursor-restriction"
+                        style="margin-top: 24px"
+                        (click)="nextQuestion()"
+                      >
+                        <span *ngIf="currentIndex < questions.length">Câu hỏi tiếp theo!</span>
+                        <span *ngIf="currentIndex == questions.length">Kết thúc!!</span>
                       </button>
-                    </div>
-                    <div class="modal-body"><h3>Bạn có muốn kết thúc bài thi hay không ?</h3></div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Hủy bỏ</button>
-                      <a class="btn btn-success" id="btnEnd" style="color: white"><i class="fa fa-check"></i> Đồng ý</a>
                     </div>
                   </div>
                 </div>
               </div>
-            </main>
-<!--            <app-footer></app-footer>-->
-            <!--<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>-->
-            <script>
-              var exam_id = [[${examId}]];
-              var test_id = [[${testId}]];
-              var exam_data = '[[${dataExam}]]';
-              var _dataJson = JSON.parse(exam_data.replace(/&quot;/g,'"'));
-              var timeOut= [[${timeOut}]];
+            </div>
 
-              $(document).ready(function (){
-
-                $(".btn-finish").click(function (){
-                    $('#exampleModal').modal();
-                    if($('#btnEnd').click(function (){
-                        console.log("btn yes");
-                        $('#exampleModal').modal('hide');
-                        return false;
-                    }));
-                    else{
-                        return false;
-                    }
-                })
-              });
-
-            </script>
-            <script src="../../../../assets/js/exam.js"></script>
-            <script type="text/javascript" th:src="@{/js/exam.js}"></script>
+            <!-- QUIZ OVER -->
+            <div class="container mt-5" *ngIf="quizOver">
+              <app-endcompetition
+                [questions]="questions"
+                [correctAnswers]="correctAnswers"
+              ></app-endcompetition>
+            </div>
           </div>
         </div>
-        <app-sidebarchallenge></app-sidebarchallenge>
+        <div class="col-md-4 col-12">
+          <div class="class-right">
+            <div class="class-sectionTitle1 test">
+              <span>Bảng Điểm</span>
+            </div>
+            <div class="sidebar-content">
+              <ul>
+                <li >
+                  <a *ngFor="let us of user, let q = index, " >
+                    <div class="test-listItem" style="margin-left: -30px; width: 97%;">
+                      <div class="content">
+                        <input type="hidden" [(ngModel)]="room_user.score" value="{{score}}">
+                        <h5 class="title" >{{q+1}}. <span  > {{us.username}} {{score}}</span></h5>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
   </div>

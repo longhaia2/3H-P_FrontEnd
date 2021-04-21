@@ -15,12 +15,10 @@ export class LessonServiceService {
     return this.http.get<Lesson[]>(this.url + "/all");
   }
 
-  findByidlevel(level,term): Observable<Lesson[]> {
-    return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson'}/${level}/${term}`);
+  findByidlessson(level,idLesson): Observable<Lesson[]> {
+    return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson'}/${level}/lesson/${idLesson}`);
   }
-  getLessonByDesc() : Observable<Lesson[]>{
-    return this.http.get<Lesson[]>(this.url+"/all/baimoi")
-  }
+
   create(data): Observable<any> {
     return this.http.post<Lesson>(this.url + '/add', data);
   }
