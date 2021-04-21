@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ManageruserComponent implements OnInit {
   Users: User[];
-  username: any;
+  private username: string;
   elseBlock: any;
   constructor(private Userservice: UserServiceService,private route: ActivatedRoute,
               private router: Router) { }
@@ -20,6 +20,7 @@ export class ManageruserComponent implements OnInit {
   // get username(): string{
   //   return this.username;
   // }
+<<<<<<< HEAD
   search(){
     if(this.username == ""){
       this.ngOnInit();
@@ -29,6 +30,8 @@ export class ManageruserComponent implements OnInit {
       })
     }
   }
+=======
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
   reloadData() {
     this.Userservice.findAll().subscribe(data => {
       this.Users = data;

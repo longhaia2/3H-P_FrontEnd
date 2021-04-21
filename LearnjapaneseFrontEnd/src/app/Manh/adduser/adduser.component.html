@@ -4,11 +4,14 @@
   <title>Thêm user</title>
   <div th:replace="admin/init_admin :: header"></div>
 </head>
+
 <body class="nav-md">
 <div class="container body">
   <div class="main_container" >
+
     <app-sidebaradmin></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
+
     <div class="right_col" role="main">
       <!-- top tiles -->
       <div class="">
@@ -25,17 +28,23 @@
             </div>
           </div>
           <br>
+<<<<<<< HEAD
           <form (ngSubmit)="add()" class="col-md-12"  method="post" enctype="multipart/form-data">
+=======
+          <form  class="col-md-12"  method="post" enctype="multipart/form-data">
+
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
             <div class="col-md-8 border-right">
               <div class="p-3">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="text-right">Thông tin tài khoản</h4>
                 </div>
-                <!--                <div class="bg-danger" id="error"-->
-                <!--                     th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">-->
-                <!--                </div>-->
+<!--                <div class="bg-danger" id="error"-->
+<!--                     th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">-->
+<!--                </div>-->
                 <div class="row mt-2">
                   <div class="col-md-6">
+<<<<<<< HEAD
                     <label class="labels">Tên đăng nhập (viết liền không dấu và kí tự thường)</label>
                     <input type="text" [(ngModel)]="us.username" maxlength="15" class="form-control" name="username" id="usernameUser" >
                     <span id="vld-username" class="span-vld hide">Username không được để trống.</span>
@@ -43,6 +52,17 @@
                   <div class="col-md-6">
                     <label class="labels">Họ và tên</label>
                     <input type="text" [(ngModel)]="us.fullName" maxlength="20" class="form-control" name="fullname" id="fullnameUser" >
+=======
+                    <label class="labels">Username (viết liền không dấu và kí tự thường)</label>
+                    <input type="text" [(ngModel)]="us.username" class="form-control">
+<!--                    <input type="text" [(ngModel)]="us.username" class="form-control" name="username" id="usernameUser" >-->
+                    <span id="vld-username" class="span-vld hide">Username không được để trống.</span>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Fullname</label>
+                    <input type="text" [(ngModel)]="us.fullName" class="form-control"  >
+
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
                   </div>
                 </div>
                 <div class="row mt-2">S
@@ -63,6 +83,7 @@
                     <input type="number" [(ngModel)]="us.phoneNumber" maxlength="10" minlength="10" class="form-control" name="phone" id="phoneUser" th:value="${ph}" >
                     <span id="vld-phone" class="span-vld hide">Số điện thoại sai định dạng.</span>
                   </div>
+
                 </div>
                 <div class="row mt-2">
                   <div class="col-md-6">
@@ -72,6 +93,7 @@
                       <option value="Nữ">Nữ</option>
                     </select>
                   </div>
+
                 </div>
                 <div class="row mt-2">
                   <!--                  <div class="col-md-6">-->
@@ -94,6 +116,7 @@
       </div>
     </div>
     <!-- page content -->
+<<<<<<< HEAD
   </div>
   <script>
     $(document).ready(function () {
@@ -105,6 +128,10 @@
       });
     });
   </script>
+=======
+</div>
+
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
 </div>
 </body>
 </html>

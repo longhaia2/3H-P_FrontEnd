@@ -66,6 +66,10 @@
                   </thead>
                   <tbody >
                   <tr *ngFor="let lesson of ls | paginate:{itemsPerPage:3, currentPage:p};">
+<<<<<<< HEAD
+=======
+<!--                  <tr *ngFor="let lesson of ls">-->
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
                     <td>{{lesson.id}}</td>
                     <td >{{lesson.lesson}}</td>
                     <td >{{lesson.term}}</td>
@@ -88,6 +92,7 @@
                     </td>
                   </tr>
                   </tbody>
+                  <pagination-controls style="margin-left: 250px" (pageChange)="p = $event"></pagination-controls>
                 </table>
                 <pagination-controls style="margin-left: 250px" (pageChange)="p = $event"></pagination-controls>
                 <div th:replace="admin/pagging::content"></div>

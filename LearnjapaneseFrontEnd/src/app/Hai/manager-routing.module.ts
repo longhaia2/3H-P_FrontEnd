@@ -35,6 +35,7 @@ import {AddquestionComponent} from '../Hien/addquestion/addquestion.component';
 import {LoginComponent} from '../_services/login/login.component';
 import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
+<<<<<<< HEAD
 import {ManagerexamupdateComponent} from "./admin/managerexam/managerexamupdate/managerexamupdate.component";
 import {ProfileComponent} from "../Manh/profile/profile.component";
 import {HomeTvn1Component} from "./study/study-n1/home-tvn1/home-tvn1.component";
@@ -50,13 +51,17 @@ import {N2TuvungComponent} from "./study/study-n2/n2-tuvung/n2-tuvung.component"
 import {N2NguphapComponent} from "./study/study-n2/n2-nguphap/n2-nguphap.component";
 import {ChitietlessonComponent} from "../Thuan/chitietlesson/chitietlesson.component";
 import {N3TuvungComponent} from "./study/study-n3/n3-tuvung/n3-tuvung.component";
+=======
+import {CompetitionComponent} from "./challenge/competition/competition.component";
+import {EndcompetitionComponent} from "./challenge/endcompetition/endcompetition.component";
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
 
 
 // @ts-ignore
 // @ts-ignore
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
-  {path: 'page-home', component: HomepageComponent},
+  {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},
   {path: 'page-test', component: ListtestjlptComponent},
   {path: 'start-test', component: StarttestjlptComponent},
   {path: 'test', component: TestjlptComponent},
@@ -75,7 +80,7 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
   {path: 'admin/manage/user/add', component: AdduserComponent},
   {path: 'admin/manage/user', component: ManageruserComponent},
-  {path: 'admin/user/detail/:id', component: DetailuserComponent},
+  {path: 'admin/manage/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent},
   {path: 'challenge/add', component: CreateroomComponent},
   {path: 'challenge/wait/:id', component: WaitlchallengeComponent},
@@ -92,6 +97,7 @@ const routes: Routes = [
   {path: 'exam', component: StarttestjlptComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+<<<<<<< HEAD
   {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent},
   {path: 'admin/user/edit/:id', component: ProfileComponent},
   {path: 'study/N1/tuvung', component: N1TuvungComponent},
@@ -115,6 +121,11 @@ const routes: Routes = [
   {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvn1Component},
   {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpn1Component},
   {path: 'home/lesson/chitietlesson/:id', component: ChitietlessonComponent},
+=======
+  {path: 'question/:exam_id/challenge/:id/:id_room/:id_score', component: CompetitionComponent},
+  {path: 'end', component: EndcompetitionComponent},
+
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
 ];
 
 @NgModule({

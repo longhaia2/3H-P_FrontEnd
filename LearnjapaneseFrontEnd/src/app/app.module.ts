@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ManageruserComponent } from './Manh/manageruser/manageruser.component';
 import { AdduserComponent } from './Manh/adduser/adduser.component';
@@ -7,6 +7,7 @@ import { ManageraskComponent } from './Manh/managerask/managerask.component';
 import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
 import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
+
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
@@ -57,7 +58,7 @@ import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.componen
 import {HttpClientModule} from "@angular/common/http";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
@@ -65,6 +66,7 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
 import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
+<<<<<<< HEAD
 
 
 
@@ -87,6 +89,13 @@ import {ReactiveFormsModule} from '@angular/forms'
 // @ts-ignore
 // @ts-ignor
 
+=======
+import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
+import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
+import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
+import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
+import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
 
@@ -96,6 +105,7 @@ import { BoardUserComponent } from './_services/board-user/board-user.component'
 
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
+<<<<<<< HEAD
 import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamupdate/managerexamupdate.component';
 import { UserupdateComponent } from './Manh/userupdate/userupdate.component';
 import {ProfileComponent} from "./Manh/profile/profile.component";
@@ -115,6 +125,12 @@ import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.comp
 
 
 
+=======
+import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
+import {BsDropdownModule} from "ngx-bootstrap/dropdown";
+import {AlertModule} from "ngx-bootstrap/alert";
+import {CountdownModule} from "ngx-countdown";
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
 @NgModule({
   declarations: [
     AppComponent,
@@ -148,7 +164,6 @@ import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.comp
     ManagerlisttestComponent,
     ManageraddtestComponent,
     ManageraddquestionComponent,
-
     ManagerlistquestionComponent,
     ManageraddquestionfortestComponent,
     FooterComponent,
@@ -179,13 +194,18 @@ import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.comp
     DetailComponent,
     ManagerexamComponent,
     ManagerexamaddComponent,
+<<<<<<< HEAD
     ProfileComponent,
+=======
+    ManagerexameditComponent,
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
     RegisterComponent,
     HomeComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
     LoginComponent,
+<<<<<<< HEAD
     ManagerexamupdateComponent,
     UserupdateComponent,
     HomeTvn1Component,
@@ -223,6 +243,26 @@ import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.comp
 
     ],
   providers: [authInterceptorProviders],
+=======
+    QuizComponent,
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule,
+    ManagerRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    CKEditorModule,
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    CountdownModule
+  ],
+  providers: [authInterceptorProviders,
+              Title
+              ],
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
   bootstrap: [AppComponent]
 })
 export class AppModule { }

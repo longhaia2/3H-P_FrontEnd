@@ -11,12 +11,13 @@
 
 <body>
 <app-header></app-header>
-<app-menu></app-menu>
-<!--<div th:replace="fragments/header :: content"></div>-->
-<!--<div th:replace="fragments/menu :: content"></div>-->
+<app-menu [userNameDsp]="logName"></app-menu>
 <main class="home">
   <div class="container">
+<<<<<<< HEAD
 
+=======
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
     <section class="study">
       <div class="section-header">
         <h2 class="section-title">Học tập</h2>
@@ -97,8 +98,6 @@
                 <div class="study-slider">
                   <div class="study-sliderItem" th:each="item:${listClassTHPT}">
                     <a >
-<!--                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
-
                       <img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
                   </div>
                 </div>
@@ -121,6 +120,7 @@
             <div class="study-rightTitle">
               <span><i class="fa fa-file-text" ></i> Danh sách bài kiểm tra mới</span>
             </div>
+<<<<<<< HEAD
             <div class="news-list">
               <a *ngFor="let exa of ex| paginate:{itemsPerPage:4, currentPage: p};" >
                 <a th:each="item:${userScore}">
@@ -141,6 +141,20 @@
                       </h5>
 
                     </div>
+=======
+            <div class="study-listChemistry">
+              <a th:href="@{/kiemtra/info(examId=${item.id})}" th:each="item:${listExam}">
+                <div class="study-chemistryItem" >
+                  <div class="img">
+                    <img th:src="@{/image/subject/{image}(image=${item.getExam_subject().image})}" alt="">
+                  </div>
+                  <div class="content">
+                    <h3 class="title" style="font-size: 108%;">
+                      Môn học: <span style="color: #65d258" th:text="${item.getExam_subject().name}"></span>
+                      &nbsp;&nbsp; <i class="fa fa-clock-o" ></i> Thời gian: <span th:text="${item.timeOut} +' phút'"> </span>
+                    </h3>
+                    <span>Mã đề :<span th:text="${item.codeExam}"></span> - <span class="description" th:text="${item.title}"></span></span>
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
                   </div>
                 </a>
               </a >
@@ -175,6 +189,10 @@
       </div>
       </div>
     </section>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
     <section class="news">
       <div class="section-header">
         <h2 class="section-title">Tin tức</h2>
@@ -265,6 +283,10 @@
         </div>
       </div>
     </section>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
   </div>
 </main>
 <app-footer></app-footer>

@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Danh sách user</title>
-  <app-headeradmin></app-headeradmin>
   <style>
     #img_user{
       width: 45px;
@@ -47,12 +46,19 @@
               <form th:action="@{/admin/user/list-user}" method="get">
                 <div class="row">
                   <div class="col-lg-2 col-sm-12 col-xs-3">
+                    <label>Username</label>
                     <div>
+                      <input class="form-control" name="username" type="text" th:value="${us}">
                     </div>
                   </div>
                   <div class="col-lg-2 col-sm-12 col-xs-3">
                     <label>&nbsp;</label>
                     <div>
+<<<<<<< HEAD
+=======
+                      <button type="submit" id="btnSearch" class="btn btn-success">Tìm kiếm
+                      </button>
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-12  col-xs-3">
@@ -73,6 +79,7 @@
         <br>
         <div class="row">
           <div class="col-md-12">
+<<<<<<< HEAD
             <div  class="col-md-4">
               <button  type="add" [routerLink]="['/admin/manage/user/add' ]" class="btn btn-success">Thêm User
               </button>
@@ -81,6 +88,13 @@
 
               <input class="form-control" type="text" name="username" [(ngModel)]="username" (ngModelChange)="search()" placeholder="Tìm kiếm theo tên đăng nhập" >
           <br>
+=======
+            <div class="bg-success col-md-12" id="success"
+                 th:if="${not #strings.isEmpty(success)}" th:text="${success}" style="color: white;padding: 10px">
+            </div>
+            <div class="bg-success col-md-12" id="error"
+                 th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
             </div>
             <div class="tile-body">
               <div class="table-responsive">
@@ -88,12 +102,11 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Tên đăng nhập</th>
-                    <th>Họ và tên</th>
+                    <th>Username</th>
+                    <th>Fullname</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Giới tính</th>
-                    <th>Tùy chọn</th>
                   </tr>
                   </thead>
                   <tbody >
@@ -104,6 +117,8 @@
                     <td>{{user.email}}</td>
                     <td>{{user.phoneNumber}}</td>
                     <td>{{user.gender}}</td>
+
+
                     <td>
                       <div class="dropdown">
                         <button class="btn btn-success dropdown-toggle"
@@ -115,9 +130,16 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item"  [routerLink]="['/admin/user/edit',user.id]" ><i class="fa fa-edit" ></i> Cập nhật</a>
                           <div class="dropdown-divider"></div>
+<<<<<<< HEAD
                           <a class="dropdown-item" [routerLink]="['/admin/user/detail' ,user.id]"  id="confirmDelete"> <i class="fa fa-trash-o"></i> Chi tiết</a>
                         </div>
                       </div>
+=======
+                          <button type="delete" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>
+                        </div>
+                      </div>
+
+>>>>>>> b1da75e131d3dcf0c96c1e4b8876fc6dadddddfc
                     </td>
                   </tr>
                   </tbody>
@@ -137,17 +159,6 @@
   <div th:replace="admin/modal_disable::content"></div>
   <div th:replace="admin/footer :: content"></div>
 </div>
-<div th:replace="admin/init_admin :: script"></div>
-<script>
-  $("#userManager").addClass("active");
-  //for delete user
-  $(document).ready(function () {
-    $('#datepicker').datepicker({
-      iconsLibrary: 'fontawesome',
-      uiLibrary: 'bootstrap4',
-      format: 'dd-mm-yyyy'
-    });
-  });
-</script>
+<div ></div>
 </body>
 </html>
