@@ -107,7 +107,7 @@
                       <img src="../../../assets/image/tikkitt.gif" height="300" width="370"/></div>
                     <div class="content">
 
-                     <h5 class="title" style="font-size: 100%">
+                      <h5 class="title" style="font-size: 100%">
                         Ma de : <span>{{exa.codeExam}}</span>
                       </h5>
                       <h5 class="title" style="font-size: 100%">
@@ -117,27 +117,27 @@
                         Học phần: <span > {{exa.term}}</span>
                       </h5>
                     </div>
-            <div class="study-listChemistry">
-              <a  >
-                <div class="study-chemistryItem" >
-                  <div class="img">
-                    <img  alt="">
+                    <div class="study-listChemistry">
+                      <a  >
+                        <div class="study-chemistryItem" >
+                          <div class="img">
+                            <img  alt="">
+                          </div>
+                          <div class="content">
+                            <h3 class="title" style="font-size: 108%;">
+                              Môn học: <span style="color: #65d258" ></span>
+                              &nbsp;&nbsp; <i class="fa fa-clock-o" ></i> Thời gian: <span > </span>
+                            </h3>
+                            <span>Mã đề :<span ></span> <span class="description" ></span></span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                  <div class="content">
-                    <h3 class="title" style="font-size: 108%;">
-                      Môn học: <span style="color: #65d258" ></span>
-                      &nbsp;&nbsp; <i class="fa fa-clock-o" ></i> Thời gian: <span > </span>
-                    </h3>
-                    <span>Mã đề :<span ></span> <span class="description" ></span></span>
-                  </div>
-                </div>
+                </a>
               </a>
             </div>
           </div>
-                </a>
-              </a>
-        </div>
-      </div>
         </div>
       </div>
 
@@ -183,28 +183,28 @@
             </div>
             <div class="news-list">
               <a *ngFor="let lson of ls| paginate:{itemsPerPage:4, currentPage: p};" >
-              <a >
-                <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
-              <a >
-                <div class="news-listItem">
-                  <div class="img">
-                    <img  alt="">
-                  </div>
-                  <div class="content">
-                    <h3 class="title">
-                      Môn học: <span ></span>
-                    </h3>
-                    <span class="description">
+                <a >
+                  <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
+                    <a >
+                      <div class="news-listItem">
+                        <div class="img">
+                          <img  alt="">
+                        </div>
+                        <div class="content">
+                          <h3 class="title">
+                            Môn học: <span ></span>
+                          </h3>
+                          <span class="description">
                                            Nội dung : <span ></span>
                                         </span>
+                        </div>
+                      </div>
+                    </a>
                   </div>
-                </div>
+                </a>
               </a>
             </div>
-              </a>
-              </a>
           </div>
-        </div>
         </div>
         <div class="col-md-4 col-12">
           <div class="news-left">
