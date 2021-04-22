@@ -24,7 +24,8 @@ export class WaitlchallengeComponent implements OnInit {
   set: boolean;
   id: number;
   id_r:number;
-  ready: boolean;
+  ready: boolean[];
+  allReady: boolean;
   level: string;
   time: string;
   constructor(private service: ServiceService, private  route: ActivatedRoute,
@@ -40,8 +41,12 @@ export class WaitlchallengeComponent implements OnInit {
     this.service.get(this.id).subscribe(data=>{
       this.user=data;
       this.selectedAS = new Array(this.user.length);
+
+      this.ready = new Array(this.user.length);
       for (let i =0; i< this.user.length; i++) {
+        this.ready[i] = false;
       }
+      this.allReady = false;
     },error => console.log(error));
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
     this.id_u_scrore = id_score['userId'];
@@ -70,18 +75,28 @@ export class WaitlchallengeComponent implements OnInit {
     }
   }
      setroom(idSet) {
-         console.log(idSet+ 'iddd');
          if (idSet == 0) {
            this.set = true;
          } else {
            this.set = false;
          }
        }
-    settrue() {
-        this.ready = true;
+    settrue(index) {
+        this.ready[index] = true;
+        this.allReady = true;
+        for(let element of this.ready){
+          console.log("e:"+element);
+          if(!element){
+            this.allReady = false;
+            break;
+          }
+        }
+        console.log(this.allReady);
     }
-    setfalse() {
-      this.ready = false;
+
+    setfalse(index) {
+      this.ready[index] = false;
+      this.allReady = false;
     }
 
 

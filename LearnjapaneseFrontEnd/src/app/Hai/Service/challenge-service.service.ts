@@ -26,7 +26,7 @@ export class ChallengeServiceService {
     return this.http.get<any>(`${'http://localhost:8080/challenge/room'}/${id_room}`);
   }
   getQuestionByLevelAndId(exam_id, id): Observable<any> {
-    return this.http.get(`${'http://localhost:8080/question'}/${exam_id}${'/challenge'}/${id}`);
+    return this.http.get(`${'http://localhost:8080/exam'}/${exam_id}${'/challenge'}/${id}`);
   }
 
   updatescore(id_score, data): Observable<any> {

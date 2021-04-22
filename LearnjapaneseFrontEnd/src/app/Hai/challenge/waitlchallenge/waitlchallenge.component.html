@@ -16,7 +16,7 @@
               <span>PHÒNG CHỜ THI ĐẤU</span>
             </div>
             <div class="test-list" >
-              <button [disabled]="!ready" (click)="startQuiz()" style="width: 200px; margin-bottom: 10px;background-color: aquamarine;">Bắt đầu</button>
+              <button [disabled]="allReady" (click)="startQuiz()" style="width: 200px; margin-bottom: 10px;background-color: aquamarine;">Bắt đầu</button>
 <!--              viết vòng lặp-->
               <a *ngFor="let us of user, let i = index" >
                 <div class="test-listItem">
@@ -29,8 +29,8 @@
                     <div *ngIf="!set">
                       <h6 class="title"  [hidden]="setroom(i)" >Xin Chào: {{us.username}} <span ></span></h6>
                       <div >Hãy sẵn sàng để thi đấu</div>
-                     <div (click)="settrue()"><img *ngIf="!ready" style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
-                    <div (click)="setfalse()" > <img *ngIf="ready"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px; margin-top: 10px"/></div> </div>
+                     <div (click)="settrue(i)"><img *ngIf="!ready[i]" style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
+                    <div (click)="setfalse(i)" > <img *ngIf="ready[i]"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px; margin-top: 10px"/></div> </div>
 
                   </div>
                 </div>

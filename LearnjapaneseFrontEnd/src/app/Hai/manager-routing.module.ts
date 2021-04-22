@@ -40,6 +40,8 @@ import {RegisterComponent} from '../_services/register/register.component';
 import {WaitlchallengeComponent} from './challenge/waitlchallenge/waitlchallenge.component';
 import {CompetitionComponent} from "./challenge/competition/competition.component";
 import {EndcompetitionComponent} from "./challenge/endcompetition/endcompetition.component";
+import {ReviewgrammarComponent} from "../Hien/reviewgrammar/reviewgrammar.component";
+import {ReviewvocabularyComponent} from "../Hien/reviewvocabulary/reviewvocabulary.component";
 
 
 
@@ -86,6 +88,10 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'question/:exam_id/challenge/:id/:id_room/:id_score', component: CompetitionComponent},
   {path: 'end', component: EndcompetitionComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'vocabulary/exam/list/:id', component: ReviewvocabularyComponent},
+  {path: 'grammar/exam/list/:id', component: ReviewgrammarComponent},
 
 ];
 
