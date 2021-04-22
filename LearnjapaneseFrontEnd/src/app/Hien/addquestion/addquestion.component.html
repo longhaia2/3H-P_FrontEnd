@@ -58,6 +58,7 @@
               <label class="labels">Đáp án D</label>
               <input [ngModel]="qs.ansD" type="text" class="form-control" name="ansD">
             </div>
+<<<<<<< HEAD
               <div class="col-md-6 mt-3">
                 <label class="labels">Đáp án Đúng </label>
                 <input [ngModel]="qs.ansCorrect" type="text" class="form-control" name="ansCorrect">
@@ -70,10 +71,27 @@
           </div>
           <span class="span-vld hide" id="vldAddQuestion">Vui lòng nhập đầy đủ thông tin</span>
           <!--              </form>-->
+=======
+            <div class="col-md-6 mt-3">
+              <label class="labels">Đáp án Đúng </label>
+              <input [ngModel]="qs.ansCorrect" type="text" class="form-control" name="ansCorrect">
+            </div> <br>
+          </div>
+          <div class="mt-5 text-center" align="center">
+            <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam">Thêm câu hỏi</button>
+            <a class="btn btn-danger"  [routerLink]="['/admin/question']">Hủy bỏ</a>
+          </div>
+>>>>>>> origin
         </div>
+        <span class="span-vld hide" id="vldAddQuestion">Vui lòng nhập đầy đủ thông tin</span>
+        <!--              </form>-->
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> origin
 <!--</div>-->
 <div class="modal fade" id="modalProcess" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -92,100 +110,6 @@
     </div>
   </div>
 </div>
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
-<script>
-  $('#error').delay(5000).fadeOut(1000);
-  $('#questionManager').addClass("active");
 
-  $('#btnAddQuestiontoExam').click(function (){
-    var content= $('#contentQuestion').val();
-    if(content== ""){
-      $('#vldAddQuestion').removeClass('hide');
-      return false;
-    }else {
-      $('#vldAddQuestion').addClass('hide');
-    }
-    return true;
-  })
-  var idProgress = "#modalProcess .modal-dialog .progress .progress-bar";
-  $(document).ready(function() {
-    $("#idProcess").click(function () {
-      $("#errorProcess").css("display", "none");
-      var token = $("meta[name='_csrf']").attr("content");
-      var header = $("meta[name='_csrf_header']").attr("content");
-      var formData = new FormData();
-      if (formInvalid()) {
-        $("#errorProcess").css("display", "block");
-        return;
-      }
-      var classId= $('#classId').val();
-      var subjectId= $('#subjectId').val();
-      formData.append("fileData", $("#fileData")[0].files[0]);
-      $.ajax({
-        url: '/question/upload-question-by-subject-class/upload?classId='+classId+'&subjectId='+subjectId,
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        data: formData,
-        success: function (response) {
-          var result = JSON.parse(response);
-          if (result.STATUS == 1) {
-            $("#errorProcess").css('display', 'block');
-            $("#errorProcess").html(result['MESSAGE']);
-          } else {
-            $(idProgress).attr("aria-valuemax", result["NUM_SUCCESS"]);
-            $(idProgress).attr("aria-valuenow", "0");
-            $(idProgress).css("width", "0");
-            $(idProgress).html( "0");
-            $('#modalProcess').modal('show');
-            processData(1, parseInt( result['NUM_SUCCESS']));
-          }
-          console.log(result);
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-          $('#modalProcess').modal('hide');
-          $("#errorProcess").css('display', 'block');
-          $("#errorProcess").html('Có lỗi kết nối tới server, vui lòng thử lại');
-        },
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader(header, token);
-        },
-      });
-    });
-  });
-
-  function processData(iStep, iRecord) {
-    var iCurrent = parseInt($(idProgress).attr("aria-valuenow"));
-    var iNext = iStep + iCurrent;
-    if( iNext >= iRecord) {
-      iNext = iRecord;
-    }
-    $(idProgress).attr("aria-valuenow", iNext);
-    $(idProgress).css("width", ((iNext * 100.0)/iRecord) + "%");
-    $(idProgress).html( iNext + "/" + iRecord);
-    if(iNext >= iRecord) {
-      // Now don't process
-      $('#modalProcess').modal('hide');
-    } else {
-      processData(iStep, iRecord);
-    }
-  }
-  function formInvalid(){
-    var flData = $("#fileData")[0].files[0];
-    if(flData == null) {
-      $("#errorProcess").html("Vui lòng chọn file để upload.");
-      return true;
-    }
-    var flSplit = flData.name.split(".");
-    var flExtension = flSplit[flSplit.length - 1];
-    if (flExtension.toLowerCase() != 'xlsx' && flExtension.toLowerCase() != 'xls') {
-      $("#errorProcess").html("File không đúng định dạng (định dạng .xls hoặc .xlsx)");
-      return true;
-    }
-    return false;
-  }
-
-</script>
 </body>
 </html>

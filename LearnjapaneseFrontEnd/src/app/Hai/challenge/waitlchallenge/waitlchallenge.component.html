@@ -16,6 +16,10 @@
               <span>PHÒNG CHỜ THI ĐẤU</span>
             </div>
             <div class="test-list" >
+<<<<<<< HEAD
+=======
+              <button [disabled]="allReady" (click)="startQuiz()" style="width: 200px; margin-bottom: 10px;background-color: aquamarine;">Bắt đầu</button>
+>>>>>>> origin
 <!--              viết vòng lặp-->
               <a *ngFor="let us of user" >
                 <div class="test-listItem">
@@ -25,8 +29,13 @@
                     <h6 class="title" >Xin chào: {{us.username}} <span ></span></h6>
                     <div>
                       <div >Hãy sẵn sàng để thi đấu</div>
+<<<<<<< HEAD
                       <img style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png">
                     </div>
+=======
+                     <div (click)="settrue(i)"><img *ngIf="!ready[i]" style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
+                    <div (click)="setfalse(i)" > <img *ngIf="ready[i]"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px; margin-top: 10px"/></div> </div>
+>>>>>>> origin
 
                   </div>
                 </div>
