@@ -4,6 +4,7 @@ import {Exam} from "../../admin/model/Exam";
 import {UserServiceService} from "../../../Manh/servicem/user-service.service";
 import {ExamserviceService} from "../../admin/serviceadmin/examservice.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Question} from "../../../Hien/model/question";
 
 @Component({
   selector: 'app-starttestjlpt',
@@ -11,10 +12,12 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./starttestjlpt.component.css'],
   providers: [ExamserviceService]
 
+
 })
 export class StarttestjlptComponent implements OnInit {
   id:number;
   ex : Exam=new Exam();
+  qs : Question[];
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private  router: Router) { }

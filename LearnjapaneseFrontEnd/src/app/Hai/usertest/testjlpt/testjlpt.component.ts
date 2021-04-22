@@ -1,22 +1,84 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Exam} from "../../admin/model/Exam";
+import {Question} from "../../../Hien/model/question";
+import {ReviewgrammarService} from "../../../Hien/servicesh/reviewgrammar.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 @Component({
   selector: 'app-testjlpt',
   templateUrl: './testjlpt.component.html',
-  styleUrls: ['./testjlpt.component.css']
+  styleUrls: ['./testjlpt.component.css'],
+  providers: [ReviewgrammarService]
 })
 export class TestjlptComponent implements OnInit {
-  constructor() { }
-  as_true: 'a';
-  sdt: number;
-
-  ngOnInit(): void {
+  ex: Exam;
+  selectedAS: string[];
+  qs: Question[];
+  review = false;
+  public sodiem: number;
+  constructor(private service: ReviewgrammarService, private  route: ActivatedRoute,
+              private  router: Router) {
   }
-demo(){
-    this.sdt=0;
-    if(this.as_true=="a")
-  this.sdt=this.sdt+1;
-    // @ts-ignore
-  console.assert(this.sdt +'Điểm');
-}
+  ngOnInit(): void {
+    this.displayTimeRemaining();
+    this.ex = new Exam();
+    let levelCurent = this.route.snapshot.params['level'];
+    this.qs = this.route.snapshot.params['id'];
+    console.log(levelCurent + "-" + this.qs);
+    this.service.getByLevelAndId(levelCurent, this.qs).subscribe(data => {
+      console.log("kakak")
+      this.qs = data;
+      this.selectedAS = new Array(this.qs.length);
+      console.log("abc: " + this.qs.length);
+      for (let i = 0; i < this.qs.length; i++) {
+        this.selectedAS[i] = "not select";
+      }
+    }, error => console.log(error));
+
+  }
+  displayTimeRemaining() {
+    const countDownDate = new Date().getTime() + 24000000;
+    const x = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (distance < 0) {
+        // alert('Hết thời gian');
+        this.router.navigateByUrl('/endtest');
+        clearInterval(x);
+        this.resultQS();
+      } else {document.getElementById('timer').innerHTML = 'Time Remaining' +  ' : '  + minutes + 'm '  + seconds + 's'; }
+    }, 1000);
+  }
+  onSubmit() {
+    if (this.service.qns.every(qn => qn.ansCorrect)) {
+      this.service.qns.forEach(qn => qn.content.find(a => a.Id === qn.Answer).ansCorrect ? this.service.correctAnswerCount++ : null );
+      this.router.navigateByUrl('/endtest');
+    } else {
+      this.service.reviewQuestions = this.service.qns.filter(qn => !qn.ansCorrect );
+      this.review = true;
+      this.service.qnProgress = 0;
+    }
+    this.resultQS()
+  }
+  resultQS() {
+
+    this.sodiem = 0;
+    for (let rs of this.qs) {
+      if (rs.ansCorrect.trim() === this.selectedAS[this.sodiem].trim()) {
+        this.sodiem++;
+      }
+    }
+    alert('Bạn đã làm đúng ' + this.sodiem + ' câu');
+  }
+
+  selectAt(index, value) {
+    console.log("index: " + index + " -- value: " + value);
+    this.selectedAS[index] = value;
+  }
+
 }

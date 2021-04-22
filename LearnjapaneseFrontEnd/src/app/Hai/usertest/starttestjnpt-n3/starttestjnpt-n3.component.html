@@ -56,8 +56,8 @@
         <div class="col-md-7">
 
           <div class="start-exam">
-            <a class="btn btn-success" id="btnStart" [routerLink]="['/exam/N5/dd/testjnpt']" th:href="@{/kiemtra(examId=${examId})}">Bắt đầu</a>
-            <a href="javascript:history.back();" [routerLink]="['exam/N5/:id']"  class="btn btn-info">Trở lại</a>
+            <a class="btn btn-success" id="btnStart" [routerLink]="['/exam/N3/testjnpt',ex.id]" >Bắt đầu</a>
+            <a href="javascript:history.back();" [routerLink]="['exam/N3/:id']"  class="btn btn-info">Trở lại</a>
           </div>
         </div>
         <div class="col-md-2">

@@ -2,16 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Exam} from '../model/Exam';
+import {ReviewgrammarService} from "../../../Hien/servicesh/reviewgrammar.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExamserviceService {
 
+
   url = 'http://localhost:8080/exam';
 
   constructor(private http: HttpClient) {
   }
+
 
   create(data): Observable<any> {
     return this.http.post<Exam>(this.url + '/add', data);
@@ -23,10 +26,6 @@ export class ExamserviceService {
   delete(id): Observable<any>{
     return this.http.delete(`${'http://localhost:8080/exam/delete'}/${id}`);
   }
-
-
-
-
 
   get(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/exam'}/${id}`);

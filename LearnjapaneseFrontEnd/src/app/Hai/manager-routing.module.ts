@@ -43,6 +43,8 @@ import {StarttestjnptN1Component} from "./usertest/starttestjnpt-n1/starttestjnp
 import {StarttestjnptN2Component} from "./usertest/starttestjnpt-n2/starttestjnpt-n2.component";
 import {StarttestjnptN3Component} from "./usertest/starttestjnpt-n3/starttestjnpt-n3.component";
 import {StarttestjnptN4Component} from "./usertest/starttestjnpt-n4/starttestjnpt-n4.component";
+import {ResultComponent} from "./usertest/result/result.component";
+import {EndtestjlptComponent} from "./usertest/endtestjlpt/endtestjlpt.component";
 
 
 
@@ -94,8 +96,9 @@ const routes: Routes = [
   {path: 'exam/N3/:id', component: StarttestjnptN3Component},
   {path: 'exam/N2/:id', component: StarttestjnptN2Component},
   {path: 'exam/N1/:id', component: StarttestjnptN1Component},
-  {path: 'exam/N5/dd/testjnpt', component: TestjlptComponent},
-
+  {path: 'result', component: ResultComponent},
+  {path: 'endtest',component: EndtestjlptComponent},
+  {path: 'exam/:level/testjnpt/:id', component: TestjlptComponent},
 ];
 
 @NgModule({

@@ -98,6 +98,8 @@ import { StarttestjnptN4Component } from './Hai/usertest/starttestjnpt-n4/startt
 import { StarttestjnptN3Component } from './Hai/usertest/starttestjnpt-n3/starttestjnpt-n3.component';
 import { StarttestjnptN2Component } from './Hai/usertest/starttestjnpt-n2/starttestjnpt-n2.component';
 import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/starttestjnpt-n1.component';
+import { ResultComponent } from './Hai/usertest/result/result.component';
+import {ChartsModule} from "ng2-charts";
 @NgModule({
   declarations: [
     AppComponent,
@@ -178,24 +180,27 @@ import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/startt
     StarttestjnptN3Component,
     StarttestjnptN2Component,
     StarttestjnptN1Component,
+    ResultComponent,
+
 
   ],
-    imports: [
-        BrowserModule,
-        RouterModule,
-        ManagerRoutingModule,
-        MatTabsModule,
-        FormsModule,
-        HttpClientModule,
-      CountdownModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig),
-      AngularFireDatabaseModule,
-      FlexLayoutModule,
-      CKEditorModule,
-      Ng2SearchPipeModule,
-      NgxPaginationModule
+  imports: [
+    BrowserModule,
+    RouterModule,
+    ManagerRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    HttpClientModule,
+    CountdownModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    FlexLayoutModule,
+    CKEditorModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    ChartsModule,
 
-    ],
+  ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
