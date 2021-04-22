@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router:Router) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         console.log(data.error);
-        if (data.error === "403 FORBIDDEN"){
+        if (data.error === '403 FORBIDDEN'){
           alert(data.message);
           this.tokenStorage.signOut();
           window.location.reload();
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         }
         // alert('Đăng nhập thành công');
         this.roles = this.tokenStorage.getUser().roles;
-        if(data.role === 'ROLE_ADMIN'){
+        if (data.role === 'ROLE_ADMIN'){
           return this.router.navigate(['admin-home']);
         }
         return this.router.navigate(['page-home']);
