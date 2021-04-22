@@ -116,6 +116,24 @@
             <div class="study-rightTitle">
               <span><i class="fa fa-file-text" ></i> Danh sách bài kiểm tra mới</span>
             </div>
+            <div class="news-list">
+              <a *ngFor="let exa of ex| paginate:{itemsPerPage:4, currentPage: p};" >
+                <a th:each="item:${userScore}">
+                  <div class="news-listItem" [routerLink]="['study/:level/tuvung/:lesson/:id',exa.id]">
+                    <div class="img">
+                      <img src="../../../assets/image/tikkitt.gif" height="300" width="370"/></div>
+                    <div class="content">
+
+                     <h5 class="title" style="font-size: 100%">
+                        Ma de : <span>{{exa.codeExam}}</span>
+                      </h5>
+                      <h5 class="title" style="font-size: 100%">
+                        Thoi gian : <span>{{exa.timeOut}}</span>
+                      </h5>
+                      <h5 class="title" style="font-size: 100%">
+                        Học phần: <span > {{exa.term}}</span>
+                      </h5>
+                    </div>
             <div class="study-listChemistry">
               <a th:href="@{/kiemtra/info(examId=${item.id})}" th:each="item:${listExam}">
                 <div class="study-chemistryItem" >
@@ -133,6 +151,8 @@
               </a>
             </div>
           </div>
+                </a>
+              </a>
         </div>
       </div>
       <div class="row">
@@ -159,6 +179,8 @@
           </div>
         </div>
       </div>
+        </div>
+      </div>
     </section>
 
     <section class="news">
@@ -175,6 +197,9 @@
               <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách bài học mới</span>
             </div>
             <div class="news-list">
+              <a *ngFor="let lson of ls| paginate:{itemsPerPage:4, currentPage: p};" >
+              <a th:each="item:${userScore}">
+                <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
               <a th:href="@{/noidungbaihoc(lessonId=${item.id})}" th:each="item:${lessonList}">
                 <div class="news-listItem">
                   <div class="img">
@@ -191,6 +216,8 @@
                 </div>
               </a>
             </div>
+              </a>
+              </a>
           </div>
         </div>
         <div class="col-md-4 col-12">
@@ -242,12 +269,12 @@
           </div>
         </div>
       </div>
+      </div>
     </section>
 
   </div>
 </main>
 <app-footer></app-footer>
-<!--<div th:replace="fragments/footer :: content"></div>-->
-<!--<div th:replace="fragments/init_lib :: script"></div>-->
+
 </body>
 </html>
