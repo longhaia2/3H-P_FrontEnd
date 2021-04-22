@@ -77,13 +77,13 @@ import { ProfileComponent } from './_services/profile/profile.component';
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
-
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
 import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {AlertModule} from "ngx-bootstrap/alert";
 import {CountdownModule} from "ngx-countdown";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -147,7 +147,6 @@ import {CountdownModule} from "ngx-countdown";
     DetailComponent,
     LessondetailhomeComponent,
       HomelessonComponent,
-
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
@@ -173,9 +172,7 @@ import {CountdownModule} from "ngx-countdown";
     ReactiveFormsModule,
     CountdownModule
   ],
-  providers: [authInterceptorProviders,
-              Title
-              ],
+  providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

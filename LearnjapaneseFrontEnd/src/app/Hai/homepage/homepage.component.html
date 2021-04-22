@@ -116,7 +116,6 @@
             <div class="study-rightTitle">
               <span><i class="fa fa-file-text" ></i> Danh sách bài kiểm tra mới</span>
             </div>
-<<<<<<< HEAD
             <div class="news-list">
               <a *ngFor="let exa of ex| paginate:{itemsPerPage:4, currentPage: p};" >
                 <a th:each="item:${userScore}">
@@ -135,13 +134,11 @@
                         Học phần: <span > {{exa.term}}</span>
                       </h5>
                     </div>
-=======
             <div class="study-listChemistry">
               <a th:href="@{/kiemtra/info(examId=${item.id})}" th:each="item:${listExam}">
                 <div class="study-chemistryItem" >
                   <div class="img">
                     <img th:src="@{/image/subject/{image}(image=${item.getExam_subject().image})}" alt="">
->>>>>>> origin/main
                   </div>
                   <div class="content">
                     <h3 class="title" style="font-size: 108%;">
@@ -154,6 +151,8 @@
               </a>
             </div>
           </div>
+                </a>
+              </a>
         </div>
       </div>
       <div class="row">
@@ -180,6 +179,8 @@
           </div>
         </div>
       </div>
+        </div>
+      </div>
     </section>
 
     <section class="news">
@@ -196,14 +197,11 @@
               <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách bài học mới</span>
             </div>
             <div class="news-list">
-<<<<<<< HEAD
               <a *ngFor="let lson of ls| paginate:{itemsPerPage:4, currentPage: p};" >
               <a th:each="item:${userScore}">
                 <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
-=======
               <a th:href="@{/noidungbaihoc(lessonId=${item.id})}" th:each="item:${lessonList}">
                 <div class="news-listItem">
->>>>>>> origin/main
                   <div class="img">
                     <img th:src="@{/image/lesson/{image}(image=${item.image})}" alt="">
                   </div>
@@ -218,6 +216,8 @@
                 </div>
               </a>
             </div>
+              </a>
+              </a>
           </div>
         </div>
         <div class="col-md-4 col-12">
@@ -268,6 +268,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
 
