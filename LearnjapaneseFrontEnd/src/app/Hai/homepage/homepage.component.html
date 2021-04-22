@@ -11,9 +11,12 @@
 
 <body>
 <app-header></app-header>
-<app-menu [userNameDsp]="logName"></app-menu>
+<app-menu></app-menu>
+<div th:replace="fragments/header :: content"></div>
+<div th:replace="fragments/menu :: content"></div>
 <main class="home">
   <div class="container">
+
     <section class="study">
       <div class="section-header">
         <h2 class="section-title">Học tập</h2>
@@ -94,6 +97,8 @@
                 <div class="study-slider">
                   <div class="study-sliderItem" th:each="item:${listClassTHPT}">
                     <a >
+<!--                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
+
                       <img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
                   </div>
                 </div>
@@ -134,27 +139,14 @@
                         Học phần: <span > {{exa.term}}</span>
                       </h5>
                     </div>
-            <div class="study-listChemistry">
-              <a th:href="@{/kiemtra/info(examId=${item.id})}" th:each="item:${listExam}">
-                <div class="study-chemistryItem" >
-                  <div class="img">
-                    <img th:src="@{/image/subject/{image}(image=${item.getExam_subject().image})}" alt="">
                   </div>
-                  <div class="content">
-                    <h3 class="title" style="font-size: 108%;">
-                      Môn học: <span style="color: #65d258" th:text="${item.getExam_subject().name}"></span>
-                      &nbsp;&nbsp; <i class="fa fa-clock-o" ></i> Thời gian: <span th:text="${item.timeOut} +' phút'"> </span>
-                    </h3>
-                    <span>Mã đề :<span th:text="${item.codeExam}"></span> - <span class="description" th:text="${item.title}"></span></span>
-                  </div>
-                </div>
-              </a>
+                </a>
+              </a >
+              <br><br>
+              <pagination-controls style="margin-left: 250px; margin-bottom: 20px" (pageChange)="p = $event"></pagination-controls>
             </div>
           </div>
-                </a>
-              </a>
         </div>
-      </div>
       <div class="row">
         <div class="col-md-12 col-12">
           <div class="study-banner">
@@ -179,10 +171,8 @@
           </div>
         </div>
       </div>
-        </div>
       </div>
     </section>
-
     <section class="news">
       <div class="section-header">
         <h2 class="section-title">Tin tức</h2>
@@ -200,26 +190,29 @@
               <a *ngFor="let lson of ls| paginate:{itemsPerPage:4, currentPage: p};" >
               <a th:each="item:${userScore}">
                 <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
-              <a th:href="@{/noidungbaihoc(lessonId=${item.id})}" th:each="item:${lessonList}">
-                <div class="news-listItem">
                   <div class="img">
-                    <img th:src="@{/image/lesson/{image}(image=${item.image})}" alt="">
-                  </div>
+                    <img src="../../../assets/image/sticker.gif" height="300" width="320"/></div>
                   <div class="content">
-                    <h3 class="title">
-                      Môn học: <span th:text="${item.getSubject().name}"></span>
-                    </h3>
-                    <span class="description">
-                                           Nội dung : <span th:text="${item.lessonName}"></span>
-                                        </span>
+
+                    <h5 class="title" style="font-size: 100%">
+                      Học phần: <span > {{lson.term}}</span>
+                    </h5>
+                    <h5 class="title" style="font-size: 100%">
+                      Level : <span>{{lson.level}}</span>
+                     </h5>
+                    <h5 class="title" style="font-size: 100%">
+                      Mô tả : <span>{{lson.description}}</span>
+                    </h5>
+
                   </div>
                 </div>
               </a>
+              </a>
+              <pagination-controls style="margin-left: 250px;margin-bottom: 20px" (pageChange)="p = $event"></pagination-controls>
             </div>
-              </a>
-              </a>
           </div>
         </div>
+
         <div class="col-md-4 col-12">
           <div class="news-left">
             <div class="news-leftTitle">
@@ -269,9 +262,7 @@
           </div>
         </div>
       </div>
-      </div>
     </section>
-
   </div>
 </main>
 <app-footer></app-footer>

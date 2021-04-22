@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Question} from "../model/question";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-endcompetition',
@@ -8,19 +7,9 @@ import {Question} from "../model/question";
 })
 export class EndcompetitionComponent implements OnInit {
 
-  @Input() questions: Question[];
-  @Input() correctAnswers: number;
-  finalPercentage: number;
+  constructor() { }
 
-  constructor() {}
-
-  ngOnInit() {
-    console.log(this.questions);
-    console.log(this.correctAnswers);
-    this.finalPercentage = (this.correctAnswers * 100) / this.questions.length;
+  ngOnInit(): void {
   }
-  reload(): void {
-    window.location.reload();
 
-  }
 }

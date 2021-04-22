@@ -13,8 +13,6 @@ import {Exam} from "../admin/model/Exam";
 })
 export class HomepageComponent implements OnInit {
 
-
-  logName: string;
   id:number;
   ls: Lesson[];
   ex: Exam[];
@@ -25,13 +23,9 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     this.list();
-    let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.logName = userName['username'];
-  }
-
+    }
 
   reloadData() {
-    // @ts-ignore
     this.lessonService.getLessonByDesc().subscribe(data => {
       this.ls = data;
     });

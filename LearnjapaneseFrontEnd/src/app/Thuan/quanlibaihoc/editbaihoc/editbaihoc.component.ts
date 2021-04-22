@@ -19,6 +19,7 @@ export class EditbaihocComponent implements OnInit {
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
+    console.log('====================');
     console.log(this.id);
     this.lessonService.get(this.id).subscribe(data=>{
       this.ls = data
