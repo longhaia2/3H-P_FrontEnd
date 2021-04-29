@@ -1,13 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<link rel="stylesheet" href="homepage.component.css">
+<head>
+  <title>Home</title>
+
+  <div th:replace="fragments/init_lib :: header"></div>
+  <script th:src="@{https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
 <body>
 <app-header></app-header>
-<app-menu [userNameDsp]="logName"></app-menu>
+<app-menu></app-menu>
+<!--<div th:replace="fragments/header :: content"></div>-->
+<!--<div th:replace="fragments/menu :: content"></div>-->
 <main class="home">
   <div class="container">
+
     <section class="study">
       <div class="section-header">
         <h2 class="section-title">Học tập</h2>
         <div class="section-img">
-          <img  alt="">
+          <img th:src="@{/image/study.png}" alt="">
         </div>
       </div>
       <div class="row">
@@ -47,8 +61,9 @@
               <div class="tab-pane  fade active show" id="pills-home" role="tabpanel"
                    aria-labelledby="pills-home-tab">
                 <div class="study-slider">
-                  <div class="study-sliderItem" >
-                    <a>
+                  <div class="study-sliderItem" th:each="item:${listClassTH}">
+                    <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">
 
                       <img [routerLink]="['/study/N1']" src="../../../assets/image/nihongo/minaN1.png" height="300px"/></a>
                   </div>
@@ -58,8 +73,10 @@
               <div class="tab-pane fade " id="pills-profile" role="tabpanel"
                    aria-labelledby="pills-profile-tab">
                 <div class="study-slider">
-                  <div class="study-sliderItem" >
-                    <a>
+                  <div class="study-sliderItem" th:each="item:${listClassTHCS}">
+                    <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">
+
                       <img [routerLink]="['/study/N2']" src="../../../assets/image/nihongo/N2.png" height="300px"/></a>
                   </div>
                 </div>
@@ -67,8 +84,10 @@
               <div class="tab-pane  fade " id="pills-contact" role="tabpanel"
                    aria-labelledby="pills-contact-tab">
                 <div class="study-slider">
-                  <div class="study-sliderItem" >
-                    <a >
+                  <div class="study-sliderItem" th:each="item:${listClassTHPT}">
+                    <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">
+
                       <img [routerLink]="['/study/N3']" src="../../../assets/image/nihongo/minaN3.jpg" height="300px"/></a>
                   </div>
                 </div>
@@ -76,16 +95,19 @@
               <div class="tab-pane  fade " id="pills-contact4" role="tabpanel"
                    aria-labelledby="pills-contact-tab">
                 <div class="study-slider">
-                  <div class="study-sliderItem" >
+                  <div class="study-sliderItem" th:each="item:${listClassTHPT}">
                     <a >
+                      <!--                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
+
                       <img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
                   </div>
                 </div>
               </div> <div class="tab-pane  fade " id="pills-contact5" role="tabpanel"
                           aria-labelledby="pills-contact-tab">
               <div class="study-slider">
-                <div class="study-sliderItem" >
-                  <a >
+                <div class="study-sliderItem" th:each="item:${listClassTHPT}">
+                  <a th:href="@{'/monhoc?class_id='+${item.id}}">
+                    <img th:src="@{/image/classroom/{image}(image=${item.image})}">
 
                     <img [routerLink]="['/study/N5']" src="../../../assets/image/nihongo/minan5.jpg" height="300px"/></a>
                 </div>
@@ -99,69 +121,29 @@
             <div class="study-rightTitle">
               <span><i class="fa fa-file-text" ></i> Danh sách bài kiểm tra mới</span>
             </div>
-            <div class="news-list">
-              <a *ngFor="let exa of ex| paginate:{itemsPerPage:4, currentPage: p};" >
-                <a >
-                  <div class="news-listItem" [routerLink]="['study/:level/tuvung/:lesson/:id',exa.id]">
-                    <div class="img">
-                      <img src="../../../assets/image/tikkitt.gif" height="300" width="370"/></div>
-                    <div class="content">
-
-                      <h5 class="title" style="font-size: 100%">
-                        Ma de : <span>{{exa.codeExam}}</span>
-                      </h5>
-                      <h5 class="title" style="font-size: 100%">
-                        Thoi gian : <span>{{exa.timeOut}}</span>
-                      </h5>
-                      <h5 class="title" style="font-size: 100%">
-                        Học phần: <span > {{exa.term}}</span>
-                      </h5>
-                    </div>
-                    <div class="study-listChemistry">
-                      <a  >
-                        <div class="study-chemistryItem" >
-                          <div class="img">
-                            <img  alt="">
-                          </div>
-                          <div class="content">
-                            <h3 class="title" style="font-size: 108%;">
-                              Môn học: <span style="color: #65d258" ></span>
-                              &nbsp;&nbsp; <i class="fa fa-clock-o" ></i> Thời gian: <span > </span>
-                            </h3>
-                            <span>Mã đề :<span ></span> <span class="description" ></span></span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </a>
-              </a>
-            </div>
+            <app-toptest></app-toptest>
           </div>
         </div>
-      </div>
-
-
-
-      <div class="row">
-        <div class="col-md-12 col-12">
-          <div class="study-banner">
-            <div class="study-banner--1">
-              <div class="item-banner">
-                <img src="../../../assets/image/learn1.png">
-                <p>Học tập mọi lúc, mọi nơi</p>
+        <div class="row">
+          <div class="col-md-12 col-12">
+            <div class="study-banner">
+              <div class="study-banner--1">
+                <div class="item-banner">
+                  <img src="../../../assets/image/learn1.png">
+                  <p>Học tập mọi lúc, mọi nơi</p>
+                </div>
               </div>
-            </div>
-            <div class="study-banner--2">
-              <div class="item-banner">
-                <img src="../../../assets/image/learn2.png">
-                <p>Ôn tập đầy đủ các môn học</p>
+              <div class="study-banner--2">
+                <div class="item-banner">
+                  <img src="../../../assets/image/learn2.png">
+                  <p>Ôn tập đầy đủ các môn học</p>
+                </div>
               </div>
-            </div>
-            <div class="study-banner--3">
-              <div class="item-banner">
-                <img src="../../../assets/image/learn3.jpg">
-                <p>Học tập dễ dàng, hiệu quả</p>
+              <div class="study-banner--3">
+                <div class="item-banner">
+                  <img src="../../../assets/image/learn3.jpg">
+                  <p>Học tập dễ dàng, hiệu quả</p>
+                </div>
               </div>
             </div>
           </div>
@@ -172,7 +154,7 @@
       <div class="section-header">
         <h2 class="section-title">Tin tức</h2>
         <div class="section-img">
-          <img  alt="">
+          <img th:src="@{/image/newspaper.png}" alt="">
         </div>
       </div>
       <div class="row">
@@ -182,49 +164,53 @@
               <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách bài học mới</span>
             </div>
             <div class="news-list">
-              <a *ngFor="let lson of ls| paginate:{itemsPerPage:4, currentPage: p};" >
-                <a >
+              <a *ngFor="let lson of ls| paginate:{itemsPerPage:3, currentPage: p};" >
+                <a th:each="item:${userScore}">
                   <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
-                    <a >
-                      <div class="news-listItem">
-                        <div class="img">
-                          <img  alt="">
-                        </div>
-                        <div class="content">
-                          <h3 class="title">
-                            Môn học: <span ></span>
-                          </h3>
-                          <span class="description">
-                                           Nội dung : <span ></span>
-                                        </span>
-                        </div>
-                      </div>
-                    </a>
+                    <div class="img">
+                      <img src="../../../assets/image/sticker.gif" height="300" width="320"/></div>
+                    <div class="content">
+
+                      <h5 class="title" style="font-size: 100%">
+                        Học phần: <span > {{lson.term}}</span>
+                      </h5>
+                      <h5 class="title" style="font-size: 100%">
+                        Level : <span>{{lson.level}}</span>
+                      </h5>
+                      <h5 class="title" style="font-size: 100%">
+                        Mô tả : <span>{{lson.description}}</span>
+                      </h5>
+
+                    </div>
                   </div>
                 </a>
               </a>
+              <div>
+              <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="col-md-4 col-12">
           <div class="news-left">
             <div class="news-leftTitle">
               <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách điểm cao</span>
             </div>
             <div class="news-list">
-              <a >
+              <a th:each="item:${userScore}">
                 <div class="news-listItem">
                   <div class="img">
-                    <img alt="">
+                    <img th:src="@{/image/user/{image}(image=${item.userResult.image})}" alt="">
                   </div>
                   <div class="content">
                     <h5 class="title" style="font-size: 100%">
-                      Môn học: <span ></span> --
-                      <span ></span>
+                      Môn học: <span th:text="${item.exam_result.exam_subject.name}"></span> --
+                      <span th:text="${item.exam_result.exam_classroom.classname}"></span>
                     </h5>
                     <span class="description">
-                                           Thành viên : <span ></span><br>Số điểm: <span ></span>
-                    </span>
+                                           Thành viên : <span th:text="${item.userResult.fullname}"></span><br>Số điểm: <span th:text="${item.score}"></span>
+                                        </span>
                   </div>
                 </div>
               </a>
@@ -237,16 +223,16 @@
               <span><i class="fa fa-newspaper-o" ></i> Danh sách tin tức mới</span>
             </div>
             <div class="news-list">
-              <a >
+              <a th:href="@{/tintuc(newsId=${item.id})}" th:each="item:${listNews}">
                 <div class="news-listItem">
                   <div class="img">
-                    <img  alt="">
+                    <img th:src="@{/image/news/{image}(image=${item.image})}" alt="">
                   </div>
                   <div class="content">
-                    <h4 class="title" >
+                    <h4 class="title" th:text="${item.title}">
                     </h4>
                     <span class="description">
-                      <i class="fa fa-angle-double-right"></i>Thời gian:<span ></span>
+                      <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}"></span>
                     </span>
                   </div>
                 </div>
@@ -259,4 +245,6 @@
   </div>
 </main>
 <app-footer></app-footer>
+
 </body>
+</html>

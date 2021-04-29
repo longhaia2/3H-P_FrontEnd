@@ -1,0 +1,14 @@
+<div style="background-color: red;
+  display: inline; height: 30px">
+  <div class="cotent-container">
+    <mat-icon (click)="closedDialog()" id="clode-icon" style="position: center">X</mat-icon>
+    <span class="content-span full-width" style="color: #0a0a0a" >{{data.message}}</span>
+    <br>
+  </div>
+  <div > <th><button mat-flat-button id="no-button" style="width: 250px;height: 50px;
+  background-color: #DA8028;"[mat-dialog-close]="false" >NO</button></th>
+    <th>  <button mat-flat-button id="yes-button" style="background-color: #b6bece; height: 50px;
+  width: 250px;
+  color: white;
+  border-radius: 0px;" (click)="dialogRef" [mat-dialog-close]="true" >YES</button></th></div>
+</div>

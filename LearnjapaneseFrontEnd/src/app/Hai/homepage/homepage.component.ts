@@ -13,25 +13,22 @@ import {Exam} from "../admin/model/Exam";
 })
 export class HomepageComponent implements OnInit {
 
-
-  logName: string;
   id:number;
   ls: Lesson[];
   ex: Exam[];
   p : number = 1;
+  b : number = 1;
+
   constructor(private lessonService: LessonServiceService, private examService : ExamserviceService ,private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
     this.reloadData();
     this.list();
-    let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.logName = userName['username'];
   }
 
 
   reloadData() {
-    // @ts-ignore
     this.lessonService.getLessonByDesc().subscribe(data => {
       this.ls = data;
     });
