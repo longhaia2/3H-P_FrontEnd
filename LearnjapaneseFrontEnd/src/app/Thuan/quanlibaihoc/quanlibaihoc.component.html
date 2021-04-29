@@ -10,7 +10,7 @@
 <div class="container body">
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
-<app-headeradmin></app-headeradmin>
+    <app-headeradmin></app-headeradmin>
 
 
     <div class="right_col" role="main">
@@ -30,72 +30,75 @@
         <div class="clearfix"></div>
 
         <div class="row">
-            <div>
-              <form  >
-                  <div class="col-lg-12 col-sm-12 col-sm-4 col-xs-3">
-                    <div>
-                      <button  type="add" [routerLink]="['/admin/lesson/add']" id="them" class="btn btn-success">Thêm mới
-                      </button>
-                      <br>
-                      <br>
-                      <input style="width: 300px" class="form-control" name="description" type="text" [(ngModel)]="description"  (ngModelChange)="Search()" placeholder="Nhập tên bài học để tìm"  >
-                    </div>
+          <div>
+            <form  >
+              <div class="col-lg-12 col-sm-12 col-sm-4 col-xs-3">
+                <div>
+                  <button  type="add" [routerLink]="['/admin/lesson/add']" id="them" class="btn btn-success">Thêm mới
+                  </button>
+                  <br>
+                  <br>
+                  <input style="width: 300px" class="form-control" name="description" type="text" [(ngModel)]="description"  (ngModelChange)="Search()" placeholder="Nhập tên bài học để tìm"  >
+                </div>
 
-                  </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-        <br>
-        <div class="row">
-          <div class="col-md-12">
-
-            <div class="tile-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="sampleTable">
-                  <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Tên bài học</th>
-                    <th>Học phần</th>
-                    <th>Trình độ</th>
-                    <th>Mô tả</th>
-                    <th>Tùy chọn</th>
-                  </tr>
-                  </thead>
-                  <tbody >
-                  <tr *ngFor="let lesson of ls | paginate:{itemsPerPage:3, currentPage:p};">
-<!--                  <tr *ngFor="let lesson of ls">-->
-                    <td>{{lesson.id}}</td>
-                    <td >{{lesson.lesson}}</td>
-                    <td >{{lesson.term}}</td>
-                    <td >{{lesson.level}}</td>
-                    <td >{{lesson.description}}</td>
-                    <td>
-                      <button  type="add" (click)="delete(lesson.id) " class="btn btn-success">Xóa
-                      </button>
-<!--                        <button (click)="delete(lesson.id)" class="badge badge-danger mr-2" >delete</button>-->
-                        <button  class ="btn btn-success"  [routerLink]="['/admin/lesson/edit',lesson.id]"style="margin-left: 10px">Sửa</button>
-
-                        <button  style="margin-left: 10px"  class ="btn btn-success"  [routerLink]="['/admin/lesson/detail',lesson.id]">Chi tiết
-                        </button>
-                    </td>
-                  </tr>
-                  </tbody>
-                  <pagination-controls style="margin-left: 250px" (pageChange)="p = $event"></pagination-controls>
-                </table>
-                <div th:replace="admin/pagging::content"></div>
               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="tile-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="sampleTable">
+                <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Tên bài học</th>
+                  <th>Học phần</th>
+                  <th>Trình độ</th>
+                  <th>Mô tả</th>
+                  <th>Tùy chọn</th>
+                </tr>
+                </thead>
+                <tbody >
+                <tr *ngFor="let lesson of ls | paginate:{itemsPerPage:6, currentPage:p};">
+                  <td>{{lesson.id}}</td>
+                  <td >{{lesson.lesson}}</td>
+                  <td >{{lesson.term}}</td>
+                  <td >{{lesson.level}}</td>
+                  <td >{{lesson.description}}</td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-success dropdown-toggle"
+                              type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cog"></i>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" (click)="delete(lesson.id) " id="confirmDelete" ><i class="fa fa-trash-o" ></i> Xóa</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"  [routerLink]="['/admin/lesson/edit',lesson.id]" ><i class="fa fa-edit" ></i> Cập nhật</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" [routerLink]="['/admin/lesson/detail',lesson.id]" > <i class="fa fa-question-circle-o"></i> Chi tiết</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <pagination-controls style="margin-left: 250px" previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
+              <div th:replace="admin/pagging::content"></div>
             </div>
           </div>
         </div>
-        <div class="clearfix"></div>
       </div>
+      <div class="clearfix"></div>
     </div>
   </div>
-
-
+</div>
 
 <div th:replace="admin/modal_confirm::content"></div>
 <div th:replace="admin/modal_active::content"></div>

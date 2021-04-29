@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LessondetailhomeComponent } from './lessondetailhome.component';
+import { N1NguphapComponent } from './n1-nguphap.component';
 
-describe('LessondetailhomeComponent', () => {
-  let component: LessondetailhomeComponent;
-  let fixture: ComponentFixture<LessondetailhomeComponent>;
+describe('N1NguphapComponent', () => {
+  let component: N1NguphapComponent;
+  let fixture: ComponentFixture<N1NguphapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LessondetailhomeComponent ]
+      declarations: [ N1NguphapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LessondetailhomeComponent);
+    fixture = TestBed.createComponent(N1NguphapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

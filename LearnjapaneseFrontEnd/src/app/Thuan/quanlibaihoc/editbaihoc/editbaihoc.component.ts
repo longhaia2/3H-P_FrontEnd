@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Lesson} from "../../model/lesson";
 import {LessonServiceService} from "../../service/lesson-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-editbaihoc',
@@ -10,6 +11,19 @@ import {ActivatedRoute, Router} from "@angular/router";
   providers:[LessonServiceService]
 })
 export class EditbaihocComponent implements OnInit {
+  FormSubmit = new FormGroup({
+    baihoc: new FormControl('',Validators.required),
+    mota: new  FormControl('',Validators.required),
+    hocphan: new  FormControl('',Validators.required),
+    trinhdo: new  FormControl('',Validators.required),
+    noidung: new  FormControl('',Validators.required)
+  })
+
+  get baihoc(){return this.FormSubmit.get('baihoc') }
+  get mota(){return this.FormSubmit.get('mota') }
+  get hocphan(){return this.FormSubmit.get('hocphan') }
+  get trinhdo(){return this.FormSubmit.get('trinhdo') }
+  get noidung(){return this.FormSubmit.get('noidung') }
 
   id:number;
   ls: Lesson=new Lesson();
