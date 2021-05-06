@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagerexameditComponent } from './managerexamedit.component';
+import { N1NguphapOntapComponent } from './n1-nguphap-ontap.component';
 
-describe('ManagerexameditComponent', () => {
-  let component: ManagerexameditComponent;
-  let fixture: ComponentFixture<ManagerexameditComponent>;
+describe('N1NguphapOntapComponent', () => {
+  let component: N1NguphapOntapComponent;
+  let fixture: ComponentFixture<N1NguphapOntapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManagerexameditComponent ]
+      declarations: [ N1NguphapOntapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagerexameditComponent);
+    fixture = TestBed.createComponent(N1NguphapOntapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

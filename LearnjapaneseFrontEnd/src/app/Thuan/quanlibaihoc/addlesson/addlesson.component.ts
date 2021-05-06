@@ -3,12 +3,13 @@ import {LessonServiceService} from "../../service/lesson-service.service";
 import {Lesson} from "../../model/lesson";
 import {Router} from "@angular/router";
 import {FormControl,FormGroup,Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-addlesson',
   templateUrl: './addlesson.component.html',
   styleUrls: ['./addlesson.component.css'],
-  providers: [LessonServiceService]
+  providers: [LessonServiceService, ToastrService]
 })
 export class AddlessonComponent implements OnInit {
   submitForm = new FormGroup({
@@ -25,7 +26,7 @@ export class AddlessonComponent implements OnInit {
   get trinhdo(){return this.submitForm.get('trinhdo') }
   get noidung(){return this.submitForm.get('noidung') }
   ls:Lesson;
-  constructor(private lsService:LessonServiceService,private route:Router) { }
+  constructor(private lsService:LessonServiceService,private route:Router, private tsv: ToastrService) { }
 
   ngOnInit(): void {
      this.ls= new  Lesson();
@@ -34,7 +35,7 @@ export class AddlessonComponent implements OnInit {
   clicksub() {
     this.lsService.create(this.ls).subscribe(data=>{
       this.ls=data;
-      alert("thành công");
+      this.tsv.success('Thành công', 'Thêm bài học');
       this.ls=new Lesson();
     })
     console.log(this.submitForm.value);

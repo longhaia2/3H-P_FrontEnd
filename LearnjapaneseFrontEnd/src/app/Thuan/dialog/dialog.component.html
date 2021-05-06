@@ -1,7 +1,6 @@
-<div style="background-color: red;
-  display: inline; height: 30px">
-  <div class="cotent-container">
-    <mat-icon (click)="closedDialog()" id="clode-icon" style="position: center">X</mat-icon>
+<form style="background-color: #0e94a2" >
+  <div>
+    <mat-icon (click)="closedDialog()" id="clode-icon" style="position: center"><button>X</button></mat-icon>
     <span class="content-span full-width" style="color: #0a0a0a" >{{data.message}}</span>
     <br>
   </div>
@@ -11,4 +10,4 @@
   width: 250px;
   color: white;
   border-radius: 0px;" (click)="dialogRef" [mat-dialog-close]="true" >YES</button></th></div>
-</div>
+</form>

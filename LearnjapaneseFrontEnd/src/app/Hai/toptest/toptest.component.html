@@ -1,7 +1,7 @@
 <div class="news-list">
-  <a *ngFor="let exa of ex| paginate:{itemsPerPage:2, currentPage: b};" >
+  <a *ngFor="let exa of ex| paginate:{itemsPerPage:3, currentPage: b};" >
     <a >
-      <div class="news-listItem" [routerLink]="['study/:level/tuvung/:lesson/:id',exa.id]">
+      <div class="news-listItem" [routerLink]="['/study/:level/tuvung/:lesson',exa.id]">
         <div class="img">
           <img src="../../../assets/image/tikkitt.gif" height="300" width="370"/></div>
         <div class="content">
@@ -21,6 +21,8 @@
   </a >
   <br>
   <div>
-  <pagination-controls style="margin-left: 250px; margin-bottom: 20px" (pageChange)="b = $event"></pagination-controls>
+
+
   </div>
+
 </div>
