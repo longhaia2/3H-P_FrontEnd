@@ -68,7 +68,6 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
-import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
 import { ProfileComponent } from './_services/profile/profile.component';
@@ -104,8 +103,14 @@ import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.comp
 import { ToptestComponent } from './Hai/toptest/toptest.component';
 import { DialogComponent } from './Thuan/dialog/dialog.component';
 import {MatIconModule} from '@angular/material/icon';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
+import {CommonModule} from "@angular/common";
+import {ToastrModule} from "ngx-toastr";
+import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamupdate/managerexamupdate.component';
+import { N1TuvungOntapComponent } from './Hai/study/study-n1/n1-tuvung-ontap/n1-tuvung-ontap.component';
+import { N1NguphapOntapComponent } from './Hai/study/study-n1/n1-nguphap-ontap/n1-nguphap-ontap.component';
+import { HomeOntapComponent } from './Hai/study/home-ontap/home-ontap.component';
+import { MatPaginatorModule} from "@angular/material/paginator";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -171,7 +176,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     DetailComponent,
     ManagerexamComponent,
     ManagerexamaddComponent,
-    ManagerexameditComponent,
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
@@ -197,6 +201,37 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ChitietlessonComponent,
     ToptestComponent,
     DialogComponent,
+
+    ManagerexamupdateComponent,
+    N1TuvungOntapComponent,
+    N1NguphapOntapComponent,
+    HomeOntapComponent,
+
+
+
+  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        ManagerRoutingModule,
+        MatTabsModule,
+        FormsModule,
+        CKEditorModule,
+        HttpClientModule,
+        Ng2SearchPipeModule,
+        NgxPaginationModule,
+        ReactiveFormsModule,
+        CountdownModule,
+        MatDialogModule,
+        MatIconModule,
+        CommonModule,
+        MatPaginatorModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(),
+        MatFormFieldModule,
+        // ToastrModule added
+    ],
+
   ],
   imports: [
     BrowserModule,
@@ -217,12 +252,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
-    BrowserAnimationsModule
+    MatIconModule
   ],
-  entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent],
+  entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
+
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent],
-  entryComponents:[QuanlibaihocComponent,DialogComponent]
+
 })
 export class AppModule { }

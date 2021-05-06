@@ -3,12 +3,13 @@ import {Lesson} from "../../model/lesson";
 import {LessonServiceService} from "../../service/lesson-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-editbaihoc',
   templateUrl: './editbaihoc.component.html',
   styleUrls: ['./editbaihoc.component.css'],
-  providers:[LessonServiceService]
+  providers:[LessonServiceService,ToastrService]
 })
 export class EditbaihocComponent implements OnInit {
   FormSubmit = new FormGroup({
@@ -28,7 +29,7 @@ export class EditbaihocComponent implements OnInit {
   id:number;
   ls: Lesson=new Lesson();
 
-  constructor(private lessonService: LessonServiceService,private route: ActivatedRoute,
+  constructor(private lessonService: LessonServiceService,private route: ActivatedRoute,private tsv: ToastrService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -42,7 +43,7 @@ export class EditbaihocComponent implements OnInit {
     this.lessonService.update(this.id,this.ls).subscribe(data=>{
       console.log(data);
       this.router.navigate(['list']);
-      alert("thành công");
+      this.tsv.success('Sửa thành công', 'Sửa bài học');
     },error => console.log(error));
   }
 }

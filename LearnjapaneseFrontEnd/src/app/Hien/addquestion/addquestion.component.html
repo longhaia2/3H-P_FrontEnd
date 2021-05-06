@@ -2,19 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Thêm câu hỏi</title>
-  <div th:replace="admin/init_admin :: header"></div>
-  <meta th:name="_csrf" th:content="${_csrf.token}"/>
-  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
-
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
     <app-sidebaradmin></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
-
     <div class="right_col" role="main">
-      <!-- top tiles -->
       <div class="">
         <div class="page-title">
           <div class="title_center">
@@ -23,53 +17,75 @@
           <div class="align-items-center mb-4">
             <h4>Thông tin câu hỏi</h4>
           </div>
-          <div class="bg-danger" id="error"
-               th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
-          </div>
           <div class="row">
-            <div class="col-md-6 mt-3">
-              <label class="labels">Nội dung câu hỏi</label>
-              <input [ngModel]="qs.content" type="text" class="form-control" name="content">
+            <form [formGroup]="submitForm" method="post" enctype="multipart/form-data">
+              <div class="col-md-6 mt-3">
+                <label class="labels">Nội dung câu hỏi</label>
+                <input [(ngModel)]="qs.content" type="text" class="form-control" formControlName="content" name="content" id="contentID">
+                <span class="error" *ngIf="content.invalid && content.touched">Nội dung bài học không được để trống.</span>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label>Học phần</label>
+                <select [(ngModel)]="qs.term" class="form-control" formControlName="term" name="classId" id="termID">
+                  <option value="">Tùy chọn</option>
+                  <option value="Từ vựng">Từ vựng</option>
+                  <option value="Ngữ pháp">Ngữ pháp</option>
+                </select>
+                <span class="error" *ngIf="term.invalid && term.touched">Vui lòng chọn học phần.</span>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label>Trình độ</label>
+                <select [(ngModel)]="qs.level" class="form-control" formControlName="level" name="classId" id="levelId">
+                  <option value="">Tùy chọn</option>
+                  <option value="N5">N5</option>
+                  <option value="N4">N4</option>
+                  <option value="N3">N3</option>
+                  <option value="N2">N2</option>
+                  <option value="N1">N1</option>
+                </select>
+                <span class="error" *ngIf="level.invalid && level.touched">Vui lòng chọn trình độ.</span>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label class="labels">Đáp án A</label>
+                <input [(ngModel)]="qs.ansA" type="text" class="form-control" formControlName="ansA" name="ansA"  >
+                <span class="error" *ngIf="ansA.invalid && ansA.touched">Vui lòng nhập đáp án A</span>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label class="labels">Đáp án B</label>
+                <input [(ngModel)]="qs.ansB" type="text" class="form-control" formControlName="ansB" name="ansB"  >
+                <span class="error" *ngIf="ansB.invalid && ansB.touched">Vui lòng nhập đáp án B</span>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label class="labels">Đáp án C</label>
+                <input [(ngModel)]="qs.ansC" type="text" class="form-control" formControlName="ansC" name="ansC">
+                <span class="error" *ngIf="ansC.invalid && ansC.touched">Vui lòng nhập đáp án C</span>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label class="labels">Đáp án D</label>
+                <input [(ngModel)]="qs.ansD" type="text" class="form-control" formControlName="ansD" name="ansD">
+                <span class="error" *ngIf="ansD.invalid && ansD.touched">Vui lòng nhập đáp án D</span>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label>Đáp án đúng</label>
+                <select [(ngModel)]="qs.ansCorrect" class="form-control" formControlName="level" name="classId" id="ansCorrectID">
+                  <option value="">Tùy chọn</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <span class="error" *ngIf="ansCorrect.invalid && ansCorrect.touched">Vui lòng chọn đáp án đúng</span>
+              </div>
+            </form>
+            <br><br>
+            <div class="mt-6 " align="center">
+              <br><br>
+              <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam" >Thêm câu hỏi</button>
+              <a class="btn btn-danger"  [routerLink]="['/admin/question']">Hủy bỏ</a>
             </div>
-            <div class="col-md-6 mt-3">
-              <label class="labels">Học phần</label>
-              <input [ngModel]="qs.term" type = "text" class="form-control" name="term" >
-            </div>
-            <div class="col-md-6 mt-3">
-              <label class="labels">Trình độ</label>
-              <input [ngModel]="qs.level" type = "text" class="form-control" name="level" >
-            </div>
-            <div class="col-md-6 mt-3">
-              <label class="labels">Đáp án A</label>
-              <input [ngModel]="qs.ansA" type="text" class="form-control" name="ansA"  >
-            </div>
-
-            <div class="col-md-6 mt-3">
-              <label class="labels">Đáp án B</label>
-              <input [ngModel]="qs.ansB" type="text" class="form-control" name="ansB"  >
-            </div>
-
-            <div class="col-md-6 mt-3">
-              <label class="labels">Đáp án C</label>
-              <input [ngModel]="qs.ansC" type="text" class="form-control" name="ansC">
-            </div>
-
-            <div class="col-md-6 mt-3">
-              <label class="labels">Đáp án D</label>
-              <input [ngModel]="qs.ansD" type="text" class="form-control" name="ansD">
-            </div>
-            <div class="col-md-6 mt-3">
-              <label class="labels">Đáp án Đúng </label>
-              <input [ngModel]="qs.ansCorrect" type="text" class="form-control" name="ansCorrect">
-            </div> <br>
-          </div>
-          <div class="mt-5 text-center" align="center">
-            <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam">Thêm câu hỏi</button>
-            <a class="btn btn-danger"  [routerLink]="['/admin/question']">Hủy bỏ</a>
           </div>
         </div>
         <span class="span-vld hide" id="vldAddQuestion">Vui lòng nhập đầy đủ thông tin</span>
-        <!--              </form>-->
       </div>
     </div>
   </div>
@@ -92,6 +108,5 @@
     </div>
   </div>
 </div>
-
 </body>
 </html>

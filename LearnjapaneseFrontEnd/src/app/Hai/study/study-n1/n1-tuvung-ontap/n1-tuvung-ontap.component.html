@@ -1,5 +1,4 @@
 
-
 <head>
   <title>Lớp học</title>
 </head>
@@ -22,11 +21,11 @@
               <span>みんなの日本語第</span>
 
             </div>
-            <h1>Các bài học:</h1>
-            <tr *ngFor="let lson of ls; index as i">
+            <h1>Các bài ôn tập từ vựng:</h1>
+            <tr *ngFor="let exs of ex; index as i">
 
-              <td style="font-size: 15px; color: black;width: 550px" class="item1" [routerLink]="['/study/',lson.level,'nguphap',lson.lesson, lson.id]">
-                <span class="label1">Phần {{i+1}} : {{lson.lesson}}</span></td>
+              <td style="font-size: 15px; color: black;width: 550px" class="item1" [routerLink]="['/study/',exs.level,'tuvung','ontap',exs.codeExam, exs.id]">
+                <span class="label1">Phần {{i+1}} : {{exs.codeExam}}</span></td>
             </tr>
 
           </div>
@@ -38,3 +37,9 @@
 </main>
 <app-footer></app-footer>
 </body>
+
+
+
+
+
+
