@@ -77,9 +77,9 @@ import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
 import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
 import {CountdownModule} from "ngx-countdown";
-import {ToastrModule} from 'ngx-toastr';
+// import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CommonModule} from '@angular/common';
+// import {CommonModule} from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -114,6 +114,7 @@ import { StarttestjnptN3Component } from './Hai/starttestjnpt-n3/starttestjnpt-n
 import { StarttestjnptN4Component } from './Hai/starttestjnpt-n4/starttestjnpt-n4.component';
 import { DialogResultTestComponent } from './Hai/usertest/dialog-result-test/dialog-result-test.component';
 import { StarttestjlptComponent } from './Hai/starttestjlpt/starttestjlpt.component';
+
 
 
 @NgModule({
@@ -203,7 +204,6 @@ import { StarttestjlptComponent } from './Hai/starttestjlpt/starttestjlpt.compon
     ChitietlessonComponent,
     ToptestComponent,
     DialogComponent,
-
     ManagerexamupdateComponent,
     N1TuvungOntapComponent,
     N1NguphapOntapComponent,
@@ -215,35 +215,29 @@ import { StarttestjlptComponent } from './Hai/starttestjlpt/starttestjlpt.compon
     StarttestjnptN4Component,
     DialogResultTestComponent,
     StarttestjlptComponent,
-
-
-
-
   ],
-    imports: [
-        BrowserModule,
-        RouterModule,
-        ManagerRoutingModule,
-        MatTabsModule,
-        FormsModule,
-        CKEditorModule,
-        HttpClientModule,
-        Ng2SearchPipeModule,
-        NgxPaginationModule,
-        ReactiveFormsModule,
-        CountdownModule,
-        MatDialogModule,
-        MatIconModule,
-        CommonModule,
-        MatPaginatorModule,
-        BrowserAnimationsModule, // required animations module
-        ToastrModule.forRoot(),
-        MatFormFieldModule,
-        // ToastrModule added
-    ],
-
+   
+  imports: [
+    BrowserModule,
+    RouterModule,
+    ManagerRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    CKEditorModule,
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    CountdownModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule
+  ],
   entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
-
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent],
 
