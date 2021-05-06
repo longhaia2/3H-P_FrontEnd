@@ -113,6 +113,7 @@ import { MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -251,7 +252,6 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatIconModule
   ],
   entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
-
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent],
 
