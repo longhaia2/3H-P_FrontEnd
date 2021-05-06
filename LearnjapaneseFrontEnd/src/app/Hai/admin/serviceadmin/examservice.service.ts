@@ -35,4 +35,7 @@ export class ExamserviceService {
   finByLevelTerm(level,term): Observable<Exam[]>{
     return  this.http.get<Exam[]>(`${'http://localhost:8080/exam'}/${level}/ontap/${term}`);
   }
+  findBylevel(level): Observable<Exam[]> {
+    return this.http.get<Exam[]>(`${'http://localhost:8080/exam'}/pp/${level}`);
+  }
 }

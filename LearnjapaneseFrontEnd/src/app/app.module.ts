@@ -23,7 +23,6 @@ import { HomepageComponent } from './Hai/homepage/homepage.component';
 import { SidebarComponent } from './Hai/sidebar/sidebar.component';
 import { TestjlptComponent } from './Hai/usertest/testjlpt/testjlpt.component';
 import { ListtestjlptComponent } from './Hai/usertest/listtestjlpt/listtestjlpt.component';
-import { StarttestjlptComponent } from './Hai/usertest/starttestjlpt/starttestjlpt.component';
 import { EndtestjlptComponent } from './Hai/usertest/endtestjlpt/endtestjlpt.component';
 import {RouterModule} from '@angular/router';
 import { ManagerquestionComponent } from './Hai/admin/managerquestion/managerquestion.component';
@@ -83,7 +82,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { DialogInputPassComponent } from './Hai/challenge/dialog-input-pass/dialog-input-pass.component';
 import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog-join-room.component';
@@ -103,14 +101,19 @@ import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.comp
 import { ToptestComponent } from './Hai/toptest/toptest.component';
 import { DialogComponent } from './Thuan/dialog/dialog.component';
 import {MatIconModule} from '@angular/material/icon';
-import {CommonModule} from "@angular/common";
-import {ToastrModule} from "ngx-toastr";
 import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamupdate/managerexamupdate.component';
 import { N1TuvungOntapComponent } from './Hai/study/study-n1/n1-tuvung-ontap/n1-tuvung-ontap.component';
 import { N1NguphapOntapComponent } from './Hai/study/study-n1/n1-nguphap-ontap/n1-nguphap-ontap.component';
 import { HomeOntapComponent } from './Hai/study/home-ontap/home-ontap.component';
 import { MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { MathConfirmDialogComponent } from './Manh/math-confirm-dialog/math-confirm-dialog.component';
+import { StarttestjnptN1Component } from './Hai/starttestjnpt-n1/starttestjnpt-n1.component';
+import { StarttestjnptN2Component } from './Hai/starttestjnpt-n2/starttestjnpt-n2.component';
+import { StarttestjnptN3Component } from './Hai/starttestjnpt-n3/starttestjnpt-n3.component';
+import { StarttestjnptN4Component } from './Hai/starttestjnpt-n4/starttestjnpt-n4.component';
+import { DialogResultTestComponent } from './Hai/usertest/dialog-result-test/dialog-result-test.component';
+import { StarttestjlptComponent } from './Hai/starttestjlpt/starttestjlpt.component';
 
 
 @NgModule({
@@ -138,7 +141,6 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     SidebarComponent,
     TestjlptComponent,
     ListtestjlptComponent,
-    StarttestjlptComponent,
     EndtestjlptComponent,
     ManagerquestionComponent,
     ManageruserComponent,
@@ -206,6 +208,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     N1TuvungOntapComponent,
     N1NguphapOntapComponent,
     HomeOntapComponent,
+    MathConfirmDialogComponent,
+    StarttestjnptN1Component,
+    StarttestjnptN2Component,
+    StarttestjnptN3Component,
+    StarttestjnptN4Component,
+    DialogResultTestComponent,
+    StarttestjlptComponent,
+
 
 
 
@@ -232,28 +242,6 @@ import {MatFormFieldModule} from "@angular/material/form-field";
         // ToastrModule added
     ],
 
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    ManagerRoutingModule,
-    MatTabsModule,
-    FormsModule,
-    CKEditorModule,
-    HttpClientModule,
-    Ng2SearchPipeModule,
-    NgxPaginationModule,
-    ReactiveFormsModule,
-    CountdownModule,
-    CommonModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(),
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule
-  ],
   entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
 
   providers: [authInterceptorProviders, Title],
