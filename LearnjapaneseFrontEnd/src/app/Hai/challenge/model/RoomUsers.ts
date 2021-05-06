@@ -1,5 +1,8 @@
 export class RoomUsers {
-  user_id: number;
+  id: number;
   room_id: number;
+  user_id: number;
   score : number;
+  banker: number;
+  status: number;
 }

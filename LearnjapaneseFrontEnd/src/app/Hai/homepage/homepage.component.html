@@ -34,12 +34,12 @@
               </li>
               <li class="nav-item" role="presentation">
                 <a class="study-tabBtn" id="pills-contact-tab5" data-toggle="pill"
-                   href="#pills-contact" role="tab" aria-controls="pills-contact"
+                   href="#pills-list" role="tab" aria-controls="pills-contact"
                    aria-selected="false">N4</a>
               </li>
               <li class="nav-item" role="presentation">
                 <a class="study-tabBtn" id="pills-contact-tab6" data-toggle="pill"
-                   href="#pills-contact" role="tab" aria-controls="pills-contact"
+                   href="#pills-number" role="tab" aria-controls="pills-contact"
                    aria-selected="false">N5</a>
               </li>
             </ul>
@@ -73,20 +73,20 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane  fade " id="pills-contact4" role="tabpanel"
-                   aria-labelledby="pills-contact-tab">
+
+              <div class="tab-pane  fade " id="pills-list" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <div class="study-slider">
                   <div class="study-sliderItem" >
-                    <a >
-                      <img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
+                    <a ><img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"  alt="Tiếng Nhật N5"/>
+                      </a>
                   </div>
                 </div>
-              </div> <div class="tab-pane  fade " id="pills-contact5" role="tabpanel"
+              </div>
+              <div class="tab-pane  fade " id="pills-number" role="tabpanel"
                           aria-labelledby="pills-contact-tab">
               <div class="study-slider">
                 <div class="study-sliderItem" >
                   <a >
-
                     <img [routerLink]="['/study/N5']" src="../../../assets/image/nihongo/minan5.jpg" height="300px"/></a>
                 </div>
               </div>
@@ -102,7 +102,7 @@
             <div class="news-list">
               <a *ngFor="let exa of ex| paginate:{itemsPerPage:4, currentPage: p};" >
                 <a >
-                  <div class="news-listItem" [routerLink]="['study/:level/tuvung/:lesson/:id',exa.id]">
+                  <div class="news-listItem" [routerLink]="['/study/:level/tuvung/:lesson/:id',exa.id]">
                     <div class="img">
                       <img src="../../../assets/image/tikkitt.gif" height="300" width="370"/></div>
                     <div class="content">

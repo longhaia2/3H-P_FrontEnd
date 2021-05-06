@@ -9,12 +9,14 @@ import {Exam} from '../model/Exam';
   providers:[ExamserviceService]
 })
 export class ManagerexamComponent implements OnInit {
-
+  logName: string
   ex:Exam[];
   constructor(private examserviceService: ExamserviceService) { }
 
   ngOnInit(): void {
-this.list();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
+  this.list();
   }
   list(){
     this.examserviceService.findAll().subscribe(data =>{

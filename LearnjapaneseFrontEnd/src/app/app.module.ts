@@ -83,6 +83,17 @@ import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {AlertModule} from "ngx-bootstrap/alert";
 import {CountdownModule} from "ngx-countdown";
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { DialogInputPassComponent } from './Hai/challenge/dialog-input-pass/dialog-input-pass.component';
+import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog-join-room.component';
+
+
 
 @NgModule({
   declarations: [
@@ -158,6 +169,8 @@ import {CountdownModule} from "ngx-countdown";
     BoardUserComponent,
     LoginComponent,
     QuizComponent,
+    DialogInputPassComponent,
+    DialogJoinRoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -170,8 +183,18 @@ import {CountdownModule} from "ngx-countdown";
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    CountdownModule
+    CountdownModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+
+
   ],
+  entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent],
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent]
 })

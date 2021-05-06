@@ -10,8 +10,8 @@
     <!-- class content-->
     <section class="class-content">
       <div class="row">
-        <div class="col-md-8 col-12">
-          <div class="class-left">
+        <div class="col-md-8 col-12" >
+          <div class="class-left" >
             <div class="class-sectionTitle">
               <span>DANH SÁCH PHÒNG THI ĐẤU</span>
             </div>
@@ -20,36 +20,40 @@
               <div class="btn-group" style="z-index: 1;">
                 <input  type="search" name="" id="ctr-search-room" [(ngModel)]="room_id" (ngModelChange)="Search()" style="margin-right: 10px" class="text-center form-control" value="" title="" placeholder="Tìm theo mã phòng">
               </div>
-              <a [routerLink]="['/challenge/add']" class="click"><img src="../../../../assets/image/ctr-lr-create-btn.png" style="height: 40px;width: 100px;margin-right: 10px;margin-bottom: 5px"/></a>
-              <a href="" data-toggle="modal" class="click" onclick="open_find_room();"><img src="../../../../assets/image/ctr-lr-join-btn.png" style="height: 40px;width: 100px;margin-right: 10px;margin-bottom: 5px"></a>
+              <a [routerLink]="['/challenge/add']" class="click"><img src="../../../../assets/image/ctr-lr-create-btn.png" style="height: 40px;width: 150px;margin-right: 10px;margin-bottom: 5px"/></a>
+              <a href="" data-toggle="modal" class="click" onclick="open_find_room();"><img src="../../../../assets/image/ctr-lr-join-btn.png" style="height: 40px;width: 150px;margin-right: 10px;margin-bottom: 5px"></a>
             </div>
             <div>
               <table class="table"><thead>
               <tr style="background-color: #007bff52;" >
-                <th>Mã phòng</th>
-                <th>Chủ phòng</th>
-                <th>Tên phòng</th>
-                <th>Trình độ</th>
-                <th>Thời gian</th>
-                <th>Số người</th>
-                <th>Trạng thái</th>
+                <th style="width: 50px">Mã phòng</th>
+                <th style="width: 100px">Chủ phòng</th>
+                <th style="width: 160px">Tên phòng</th>
+                <th style="width: 50px">Trình độ</th>
+                <th style="width: 83px">Thời gian</th>
+                <th style="width: 50px">Số người</th>
+                <th style="width: 105px">Trạng thái</th>
+                <th>Vào lẹ </th>
               </tr></thead>
                 <tbody>
                   <tr *ngFor="let roomChallenge of challenge | paginate:{itemsPerPage:8, currentPage:p};">
                   <td>{{roomChallenge.room_id}}</td>
-                  <td (click)="add(roomChallenge.room_id)"  ><a >{{roomChallenge.userCreate}}</a></td>
-                    <td  (click)="add(roomChallenge.room_id)"  >{{roomChallenge.room_name}}</td>
+                  <td><a >{{roomChallenge.userCreate}}</a></td>
+                    <td>{{roomChallenge.room_name}}</td>
                   <td>{{roomChallenge.level}}</td>
-                  <td>{{roomChallenge.time +'Phút'}}</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
+                  <td>{{roomChallenge.time +' Phút'}}</td>
+                  <td>{{roomChallenge.count+'/4'}}</td>
+                  <td *ngIf="roomChallenge.check">Đang đấu</td>
+                    <td *ngIf="!roomChallenge.check">Phòng chờ</td>
+                   <td *ngIf="roomChallenge.check"><button [disabled]="isDisabled" type="button" class="btn btn-danger">Chiến</button></td>
+                    <td *ngIf="!roomChallenge.check&&roomChallenge.pass==null" (click)="add(roomChallenge.room_id)"><button type="button" class="btn btn-danger" >Chiến</button></td>
+                 <td *ngIf="!roomChallenge.check&&roomChallenge.pass!=null">
+                   <button type="button"  style="color:#fff;background-color:#c82333;border-color:#bd2130; height: 38px" mat-raised-button  (click)="openDialog(roomChallenge.room_id)">Chiến</button>
+                   </td>
+                  </tr>
                 </tbody>
-
               </table>
-              <pagination-controls  (pageChange)="p = $event"></pagination-controls>
-
+              <pagination-controls  (pageChange)="p = $event" previousLabel="Trước" nextLabel="Sau"></pagination-controls>
             </div>
           </div>
         </div>
@@ -60,4 +64,5 @@
 </main>
 <app-footer></app-footer>
 </body>
+
 

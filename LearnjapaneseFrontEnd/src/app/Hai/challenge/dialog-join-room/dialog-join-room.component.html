@@ -1,0 +1,21 @@
+<main>
+  <div class="container">
+    <div class="login-form">
+      <form action="" method="post">
+        <h3>Tiếc quá!!! Hết thời gian rồi</h3>
+        <div class="input-box">
+            <p style="font-size: 16px">
+              Câu trả lời đúng là {{ correctAnswers }} trong {{ questions.length }} đáp án!!
+            </p>
+            <p *ngIf="finalPercentage <= 50" style="font-size: 16px;color: red">Chưa tốt lắm, làm lại nhé!!</p>
+            <p *ngIf="finalPercentage > 50 && finalPercentage <= 75" style="font-size: 16px;color: green" >Có thể làm tốt hơn</p>
+            <p *ngIf="finalPercentage > 75" style="font-size: 16px;color: #0000cc">Bạn đã làm rất tốt!</p>
+        </div>
+        <div class="btn-box">
+          <button type="submit" class="btn btn-block btn-info cursor-restriction"style="margin-top: 24px" [mat-dialog-close] (click)="ReBack()" > Trở Lại!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+

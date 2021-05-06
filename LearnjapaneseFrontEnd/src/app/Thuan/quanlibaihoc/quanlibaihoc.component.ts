@@ -29,7 +29,7 @@ detail(id: number){
     this.router.navigate(['/detail',id])
 }
   delete(id: number) {
-    alert("bạn có muốn xóa hay không ");
+    confirm("bạn có muốn xóa hay không ");
     this.lessonService.delete(id).subscribe(
         data => {
           console.log(data);
@@ -43,7 +43,7 @@ detail(id: number){
    updatelesson(id: number){
     this.router.navigate(['/edit',id])
   }
-  
+
   Search() {
     if (this.description == "") {
       this.ngOnInit();
