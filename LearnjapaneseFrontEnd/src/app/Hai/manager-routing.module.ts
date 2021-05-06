@@ -28,8 +28,6 @@ import {QuanlibaihocComponent} from '../Thuan/quanlibaihoc/quanlibaihoc.componen
 import {AddlessonComponent} from '../Thuan/quanlibaihoc/addlesson/addlesson.component';
 import {EditbaihocComponent} from '../Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
 import {DetailComponent} from '../Thuan/quanlibaihoc/detail/detail.component';
-import {LessondetailhomeComponent} from '../Thuan/lessondetailhome/lessondetailhome.component';
-import {HomelessonComponent} from '../Thuan/homelesson/homelesson.component';
 import {ManagerexamComponent} from './admin/managerexam/managerexam.component';
 import {ManagerexamaddComponent} from './admin/managerexam/managerexamadd/managerexamadd.component';
 import {ManagerexameditComponent} from './admin/managerexam/managerexamedit/managerexamedit.component';
@@ -42,6 +40,19 @@ import {CompetitionComponent} from "./challenge/competition/competition.componen
 import {EndcompetitionComponent} from "./challenge/endcompetition/endcompetition.component";
 import {ReviewgrammarComponent} from "../Hien/reviewgrammar/reviewgrammar.component";
 import {ReviewvocabularyComponent} from "../Hien/reviewvocabulary/reviewvocabulary.component";
+import {N1TuvungComponent} from "./study/study-n1/n1-tuvung/n1-tuvung.component";
+import {N1NguphapComponent} from "./study/study-n1/n1-nguphap/n1-nguphap.component";
+import {HomeTvComponent} from "./study/home-tv/home-tv.component";
+import {HomeNpComponent} from "./study/home-np/home-np.component";
+import {N2TuvungComponent} from "./study/study-n2/n2-tuvung/n2-tuvung.component";
+import {N2NguphapComponent} from "./study/study-n2/n2-nguphap/n2-nguphap.component";
+import {N3TuvungComponent} from "./study/study-n3/n3-tuvung/n3-tuvung.component";
+import {N3NguphapComponent} from "./study/study-n3/n3-nguphap/n3-nguphap.component";
+import {N4TuvungComponent} from "./study/study-n4/n4-tuvung/n4-tuvung.component";
+import {N4NguphapComponent} from "./study/study-n4/n4-nguphap/n4-nguphap.component";
+import {N5TuvungComponent} from "./study/study-n5/n5-tuvung/n5-tuvung.component";
+import {N5NguphapComponent} from "./study/study-n5/n5-nguphap/n5-nguphap.component";
+import {ChitietlessonComponent} from "../Thuan/chitietlesson/chitietlesson.component";
 
 
 
@@ -75,8 +86,6 @@ const routes: Routes = [
   {path: 'admin/lesson/detail/:id', component: DetailComponent},
   {path: 'admin/lesson/add', component: AddlessonComponent},
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
-  {path: 'study/N5/:lesson/:term/:id', component: LessondetailhomeComponent},
-  {path: 'study/N5/bai', component: HomelessonComponent},
   {path: 'admin/lesson/edit', component: EditbaihocComponent},
   {path: 'admin/exam', component: ManagerexamComponent},
   {path: 'admin/exam/add', component: ManagerexamaddComponent},
@@ -92,6 +101,27 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'vocabulary/exam/list/:id', component: ReviewvocabularyComponent},
   {path: 'grammar/exam/list/:id', component: ReviewgrammarComponent},
+  {path: 'study/N1/tuvung', component: N1TuvungComponent},
+  {path: 'study/N1/nguphap', component: N1NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
+  {path: 'study/N2/tuvung', component: N2TuvungComponent},
+  {path: 'study/N2/nguphap', component: N2NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
+  {path: 'study/N3/tuvung', component: N3TuvungComponent},
+  {path: 'study/N3/nguphap', component: N3NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
+  {path: 'study/N4/tuvung', component: N4TuvungComponent},
+  {path: 'study/N4/nguphap', component: N4NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
+  {path: 'study/N5/tuvung', component: N5TuvungComponent},
+  {path: 'study/N5/nguphap', component: N5NguphapComponent},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
+  {path: 'home/lesson/chitietlesson/:id', component: ChitietlessonComponent},
 
 ];
 

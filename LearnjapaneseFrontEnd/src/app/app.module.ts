@@ -66,8 +66,6 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
 import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
-import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
-import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { ManagerexameditComponent } from './Hai/admin/managerexam/managerexamedit/managerexamedit.component';
@@ -80,8 +78,6 @@ import { BoardUserComponent } from './_services/board-user/board-user.component'
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
 import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
-import {BsDropdownModule} from "ngx-bootstrap/dropdown";
-import {AlertModule} from "ngx-bootstrap/alert";
 import {CountdownModule} from "ngx-countdown";
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -92,6 +88,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { DialogInputPassComponent } from './Hai/challenge/dialog-input-pass/dialog-input-pass.component';
 import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog-join-room.component';
+import { N1TuvungComponent } from './Hai/study/study-n1/n1-tuvung/n1-tuvung.component';
+import { N1NguphapComponent } from './Hai/study/study-n1/n1-nguphap/n1-nguphap.component';
+import { HomeTvComponent } from './Hai/study/home-tv/home-tv.component';
+import { HomeNpComponent } from './Hai/study/home-np/home-np.component';
+import { N2TuvungComponent } from './Hai/study/study-n2/n2-tuvung/n2-tuvung.component';
+import { N2NguphapComponent } from './Hai/study/study-n2/n2-nguphap/n2-nguphap.component';
+import { N3TuvungComponent } from './Hai/study/study-n3/n3-tuvung/n3-tuvung.component';
+import { N3NguphapComponent } from './Hai/study/study-n3/n3-nguphap/n3-nguphap.component';
+import { N4TuvungComponent } from './Hai/study/study-n4/n4-tuvung/n4-tuvung.component';
+import { N4NguphapComponent } from './Hai/study/study-n4/n4-nguphap/n4-nguphap.component';
+import { N5NguphapComponent } from './Hai/study/study-n5/n5-nguphap/n5-nguphap.component';
+import { N5TuvungComponent } from './Hai/study/study-n5/n5-tuvung/n5-tuvung.component';
+import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.component';
+import { ToptestComponent } from './Hai/toptest/toptest.component';
+import { DialogComponent } from './Thuan/dialog/dialog.component';
+import {MatIconModule} from '@angular/material/icon';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -156,8 +169,6 @@ import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog
     HomeadminComponent,
     HeaderadminComponent,
     DetailComponent,
-    LessondetailhomeComponent,
-      HomelessonComponent,
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
@@ -171,6 +182,21 @@ import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog
     QuizComponent,
     DialogInputPassComponent,
     DialogJoinRoomComponent,
+    N1TuvungComponent,
+    N1NguphapComponent,
+    HomeTvComponent,
+    HomeNpComponent,
+    N2TuvungComponent,
+    N2NguphapComponent,
+    N3TuvungComponent,
+    N3NguphapComponent,
+    N4TuvungComponent,
+    N4NguphapComponent,
+    N5NguphapComponent,
+    N5TuvungComponent,
+    ChitietlessonComponent,
+    ToptestComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -191,11 +217,12 @@ import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-
-
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent],
   providers: [authInterceptorProviders, Title],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[QuanlibaihocComponent,DialogComponent]
 })
 export class AppModule { }

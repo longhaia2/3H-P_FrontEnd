@@ -25,6 +25,7 @@ export class HomepageComponent implements OnInit {
     this.title.setTitle("Trang Chủ");
   }
 
+
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     this.logName = userName['username'];
@@ -33,7 +34,6 @@ export class HomepageComponent implements OnInit {
   }
 
   reloadData() {
-    // @ts-ignore
     this.lessonService.getLessonByDesc().subscribe(data => {
       this.ls = data;
     });

@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router:Router,private  toast: ToastrService) { }
+
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         console.log(data.error);
-        if (data.error === "403 FORBIDDEN"){
+        if (data.error === '403 FORBIDDEN'){
           alert(data.message);
           this.tokenStorage.signOut();
           window.location.reload();
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         if(data.role === 'ROLE_ADMIN'){
           this.toast.success('Đăng Nhập Thành Công');
+
           return this.router.navigate(['admin-home']);
         }
         this.toast.success('Đăng Nhập Thành Công');

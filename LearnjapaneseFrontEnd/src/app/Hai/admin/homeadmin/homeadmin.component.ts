@@ -8,6 +8,7 @@ import {ServicebtService} from '../../../Service/servicebt.service';
   providers: [ServicebtService]
 })
 export class HomeadminComponent implements OnInit {
+
   logName: string;
 
   constructor(private  lessonServiceService: ServicebtService) {
