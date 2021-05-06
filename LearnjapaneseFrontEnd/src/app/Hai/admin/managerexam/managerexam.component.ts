@@ -12,14 +12,21 @@ import {ToastrService} from "ngx-toastr";
   providers:[ExamserviceService,ToastrService]
 })
 export class ManagerexamComponent implements OnInit {
+
   hocphan;
   trinhdo;
   searchText;
+
+  logName: string
+
   ex:Exam[];
   constructor(private examserviceService: ExamserviceService,private  trv: ToastrService,private route: ActivatedRoute,
               private router: Router) { }
   ngOnInit(): void {
-    this.list();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
+  this.list();
+
   }
   list(){
     this.examserviceService.findAll().subscribe(data =>{

@@ -1326,8 +1326,13 @@ width: 300px;
 
 #timer {
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
     color: #db4844;
+}
+#timer_end {
+  text-align: center;
+  font-size: 40px;
+  color: #db4844;
 }
 #hours {
     color: #f07c22;

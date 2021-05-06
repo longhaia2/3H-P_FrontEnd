@@ -7,5 +7,4 @@ export class User {
   phoneNumber: number;
   gender: string;
   role: string;
-
 }

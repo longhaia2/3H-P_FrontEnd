@@ -34,11 +34,15 @@ export class ManagerexamaddComponent implements OnInit {
   get thoigian(){return this.AddForm.get('thoigian') }
   get noidung(){return this.AddForm.get('noidung') }
 
+  logName: string
+
   ex:Exam;
   constructor(private examserviceService: ExamserviceService,private  tv: ToastrService,private router: Router) { }
 
   ngOnInit(): void {
     this.ex= new Exam();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
   add() {
     this.examserviceService.create(this.ex).subscribe(data => {

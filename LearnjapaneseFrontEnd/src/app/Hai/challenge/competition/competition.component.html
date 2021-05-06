@@ -12,15 +12,14 @@
     <section class="class-content">
       <div class="row">
         <div class="col-md-8 col-12">
-          <div class="class-left">
+          <div class="class-left"  >
             <div class="class-sectionTitle">
               <span>THI ĐẤU</span>
             </div>
             <div class="quiz"  class="container mt-5" *ngIf="!quizOver" >
               <h5 style="text-align: center"  >
                 <div id="timer">
-                  <span><i class="fa fa-clock-o"></i></span>
-                  <countdown [config]="{ leftTime: 600, format: 'm:s' }"></countdown>
+                  <span><i class="fa fa-clock-o" ></i></span>
                 </div>
               </h5>
               <div class="card mt-5">
@@ -38,11 +37,6 @@
                     </div>
                   </div>
                 </div>
-<!--                <img-->
-<!--                  class="card-img-top"-->
-<!--                  *ngIf="currentQuestion.questionImg"-->
-<!--                  src="{{ currentQuestion.questionImg }}"-->
-<!--                />-->
                 <div class="card-body">
                   <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                   <div class="justify-content-md-center" *ngIf="!showExplanation">
@@ -60,13 +54,19 @@
                           {{qs.ansA}}
                         </button>
                         <button
-                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;" (click)="selectAt(i,qs.ansB)">{{ qs.ansB}}
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,qs.ansB)">
+                          {{ qs.ansB}}
                         </button>
                         <button
-                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;" (click)="selectAt(i,qs.ansC)">{{ qs.ansC}}
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,qs.ansC)">
+                          {{ qs.ansC}}
                         </button>
                         <button
-                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;" (click)="selectAt(i,qs.ansD)">{{ qs.ansD}}
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,qs.ansD)">
+                          {{ qs.ansD}}
                         </button>
                       </div>
                     </div>
@@ -92,7 +92,7 @@
                         (click)="nextQuestion()"
                       >
                         <span *ngIf="currentIndex < questions.length">Câu hỏi tiếp theo!</span>
-                        <span *ngIf="currentIndex == questions.length">Kết thúc!!</span>
+                        <span *ngIf="currentIndex == questions.length" >Kết thúc!!</span>
                       </button>
                     </div>
                   </div>
@@ -112,16 +112,15 @@
         <div class="col-md-4 col-12">
           <div class="class-right">
             <div class="class-sectionTitle1 test">
-              <span>Bảng Điểm</span>
+              <span>Bảng Xếp Hạng Điểm</span>
             </div>
             <div class="sidebar-content">
               <ul>
                 <li >
-                  <a *ngFor="let us of user, let q = index, " >
+                  <a *ngFor="let us of userScore , let q= index" >
                     <div class="test-listItem" style="margin-left: -30px; width: 97%;">
                       <div class="content">
-                        <input type="hidden" [(ngModel)]="room_user.score" value="{{score}}">
-                        <h5 class="title" >{{q+1}}. <span  > {{us.username}} {{score}}</span></h5>
+                        <h5 class="title" >{{q+1}}. <span  > {{us[0]}} {{us[1]}} {{us[3]}} {{us[4]}}</span></h5>
                       </div>
                     </div>
                   </a>

@@ -2,13 +2,10 @@
 <link rel="stylesheet" href="homepage.component.css">
 <head>
   <title>Home</title>
-
   <div th:replace="fragments/init_lib :: header"></div>
   <script th:src="@{https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js}"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 </head>
-
 <body>
 <app-header></app-header>
 <app-menu></app-menu>
@@ -16,7 +13,6 @@
 <!--<div th:replace="fragments/menu :: content"></div>-->
 <main class="home">
   <div class="container">
-
     <section class="study">
       <div class="section-header">
         <h2 class="section-title">Học tập</h2>
@@ -64,11 +60,9 @@
                   <div class="study-sliderItem" th:each="item:${listClassTH}">
                     <a th:href="@{'/monhoc?class_id='+${item.id}}">
                       <img th:src="@{/image/classroom/{image}(image=${item.image})}">
-
                       <img [routerLink]="['/study/N1']" src="../../../assets/image/nihongo/minaN1.png" height="300px"/></a>
                   </div>
                 </div>
-
               </div>
               <div class="tab-pane fade " id="pills-profile" role="tabpanel"
                    aria-labelledby="pills-profile-tab">
@@ -76,7 +70,6 @@
                   <div class="study-sliderItem" th:each="item:${listClassTHCS}">
                     <a th:href="@{'/monhoc?class_id='+${item.id}}">
                       <img th:src="@{/image/classroom/{image}(image=${item.image})}">
-
                       <img [routerLink]="['/study/N2']" src="../../../assets/image/nihongo/N2.png" height="300px"/></a>
                   </div>
                 </div>
@@ -87,7 +80,6 @@
                   <div class="study-sliderItem" th:each="item:${listClassTHPT}">
                     <a th:href="@{'/monhoc?class_id='+${item.id}}">
                       <img th:src="@{/image/classroom/{image}(image=${item.image})}">
-
                       <img [routerLink]="['/study/N3']" src="../../../assets/image/nihongo/minaN3.jpg" height="300px"/></a>
                   </div>
                 </div>
@@ -98,7 +90,6 @@
                   <div class="study-sliderItem" th:each="item:${listClassTHPT}">
                     <a >
                       <!--                      <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
-
                       <img [routerLink]="['/study/N4']" src="../../../assets/image/nihongo/minan4.jpg" height="300px"/></a>
                   </div>
                 </div>
@@ -108,7 +99,6 @@
                 <div class="study-sliderItem" th:each="item:${listClassTHPT}">
                   <a th:href="@{'/monhoc?class_id='+${item.id}}">
                     <img th:src="@{/image/classroom/{image}(image=${item.image})}">
-
                     <img [routerLink]="['/study/N5']" src="../../../assets/image/nihongo/minan5.jpg" height="300px"/></a>
                 </div>
               </div>
@@ -170,7 +160,6 @@
                     <div class="img">
                       <img src="../../../assets/image/sticker.gif" height="300" width="320"/></div>
                     <div class="content">
-
                       <h5 class="title" style="font-size: 100%">
                         Học phần: <span > {{lson.term}}</span>
                       </h5>
@@ -180,7 +169,6 @@
                       <h5 class="title" style="font-size: 100%">
                         Mô tả : <span>{{lson.description}}</span>
                       </h5>
-
                     </div>
                   </div>
                 </a>
@@ -192,7 +180,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-md-4 col-12">
           <div class="news-left">
             <div class="news-leftTitle">
@@ -246,6 +233,5 @@
   </div>
 </main>
 <app-footer></app-footer>
-
 </body>
 </html>

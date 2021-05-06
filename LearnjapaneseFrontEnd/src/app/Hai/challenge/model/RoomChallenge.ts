@@ -5,4 +5,6 @@ export class RoomChallenge {
   level : string;
   pass : string;
   time : string;
+  count: number;
+  check: boolean;
 }
