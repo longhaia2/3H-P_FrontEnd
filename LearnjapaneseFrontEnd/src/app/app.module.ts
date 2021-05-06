@@ -104,7 +104,6 @@ import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.comp
 import { ToptestComponent } from './Hai/toptest/toptest.component';
 import { DialogComponent } from './Thuan/dialog/dialog.component';
 import {MatIconModule} from '@angular/material/icon';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -220,9 +219,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatIconModule,
     BrowserAnimationsModule
   ],
-  entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent],
+  entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent],
-  entryComponents:[QuanlibaihocComponent,DialogComponent]
 })
 export class AppModule { }
