@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {ListtestjlptComponent} from './usertest/listtestjlpt/listtestjlpt.component';
-import {StarttestjlptComponent} from './usertest/starttestjlpt/starttestjlpt.component';
 import {TestjlptComponent} from './usertest/testjlpt/testjlpt.component';
 import {TestN1Component} from './usertest/test-n1/test-n1.component';
 import {TestN2Component} from './usertest/test-n2/test-n2.component';
@@ -56,6 +55,12 @@ import {ManagerexamupdateComponent} from "./admin/managerexam/managerexamupdate/
 import {N1NguphapOntapComponent} from "./study/study-n1/n1-nguphap-ontap/n1-nguphap-ontap.component";
 import {N1TuvungOntapComponent} from "./study/study-n1/n1-tuvung-ontap/n1-tuvung-ontap.component";
 import {HomeOntapComponent} from "./study/home-ontap/home-ontap.component";
+import {StarttestjnptN4Component} from "./starttestjnpt-n4/starttestjnpt-n4.component";
+import {StarttestjnptN3Component} from "./starttestjnpt-n3/starttestjnpt-n3.component";
+import {StarttestjnptN2Component} from "./starttestjnpt-n2/starttestjnpt-n2.component";
+import {StarttestjnptN1Component} from "./starttestjnpt-n1/starttestjnpt-n1.component";
+import {StarttestjlptComponent} from "./starttestjlpt/starttestjlpt.component";
+
 
 
 
@@ -63,7 +68,6 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},
   {path: 'page-test', component: ListtestjlptComponent},
-  {path: 'start-test', component: StarttestjlptComponent},
   {path: 'test', component: TestjlptComponent},
   {path: 'test/N1', component: TestN1Component},
   {path: 'test/N2', component: TestN2Component},
@@ -95,7 +99,6 @@ const routes: Routes = [
   {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent},
   {path: 'admin/question', component: ListquestionComponent},
   {path: 'admin/question/add', component: AddquestionComponent},
-  {path: 'exam', component: StarttestjlptComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'question/:exam_id/challenge/:id/:id_room/:id_score', component: CompetitionComponent},
@@ -129,7 +132,12 @@ const routes: Routes = [
   {path: 'study/N1/tuvung/ontap', component: N1TuvungOntapComponent},
   {path: 'study/:level/nguphap/ontap/:codeExam/:id', component: ReviewgrammarComponent},
   {path: 'study/:level/tuvung/ontap/:codeExam/:id', component: ReviewvocabularyComponent},
-
+  {path: 'exam/N5/:id', component: StarttestjlptComponent},
+  {path: 'exam/N4/:id', component: StarttestjnptN4Component},
+  {path: 'exam/N3/:id', component: StarttestjnptN3Component},
+  {path: 'exam/N2/:id', component: StarttestjnptN2Component},
+  {path: 'exam/N1/:id', component: StarttestjnptN1Component},
+  {path: 'exam/:level/testjnpt/:id', component: TestjlptComponent},
 ];
 
 @NgModule({
