@@ -21,6 +21,9 @@ export class QuestionServiceService {
   get(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/question/all'}/${id}`);
   }
+  getExamByQS(id_Exam): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/question/list'}/${id_Exam}`);
+  }
 
     delete(id): Observable<any> {
       return this.http.delete(`${'http://localhost:8080/question/delete'}/${id}`);

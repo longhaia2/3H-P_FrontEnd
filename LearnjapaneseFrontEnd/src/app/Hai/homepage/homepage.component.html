@@ -164,7 +164,7 @@
               <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách bài học mới</span>
             </div>
             <div class="news-list">
-              <a *ngFor="let lson of ls| paginate:{itemsPerPage:3, currentPage: p};" >
+              <a *ngFor="let lson of ls| paginate:{ itemsPerPage : 4, currentPage: p};" >
                 <a th:each="item:${userScore}">
                   <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
                     <div class="img">
@@ -186,6 +186,7 @@
                 </a>
               </a>
               <div>
+                <br>
               <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
               </div>
             </div>

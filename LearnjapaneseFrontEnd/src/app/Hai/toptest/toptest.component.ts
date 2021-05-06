@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {LessonServiceService} from "../../Thuan/service/lesson-service.service";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ExamserviceService} from "../admin/serviceadmin/examservice.service";
-import {Lesson} from "../../Thuan/model/lesson";
 import {Exam} from "../admin/model/Exam";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -21,10 +19,10 @@ export class ToptestComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+  // @ts-ignore
 
     this.list();
   }
-
   list(){
     this.examService.findAll().subscribe(data =>{
       this.ex = data;

@@ -20,7 +20,7 @@ export class ReviewvocabularyComponent implements OnInit {
   ngOnInit(): void {
     this.ex = new Exam();
     this.qs = this.route.snapshot.params['id'];
-    this.service.get(this.qs).subscribe(data => {
+    this.service.getExamByQS(this.qs).subscribe(data => {
       this.qs = data;
       this.resultAS = new Array(this.qs.length);
       for (let i =0; i< this.qs.length; i++){
