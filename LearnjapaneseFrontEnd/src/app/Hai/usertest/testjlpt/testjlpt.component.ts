@@ -3,10 +3,15 @@ import {Exam} from "../../admin/model/Exam";
 import {Question} from "../../../Hien/model/question";
 import {ReviewgrammarService} from "../../../Hien/servicesh/reviewgrammar.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogResultTestComponent} from "../dialog-result-test/dialog-result-test.component";
+import {min} from "rxjs/operators";
 
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
+export interface DialogData {
+      sodiem: number;
+} {
+
+}
 @Component({
   selector: 'app-testjlpt',
   templateUrl: './testjlpt.component.html',
@@ -15,15 +20,20 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TestjlptComponent implements OnInit {
   ex: Exam;
+  fiveMinutes : number;
+  a: number=0;
+  b: number=0;
+
   selectedAS: string[];
   qs: Question[];
   review = false;
   public sodiem: number;
   constructor(private service: ReviewgrammarService, private  route: ActivatedRoute,
-              private  router: Router) {
+              private  router: Router,public dialog:MatDialog) {
   }
+
   ngOnInit(): void {
-    this.displayTimeRemaining();
+    // this.displayTimeRemaining();
     this.ex = new Exam();
     let levelCurent = this.route.snapshot.params['level'];
     this.qs = this.route.snapshot.params['id'];
@@ -37,34 +47,20 @@ export class TestjlptComponent implements OnInit {
         this.selectedAS[i] = "not select";
       }
     }, error => console.log(error));
+    // @ts-ignore
+    this.local();
+  }
 
+  openDialog(){
+    const dialogRef = this.dialog.open(DialogResultTestComponent, {
+      data:{sodiem:this.sodiem}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.sodiem=result;
+    });
   }
-  displayTimeRemaining() {
-    const countDownDate = new Date().getTime() + 24000000;
-    const x = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      if (distance < 0) {
-        // alert('Hết thời gian');
-        this.router.navigateByUrl('/endtest');
-        clearInterval(x);
-        this.resultQS();
-      } else {document.getElementById('timer').innerHTML = 'Time Remaining' +  ' : '  + minutes + 'm '  + seconds + 's'; }
-    }, 1000);
-  }
-  onSubmit() {
-    if (this.service.qns.every(qn => qn.ansCorrect)) {
-      this.service.qns.forEach(qn => qn.content.find(a => a.Id === qn.Answer).ansCorrect ? this.service.correctAnswerCount++ : null );
-      this.router.navigateByUrl('/endtest');
-    } else {
-      this.service.reviewQuestions = this.service.qns.filter(qn => !qn.ansCorrect );
-      this.review = true;
-      this.service.qnProgress = 0;
-    }
-    this.resultQS()
-  }
+
+
   resultQS() {
 
     this.sodiem = 0;
@@ -73,12 +69,67 @@ export class TestjlptComponent implements OnInit {
         this.sodiem++;
       }
     }
-    alert('Bạn đã làm đúng ' + this.sodiem + ' câu');
+    alert('Bạn đã làm đúng'+ ' ' +this.sodiem + ' '+ 'câu');
   }
+
 
   selectAt(index, value) {
     console.log("index: " + index + " -- value: " + value);
     this.selectedAS[index] = value;
+  }
+  local(){
+
+
+    let minutes = 2;
+    let currentTime = localStorage.getItem('currentTime');
+    let targetTime = localStorage.getItem('targetTime');
+    if (targetTime == null && currentTime == null) {
+      // @ts-ignore
+      currentTime = new Date();
+      // @ts-ignore
+      targetTime = new Date(currentTime.getTime() + (minutes * 60000));
+      localStorage.setItem('currentTime', currentTime);
+      localStorage.setItem('targetTime', targetTime);
+    }
+    else{
+      // @ts-ignore
+      currentTime = new Date(currentTime);
+      // @ts-ignore
+      targetTime = new Date(targetTime);
+    }
+// @ts-ignore
+      const x = setInterval(()=> {
+        if (currentTime > targetTime) {
+          clearInterval(x);
+          this.openDialog();
+          // @ts-ignore
+            targetTime=0;
+            return localStorage.setItem('targetTime', targetTime);
+        } else {
+          // @ts-ignore
+          currentTime = new Date();
+          // @ts-ignore
+          document.getElementById('timer').innerHTML = 'Thời Gian Làm Bài:' +' '+ Math.floor(((targetTime - currentTime)/1000)/60)+' phút' +' '+ Math.floor(((targetTime - currentTime)/1000)%60)+' Giây';
+
+        }
+
+      }, 1000);
+
+    // function checkComplete() {
+    //   if (currentTime > targetTime) {
+    //     clearInterval(x);
+    //     this.resultQS();
+    //   } else {
+    //     // @ts-ignore
+    //     currentTime = new Date();
+    //     // @ts-ignore
+    //     document.getElementById('timerr').innerHTML = 'Time Remaining' + Math.floor((targetTime - currentTime)/1000) ;
+    //   }
+    // }
+// @ts-ignore
+    document.onbeforeunload = function(){
+      localStorage.setItem('currentTime', currentTime);
+    }
   }
 
 }

@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {ReviewgrammarService} from "../../../Hien/servicesh/reviewgrammar.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  styleUrls: ['./result.component.css'],
+  providers: [ReviewgrammarService]
+
 })
 export class ResultComponent implements OnInit {
 
-  constructor(private  service: ReviewgrammarService) { }
+  constructor(private  service: ReviewgrammarService , private  route: ActivatedRoute,
+              private  router: Router) { }
   pieChartOptions = {
     responsive: true
   };

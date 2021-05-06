@@ -1325,7 +1325,8 @@ width: 300px;
 
 #timer {
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
+    font-family: Tahoma, Geneva, sans-serif;
     color: #db4844;
 }
 #hours {

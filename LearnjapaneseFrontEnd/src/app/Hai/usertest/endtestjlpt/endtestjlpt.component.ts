@@ -20,61 +20,42 @@ export class EndtestjlptComponent implements OnInit {
               private  router: Router) {
   }
   ngOnInit(): void {
-    this.displayTimeRemaining();
-    this.ex = new Exam();
-    let levelCurent = this.route.snapshot.params['level'];
-    this.qs = this.route.snapshot.params['id'];
-    console.log(levelCurent + "-" + this.qs);
-    this.service.getByLevelAndId(levelCurent, this.qs).subscribe(data => {
-      console.log("kakak")
-      this.qs = data;
-      this.selectedAS = new Array(this.qs.length);
-      console.log("abc: " + this.qs.length);
-      for (let i = 0; i < this.qs.length; i++) {
-        this.selectedAS[i] = "not select";
+    window.onload = () => {
+      const min = parseInt(window.localStorage.getItem("minutes"));
+      const sec = parseInt(window.localStorage.getItem("seconds"));
+      if (parseInt(String(min * sec))) {
+        var fiveMinutes = (parseInt(String(min * 60))) + sec;
+      } else {
+        var fiveMinutes = 60 * 5;
       }
-    }, error => console.log(error));
-  this.resultQS();
+      const display = document.querySelector('#time');
+      this.startTimer(fiveMinutes, display);
+    };
   }
-  displayTimeRemaining() {
-    const countDownDate = new Date().getTime() + 10000;
-    const x = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      if (distance < 0) {
-        // alert('Hết thời gian');
-        this.router.navigateByUrl('/endtest');
-        clearInterval(x);
-        this.resultQS();
-      } else {document.getElementById('timer').innerHTML = 'Time Remaining' +  ' : '  + minutes + 'm '  + seconds + 's'; }
+  startTimer( duration, display){
+    var timer = duration, minutes, seconds;
+    setInterval(function() {
+      minutes = parseInt(String(timer / 60), 10)
+      seconds = parseInt(String(timer % 60), 10);
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      display.textContent = minutes + " " + " " + seconds;
+      if (--timer < 0) {
+        timer = duration;
+      }
+      console.log(parseInt(seconds))
+      window.localStorage.setItem("seconds", seconds)
+      window.localStorage.setItem("minutes", minutes)
     }, 1000);
   }
-  onSubmit() {
-    if (this.service.qns.every(qn => qn.ansCorrect)) {
-      this.service.qns.forEach(qn => qn.content.find(a => a.Id === qn.Answer).ansCorrect ? this.service.correctAnswerCount++ : null );
-      this.router.navigateByUrl('/endtest');
-    } else {
-      this.service.reviewQuestions = this.service.qns.filter(qn => !qn.ansCorrect );
-      this.review = true;
-      this.service.qnProgress = 0;
-    }
-  }
-  resultQS() {
 
-    var i = 0;
-    for (let rs of this.qs) {
-      if (rs.ansCorrect.trim() === this.selectedAS[i].trim()) {
-        i++;
-      }
-    }
-    console.log(i);
-  }
 
-  selectAt(index, value) {
-    console.log("index: " + index + " -- value: " + value);
-    this.selectedAS[index] = value;
-  }
+
+
+
+
+
+
+
 
 }

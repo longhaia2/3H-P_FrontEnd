@@ -57,7 +57,7 @@ import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.componen
 import {HttpClientModule} from "@angular/common/http";
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
@@ -65,7 +65,7 @@ import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component'
 import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
-
+import {MatIconModule} from '@angular/material/icon';
 import { LessondetailhomeComponent } from './Thuan/lessondetailhome/lessondetailhome.component';
 import { HomelessonComponent } from './Thuan/homelesson/homelesson.component';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
@@ -76,14 +76,9 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import { AngularFireDatabaseModule} from "@angular/fire/database";
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-
-
-
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
-
 
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
@@ -91,7 +86,6 @@ import { ProfileComponent } from './_services/profile/profile.component';
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
-
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
 import { StarttestjnptN4Component } from './Hai/usertest/starttestjnpt-n4/starttestjnpt-n4.component';
@@ -100,8 +94,17 @@ import { StarttestjnptN2Component } from './Hai/usertest/starttestjnpt-n2/startt
 import { StarttestjnptN1Component } from './Hai/usertest/starttestjnpt-n1/starttestjnpt-n1.component';
 import { ResultComponent } from './Hai/usertest/result/result.component';
 import {ChartsModule} from "ng2-charts";
+import { MathConfirmDialogComponent } from './Manh/math-confirm-dialog/math-confirm-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastrModule} from "ngx-toastr";
+import {CommonModule} from "@angular/common";
+import { DialogResultTestComponent } from './Hai/usertest/dialog-result-test/dialog-result-test.component';
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
+    MathConfirmDialogComponent,
     AppComponent,
     ManageruserComponent,
     AdduserComponent,
@@ -133,7 +136,6 @@ import {ChartsModule} from "ng2-charts";
     ManagerlisttestComponent,
     ManageraddtestComponent,
     ManageraddquestionComponent,
-
     ManagerlistquestionComponent,
     ManageraddquestionfortestComponent,
     FooterComponent,
@@ -163,8 +165,7 @@ import {ChartsModule} from "ng2-charts";
     HeaderadminComponent,
     DetailComponent,
     LessondetailhomeComponent,
-      HomelessonComponent,
-
+    HomelessonComponent,
     ManagerexamComponent,
     ManagerexamaddComponent,
     ManagerexameditComponent,
@@ -181,27 +182,33 @@ import {ChartsModule} from "ng2-charts";
     StarttestjnptN2Component,
     StarttestjnptN1Component,
     ResultComponent,
-
-
+    MathConfirmDialogComponent,
+    DialogResultTestComponent,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    ManagerRoutingModule,
-    MatTabsModule,
-    FormsModule,
-    HttpClientModule,
-    CountdownModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule,
-    FlexLayoutModule,
-    CKEditorModule,
-    Ng2SearchPipeModule,
-    NgxPaginationModule,
-    ChartsModule,
-
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        ManagerRoutingModule,
+        MatTabsModule,
+        FormsModule,
+        HttpClientModule,
+        CountdownModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireDatabaseModule,
+        FlexLayoutModule,
+        CKEditorModule,
+        Ng2SearchPipeModule,
+        NgxPaginationModule,
+        ChartsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+      MatIconModule,
+      CommonModule,
+      ToastrModule.forRoot(),
+    ],
   providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MathConfirmDialogComponent, DialogResultTestComponent]
 })
 export class AppModule { }
