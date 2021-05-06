@@ -79,6 +79,15 @@ import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
 import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
 import {CountdownModule} from "ngx-countdown";
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { DialogInputPassComponent } from './Hai/challenge/dialog-input-pass/dialog-input-pass.component';
+import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog-join-room.component';
 import { N1TuvungComponent } from './Hai/study/study-n1/n1-tuvung/n1-tuvung.component';
 import { N1NguphapComponent } from './Hai/study/study-n1/n1-nguphap/n1-nguphap.component';
 import { HomeTvComponent } from './Hai/study/home-tv/home-tv.component';
@@ -94,7 +103,6 @@ import { N5TuvungComponent } from './Hai/study/study-n5/n5-tuvung/n5-tuvung.comp
 import { ChitietlessonComponent } from './Thuan/chitietlesson/chitietlesson.component';
 import { ToptestComponent } from './Hai/toptest/toptest.component';
 import { DialogComponent } from './Thuan/dialog/dialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from '@angular/material/icon';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
@@ -172,6 +180,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BoardUserComponent,
     LoginComponent,
     QuizComponent,
+    DialogInputPassComponent,
+    DialogJoinRoomComponent,
     N1TuvungComponent,
     N1NguphapComponent,
     HomeTvComponent,
@@ -187,7 +197,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ChitietlessonComponent,
     ToptestComponent,
     DialogComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -201,10 +210,17 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     NgxPaginationModule,
     ReactiveFormsModule,
     CountdownModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
     MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     BrowserAnimationsModule
   ],
+  entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent],
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent],
   entryComponents:[QuanlibaihocComponent,DialogComponent]

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../model/question";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-endcompetition',
@@ -12,7 +13,7 @@ export class EndcompetitionComponent implements OnInit {
   @Input() correctAnswers: number;
   finalPercentage: number;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     console.log(this.questions);
@@ -20,7 +21,9 @@ export class EndcompetitionComponent implements OnInit {
     this.finalPercentage = (this.correctAnswers * 100) / this.questions.length;
   }
   reload(): void {
-    window.location.reload();
+    localStorage.setItem('targetTime', null);
+    this.router.navigate(['listchalenge']);
+    localStorage.clear();
 
   }
 }

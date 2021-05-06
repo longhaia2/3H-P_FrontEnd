@@ -26,4 +26,18 @@ export class ServiceService {
   getroom(id_room): Observable<any> {
     return this.http.get(`${'http://localhost:8080/challenge'}/${id_room}`);
   }
+  getUser(): Observable<RoomUsers[]> {
+    return this.http.get<RoomUsers[]>(this.url+'/get-user');
+  }
+  userRoomList(id_room):Observable<any>{
+    return this.http.get(`${'http://localhost:8080/challenge/user-banker'}/${id_room}`);
+  }
+  getUsersRoomList(id_room):Observable<any>{
+    return this.http.get(`${'http://localhost:8080/challenge/room-list-user'}/${id_room}`);
+  }
+  getListUsersByScore(id_room):Observable<any>{
+    return this.http.get(`${'http://localhost:8080/challenge/user-by-score'}/${id_room}`);
+  }
+
+
 }

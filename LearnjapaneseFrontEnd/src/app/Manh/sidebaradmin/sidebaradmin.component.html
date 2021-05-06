@@ -15,7 +15,7 @@
           <img th:src="@{/image/user/{image}(image=${image})}" class="img-circle profile_img">
         </div>
         <div class="profile_info">
-          <span>Chào vanthuan,</span>
+          <span>Chào {{userNameDsp}}</span>
           <h2 th:text="${username}"></h2>
         </div>
       </div>

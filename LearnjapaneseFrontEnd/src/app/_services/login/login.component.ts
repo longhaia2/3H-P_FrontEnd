@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
 import {TokenStorageService} from '../token-storage.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers:[ToastrService]
 })
 export class LoginComponent implements OnInit {
   form: any = {};
@@ -13,7 +15,8 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router:Router,private  toast: ToastrService) { }
+
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
@@ -34,11 +37,13 @@ export class LoginComponent implements OnInit {
           window.location.reload();
           return this.router.navigate(['login']);
         }
-        // alert('Đăng nhập thành công');
         this.roles = this.tokenStorage.getUser().roles;
-        if (data.role === 'ROLE_ADMIN'){
+        if(data.role === 'ROLE_ADMIN'){
+          this.toast.success('Đăng Nhập Thành Công');
+
           return this.router.navigate(['admin-home']);
         }
+        this.toast.success('Đăng Nhập Thành Công');
         return this.router.navigate(['page-home']);
       },
       err => {

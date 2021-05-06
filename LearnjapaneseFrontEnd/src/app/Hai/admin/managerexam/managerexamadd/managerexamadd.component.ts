@@ -11,12 +11,14 @@ import {RoomChallenge} from '../../../challenge/model/RoomChallenge';
   providers:[ExamserviceService]
 })
 export class ManagerexamaddComponent implements OnInit {
-
+  logName: string
   ex:Exam;
   constructor(private examserviceService: ExamserviceService,private router: Router) { }
 
   ngOnInit(): void {
     this.ex= new Exam();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
   add(){
     this.examserviceService.create(this.ex).subscribe(data=>{

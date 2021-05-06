@@ -30,6 +30,7 @@ export class QuanlibaihocComponent implements OnInit {
     });
   }
   delete(id: number) {
+
     const confirmDialog = this.dialog.open(DialogComponent, {
       data: {
         title: 'Confirm Remove Employee',
