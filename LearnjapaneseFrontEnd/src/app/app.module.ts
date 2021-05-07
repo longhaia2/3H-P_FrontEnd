@@ -80,13 +80,7 @@ import {CountdownModule} from "ngx-countdown";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-<<<<<<< HEAD
-
-// @ts-ignore
-=======
->>>>>>> origin/main
 import { DialogInputPassComponent } from './Hai/challenge/dialog-input-pass/dialog-input-pass.component';
-// @ts-ignore
 import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog-join-room.component';
 import { N1TuvungComponent } from './Hai/study/study-n1/n1-tuvung/n1-tuvung.component';
 import { N1NguphapComponent } from './Hai/study/study-n1/n1-nguphap/n1-nguphap.component';
