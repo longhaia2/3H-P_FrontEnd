@@ -77,12 +77,9 @@ import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
 import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
 import {CountdownModule} from "ngx-countdown";
-// import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-// import {CommonModule} from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
 import { DialogInputPassComponent } from './Hai/challenge/dialog-input-pass/dialog-input-pass.component';
 import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog-join-room.component';
 import { N1TuvungComponent } from './Hai/study/study-n1/n1-tuvung/n1-tuvung.component';
@@ -105,7 +102,6 @@ import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamu
 import { N1TuvungOntapComponent } from './Hai/study/study-n1/n1-tuvung-ontap/n1-tuvung-ontap.component';
 import { N1NguphapOntapComponent } from './Hai/study/study-n1/n1-nguphap-ontap/n1-nguphap-ontap.component';
 import { HomeOntapComponent } from './Hai/study/home-ontap/home-ontap.component';
-import { MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MathConfirmDialogComponent } from './Manh/math-confirm-dialog/math-confirm-dialog.component';
 import { StarttestjnptN1Component } from './Hai/starttestjnpt-n1/starttestjnpt-n1.component';
@@ -114,6 +110,11 @@ import { StarttestjnptN3Component } from './Hai/starttestjnpt-n3/starttestjnpt-n
 import { StarttestjnptN4Component } from './Hai/starttestjnpt-n4/starttestjnpt-n4.component';
 import { DialogResultTestComponent } from './Hai/usertest/dialog-result-test/dialog-result-test.component';
 import { StarttestjlptComponent } from './Hai/starttestjlpt/starttestjlpt.component';
+import {CommonModule} from '@angular/common';
+import {ToastrModule} from 'ngx-toastr';
+import { ResultTestComponent } from './Hien/result-test/result-test.component';
+import { ResultVocabularyComponent } from './Hien/result-vocabulary/result-vocabulary.component';
+import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
 
 
 
@@ -215,8 +216,11 @@ import { StarttestjlptComponent } from './Hai/starttestjlpt/starttestjlpt.compon
     StarttestjnptN4Component,
     DialogResultTestComponent,
     StarttestjlptComponent,
+    ResultTestComponent,
+    ResultVocabularyComponent,
+    UnaccessComponent,
   ],
-   
+
   imports: [
     BrowserModule,
     RouterModule,

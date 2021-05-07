@@ -16,7 +16,7 @@ export class DialogResultTestComponent implements OnInit {
   ngOnInit(): void {
   }
   resetTimer(){
-    this.router.navigate(['/endtest']);
+    this.router.navigate(['resultsgrammar/', this.data.idResult, this.data.idExam]);
     localStorage.clear();
 
   }

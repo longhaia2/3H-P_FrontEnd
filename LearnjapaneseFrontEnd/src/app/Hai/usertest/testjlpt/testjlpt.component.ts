@@ -4,72 +4,78 @@ import {Question} from "../../../Hien/model/question";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogResultTestComponent} from "../dialog-result-test/dialog-result-test.component";
-import {min} from "rxjs/operators";
 import {ReviewgrammarService} from "../../../Hien/servicesh/reveiwgrammarservice.service";
+import {ReviewService} from '../../../Hien/servicesh/review.service';
+import {Result} from '../../../Hien/model/result';
 
 export interface DialogData {
-  sodiem: number;
-} {
-
+  idResult: number;
+  idExam: number;
 }
 @Component({
   selector: 'app-testjlpt',
   templateUrl: './testjlpt.component.html',
   styleUrls: ['./testjlpt.component.css'],
-  providers: [ReviewgrammarService]
+  providers: [ReviewgrammarService,ReviewService]
 })
 export class TestjlptComponent implements OnInit {
   ex: Exam;
-  fiveMinutes : number;
   a: number=0;
   b: number=0;
-
+  rs: Result;
+  dem = 0;
   selectedAS: string[];
   qs: Question[];
-  review = false;
   public sodiem: number;
-  constructor(private service: ReviewgrammarService, private  route: ActivatedRoute,
-              private  router: Router,public dialog:MatDialog) {
+  constructor(private servicerv: ReviewgrammarService, private  route: ActivatedRoute,
+              private  router: Router,public dialog:MatDialog, private service: ReviewService) {
   }
 
   ngOnInit(): void {
-    // this.displayTimeRemaining();
+    this.ex = new Exam();
+    this.rs = new Result();
     this.ex = new Exam();
     let levelCurent = this.route.snapshot.params['level'];
     this.qs = this.route.snapshot.params['id'];
     console.log(levelCurent + "-" + this.qs);
-    this.service.getByLevelAndId(levelCurent, this.qs).subscribe(data => {
-      console.log("kakak")
+    this.servicerv.getByLevelAndId(levelCurent, this.qs).subscribe(data => {
       this.qs = data;
       this.selectedAS = new Array(this.qs.length);
-      console.log("abc: " + this.qs.length);
-      for (let i = 0; i < this.qs.length; i++) {
-        this.selectedAS[i] = "not select";
-      }
     }, error => console.log(error));
     // @ts-ignore
     this.local();
   }
 
   openDialog(){
-    const dialogRef = this.dialog.open(DialogResultTestComponent, {
-      data:{sodiem:this.sodiem}
+    this.service.addResult(this.rs).subscribe(data => {
+     let idResult = data.dataResponse;
+      const dialogRef = this.dialog.open(DialogResultTestComponent, {
+        data:{idResult:idResult,idExam:this.rs.exam_id}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.sodiem=result;
+      });
     });
-    dialogRef.afterClosed().subscribe(result => {
-      this.sodiem=result;
-    });
+
   }
 
 
-  resultQS() {
-
-    this.sodiem = 0;
-    for (let rs of this.qs) {
-      if (rs.ansCorrect.trim() === this.selectedAS[this.sodiem].trim()) {
-        this.sodiem++;
+  addResult(idResult){
+    for (let i = 0; i < this.qs.length; i++) {
+      if (this.qs[i].ansCorrect === this.selectedAS[i]) {
+        this.dem++;
       }
     }
-    alert('Bạn đã làm đúng'+ ' ' +this.sodiem + ' '+ 'câu');
+    this.rs.score = this.dem;
+    let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.rs.user_id = user_id.userId;
+    this.rs.exam_id = this.route.snapshot.params.id;
+    this.rs.ansSelects = this.selectedAS;
+
+    this.service.addResult(this.rs).subscribe(data => {
+      idResult = data.dataResponse;
+      this.router.navigate(['resultsgrammar/', idResult, this.rs.exam_id]);
+    });
   }
 
 
@@ -101,6 +107,16 @@ export class TestjlptComponent implements OnInit {
     const x = setInterval(()=> {
       if (currentTime > targetTime) {
         clearInterval(x);
+        for (let i = 0; i < this.qs.length; i++) {
+          if (this.qs[i].ansCorrect === this.selectedAS[i]) {
+            this.dem++;
+          }
+        }
+        this.rs.score = this.dem;
+        let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
+        this.rs.user_id = user_id.userId;
+        this.rs.exam_id = this.route.snapshot.params.id;
+        this.rs.ansSelects = this.selectedAS;
         this.openDialog();
         // @ts-ignore
         targetTime=0;
@@ -115,17 +131,6 @@ export class TestjlptComponent implements OnInit {
 
     }, 1000);
 
-    // function checkComplete() {
-    //   if (currentTime > targetTime) {
-    //     clearInterval(x);
-    //     this.resultQS();
-    //   } else {
-    //     // @ts-ignore
-    //     currentTime = new Date();
-    //     // @ts-ignore
-    //     document.getElementById('timerr').innerHTML = 'Time Remaining' + Math.floor((targetTime - currentTime)/1000) ;
-    //   }
-    // }
 // @ts-ignore
     document.onbeforeunload = function(){
       localStorage.setItem('currentTime', currentTime);

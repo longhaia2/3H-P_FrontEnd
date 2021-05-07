@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  lang="en">
-<head>
-  <title>Thi Online</title>
-  <div th:replace="fragments/init_lib :: header"></div>
 
-</head>
 
 <body>
 <!--<div th:replace="fragments/header :: content"></div>-->
@@ -16,10 +10,6 @@
     <div class="infomation-exam">
     </div>
   </div>
-  <input
-    type="hidden"
-    th:name="${_csrf.parameterName}"
-    th:value="${_csrf.token}" />
   <div class="container exam-test">
     <section class="container">
       <!--      <div id="timer">-->
@@ -36,32 +26,32 @@
       <!--      </div>-->
     </section>
     <section class="main-exam container">
-      <h2 style="text-align: center;font-size: 20px">Bài thi : <span th:text="${subjectName}"></span></h2>
+      <h2 style="text-align: center;font-size: 20px">Thi Online</h2>
       <div class="exam-content">
-        <div class="list-question">
-          <div class="item-question" *ngFor="let review of qs; let i = index; let j = index" value="{{review}}">
+        <div class="list-question" >
+          <div class="item-question"  *ngFor="let review of qs; let i = index; let j = index" value="{{review}}" >
             <div class="title">
-              <b><span class="question-no">{{i+1}}</span>{{review.content}}</b> </div>
-            <div class="content">
+              <b><span class="question-no">{{i+1}}</span>{{review.content}}</b>
+            </div>
+            <div >
               <div  class="content-ans">
-                <input type="radio" name="{{j+1}}"   aria-labelledby="example-radio-group-label"
-                       value="{{review.ansA}}" title="" (click)="selectAt(i,review.ansA)">
+                <input type="radio" name="{{j+1}}"  value="{{review.ansA}}" title="" (click)="selectAt(i,'A')">
                 <span>A. {{review.ansA}}</span>
               </div>
               <div class="content-ans">
-                <input  type="radio" name="{{j+1}}"   aria-labelledby="example-radio-group-label"
-                        value="{{review.ansB}}" title="" (click)="selectAt(i,review.ansB)">
+                <input  type="radio" name="{{j+1}}" value="{{review.ansB}}" title="" (click)="selectAt(i,'B')">
                 <span>B. {{review.ansB}}</span>
               </div>
               <div class="content-ans">
-                <input  type="radio" name="{{j+1}}"   aria-labelledby="example-radio-group-label"
-                        value="{{review.ansC}}" title="" (click)="selectAt(i,review.ansC)">
+                <input  type="radio" name="{{j+1}}"  value="{{review.ansC}}" title="" (click)="selectAt(i,'C')">
                 <span>C. {{review.ansC}}</span>
               </div>
               <div class="content-ans">
-                <input  type="radio" name="{{j+1}}"   aria-labelledby="example-radio-group-label"
-                        value="{{review.ansD}}" title="" (click)="selectAt(i,review.ansD)">
+                <input  type="radio" name="{{j+1}}" value="{{review.ansD}}" title="" (click)="selectAt(i,'D')">
                 <span>D. {{review.ansD}}</span>
+              </div>
+              <div class="content-ans">
+                <!--                <p><span> You selected:</span><b>{{selectedAS[i]}}</b></p>-->
               </div>
             </div>
           </div>
@@ -73,35 +63,12 @@
       <div class="row">
 
         <div class="col-md-12 col-sm-12">
-          <a class="btn-finish btn btn-success" (click)="resultQS()">Kiểm tra kết quả</a>
+          <button class="btn-finish btn btn-success" (click)="addResult(rs.id)">Kết quả</button>
         </div>
       </div>
     </section>
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1"
-       role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-danger" id="exampleModalLabel">Kết thúc bài thi!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body"><h3>Bạn có muốn kết thúc bài thi hay không ?</h3></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Hủy bỏ</button>
-          <a class="btn btn-success" id="btnEnd" style="color: white"><i class="fa fa-check"></i> Đồng ý</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </main>
 <app-footer></app-footer>
-<!--<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>-->
 
-
-<script src="../../../../assets/js/exam.js"></script>
-<script type="text/javascript" th:src="@{/js/exam.js}"></script>
 </body>
-</html>

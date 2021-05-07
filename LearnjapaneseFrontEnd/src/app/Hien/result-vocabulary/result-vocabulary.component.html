@@ -1,0 +1,68 @@
+
+<link rel="stylesheet" href="result-vocabulary.component.css">
+<body>
+<app-header></app-header>
+<app-menu [userNameDsp]="logName"></app-menu>
+<main class="class">
+  <div class="container">
+    <!-- banner -->
+    <div class="banner exam-banner10">
+    </div>
+    <section class="class-content" >
+      <div class="row">
+        <div class="col-md-8 col-12">
+          <div class="class-left">
+            <div class="class-sectionTitle">
+              <span>KẾT QUẢ THI</span>
+            </div>
+            <br>
+            <main class="home">
+              <div class="container">
+                <div class="infomation-exam">
+                </div>
+              </div>
+              <div class="container exam-test history-test">
+                <section class="container">
+                  <div class="content content-infor row">
+                    <div style="margin-left: 260px; font-size: larger; color: green; font-weight: bolder">Số câu trả lời đúng: {{rs.score}}</div>
+                    <br><br>
+                    <div class="col-12 col-md-6">
+                      <div class="content-ans row">
+                        <div class="col-4">Màu xanh</div>
+                        <div class="col-8" style="color: #28a745">Câu trả lời đúng</div>
+                      </div>
+                      <div class="content-ans row">
+                        <div class="col-4">Màu đỏ</div>
+                        <div class="col-8" style="color: #dc3545">Câu trả lời sai</div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="main-exam container">
+                  <h2 style="text-align: center;font-size: 20px">Đáp án bài ôn tập</h2>
+                  <table class="col-md-12">
+                    <tr>
+                      <th>Câu hỏi</th>
+                      <th>Đáp án đúng</th>
+                      <th>Đáp án của bạn</th>
+                    </tr>
+                    <tr *ngFor="let review of qs; let i = index; let j = index" value="{{review}}">
+                      <td>{{i + 1}}.{{review.content}}</td>
+                      <td>{{review.ansCorrect}}</td>
+                      <td [ngStyle]="{'color': rs.ansSelects[i]== rs.ansCorrects[i] ? 'green' : 'red'}">{{rs.ansSelects[i]}}</td>
+                    </tr>
+                  </table>
+                  <br>
+                </section>
+              </div>
+            </main>
+          </div>
+        </div>
+        <app-sidebar></app-sidebar>
+      </div>
+    </section>
+  </div>
+</main>
+<app-footer></app-footer>
+</body>
+
