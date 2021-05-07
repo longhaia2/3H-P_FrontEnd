@@ -83,9 +83,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {CommonModule} from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-// import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+
+// @ts-ignore
 import { DialogInputPassComponent } from './Hai/challenge/dialog-input-pass/dialog-input-pass.component';
+// @ts-ignore
 import { DialogJoinRoomComponent } from './Hai/challenge/dialog-join-room/dialog-join-room.component';
 import { N1TuvungComponent } from './Hai/study/study-n1/n1-tuvung/n1-tuvung.component';
 import { N1NguphapComponent } from './Hai/study/study-n1/n1-nguphap/n1-nguphap.component';
