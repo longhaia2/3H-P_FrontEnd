@@ -45,7 +45,7 @@ export class DialogInputPassComponent implements OnInit {
       return  this.router.navigate(['challenge/wait/', this.room_user.room_id]);
         });
       }else  {
-        this.toastrService.success('Sai mật khẩu, vui lòng thử lại nhé!!');
+        this.toastrService.error('Sai mật khẩu, vui lòng thử lại nhé!!');
         const dialogRef = this.dialog.open(DialogInputPassComponent, {
         });
         dialogRef.afterClosed().subscribe(result => {

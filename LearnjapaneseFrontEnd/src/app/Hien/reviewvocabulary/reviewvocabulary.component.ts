@@ -3,6 +3,7 @@ import { Exam} from "../../Hai/admin/model/Exam";
 import { Question} from "../model/question";
 import { ActivatedRoute, Router} from "@angular/router";
 import {ReviewService} from "../servicesh/review.service";
+import {Result} from '../model/result';
 @Component({
   selector: 'app-reviewvocabulary',
   templateUrl: './reviewvocabulary.component.html',
@@ -10,8 +11,8 @@ import {ReviewService} from "../servicesh/review.service";
   providers: [ReviewService],
 })
 export class ReviewvocabularyComponent implements OnInit {
-  // checkAnswer = false;
-  color = '';
+  rs: Result;
+  dem = 0;
   ex: Exam;
   qs: Question[];
   resultAS:  string[];
@@ -19,8 +20,9 @@ export class ReviewvocabularyComponent implements OnInit {
               private  router: Router) { }
   ngOnInit(): void {
     this.ex = new Exam();
+    this.rs = new Result();
     this.qs = this.route.snapshot.params['id'];
-    this.service.getExamByQS(this.qs).subscribe(data => {
+    this.service.get(this.qs).subscribe(data => {
       this.qs = data;
       this.resultAS = new Array(this.qs.length);
       for (let i =0; i< this.qs.length; i++){
@@ -28,17 +30,25 @@ export class ReviewvocabularyComponent implements OnInit {
       }
     }, error => console.log(error));
   }
-  results() {
-    var countCorrect = 0;
-    for (let i =0; i < this.qs.length;i++) {
-      if (this.qs[i].ansCorrect === this.resultAS[i]) {
-        countCorrect++;
-      }
-    }
-    alert('Bạn đã làm đúng ' + countCorrect + ' câu');
-  }
   selectAt(index, value) {
     console.log("index: "+index + " -- value: "+value)
     this.resultAS[index] = value;
+  }
+  addResults(idResult){
+    for (let i = 0; i < this.qs.length; i++) {
+      if (this.qs[i].ansCorrect === this.resultAS[i]) {
+        this.dem++;
+      }
+    }
+    this.rs.score = this.dem;
+    let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.rs.user_id = user_id.userId;
+    this.rs.exam_id = this.route.snapshot.params.id;
+    this.rs.ansSelects = this.resultAS;
+
+    this.service.addResults(this.rs).subscribe(data => {
+      idResult = data.dataResponse;
+      this.router.navigate(['resultsvocabulary/', idResult, this.rs.exam_id]);
+    });
   }
 }

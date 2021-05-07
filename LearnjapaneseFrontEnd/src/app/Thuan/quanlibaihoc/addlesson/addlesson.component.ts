@@ -4,7 +4,6 @@ import {Lesson} from "../../model/lesson";
 import {Router} from "@angular/router";
 import {FormControl,FormGroup,Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
-
 @Component({
   selector: 'app-addlesson',
   templateUrl: './addlesson.component.html',
@@ -19,7 +18,6 @@ export class AddlessonComponent implements OnInit {
     trinhdo: new  FormControl('',Validators.required),
     noidung: new  FormControl('',Validators.required)
   })
-
   get baihoc(){return this.submitForm.get('baihoc') }
   get mota(){return this.submitForm.get('mota') }
   get hocphan(){return this.submitForm.get('hocphan') }
@@ -27,11 +25,9 @@ export class AddlessonComponent implements OnInit {
   get noidung(){return this.submitForm.get('noidung') }
   ls:Lesson;
   constructor(private lsService:LessonServiceService,private route:Router, private tsv: ToastrService) { }
-
   ngOnInit(): void {
-     this.ls= new  Lesson();
+    this.ls= new  Lesson();
   }
-
   clicksub() {
     this.lsService.create(this.ls).subscribe(data=>{
       this.ls=data;
@@ -40,7 +36,5 @@ export class AddlessonComponent implements OnInit {
     })
     console.log(this.submitForm.value);
     this.submitForm.reset();
-
   }
-
 }

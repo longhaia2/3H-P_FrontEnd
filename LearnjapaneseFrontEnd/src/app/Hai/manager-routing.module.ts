@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {ListtestjlptComponent} from './usertest/listtestjlpt/listtestjlpt.component';
-import {StarttestjlptComponent} from './usertest/starttestjlpt/starttestjlpt.component';
 import {TestjlptComponent} from './usertest/testjlpt/testjlpt.component';
 import {TestN1Component} from './usertest/test-n1/test-n1.component';
 import {TestN2Component} from './usertest/test-n2/test-n2.component';
@@ -56,6 +55,17 @@ import {ManagerexamupdateComponent} from "./admin/managerexam/managerexamupdate/
 import {N1NguphapOntapComponent} from "./study/study-n1/n1-nguphap-ontap/n1-nguphap-ontap.component";
 import {N1TuvungOntapComponent} from "./study/study-n1/n1-tuvung-ontap/n1-tuvung-ontap.component";
 import {HomeOntapComponent} from "./study/home-ontap/home-ontap.component";
+import {StarttestjnptN4Component} from "./starttestjnpt-n4/starttestjnpt-n4.component";
+import {StarttestjnptN3Component} from "./starttestjnpt-n3/starttestjnpt-n3.component";
+import {StarttestjnptN2Component} from "./starttestjnpt-n2/starttestjnpt-n2.component";
+import {StarttestjnptN1Component} from "./starttestjnpt-n1/starttestjnpt-n1.component";
+import {StarttestjlptComponent} from "./starttestjlpt/starttestjlpt.component";
+import {ResultTestComponent} from '../Hien/result-test/result-test.component';
+import {CustomerAuthService} from '../_services/customer-auth.service';
+import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
+import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
+import {AdminAuthService} from '../_services/admin-auth.service';
+
 
 
 
@@ -63,7 +73,6 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},
   {path: 'page-test', component: ListtestjlptComponent},
-  {path: 'start-test', component: StarttestjlptComponent},
   {path: 'test', component: TestjlptComponent},
   {path: 'test/N1', component: TestN1Component},
   {path: 'test/N2', component: TestN2Component},
@@ -78,58 +87,65 @@ const routes: Routes = [
   {path: 'study/alphabet', component: StudyAlphabetComponent},
   {path: 'study/kanji', component: StudyKanjiComponent},
   {path: 'infor', component: InformationComponent},
-  {path: 'admin/manage/user/add', component: AdduserComponent},
-  {path: 'admin/manage/user', component: ManageruserComponent},
-  {path: 'admin/manage/user/detail/:id', component: DetailuserComponent},
-  {path: 'listchalenge', component: ListchallengeComponent},
-  {path: 'challenge/add', component: CreateroomComponent},
-  {path: 'challenge/wait/:id', component: WaitlchallengeComponent},
-  {path: 'admin-home', component: HomeadminComponent},
-  {path: 'admin/lesson', component: QuanlibaihocComponent},
-  {path: 'admin/lesson/detail/:id', component: DetailComponent},
-  {path: 'admin/lesson/add', component: AddlessonComponent},
-  {path: 'admin/lesson/edit/:id', component: EditbaihocComponent},
-  {path: 'admin/lesson/edit', component: EditbaihocComponent},
-  {path: 'admin/exam', component: ManagerexamComponent},
-  {path: 'admin/exam/add', component: ManagerexamaddComponent},
-  {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent},
-  {path: 'admin/question', component: ListquestionComponent},
-  {path: 'admin/question/add', component: AddquestionComponent},
-  {path: 'exam', component: StarttestjlptComponent},
+  {path: 'admin/manage/user/add', component: AdduserComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/manage/user', component: ManageruserComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/manage/user/detail/:id', component: DetailuserComponent, canActivate: [AdminAuthService]},
+  {path: 'listchalenge', component: ListchallengeComponent, canActivate: [CustomerAuthService]},
+  {path: 'challenge/add', component: CreateroomComponent, canActivate: [CustomerAuthService]},
+  {path: 'challenge/wait/:id', component: WaitlchallengeComponent, canActivate: [CustomerAuthService]},
+  {path: 'admin-home', component: HomeadminComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/lesson', component: QuanlibaihocComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/lesson/detail/:id', component: DetailComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/lesson/add', component: AddlessonComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/lesson/edit/:id', component: EditbaihocComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/lesson/edit', component: EditbaihocComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/exam', component: ManagerexamComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/exam/add', component: ManagerexamaddComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/question', component: ListquestionComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/question/add', component: AddquestionComponent, canActivate: [AdminAuthService]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'question/:exam_id/challenge/:id/:id_room/:id_score', component: CompetitionComponent},
+  {path: 'question/:exam_id/challenge/:id/:id_room/:id_score', component: CompetitionComponent, canActivate: [CustomerAuthService]},
   {path: 'end', component: EndcompetitionComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'vocabulary/exam/list/:id', component: ReviewvocabularyComponent},
-  {path: 'grammar/exam/list/:id', component: ReviewgrammarComponent},
-  {path: 'study/N1/tuvung', component: N1TuvungComponent},
-  {path: 'study/N1/nguphap', component: N1NguphapComponent},
-  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
-  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
-  {path: 'study/N2/tuvung', component: N2TuvungComponent},
-  {path: 'study/N2/nguphap', component: N2NguphapComponent},
-  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
-  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
-  {path: 'study/N3/tuvung', component: N3TuvungComponent},
-  {path: 'study/N3/nguphap', component: N3NguphapComponent},
-  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
-  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
-  {path: 'study/N4/tuvung', component: N4TuvungComponent},
-  {path: 'study/N4/nguphap', component: N4NguphapComponent},
-  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
-  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
-  {path: 'study/N5/tuvung', component: N5TuvungComponent},
-  {path: 'study/N5/nguphap', component: N5NguphapComponent},
-  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent},
-  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent},
-  {path: 'home/lesson/chitietlesson/:id', component: ChitietlessonComponent},
-  {path: 'study/N1/nguphap/ontap', component: N1NguphapOntapComponent},
-  {path: 'study/N1/tuvung/ontap', component: N1TuvungOntapComponent},
-  {path: 'study/:level/nguphap/ontap/:codeExam/:id', component: ReviewgrammarComponent},
-  {path: 'study/:level/tuvung/ontap/:codeExam/:id', component: ReviewvocabularyComponent},
-
+  {path: 'vocabulary/exam/list/:id', component: ReviewvocabularyComponent, canActivate: [CustomerAuthService]},
+  {path: 'grammar/exam/list/:id', component: ReviewgrammarComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N1/tuvung', component: N1TuvungComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N1/nguphap', component: N1NguphapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N2/tuvung', component: N2TuvungComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N2/nguphap', component: N2NguphapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N3/tuvung', component: N3TuvungComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N3/nguphap', component: N3NguphapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N4/tuvung', component: N4TuvungComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N4/nguphap', component: N4NguphapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N5/tuvung', component: N5TuvungComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N5/nguphap', component: N5NguphapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/tuvung/:lesson/:id', component: HomeTvComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/nguphap/:lesson/:id', component: HomeNpComponent, canActivate: [CustomerAuthService]},
+  {path: 'home/lesson/chitietlesson/:id', component: ChitietlessonComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N1/nguphap/ontap', component: N1NguphapOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N1/tuvung/ontap', component: N1TuvungOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/nguphap/ontap/:codeExam/:id', component: ReviewgrammarComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/:level/tuvung/ontap/:codeExam/:id', component: ReviewvocabularyComponent, canActivate: [CustomerAuthService]},
+  {path: 'exam/N5/:id', component: StarttestjlptComponent, canActivate: [CustomerAuthService]},
+  {path: 'exam/N4/:id', component: StarttestjnptN4Component, canActivate: [CustomerAuthService]},
+  {path: 'exam/N3/:id', component: StarttestjnptN3Component, canActivate: [CustomerAuthService]},
+  {path: 'exam/N2/:id', component: StarttestjnptN2Component, canActivate: [CustomerAuthService]},
+  {path: 'exam/N1/:id', component: StarttestjnptN1Component, canActivate: [CustomerAuthService]},
+  {path: 'exam/:level/testjnpt/:id', component: TestjlptComponent, canActivate: [CustomerAuthService]},
+  {path: 'resultsgrammar/:id/:id_exam', component: ResultTestComponent, canActivate: [CustomerAuthService]},
+  {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
+  {path: 'unaccess', component: UnaccessComponent}
 ];
 
 @NgModule({
