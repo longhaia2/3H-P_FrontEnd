@@ -24,8 +24,11 @@ export class AddlessonComponent implements OnInit {
   get trinhdo(){return this.submitForm.get('trinhdo') }
   get noidung(){return this.submitForm.get('noidung') }
   ls:Lesson;
+  logName: String;
   constructor(private lsService:LessonServiceService,private route:Router, private tsv: ToastrService) { }
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.ls= new  Lesson();
   }
   clicksub() {

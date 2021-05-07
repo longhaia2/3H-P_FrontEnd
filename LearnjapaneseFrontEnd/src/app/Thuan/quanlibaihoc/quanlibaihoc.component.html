@@ -9,7 +9,7 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <app-sidebaradmin></app-sidebaradmin>
+    <app-sidebaradmin [userNameDsp]="logName" ></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
 
 
@@ -36,7 +36,7 @@
                 <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
                   <label>Mã đề thi</label>
                   <div>
-                    <input  class="form-control" name="codeExam" placeholder="Tìm kiếm theo mã đề thi" [(ngModel)]="searchText" type="text">
+                    <input  class="form-control" name="codeExam" placeholder="Tìm kiếm theo bài học" [(ngModel)]="searchText" type="text">
                   </div>
                 </div>
                 <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
