@@ -67,7 +67,7 @@
               </div>
               <div class="col-md-6 mt-3">
                 <label>Đáp án đúng</label>
-                <select [(ngModel)]="qs.ansCorrect" class="form-control" formControlName="level" name="classId" id="ansCorrectID">
+                <select [(ngModel)]="qs.ansCorrect" class="form-control" formControlName="ansCorrect" name="classId" id="ansCorrectID">
                   <option value="">Tùy chọn</option>
                   <option value="A">A</option>
                   <option value="B">B</option>
@@ -78,9 +78,11 @@
               </div>
             </form>
             <br><br>
-            <div class="mt-6 " align="center">
+            <div class="mt-6 " style="position: relative; left: 520px">
               <br><br>
-              <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam">Thêm câu hỏi</button>
+              <button class="btn btn-success"  id="btnAddLesson" (click)="add()" [disabled]="submitForm.invalid"  type="submit"  >Thêm bài học &emsp;</button>
+
+<!--              <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam" [disabled]="submitForm.invalid" >Thêm câu hỏi</button>-->
               <a class="btn btn-danger"  [routerLink]="['/admin/question']">Hủy bỏ</a>
             </div>
           </div>

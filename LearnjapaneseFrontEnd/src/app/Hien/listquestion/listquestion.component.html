@@ -77,8 +77,21 @@
                     <td style="width: 100px;">{{qs.ansD}}</td>
                     <td style="width: 100px;">{{qs.ansCorrect}}</td>
                     <td>
-                      <button (click)="delete(qs.id)" style="background: red" >Xóa câu hỏi</button>
+                      <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle"
+                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" (click)="delete(qs.id) " id="confirmDelete" ><i class="fa fa-trash-o" ></i> Xóa</a>
+                          <div class="dropdown-divider"></div>
+<!--                          <a class="dropdown-item"  [routerLink]="['/admin/lesson/edit',lesson.id]" ><i class="fa fa-edit" ></i> Cập nhật</a>-->
+                        </div>
+                      </div>
                     </td>
+<!--                    <td>-->
+<!--                      <button (click)="delete(qs.id)" style="background: red" >Xóa câu hỏi</button>-->
+<!--                    </td>-->
                   </tr>
                   </tbody>
                 </table>

@@ -25,6 +25,9 @@ export class ResultVocabularyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.ex = new Exam();
     this.rs = new Result();
     this.qs = this.route.snapshot.params.id;

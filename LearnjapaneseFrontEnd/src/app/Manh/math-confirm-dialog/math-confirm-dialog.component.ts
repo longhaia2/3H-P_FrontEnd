@@ -1,5 +1,5 @@
-import { Component, OnInit,Inject } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { Component, OnInit, Inject } from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-math-confirm-dialog',
@@ -13,9 +13,9 @@ export class MathConfirmDialogComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  closedDialog(){
-    this.dialogRef.close(false);
-  }
+  // closedDialog(){
+  //   this.dialogRef.close(false);
+  // }
 
 
 }

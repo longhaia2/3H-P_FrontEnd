@@ -16,11 +16,14 @@ export class ReviewgrammarComponent implements OnInit {
   dem = 0;
   selectedAS: string[];
   qs: Question[];
+  logName: string;
   constructor(
     private service: ReviewService , private  route: ActivatedRoute,
     private  router: Router) {
   }
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     // @ts-ignore
     this.ex = new Exam();
     this.rs = new Result();

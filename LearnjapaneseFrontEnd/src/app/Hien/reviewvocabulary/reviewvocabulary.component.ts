@@ -12,6 +12,7 @@ import {Result} from '../model/result';
 })
 export class ReviewvocabularyComponent implements OnInit {
   rs: Result;
+  logName: string;
   dem = 0;
   ex: Exam;
   qs: Question[];
@@ -19,6 +20,8 @@ export class ReviewvocabularyComponent implements OnInit {
   constructor(private service: ReviewService, private  route: ActivatedRoute,
               private  router: Router) { }
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.ex = new Exam();
     this.rs = new Result();
     this.qs = this.route.snapshot.params['id'];

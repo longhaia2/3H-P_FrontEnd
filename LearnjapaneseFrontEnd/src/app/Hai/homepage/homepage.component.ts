@@ -21,7 +21,8 @@ export class HomepageComponent implements OnInit {
   ex: Exam[];
   p : number = 1;
 
-  constructor(private lessonService: LessonServiceService, private examService: ExamserviceService, private title: Title) {
+  constructor(private lessonService: LessonServiceService, private examService: ExamserviceService, private title: Title,
+              private router: Router) {
     this.title.setTitle("Trang Chủ");
   }
 
@@ -44,4 +45,5 @@ export class HomepageComponent implements OnInit {
       console.log(data);
     });
   }
+
 }

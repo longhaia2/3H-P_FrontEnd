@@ -25,4 +25,6 @@ export class MenuComponent implements OnInit {
     window.location.reload();
 
   }
+
+
 }

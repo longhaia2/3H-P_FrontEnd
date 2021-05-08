@@ -3,7 +3,6 @@
 
 <head>
   <title>Thi Online</title>
-  <div th:replace="fragments/init_lib :: header"></div>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Ôn tập từ vựng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,7 +10,7 @@
 </head>
 <body>
 <app-header></app-header>
-<app-menu></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 <h1 align="center" style="color: #151414; font-size: x-large"> Ôn tập từ vựng bài 1</h1>
 <div class="form" *ngFor="let review of qs; let i = index; let j = index" value="{{review}}">
   <input type="text" style="font-size: 30px" name="values" autocomplete="off" required
@@ -22,7 +21,7 @@
   </label>
 </div>
 <br><br>
-<button class="btn btn-submit" style="color: white; background: #B7242A">
+<button class="btn btn-submit" style="color: white; background: green">
   <span class="submit" (click)="addResults(rs.id)"> KIỂM TRA KẾT QUẢ</span>
 </button>
 <app-footer></app-footer>

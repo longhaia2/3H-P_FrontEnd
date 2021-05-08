@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
 import {TokenStorageService} from '../token-storage.service';
 import {Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers:[ToastrService]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   form: any = {};
@@ -15,8 +13,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router:Router,private  toast: ToastrService) { }
-
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
@@ -28,22 +25,19 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
+        console.log(this.tokenStorage.getUser());
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        console.log(data.error);
         if (data.error === '403 FORBIDDEN'){
           alert(data.message);
           this.tokenStorage.signOut();
           window.location.reload();
           return this.router.navigate(['login']);
         }
-        this.roles = this.tokenStorage.getUser().roles;
-        if(data.role === 'ROLE_ADMIN'){
-          this.toast.success('Đăng Nhập Thành Công');
-
+        // alert('Đăng nhập thành công');
+        if (data.role === 'ROLE_ADMIN'){
           return this.router.navigate(['admin-home']);
         }
-        this.toast.success('Đăng Nhập Thành Công');
         return this.router.navigate(['page-home']);
       },
       err => {
