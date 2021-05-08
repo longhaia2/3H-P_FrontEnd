@@ -34,15 +34,15 @@
             <form >
               <div class="row">
                 <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
-                  <label>Mã đề thi</label>
+                  <label>Bài Học</label>
                   <div>
-                    <input  class="form-control" name="codeExam" placeholder="Tìm kiếm theo bài học" [(ngModel)]="searchText" type="text">
+                    <input  class="form-control" name="codeExam" placeholder="Tìm kiếm bài học" [(ngModel)]="searchText" type="text">
                   </div>
                 </div>
                 <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
                   <label>Học Phần</label>
                   <select  [(ngModel)]="hocphan" class="form-control" name="subjectId">
-                    <option value="">Tùy chọn</option>
+                    <option value="0">Tùy chọn</option>
                     <option value="Từ Vựng">Từ vựng</option>
                     <option value="Ngữ Pháp">Ngữ pháp</option>
                     <option value="Đề JPLT">Đề JPLT</option>
@@ -51,8 +51,8 @@
                 </div>
                 <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
                   <label>Trình Độ</label>
-                  <select [(ngModel)]="trinhdo"  class="form-control" name="classId">
-                    <option value="">Tùy chọn</option>
+                  <select [(ngModel)]="trinhdo"  class="form-control" name="classId" >
+                    <option value="0">Tùy chọn</option>
                     <option value="N5">N5</option>
                     <option value="N4">N4</option>
                     <option value="N3">N3</option>

@@ -46,10 +46,13 @@ export class QuanlibaihocComponent implements OnInit {
     });
     confirmDialog.afterClosed().subscribe(result => {
       if (result == true) {
-        this.ls = this.ls.filter(item => item.id !== id);
+        this.lessonService.delete(id).subscribe(
+          data => {
+            console.log(data);
+            this.reloadData();
+          });
         this.tsv.success('Xóa thành công', 'Xóa bài học');
       }
-      ;
     });
   }
 
