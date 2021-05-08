@@ -5,11 +5,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DialogService} from "../shared/dialog.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {MathConfirmDialogComponent} from "../math-confirm-dialog/math-confirm-dialog.component";
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-manageruser',
   templateUrl:  './manageruser.component.html',
   styleUrls: ['./manageruser.component.css'],
-  providers: [UserServiceService]
+  providers: [UserServiceService,ToastrService]
 
 })
 export class ManageruserComponent implements OnInit {
@@ -22,7 +23,7 @@ export class ManageruserComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private dialogService: DialogService,
-              private dialog: MatDialog
+              private dialog: MatDialog, private tsv: ToastrService
 
 
   ) {
@@ -58,10 +59,14 @@ export class ManageruserComponent implements OnInit {
 
     confirmDialog.afterClosed().subscribe(result => {
       if (result == true) {
-        this.Users = this.Users.filter(item => item.id !==id);
-      };
+        this.Userservice.delete(id).subscribe(
+          data => {
+            console.log(data);
+            this.reloadData();
+          });
+        this.tsv.success('Xóa thành công', 'Xóa thành viên');
+      }
     });
-
 
 
 
