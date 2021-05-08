@@ -17,11 +17,14 @@ export class ManagerexamupdateComponent implements OnInit {
 
   id: number;
   ex: Exam =new Exam();
+  logName: String;
 
   constructor(private Exservice: ExamserviceService,private tv: ToastrService,private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.id=this.route.snapshot.params['id'];
     console.log('====================');
     console.log(this.id);
