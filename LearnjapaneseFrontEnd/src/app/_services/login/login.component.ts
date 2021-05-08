@@ -7,7 +7,7 @@ import {ToastrService} from 'ngx-toastr';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[ToastrService]
+  providers: [ToastrService]
 })
 export class LoginComponent implements OnInit {
   form: any = {};
@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router:Router,private  toast: ToastrService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private  toast: ToastrService) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
           return this.router.navigate(['login']);
         }
         this.roles = this.tokenStorage.getUser().roles;
-        if(data.role === 'ROLE_ADMIN'){
+        if (data.role === 'ROLE_ADMIN'){
           this.toast.success('Đăng Nhập Thành Công');
 
           return this.router.navigate(['admin-home']);
