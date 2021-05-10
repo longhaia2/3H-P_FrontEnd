@@ -20,9 +20,6 @@ export class LessonServiceService {
   findByidlevel(level,term): Observable<Lesson[]> {
     return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson'}/${level}/${term}`);
   }
-  getLessonByDesc() : Observable<Lesson[]>{
-    return this.http.get<Lesson[]>(this.url+"/all/baimoi")
-  }
 
   findByidlessson(level,idLesson): Observable<Lesson[]> {
     return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson'}/${level}/lesson/${idLesson}`);
@@ -46,6 +43,10 @@ export class LessonServiceService {
   findByLesson(searchtext): Observable<Lesson[]>{
     return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson/timkiem'}/${searchtext}`);
   }
-
-
+  getLessonByDesc() : Observable<Lesson[]>{
+    return this.http.get<Lesson[]>(this.url+"/all/baimoi")
+  }
+  getTopHighScoreByScore() : Observable<any>{
+    return  this.http.get<any>(`${'http://localhost:8080/challenge/top'}`);
+  }
 }

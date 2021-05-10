@@ -65,6 +65,14 @@ import {CustomerAuthService} from '../_services/customer-auth.service';
 import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
+import { N2NguphapOntapComponent } from './study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
+import {N2TuvungOntapComponent} from "./study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component";
+import {N3NguphapOntapComponent} from "./study/study-n3/n3-nguphap-ontap/n3-nguphap-ontap.component";
+import { N3TuvungOntapComponent } from './study/study-n3/n3-tuvung-ontap/n3-tuvung-ontap.component';
+import {N4NguphapOntapComponent} from "./study/study-n4/n4-nguphap-ontap/n4-nguphap-ontap.component";
+import {N4TuvungOntapComponent} from "./study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component";
+import {N5NguphapOntapComponent} from "./study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component";
+import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component";
 
 
 
@@ -98,7 +106,7 @@ const routes: Routes = [
   {path: 'admin/lesson/detail/:id', component: DetailComponent, canActivate: [AdminAuthService]},
   {path: 'admin/lesson/add', component: AddlessonComponent, canActivate: [AdminAuthService]},
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent, canActivate: [AdminAuthService]},
-  {path: 'admin/lesson/edit', component: EditbaihocComponent, canActivate: [AdminAuthService]},
+  // {path: 'admin/lesson/edit', component: EditbaihocComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam', component: ManagerexamComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam/add', component: ManagerexamaddComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent, canActivate: [AdminAuthService]},
@@ -135,6 +143,14 @@ const routes: Routes = [
   {path: 'home/lesson/chitietlesson/:id', component: ChitietlessonComponent, canActivate: [CustomerAuthService]},
   {path: 'study/N1/nguphap/ontap', component: N1NguphapOntapComponent, canActivate: [CustomerAuthService]},
   {path: 'study/N1/tuvung/ontap', component: N1TuvungOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N2/nguphap/ontap', component: N2NguphapOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N2/tuvung/ontap', component: N2TuvungOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N3/nguphap/ontap', component: N3NguphapOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N3/tuvung/ontap', component: N3TuvungOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N4/nguphap/ontap', component: N4NguphapOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N4/tuvung/ontap', component: N4TuvungOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N5/nguphap/ontap', component: N5NguphapOntapComponent, canActivate: [CustomerAuthService]},
+  {path: 'study/N5/tuvung/ontap', component: N5TuvungOntapComponent, canActivate: [CustomerAuthService]},
   {path: 'study/:level/nguphap/ontap/:codeExam/:id', component: ReviewgrammarComponent, canActivate: [CustomerAuthService]},
   {path: 'study/:level/tuvung/ontap/:codeExam/:id', component: ReviewvocabularyComponent, canActivate: [CustomerAuthService]},
   {path: 'exam/N5/:id', component: StarttestjlptComponent, canActivate: [CustomerAuthService]},

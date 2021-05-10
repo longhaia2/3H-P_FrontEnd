@@ -115,6 +115,14 @@ import {ToastrModule} from 'ngx-toastr';
 import { ResultTestComponent } from './Hien/result-test/result-test.component';
 import { ResultVocabularyComponent } from './Hien/result-vocabulary/result-vocabulary.component';
 import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
+import { N2NguphapOntapComponent } from './Hai/study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
+import { N2TuvungOntapComponent } from './Hai/study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component';
+import { N3NguphapOntapComponent } from './Hai/study/study-n3/n3-nguphap-ontap/n3-nguphap-ontap.component';
+import { N3TuvungOntapComponent } from './Hai/study/study-n3/n3-tuvung-ontap/n3-tuvung-ontap.component';
+import { N4NguphapOntapComponent } from './Hai/study/study-n4/n4-nguphap-ontap/n4-nguphap-ontap.component';
+import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component';
+import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
+import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
 
 
 
@@ -219,6 +227,14 @@ import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
     ResultTestComponent,
     ResultVocabularyComponent,
     UnaccessComponent,
+    N2NguphapOntapComponent,
+    N2TuvungOntapComponent,
+    N3NguphapOntapComponent,
+    N3TuvungOntapComponent,
+    N4NguphapOntapComponent,
+    N4TuvungOntapComponent,
+    N5NguphapOntapComponent,
+    N5TuvungOntapComponent,
   ],
 
   imports: [
