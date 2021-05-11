@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+  <title>Kết quả thi</title>
+</head>
+<body>
+<app-header></app-header>
+<app-menu [userNameDsp]="logName"></app-menu>
+
+<main class="home">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 d-flex justify-content-center">
+        <h3>Danh sách các bài đã thi</h3>
+        <br><br>
+      </div>
+    </div>
+    <div class="row col-md-12  d-flex justify-content-center">
+
+        <table class="col-md-12">
+          <tr>
+            <th>STT</th>
+            <th>Mã đề thi</th>
+            <th>Tên đề thi</th>
+            <th>Số điểm </th>
+          </tr>
+          <tr *ngFor="let e of rs,let i=index">
+            <td>{{i+1}}</td>
+            <td>{{e.codeExam}}</td>
+            <td>{{e.content}}</td>
+            <td>{{e.score}}</td>
+          </tr>
+        </table>
+      </div>
+      </div>
+</main>
+<app-footer></app-footer>
+</body>
+</html>

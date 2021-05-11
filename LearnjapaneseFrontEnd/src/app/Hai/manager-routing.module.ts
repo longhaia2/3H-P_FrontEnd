@@ -65,6 +65,8 @@ import {CustomerAuthService} from '../_services/customer-auth.service';
 import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
+import {HistoryComponent} from '../Hien/history/history.component';
+import {HistoryResultComponent} from '../Hien/history-result/history-result.component';
 import {ManagerquestionComponent} from "./admin/managerquestion/managerquestion.component";
 import { N2NguphapOntapComponent } from './study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
 import {N2TuvungOntapComponent} from "./study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component";
@@ -162,6 +164,7 @@ const routes: Routes = [
   {path: 'resultsgrammar/:id/:id_exam', component: ResultTestComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
   {path: 'unaccess', component: UnaccessComponent},
+  {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]}
   {path: 'qs', component: ManagerquestionComponent}
 ];
 

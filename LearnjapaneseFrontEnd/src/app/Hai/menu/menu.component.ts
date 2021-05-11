@@ -1,28 +1,28 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {Router} from '@angular/router';
+import {ConfirmLogoutComponent} from '../../Hien/confirm-logout/confirm-logout.component';
+import {ToastrService} from 'ngx-toastr';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  providers: [ToastrService, TokenStorageService]
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
+  // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp: string;
 
-  constructor( private tokenStorage: TokenStorageService, private  router: Router) { }
+  constructor(public dialog: MatDialog, private tsv: ToastrService, private router: Router) { }
 
-  ngOnInit(): void {
-
+  logout(){
+    this.dialog.open(ConfirmLogoutComponent);
   }
 
-  logout(): void {
-    this.tokenStorage.signOut();
-    confirm('Bạn thật sự muốn đăng xuất?');
-    // @ts-ignore
-    // this.router.navigate(['page-home']);
-    window.location.reload();
-
+  score() {
+   this.router.navigate(['score'])
   }
 }
