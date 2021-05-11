@@ -53,7 +53,7 @@ import { WaitlchallengeComponent } from './Hai/challenge/waitlchallenge/waitlcha
 import { CompetitionComponent } from './Hai/challenge/competition/competition.component';
 import { EndcompetitionComponent } from './Hai/challenge/endcompetition/endcompetition.component';
 import { SidebaradminComponent } from './Manh/sidebaradmin/sidebaradmin.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import { DetailuserComponent } from './Manh/detailuser/detailuser.component';
 import { SidebarchallengeComponent } from './Hai/challenge/sidebarchallenge/sidebarchallenge.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -61,9 +61,9 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { CreateroomComponent } from './Hai/challenge/createroom/createroom.component';
 import { HomeadminComponent } from './Hai/admin/homeadmin/homeadmin.component';
 import { HeaderadminComponent } from './Thuan/headeradmin/headeradmin.component';
-import {DetailComponent} from "./Thuan/quanlibaihoc/detail/detail.component";
-import {Ng2SearchPipeModule} from "ng2-search-filter";
-import {NgxPaginationModule} from "ngx-pagination";
+import {DetailComponent} from './Thuan/quanlibaihoc/detail/detail.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.component';
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { RegisterComponent } from './_services/register/register.component';
@@ -74,7 +74,7 @@ import { BoardUserComponent } from './_services/board-user/board-user.component'
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {LoginComponent} from './_services/login/login.component';
 import { QuizComponent } from './Hai/challenge/quiz/quiz.component';
-import {CountdownModule} from "ngx-countdown";
+import {CountdownModule} from 'ngx-countdown';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
@@ -100,7 +100,7 @@ import { ManagerexamupdateComponent } from './Hai/admin/managerexam/managerexamu
 import { N1TuvungOntapComponent } from './Hai/study/study-n1/n1-tuvung-ontap/n1-tuvung-ontap.component';
 import { N1NguphapOntapComponent } from './Hai/study/study-n1/n1-nguphap-ontap/n1-nguphap-ontap.component';
 import { HomeOntapComponent } from './Hai/study/home-ontap/home-ontap.component';
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { MathConfirmDialogComponent } from './Manh/math-confirm-dialog/math-confirm-dialog.component';
 import { StarttestjnptN1Component } from './Hai/starttestjnpt-n1/starttestjnpt-n1.component';
 import { StarttestjnptN2Component } from './Hai/starttestjnpt-n2/starttestjnpt-n2.component';
@@ -116,10 +116,23 @@ import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
 import { DemoComponent } from './Manh/demo/demo.component';
 import {MatRadioModule} from "@angular/material/radio";
 import { ProfileComponent } from './Hai/profile/profile.component';
-// @ts-ignore
-import {AngularFireModule} from "@angular/fire";
-import {environment} from "../environments/environment";
-import {AngularFireDatabase, AngularFireDatabaseModule} from "@angular/fire/database";
+import { ConfirmLogoutComponent } from './Hien/confirm-logout/confirm-logout.component';
+import { HistoryResultComponent } from './Hien/history-result/history-result.component';
+import { ChooseScoreComponent } from './Hien/choose-score/choose-score.component';
+import {ChatService} from './Hai/Service/chat.service';
+import {WebsocketService} from './Hai/Service/websocket.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { N2NguphapOntapComponent } from './Hai/study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
+import { N2TuvungOntapComponent } from './Hai/study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component';
+import { N3NguphapOntapComponent } from './Hai/study/study-n3/n3-nguphap-ontap/n3-nguphap-ontap.component';
+import { N3TuvungOntapComponent } from './Hai/study/study-n3/n3-tuvung-ontap/n3-tuvung-ontap.component';
+import { N4NguphapOntapComponent } from './Hai/study/study-n4/n4-nguphap-ontap/n4-nguphap-ontap.component';
+import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component';
+import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
+import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
+
 
 
 
@@ -225,6 +238,17 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from "@angular/fire/data
     UnaccessComponent,
     DemoComponent,
     ProfileComponent,
+    ConfirmLogoutComponent,
+    HistoryResultComponent,
+    ChooseScoreComponent,
+    N2NguphapOntapComponent,
+    N2TuvungOntapComponent,
+    N3NguphapOntapComponent,
+    N3TuvungOntapComponent,
+    N4NguphapOntapComponent,
+    N4TuvungOntapComponent,
+    N5NguphapOntapComponent,
+    N5TuvungOntapComponent,
   ],
 
   imports: [
@@ -247,12 +271,13 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from "@angular/fire/data
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule,
-
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule
   ],
-  entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
-  providers: [authInterceptorProviders, Title],
+  entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent],
+  providers: [authInterceptorProviders, Title, ChatService, WebsocketService],
+
   bootstrap: [AppComponent],
 
 })

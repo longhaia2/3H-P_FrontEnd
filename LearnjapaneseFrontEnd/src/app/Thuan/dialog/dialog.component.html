@@ -1,13 +1,19 @@
-<form style="background-color: #0e94a2" >
-  <div>
-    <mat-icon (click)="closedDialog()" id="clode-icon" style="position: center"><button>X</button></mat-icon>
-    <span class="content-span full-width" style="color: #0a0a0a" >{{data.message}}</span>
-    <br>
-  </div>
-  <div > <th><button mat-flat-button id="no-button" style="width: 250px;height: 50px;
-  background-color: #DA8028;"[mat-dialog-close]="false" >NO</button></th>
-    <th>  <button mat-flat-button id="yes-button" style="background-color: #b6bece; height: 50px;
-  width: 250px;
-  color: white;
-  border-radius: 0px;" (click)="dialogRef" [mat-dialog-close]="true" >YES</button></th></div>
+
+
+<form  style="background-color: whitesmoke;padding: 0px;width: 400px;">
+  <!-- Modal -->
+  <div aria-labelledby="removeModalCenterTitle" aria-hidden="true" >
+          <b class="modal-title" style="color: red;font-size: 20px" >Xác nhận xóa</b>
+          <button type="button" class="close" [mat-dialog-close]="false" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div style="font-size: 16px">Bạn có chắc chắn muốn xóa hay không ?</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" [mat-dialog-close]="false" >
+            <i class="fa fa-times" ></i> Hủy bỏ</button>
+          <a  class="btn btn-success"  (click)="dialogRef" [mat-dialog-close]="true" ><i class="fa fa-check"></i> Đồng ý</a>
+        </div>
 </form>

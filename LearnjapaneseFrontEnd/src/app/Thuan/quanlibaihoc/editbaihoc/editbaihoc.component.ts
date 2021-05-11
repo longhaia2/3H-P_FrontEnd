@@ -25,7 +25,7 @@ export class EditbaihocComponent implements OnInit {
   get hocphan(){return this.FormSubmit.get('hocphan') }
   get trinhdo(){return this.FormSubmit.get('trinhdo') }
   get noidung(){return this.FormSubmit.get('noidung') }
-
+  logName: String;
   id:number;
   ls: Lesson=new Lesson();
 
@@ -33,6 +33,8 @@ export class EditbaihocComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.id=this.route.snapshot.params['id'];
     console.log(this.id);
     this.lessonService.get(this.id).subscribe(data=>{

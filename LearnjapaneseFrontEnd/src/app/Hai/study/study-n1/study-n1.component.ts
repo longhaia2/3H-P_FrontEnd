@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./study-n1.component.css']
 })
 export class StudyN1Component implements OnInit {
-
+  logName: String;
   constructor() { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
 
 }

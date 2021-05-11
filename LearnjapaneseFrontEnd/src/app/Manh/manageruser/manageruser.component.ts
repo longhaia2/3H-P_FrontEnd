@@ -24,8 +24,7 @@ export class ManageruserComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private dialogService: DialogService,
-              private dialog: MatDialog,
-              private tsv: ToastrService
+              private dialog: MatDialog, private tsv: ToastrService
   ) {
   }
 

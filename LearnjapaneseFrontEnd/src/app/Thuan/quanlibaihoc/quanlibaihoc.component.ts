@@ -15,6 +15,7 @@ import {ToastrService} from "ngx-toastr";
 })
 export class QuanlibaihocComponent implements OnInit {
   ls: Lesson[];
+  logName: String;
   hocphan;
   trinhdo;
   searchText;
@@ -25,6 +26,8 @@ export class QuanlibaihocComponent implements OnInit {
   private router: Router){}
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.reloadData();
   }
   reloadData(){
@@ -43,10 +46,13 @@ export class QuanlibaihocComponent implements OnInit {
     });
     confirmDialog.afterClosed().subscribe(result => {
       if (result == true) {
-        this.ls = this.ls.filter(item => item.id !== id);
+        this.lessonService.delete(id).subscribe(
+          data => {
+            console.log(data);
+            this.reloadData();
+          });
         this.tsv.success('Xóa thành công', 'Xóa bài học');
       }
-      ;
     });
   }
 

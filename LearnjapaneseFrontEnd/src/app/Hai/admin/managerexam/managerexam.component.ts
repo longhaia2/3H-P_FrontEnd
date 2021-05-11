@@ -17,7 +17,7 @@ export class ManagerexamComponent implements OnInit {
   trinhdo;
   searchText;
 
-  logName: string
+  logName: string;
 
   ex:Exam[];
   constructor(private examserviceService: ExamserviceService,private  trv: ToastrService,private route: ActivatedRoute,
