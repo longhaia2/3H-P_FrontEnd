@@ -76,6 +76,15 @@ export class WaitlchallengeComponent implements OnInit {
             }
           }
       });
+      for (let i = 0; i <= this.user.length; i++) {
+        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 1) {
+          this.ready[i] = true;
+        }
+        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 0) {
+          this.ready[i] = false;
+        }
+      }
+
       if(this.Test==0){
         this.allReady = true;
       }
@@ -107,14 +116,13 @@ export class WaitlchallengeComponent implements OnInit {
         this.index3=3;
         this.check3=0;
       }
-
     });
     this.challengeServiceService.getOneUserByRoom(this.id_r,this.id_u_scrore).subscribe(data=>{
       this.r_s_2=data;
     });
     this.startQuiz();
     this.load();
-    this.getUserList();
+    // this.getUserList();
 
   }
 
@@ -150,20 +158,13 @@ export class WaitlchallengeComponent implements OnInit {
   getUserList() {
     this.service.getUsersRoomList(this.id_r).subscribe(data => {
       this.r_s_1 = data;
+
       this.r_s_1.forEach(Element => {
-        {
           for (let i = 0; i <= this.r_s_1.length; i++) {
             if (Element.status == 0) {
               this.Test++;
             }
-            if (Element.user_id == this.id_u_scrore && Element.status == 1) {
-              this.ready[i] = true;
-            }
-            if (Element.user_id == this.id_u_scrore && Element.status == 0) {
-              this.ready[i] = false;
-            }
           }
-        }
     });
       if(this.Test==0){
         this.allReady = true;
@@ -187,13 +188,18 @@ export class WaitlchallengeComponent implements OnInit {
   }
 
   start() {
-    this.chat.sendMsg(-1);
+    this.room.status = 0;
+    this.challengeServiceService.updateRoom(this.room.room_id, this.room).subscribe(data => {
+    }, error => console.log(error));
+    this.chat.sendMsg(this.room.room_id);
   }
 
   startQuiz() {
+
     this.chat.messages.subscribe(msg => {
       this.check = msg;
-      if (this.check === -1) {
+      if (this.check == this.room.room_id) {
+
         this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
         if (this.room.level == 'N5' && this.room.time == '5') {
           this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);

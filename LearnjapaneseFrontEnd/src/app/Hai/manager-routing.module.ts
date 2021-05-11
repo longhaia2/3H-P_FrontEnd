@@ -164,7 +164,7 @@ const routes: Routes = [
   {path: 'resultsgrammar/:id/:id_exam', component: ResultTestComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
   {path: 'unaccess', component: UnaccessComponent},
-  {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]}
+  {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]},
   {path: 'qs', component: ManagerquestionComponent}
 ];
 
