@@ -115,6 +115,11 @@ import {ToastrModule} from 'ngx-toastr';
 import { ResultTestComponent } from './Hien/result-test/result-test.component';
 import { ResultVocabularyComponent } from './Hien/result-vocabulary/result-vocabulary.component';
 import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
+import {ChatService} from './Hai/Service/chat.service';
+import {WebsocketService} from './Hai/Service/websocket.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { N2NguphapOntapComponent } from './Hai/study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
 import { N2TuvungOntapComponent } from './Hai/study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component';
 import { N3NguphapOntapComponent } from './Hai/study/study-n3/n3-nguphap-ontap/n3-nguphap-ontap.component';
@@ -123,6 +128,7 @@ import { N4NguphapOntapComponent } from './Hai/study/study-n4/n4-nguphap-ontap/n
 import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component';
 import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
 import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
+
 
 
 
@@ -255,10 +261,13 @@ import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule
   ],
   entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
-  providers: [authInterceptorProviders, Title],
+  providers: [authInterceptorProviders, Title, ChatService, WebsocketService],
   bootstrap: [AppComponent],
 
 })

@@ -50,22 +50,22 @@
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction"
                           style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansA)">
+                          (click)="selectAt(i,'A')">
                           {{qs.ansA}}
                         </button>
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansB)">
+                          (click)="selectAt(i,'B')">
                           {{ qs.ansB}}
                         </button>
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansC)">
+                          (click)="selectAt(i,'C')">
                           {{ qs.ansC}}
                         </button>
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansD)">
+                          (click)="selectAt(i,'D')">
                           {{ qs.ansD}}
                         </button>
                       </div>
@@ -74,7 +74,7 @@
                   <div class="row justify-content-md-center" *ngIf="showExplanation">
                     <div class="col-sm-12 col-lg-8">
                       <div class="alert alert-danger" *ngIf="!hasAnsweredCorrectly" role="alert">
-                        Bạn trả lời sai rồi, Đúng là:
+                        Bạn trả lời sai rồi, Đúng là đáp án:
                         {{ currentQuestion.ansCorrect }}
                       </div>
                       <div class="alert alert-success" *ngIf="hasAnsweredCorrectly" role="alert">
@@ -92,7 +92,7 @@
                         (click)="nextQuestion()"
                       >
                         <span *ngIf="currentIndex < questions.length">Câu hỏi tiếp theo!</span>
-                        <span *ngIf="currentIndex == questions.length" >Kết thúc!!</span>
+                        <span *ngIf="currentIndex == questions.length" (click)="end()">Kết thúc!!</span>
                       </button>
                     </div>
                   </div>

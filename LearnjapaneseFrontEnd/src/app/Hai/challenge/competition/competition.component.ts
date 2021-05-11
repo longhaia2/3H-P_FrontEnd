@@ -44,6 +44,7 @@ export class CompetitionComponent implements OnInit {
       hasAnsweredCorrectly: boolean;
       quizOver: boolean = false;
       checktimer: boolean;
+      x:number;
 
 
   constructor(public dialog:MatDialog, private title: Title, private service: ChallengeServiceService, private route: ActivatedRoute, private  router: Router, private userService: ServiceService) {
@@ -95,9 +96,9 @@ export class CompetitionComponent implements OnInit {
           // if(!checkComplete()){
           //   interval = setInterval(checkComplete, 1000);
           // }
-            const x = setInterval(()=> {
+             this.x = setInterval(()=> {
               if (currentTime > targetTime) {
-                clearInterval(x);
+                clearInterval(this.x);
                 // @ts-ignore
                 targetTime=null;
                 localStorage.setItem('targetTime', targetTime);
@@ -137,7 +138,9 @@ export class CompetitionComponent implements OnInit {
             }
 
 
-
+            end(){
+              clearInterval(this.x);
+            }
             getuser(){
               this.service.getuser(this.id_room).subscribe(data=>{
                 this.user=data;
@@ -165,7 +168,6 @@ export class CompetitionComponent implements OnInit {
             this.quizOver = true;
             this.userRoom.forEach(Element => {
               if (Element.user_id == this.id_u_scrore) {
-                this.room_user.status = 1;
                 this.room_user.banker = Element.banker;
                 console.log(this.score);
                 this.room_user.score=this.score;
@@ -180,7 +182,6 @@ export class CompetitionComponent implements OnInit {
             this.currentQuestion = this.questions[this.currentIndex];
             this.userRoom.forEach(Element => {
               if (Element.user_id == this.id_u_scrore) {
-                this.room_user.status = 1;
                 this.room_user.banker = Element.banker;
                 this.room_user.score=this.score;
                 this.service.upDateUser(Element.id, this.room_user).subscribe(data => {
@@ -195,12 +196,11 @@ export class CompetitionComponent implements OnInit {
           this.selectedAS[index] = value;
           this.showExplanation = true;
           this.currentIndex++;
-          for (let rs of this.questions) {
-            if (rs.ansCorrect == this.selectedAS[index]) {
+          for (let i = 0; i < this.questions.length; i++) {
+            if (this.questions[i].ansCorrect === this.selectedAS[i]) {
               this.hasAnsweredCorrectly = true;
               this.correctAnswers++;
               this.score = this.score + 5;
-              console.log(this.score);
               break;
             } else {
               this.hasAnsweredCorrectly = false;
