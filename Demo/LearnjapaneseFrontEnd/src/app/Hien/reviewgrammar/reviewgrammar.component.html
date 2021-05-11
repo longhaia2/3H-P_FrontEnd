@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+  <title>Ôn tập ngữ pháp</title>
+</head>
+<body>
+<app-header></app-header>
+<app-menu></app-menu>
+<main class="home">
+  <div class="container">
+    <div class="infomation-exam">
+    </div>
+  </div>
+  <div class="container exam-test">
+    <section class="container">
+    </section>
+    <section class="main-exam container">
+      <h2 style="text-align: center;font-size: 20px">Bài ôn tập ngữ pháp</h2>
+      <div class="exam-content">
+        <div class="list-question" >
+          <div class="item-question"  *ngFor="let review of qs; let i = index; let j = index" value="{{review}}" >
+            <div class="title">
+              <b><span class="question-no">{{i+1}}</span>{{review.content}}</b>
+            </div>
+            <div >
+              <div  class="content-ans">
+                <input type="radio" name="{{j+1}}"  value="{{review.ansA}}" title="" (click)="selectAt(i,'A')">
+                <span>A. {{review.ansA}}</span>
+              </div>
+              <div class="content-ans">
+                <input  type="radio" name="{{j+1}}" value="{{review.ansB}}" title="" (click)="selectAt(i,'B')">
+                <span>B. {{review.ansB}}</span>
+              </div>
+              <div class="content-ans">
+                <input  type="radio" name="{{j+1}}"  value="{{review.ansC}}" title="" (click)="selectAt(i,'C')">
+                <span>C. {{review.ansC}}</span>
+              </div>
+              <div class="content-ans">
+                <input  type="radio" name="{{j+1}}" value="{{review.ansD}}" title="" (click)="selectAt(i,'D')">
+                <span>D. {{review.ansD}}</span>
+              </div>
+              <div class="content-ans">
+                <!--                <p><span> You selected:</span><b>{{selectedAS[i]}}</b></p>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="test-more container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <button class="btn-finish btn btn-success" (click)="addResult(rs.id)">Kết quả</button>
+          <!--          <a class="btn-finish btn btn-success" (click)="resultQS()">Kiểm tra kết quả</a>-->
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<app-footer></app-footer>
+<script src="../../../../assets/js/exam.js"></script>
+</body>
+</html>

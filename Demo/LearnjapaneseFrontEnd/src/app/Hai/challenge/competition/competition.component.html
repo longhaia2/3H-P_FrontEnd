@@ -1,0 +1,139 @@
+<!-- QUIZ STILL GOING -->
+
+<body>
+<app-header></app-header>
+<app-menu [userNameDsp]="logName"></app-menu>
+<main class="class">
+  <div class="container">
+    <!-- banner -->
+    <div class="banner exam-banner9">
+    </div>
+    <!-- class content-->
+    <section class="class-content">
+      <div class="row">
+        <div class="col-md-8 col-12">
+          <div class="class-left"  >
+            <div class="class-sectionTitle">
+              <span>THI ĐẤU</span>
+            </div>
+            <div class="quiz"  class="container mt-5" *ngIf="!quizOver" >
+              <h5 style="text-align: center"  >
+                <div id="timer">
+                  <span><i class="fa fa-clock-o" ></i></span>
+                </div>
+              </h5>
+              <div class="card mt-5">
+                <div class="card-header">
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      [style.width.%]="(currentIndex * 100) / questions.length"
+                      aria-valuenow="(currentIndex * 100) / questions.length"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      {{ (currentIndex * 100) / questions.length | number: "1.0-0" }}%
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <div class="justify-content-md-center" *ngIf="!showExplanation">
+                    <div class="row" *ngFor="let qs of questions; let i = index " value="{{qs}}">
+                      <div class="row"  *ngIf="!quizOver && i == currentIndex">
+                        <div class="quiz"  class="container mt-5" >
+                          <h3 style="text-align: center"  >
+                            {{qs.content}} ({{ currentIndex }} / {{ questions.length }})
+                          </h3>
+                        </div>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction"
+                          style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,'A')">
+                          {{qs.ansA}}
+                        </button>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,'B')">
+                          {{ qs.ansB}}
+                        </button>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,'C')">
+                          {{ qs.ansC}}
+                        </button>
+                        <button
+                          class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
+                          (click)="selectAt(i,'D')">
+                          {{ qs.ansD}}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row justify-content-md-center" *ngIf="showExplanation">
+                    <div class="col-sm-12 col-lg-8">
+                      <div class="alert alert-danger" *ngIf="!hasAnsweredCorrectly" role="alert">
+                        Bạn trả lời sai rồi, Đúng là đáp án:
+                        {{ currentQuestion.ansCorrect }}
+                      </div>
+                      <div class="alert alert-success" *ngIf="hasAnsweredCorrectly" role="alert">
+                        Bạn đang làm tốt!
+                      </div>
+<!--                      <img-->
+<!--                        class="card-img-top"-->
+<!--                        *ngIf="currentQuestion.answerImage"-->
+<!--                        src="{{ currentQuestion.answerImage }}"-->
+<!--                      />-->
+<!--                      <p class="text-justify mt-2">{{ currentQuestion.explanation }}</p>-->
+                      <button
+                        class="btn btn-block btn-info cursor-restriction"
+                        style="margin-top: 24px"
+                        (click)="nextQuestion()"
+                      >
+                        <span *ngIf="currentIndex < questions.length">Câu hỏi tiếp theo!</span>
+                        <span *ngIf="currentIndex == questions.length" (click)="end()">Kết thúc!!</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- QUIZ OVER -->
+            <div class="container mt-5" *ngIf="quizOver">
+              <app-endcompetition
+                [questions]="questions"
+                [correctAnswers]="correctAnswers"
+              ></app-endcompetition>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="class-right">
+            <div class="class-sectionTitle1 test">
+              <span>Bảng Xếp Hạng Điểm</span>
+            </div>
+            <div class="sidebar-content">
+              <ul>
+                <li >
+                  <a *ngFor="let us of userScore , let q= index" >
+                    <div class="test-listItem" style="margin-left: -30px; width: 97%;">
+                      <div class="content">
+                        <h5 class="title" >{{q+1}}. <span  > {{us[0]}} {{us[1]}} {{us[3]}} {{us[4]}}</span></h5>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<app-footer></app-footer>
+</body>
+

@@ -1,0 +1,46 @@
+
+<head>
+  <title>Lớp học</title>
+  <link rel="stylesheet" href="study-n1.component.css">
+
+</head>
+<body>
+<app-header></app-header>
+<app-menu></app-menu>
+<main class="class">
+  <div class="container">
+    <!-- banner -->
+    <div class="banner exam-banner1">
+    </div>
+    <!-- class content-->
+    <section class="class-content">
+      <div class="row">
+        <div class="col-md-8 col-12">
+          <div class="class-left">
+            <!-- list-subject -->
+            <div class="class-sectionTitle">
+              <span>みんなの日本語第</span>
+            </div>
+            <div class="list-subject">
+              <div class="wrapper3">
+                <div class="item-wrap">
+                  <a class="item1" [routerLink]="['/study/N1/tuvung']" hef="" id="tuvung"> <span class="label1">Phần 1: Từ vựng</span></a></div>
+                <div class="item-wrap">
+                  <a class="item1"  [routerLink]="['/study/N1/nguphap']"href="" id="nguphap"><span class="label1">Phần 2: Ngữ pháp </span></a></div>
+
+                <div class="item-wrap">
+                  <a class="item1" href="" id="ontv" [routerLink]="['/study/N1/tuvung/ontap']" ><span class="label1">Phần 3: ôn từ vựng</span> </a></div>
+                <div class="item-wrap">
+                  <a class="item1" href="" id="onnp" [routerLink]="['/study/N1/nguphap/ontap']"><span class="label1">Phần 4: Ôn ngữ pháp</span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-sidebar-lesson></app-sidebar-lesson>
+      </div>
+    </section>
+  </div>
+</main>
+<app-footer></app-footer>
+</body>
+

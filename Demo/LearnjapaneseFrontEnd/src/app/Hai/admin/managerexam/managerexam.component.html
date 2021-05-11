@@ -1,0 +1,135 @@
+
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <app-sidebaradmin [userNameDsp]="logName" ></app-sidebaradmin>
+    <app-headeradmin></app-headeradmin>
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3> <small>Danh sách đề thi</small></h3>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <h5>Tùy chọn tìm kiếm</h5>
+              <div class="clearfix"></div>
+            </div>
+            <div>
+              <form >
+                <div class="row">
+                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+                    <label>Mã đề thi</label>
+                    <div>
+                      <input class="form-control" name="codeExam" [(ngModel)]="searchText" type="text">
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+                    <label>Học Phần</label>
+                    <select [(ngModel)]="hocphan" class="form-control" name="subjectId">
+                      <option value="">Tùy chọn</option>
+                      <option value="Từ Vựng">Từ vựng</option>
+                      <option value="Ngữ Pháp">Ngữ pháp</option>
+                      <option value="Đề JPLT">Đề JPLT</option>
+                      <option value="Thử Thách">Đề Thử Thách Cùng Nhau</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+                    <label>Trình Độ</label>
+                    <select [(ngModel)]="trinhdo"  class="form-control" name="classId">
+                      <option value="">Tùy chọn</option>
+                      <option value="N5">N5</option>
+                      <option value="N4">N4</option>
+                      <option value="N3">N3</option>
+                      <option value="N2">N2</option>
+                      <option value="N1">N1</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+                    <label>&nbsp;</label>
+                    <div>
+                      <button (click)="timkiem(searchText)" type="submit" id="btnSearch" class="btn btn-success">Tìm kiếm
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+                  </div>
+
+                  <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+                    <label>&nbsp;</label>
+                    <div >
+                      <a [routerLink]="['/admin/exam/add']"class="btn btn-success"><i class="fa fa-plus"></i> Thêm đề thi</a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            </div>
+            </div>
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="sampleTable">
+                  <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Mã đề thi</th>
+                    <th>Học phần</th>
+                    <th>Trình độ</th>
+                    <th>Số câu hỏi</th>
+                    <th>Time(phút)</th>
+                    <th>Tùy chọn</th>
+                  </tr>
+                  </thead>
+                  <tbody >
+                  <tr *ngFor="let exam of ex | filter:hocphan| filter: trinhdo">
+                    <td>{{exam.id}}</td>
+                    <td>{{exam.codeExam}}</td>
+                    <td>{{exam.term}}</td>
+                    <td>{{exam.level}}</td>
+                    <td>{{exam.totalQuestion}}</td>
+                    <td>{{exam.timeOut}}</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle"
+                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" ><i class="fa fa-question-circle-o"></i> List câu hỏi</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" [routerLink]="['/admin/exam/edit',exam.id]" ><i class="fa fa-edit" ></i> Cập nhật</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" (click)="delete(exam.id)"  id="confirmDelete"> <i class="fa fa-trash-o"></i> Xóa</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<script>
+  $(document).ready(function () {
+    $('#examManager').addClass("active");
+
+  });
+</script>
+</body>
+
