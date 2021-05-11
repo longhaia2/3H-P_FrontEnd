@@ -65,6 +65,10 @@ import {CustomerAuthService} from '../_services/customer-auth.service';
 import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
+import {ProfileComponent} from "./profile/profile.component";
+import {HistoryComponent} from '../Hien/history/history.component';
+import {HistoryResultComponent} from '../Hien/history-result/history-result.component';
+import {ManagerquestionComponent} from "./admin/managerquestion/managerquestion.component";
 import { N2NguphapOntapComponent } from './study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
 import {N2TuvungOntapComponent} from "./study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component";
 import {N3NguphapOntapComponent} from "./study/study-n3/n3-nguphap-ontap/n3-nguphap-ontap.component";
@@ -97,11 +101,11 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
   {path: 'admin/manage/user/add', component: AdduserComponent, canActivate: [AdminAuthService]},
   {path: 'admin/manage/user', component: ManageruserComponent, canActivate: [AdminAuthService]},
-  {path: 'admin/manage/user/detail/:id', component: DetailuserComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/add', component: CreateroomComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/wait/:id', component: WaitlchallengeComponent, canActivate: [CustomerAuthService]},
-  {path: 'admin-home', component: HomeadminComponent, canActivate: [AdminAuthService]},
+  {path: 'admin-home', component: HomeadminComponent},
   {path: 'admin/lesson', component: QuanlibaihocComponent, canActivate: [AdminAuthService]},
   {path: 'admin/lesson/detail/:id', component: DetailComponent, canActivate: [AdminAuthService]},
   {path: 'admin/lesson/add', component: AddlessonComponent, canActivate: [AdminAuthService]},
@@ -161,7 +165,10 @@ const routes: Routes = [
   {path: 'exam/:level/testjnpt/:id', component: TestjlptComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsgrammar/:id/:id_exam', component: ResultTestComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
-  {path: 'unaccess', component: UnaccessComponent}
+  {path: 'unaccess', component: UnaccessComponent},
+  {path: 'profile/edit/:id', component: ProfileComponent},
+  {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]},
+  {path: 'qs', component: ManagerquestionComponent}
 ];
 
 @NgModule({

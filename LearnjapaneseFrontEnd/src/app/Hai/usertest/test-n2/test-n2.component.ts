@@ -11,11 +11,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TestN2Component implements OnInit {
   exam: Exam[];
+  logName: string;
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
 
-  ngOnInit(): void { this.reloadData();
+  ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
+    this.reloadData();
   }
   reloadData() {
     this.examService.findBylevel("N3").subscribe(data => {
