@@ -15,6 +15,9 @@ export class UserServiceService {
   findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.url+'/all');
   }
+  update(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/user'}/${id}`, data);
+  }
   create(data): Observable<any> {
     return this.http.post<User>(this.url + '/add', data);
   }

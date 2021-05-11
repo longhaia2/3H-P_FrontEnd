@@ -65,6 +65,8 @@ import {CustomerAuthService} from '../_services/customer-auth.service';
 import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
+import {DemoComponent} from "../Manh/demo/demo.component";
+import {ProfileComponent} from "./profile/profile.component";
 import {HistoryComponent} from '../Hien/history/history.component';
 import {HistoryResultComponent} from '../Hien/history-result/history-result.component';
 import {ManagerquestionComponent} from "./admin/managerquestion/managerquestion.component";
@@ -76,6 +78,7 @@ import {N4NguphapOntapComponent} from "./study/study-n4/n4-nguphap-ontap/n4-ngup
 import {N4TuvungOntapComponent} from "./study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component";
 import {N5NguphapOntapComponent} from "./study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component";
 import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component";
+
 
 
 
@@ -99,7 +102,7 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
   {path: 'admin/manage/user/add', component: AdduserComponent, canActivate: [AdminAuthService]},
   {path: 'admin/manage/user', component: ManageruserComponent, canActivate: [AdminAuthService]},
-  {path: 'admin/manage/user/detail/:id', component: DetailuserComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/add', component: CreateroomComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/wait/:id', component: WaitlchallengeComponent, canActivate: [CustomerAuthService]},
@@ -164,6 +167,7 @@ const routes: Routes = [
   {path: 'resultsgrammar/:id/:id_exam', component: ResultTestComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
   {path: 'unaccess', component: UnaccessComponent},
+  {path: 'profile/edit/:id', component: ProfileComponent},
   {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]}
   {path: 'qs', component: ManagerquestionComponent}
 ];

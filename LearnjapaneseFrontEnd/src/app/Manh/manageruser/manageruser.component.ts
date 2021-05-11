@@ -10,7 +10,7 @@ import {ToastrService} from "ngx-toastr";
   selector: 'app-manageruser',
   templateUrl:  './manageruser.component.html',
   styleUrls: ['./manageruser.component.css'],
-  providers: [UserServiceService,ToastrService]
+  providers: [UserServiceService, ToastrService]
 
 })
 export class ManageruserComponent implements OnInit {
@@ -18,18 +18,19 @@ export class ManageruserComponent implements OnInit {
   user:User;
   username: any;
   elseBlock: any;
+  logName: string
 
   constructor(private Userservice: UserServiceService,
               private route: ActivatedRoute,
               private router: Router,
               private dialogService: DialogService,
               private dialog: MatDialog, private tsv: ToastrService
-
-
   ) {
   }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.reloadData();
   }
 
@@ -57,6 +58,7 @@ export class ManageruserComponent implements OnInit {
       }
     });
 
+
     confirmDialog.afterClosed().subscribe(result => {
       if (result == true) {
         this.Userservice.delete(id).subscribe(
@@ -67,9 +69,6 @@ export class ManageruserComponent implements OnInit {
         this.tsv.success('Xóa thành công', 'Xóa thành viên');
       }
     });
-
-
-
   }
 }
 

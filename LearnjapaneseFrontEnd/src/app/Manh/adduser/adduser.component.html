@@ -165,8 +165,7 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container" >
-    <app-sidebaradmin></app-sidebaradmin>
-    <app-headeradmin></app-headeradmin>
+    <app-sidebaradmin [userNameDsp]="logName" ></app-sidebaradmin>    <app-headeradmin></app-headeradmin>
     <div class="right_col" role="main">
       <!-- top tiles -->
       <div class="">
@@ -266,7 +265,12 @@
                   <option value="Nam">Nam</option>`
                   <option value="Nữ">Nữ</option>
                 </select>
-                <span class="error" *ngIf="gt.invalid && gt.touched">không được để trống giới tính</span>
+                <label class="labels">Quyền</label>
+                <select  class="quyenn" name="quyenn" id="quyen" [(ngModel)]=us.role class="form-control"formControlName="quyenn"   >
+                  <option value="1">User</option>`
+                  <option value="2">Admin</option>
+                </select>
+                <span class="error" *ngIf="gt.invalid && gt.touched">không được để trống quyền</span>
                 <div style="position: center">
                   <div class="row mt-2">
 

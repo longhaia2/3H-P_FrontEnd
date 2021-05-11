@@ -39,7 +39,7 @@
                 <thead>
                 <tr style="border: 1px solid #f8f9fa;">
                   <th style="border: 1px solid #f8f9fa;"><div> <i  style="font-size: 20px">Xin chào: {{userNameDsp}} </i></div></th>
-                  <th style="border: 1px solid #f8f9fa;" ><div class="dropdown" id="div-account" style="margin-left: 10px;font-size: 20px">
+                  <th style="border: 1px solid #f8f9fa;" ><div class="dropdown" id="div-account" style="margin-left: 10px;font-size: 20px"  >
                     <a class="dropdown-toggle btn-login" id="dropdownMenuButton"
                        type="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -47,12 +47,17 @@
                       <!--                [[${#request.userPrincipal.principal.fullname}]]-->
                       <input hidden th:value="${#request.userPrincipal.principal.username}">
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+
                       <!--                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" ><i class="fa fa-cogs"></i> Quản lí</a>-->
+                       <a class="dropdown-item"  [routerLink]="['/profile/edit',id_user]" ><i class="fa fa-user-circle-o"></i> Profile</a>
                       <a class="dropdown-item" ><i class="fa fa-user-circle-o"></i> Profile</a>
                       <a class="dropdown-item" (click)="score()"><i class="fa fa-check-square-o"></i> Kết quả thi</a>
                       <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+
                     </div>
+
                   </div></th>
                 </tr>
                 </thead>
