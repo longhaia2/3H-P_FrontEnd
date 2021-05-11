@@ -115,6 +115,12 @@ import {ToastrModule} from 'ngx-toastr';
 import { ResultTestComponent } from './Hien/result-test/result-test.component';
 import { ResultVocabularyComponent } from './Hien/result-vocabulary/result-vocabulary.component';
 import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
+import {ChatService} from './Hai/Service/chat.service';
+import {WebsocketService} from './Hai/Service/websocket.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 
 
@@ -239,10 +245,13 @@ import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule
   ],
   entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
-  providers: [authInterceptorProviders, Title],
+  providers: [authInterceptorProviders, Title, ChatService, WebsocketService],
   bootstrap: [AppComponent],
 
 })
