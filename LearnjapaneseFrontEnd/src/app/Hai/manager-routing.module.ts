@@ -65,6 +65,8 @@ import {CustomerAuthService} from '../_services/customer-auth.service';
 import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
+import {DemoComponent} from "../Manh/demo/demo.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 
 
@@ -89,7 +91,7 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
   {path: 'admin/manage/user/add', component: AdduserComponent, canActivate: [AdminAuthService]},
   {path: 'admin/manage/user', component: ManageruserComponent, canActivate: [AdminAuthService]},
-  {path: 'admin/manage/user/detail/:id', component: DetailuserComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/user/detail/:id', component: DetailuserComponent},
   {path: 'listchalenge', component: ListchallengeComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/add', component: CreateroomComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/wait/:id', component: WaitlchallengeComponent, canActivate: [CustomerAuthService]},
@@ -145,7 +147,11 @@ const routes: Routes = [
   {path: 'exam/:level/testjnpt/:id', component: TestjlptComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsgrammar/:id/:id_exam', component: ResultTestComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
-  {path: 'unaccess', component: UnaccessComponent}
+  {path: 'unaccess', component: UnaccessComponent},
+  {path: 'profile/edit/:id', component: ProfileComponent},
+
+
+
 ];
 
 @NgModule({

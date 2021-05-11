@@ -7,6 +7,7 @@ import {DialogResultTestComponent} from "../dialog-result-test/dialog-result-tes
 import {ReviewgrammarService} from "../../../Hien/servicesh/reveiwgrammarservice.service";
 import {ReviewService} from '../../../Hien/servicesh/review.service';
 import {Result} from '../../../Hien/model/result';
+import {MAT_RADIO_DEFAULT_OPTIONS} from "@angular/material/radio";
 
 export interface DialogData {
   idResult: number;
@@ -16,9 +17,14 @@ export interface DialogData {
   selector: 'app-testjlpt',
   templateUrl: './testjlpt.component.html',
   styleUrls: ['./testjlpt.component.css'],
-  providers: [ReviewgrammarService,ReviewService]
+  providers: [ReviewgrammarService,ReviewService,{
+    provide: MAT_RADIO_DEFAULT_OPTIONS,
+    useValue: { color: 'accent' },
+  }]
+
 })
 export class TestjlptComponent implements OnInit {
+  logName: string;
   ex: Exam;
   a: number=0;
   b: number=0;
@@ -32,6 +38,9 @@ export class TestjlptComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.ex = new Exam();
     this.rs = new Result();
     this.ex = new Exam();

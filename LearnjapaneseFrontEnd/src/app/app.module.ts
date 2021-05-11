@@ -7,7 +7,6 @@ import { ManageraskComponent } from './Manh/managerask/managerask.component';
 import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
 import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
-
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
@@ -69,7 +68,6 @@ import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.compon
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
-import { ProfileComponent } from './_services/profile/profile.component';
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
@@ -115,6 +113,13 @@ import {ToastrModule} from 'ngx-toastr';
 import { ResultTestComponent } from './Hien/result-test/result-test.component';
 import { ResultVocabularyComponent } from './Hien/result-vocabulary/result-vocabulary.component';
 import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
+import { DemoComponent } from './Manh/demo/demo.component';
+import {MatRadioModule} from "@angular/material/radio";
+import { ProfileComponent } from './Hai/profile/profile.component';
+// @ts-ignore
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireDatabase, AngularFireDatabaseModule} from "@angular/fire/database";
 
 
 
@@ -182,7 +187,6 @@ import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
     ManagerexamaddComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
@@ -219,6 +223,8 @@ import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
     ResultTestComponent,
     ResultVocabularyComponent,
     UnaccessComponent,
+    DemoComponent,
+    ProfileComponent,
   ],
 
   imports: [
@@ -229,6 +235,7 @@ import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
     FormsModule,
     CKEditorModule,
     HttpClientModule,
+    MatRadioModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ReactiveFormsModule,
@@ -239,7 +246,10 @@ import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+
   ],
   entryComponents:[DialogInputPassComponent, DialogJoinRoomComponent,QuanlibaihocComponent,DialogComponent],
   providers: [authInterceptorProviders, Title],
