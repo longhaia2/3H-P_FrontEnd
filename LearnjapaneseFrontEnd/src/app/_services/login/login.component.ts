@@ -16,12 +16,14 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private toastrService: ToastrService) { }
+
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
-    }
+    // if (this.tokenStorage.getToken()) {
+    //   this.isLoggedIn = true;
+    //   this.roles = this.tokenStorage.getUser().roles;
+    // }
   }
+
   onSubmit(): void {
     this.authService.login(this.form).subscribe(
       data => {
@@ -31,21 +33,24 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         if (data.error === '403 FORBIDDEN'){
-          alert(data.message);
-          this.tokenStorage.signOut();
-          window.location.reload();
-          return this.router.navigate(['login']);
-          this.toastrService.success('Đăng nhập thành công');
+          // this.errorMessage = data.message;
+          // this.tokenStorage.signOut();
+          // window.location.reload();
+          this.isLoginFailed = true;
+          this.isLoggedIn = false;
+          this.errorMessage = data.message;
+          // return this.router.navigate(['login']);
+        } else {
+          if (data.role === 'ROLE_ADMIN'){
+            return this.router.navigate(['admin-home']);
+          }
+          return this.router.navigate(['page-home']);
         }
-
-        if (data.role === 'ROLE_ADMIN'){
-          return this.router.navigate(['admin-home']);
-        }
-        return this.router.navigate(['page-home']);
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        this.isLoggedIn = false;
       }
     );
   }

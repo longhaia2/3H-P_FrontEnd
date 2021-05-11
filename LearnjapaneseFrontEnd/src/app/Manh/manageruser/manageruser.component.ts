@@ -18,6 +18,7 @@ export class ManageruserComponent implements OnInit {
   user:User;
   username: any;
   elseBlock: any;
+  logName: String;
 
   constructor(private Userservice: UserServiceService,
               private route: ActivatedRoute,
@@ -30,6 +31,8 @@ export class ManageruserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.reloadData();
   }
 

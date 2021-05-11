@@ -8,15 +8,9 @@
       </div>
 
       <div class="clearfix"></div>
-
-      <!-- menu profile quick info -->
       <div class="profile clearfix">
-        <div class="profile_pic">
-          <img th:src="@{/image/user/{image}(image=${image})}" class="img-circle profile_img">
-        </div>
         <div class="profile_info">
-          <span>Chào {{userNameDsp}}</span>
-          <h2 th:text="${username}"></h2>
+          <span style="font-size: 20px; color: whitesmoke">Xin chào {{userNameDsp}}</span>
         </div>
       </div>
       <!-- /menu profile quick info -->
@@ -33,7 +27,7 @@
             </li>
 
             <li id="userManager" sec:authorize="hasAnyAuthority('ADMIN')">
-              <a [routerLink]="['/admin/manage/user']"><i class="fa fa-users" ></i> Quản lý user</a>
+              <a [routerLink]="['/admin/manage/user']"><i class="fa fa-users" ></i> Quản lý thành viến</a>
             </li>
             <li id="lessonManager">
               <a [routerLink]="['/admin/lesson']"><i class="fa fa-file-text"></i> Quản lý bài học</a>
