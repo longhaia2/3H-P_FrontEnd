@@ -12,11 +12,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TestN4Component implements OnInit {
   exam: Exam[];
+  logName: string;
+
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.reloadData();
   }
   reloadData() {

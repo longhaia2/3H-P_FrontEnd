@@ -32,7 +32,6 @@
 
             <li id="userManager" sec:authorize="hasAnyAuthority('ADMIN')">
               <a [routerLink]="['/admin/manage/user']"><i class="fa fa-users" ></i> Quản lý thành viên</a>
-
             </li>
             <li id="lessonManager">
               <a [routerLink]="['/admin/lesson']"><i class="fa fa-file-text"></i> Quản lý bài học</a>

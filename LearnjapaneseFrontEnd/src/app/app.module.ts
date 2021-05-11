@@ -7,7 +7,6 @@ import { ManageraskComponent } from './Manh/managerask/managerask.component';
 import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
 import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
-
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
@@ -69,7 +68,6 @@ import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.compon
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
-import { ProfileComponent } from './_services/profile/profile.component';
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
@@ -115,6 +113,9 @@ import {ToastrModule} from 'ngx-toastr';
 import { ResultTestComponent } from './Hien/result-test/result-test.component';
 import { ResultVocabularyComponent } from './Hien/result-vocabulary/result-vocabulary.component';
 import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
+import { DemoComponent } from './Manh/demo/demo.component';
+import {MatRadioModule} from "@angular/material/radio";
+import { ProfileComponent } from './Hai/profile/profile.component';
 import { ConfirmLogoutComponent } from './Hien/confirm-logout/confirm-logout.component';
 import { HistoryResultComponent } from './Hien/history-result/history-result.component';
 import { ChooseScoreComponent } from './Hien/choose-score/choose-score.component';
@@ -131,6 +132,7 @@ import { N4NguphapOntapComponent } from './Hai/study/study-n4/n4-nguphap-ontap/n
 import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component';
 import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
 import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
+
 
 
 
@@ -198,7 +200,6 @@ import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-
     ManagerexamaddComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
@@ -235,6 +236,8 @@ import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-
     ResultTestComponent,
     ResultVocabularyComponent,
     UnaccessComponent,
+    DemoComponent,
+    ProfileComponent,
     ConfirmLogoutComponent,
     HistoryResultComponent,
     ChooseScoreComponent,
@@ -256,6 +259,7 @@ import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-
     FormsModule,
     CKEditorModule,
     HttpClientModule,
+    MatRadioModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ReactiveFormsModule,
