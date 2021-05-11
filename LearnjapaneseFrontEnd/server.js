@@ -2,7 +2,7 @@ let app = require("express")();
 let http = require("http").Server(app);
 let io = require("socket.io")(http, {
   cors: {
-    origin: "http://localhost:5000",
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
