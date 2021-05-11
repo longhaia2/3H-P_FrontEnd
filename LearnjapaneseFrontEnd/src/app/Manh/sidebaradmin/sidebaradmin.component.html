@@ -1,10 +1,8 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<div th:fragment="content" th:remove="tag" >
-  <div class="col-md-3 left_col" style="position: fixed;">
+
+<div class="col-md-3 left_col" style="position: fixed;">
     <div class="left_col scroll-view">
       <div class="navbar nav_title">
-        <a th:href="@{/admin/home}" class="site_title"><i class="fa fa-graduation-cap"></i> <span>3H&P</span></a>
+        <a class="site_title"><i class="fa fa-graduation-cap"></i> <span>3H&P</span></a>
       </div>
 
       <div class="clearfix"></div>
@@ -12,11 +10,11 @@
       <!-- menu profile quick info -->
       <div class="profile clearfix">
         <div class="profile_pic">
-          <img th:src="@{/image/user/{image}(image=${image})}" class="img-circle profile_img">
+          <img  class="img-circle profile_img">
         </div>
         <div class="profile_info">
-          <span>Chào {{userNameDsp}}</span>
-          <h2 th:text="${username}"></h2>
+          <span>Chào </span>
+          <h2>{{userNameDsp}}</h2>
         </div>
       </div>
       <!-- /menu profile quick info -->
@@ -28,12 +26,13 @@
         <div class="menu_section">
           <h3>Trang quản lý</h3>
           <ul class="nav side-menu">
-            <li id="homeManager" sec:authorize="hasAnyAuthority('ADMIN')">
+            <li id="homeManager" >
               <a [routerLink]="['/admin-home']" ><i class="fa fa-home" ></i> Trang chủ</a>
             </li>
 
             <li id="userManager" sec:authorize="hasAnyAuthority('ADMIN')">
-              <a [routerLink]="['/admin/manage/user']"><i class="fa fa-users" ></i> Quản lý user</a>
+              <a [routerLink]="['/admin/manage/user']"><i class="fa fa-users" ></i> Quản lý thành viên</a>
+
             </li>
             <li id="lessonManager">
               <a [routerLink]="['/admin/lesson']"><i class="fa fa-file-text"></i> Quản lý bài học</a>
@@ -42,14 +41,14 @@
               <a [routerLink]="['/admin/exam']"><i class="fa fa-file-pdf-o"></i> Quản lý đề thi</a>
             </li>
             <li id="questionManager">
-              <a th:href="@{/question/search-question}" [routerLink]="['/admin/question']"><i class="fa fa-question-circle-o"></i> Quản lý câu hỏi</a>
+              <a  [routerLink]="['/admin/question']"><i class="fa fa-question-circle-o"></i> Quản lý câu hỏi</a>
             </li>
             <li id="newsManager">
               <a><i class="fa fa-newspaper-o"></i> Quản lý tin tức </a>
 
             </li>
             <li id="resultManager">
-              <a th:href="@{/result/list-result}"><i class="fa fa-wpforms"></i> Quản lý kết quả thi</a>
+              <a ><i class="fa fa-wpforms"></i> Quản lý kết quả thi</a>
             </li>
 
           </ul>
@@ -67,10 +66,10 @@
         <a data-toggle="tooltip" data-placement="top" title="Lock">
           <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
         </a>
-        <a data-toggle="tooltip" data-placement="top" title="Logout" th:href="@{/logout}">
+        <a data-toggle="tooltip" data-placement="top" title="Logout" >
           <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
         </a>
       </div>
     </div>
   </div>
-</div>
+
