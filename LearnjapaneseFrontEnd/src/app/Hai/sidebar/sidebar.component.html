@@ -1,12 +1,18 @@
 <div class="col-md-4 col-12">
-    <div class="class-right">
+    <div class="class-right" style="width: 300px">
       <div class="class-sectionTitle1 test">
         <span>Các bài học xem nhiều</span>
       </div>
       <div class="sidebar-content">
         <ul>
-          <li class="list-item" th:each="item:${listLesson}">
-            <a th:href="@{/noidungbaihoc(lessonId=${item.id})}" th:text="${item.lessonName}"></a>
+          <li class="list-item" >
+            <a >Ngữ Pháp N5 Bài 10</a>
+          </li> <li class="list-item" >
+            <a >Từ Vựng N4 Bài 2</a>
+          </li> <li class="list-item" >
+            <a >Ngữ Pháp N3 Bài 5</a>
+          </li> <li class="list-item" >
+            <a >Từ Vựng N5 Bài 1</a>
           </li>
         </ul>
       </div>
@@ -16,8 +22,17 @@
       </div>
       <div class="sidebar-content">
         <ul>
-          <li class="list-item" th:each="item:${listExam}">
-            <a th:href="@{/kiemtra/info(examId= ${item.id})}" th:text="${item.title}"></a>
+          <li class="list-item" >
+            <a >Đề Thi JLPT N1 Tháng 7/2015</a>
+          </li>
+          <li class="list-item" >
+            <a >Đề Thi Thử Thách N4 5 Phút</a>
+          </li>
+          <li class="list-item">
+            <a >Đề Thi JLPT N2 Tháng 7/2018</a>
+          </li>
+          <li class="list-item" >
+            <a >Đề Thi JLPT N4 Tháng 12/2020</a>
           </li>
         </ul>
       </div>
@@ -26,9 +41,14 @@
       </div>
       <div class="sidebar-content">
         <ul>
-          <li class="list-item" th:each="item:${listnewStudy}">
-            <a th:href="@{/tintuc(newsId= ${item.id})}" th:text="${item.title}"></a>
-          </li>
+          <li class="list-item" >
+            <a >Học Trực Tuyến Có Tốt Không?</a>
+          </li><li class="list-item" >
+            <a >Nên học trực tuyến ở đâu?</a>
+          </li><li class="list-item" >
+            <a>Học Trực Tuyến Cần Kĩ Năng gì?</a>
+          </li><li class="list-item" >
+            <a >Nên Lực Chọn Cách Học Trực Tuyến Như Thế Nào? </a>
         </ul>
       </div>
     </div>

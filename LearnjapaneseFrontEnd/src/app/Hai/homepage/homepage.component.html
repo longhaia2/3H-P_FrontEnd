@@ -145,7 +145,7 @@
             <div class="news-leftTitle">
               <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách bài học mới</span>
             </div>
-            <div class="news-list">
+            <div class="news-list" style="height: 390px;">
               <a *ngFor="let lson of ls| paginate:{ itemsPerPage : 4, currentPage: p};" >
                 <a th:each="item:${userScore}">
                   <div class="news-listItem" [routerLink]="['/home/lesson/chitietlesson',lson.id]">
@@ -177,8 +177,8 @@
             <div class="news-leftTitle">
               <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách điểm cao</span>
             </div>
-            <div class="news-list">
-              <a *ngFor="let usr of rt" >
+            <div class="news-list" style="height: 390px;">
+              <a *ngFor="let usr of rt| paginate:{ itemsPerPage : 4, currentPage: p};" >
                 <a >
                   <div class="news-listItem" >
                     <div class="img">
@@ -208,17 +208,17 @@
             <div class="news-rightTitle">
               <span><i class="fa fa-newspaper-o" ></i> Danh sách tin tức mới</span>
             </div>
-            <div class="news-list">
+            <div class="news-list" style="height: 390px;">
               <a th:href="@{/tintuc(newsId=${item.id})}" th:each="item:${listNews}">
                 <div class="news-listItem">
                   <div class="img">
                     <img th:src="@{/image/news/{image}(image=${item.image})}" alt="">
                   </div>
                   <div class="content">
-                    <h4 class="title" th:text="${item.title}">
+                    <h4 class="title" th:text="${item.title}">Bí kíp học tập đạt kết quả cao
                     </h4>
                     <span class="description">
-                      <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}"></span>
+                      <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}">11/05/2021 23:28</span>
                     </span>
                   </div>
                 </div>

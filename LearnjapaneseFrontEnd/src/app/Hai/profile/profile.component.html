@@ -11,7 +11,6 @@
               <form method="post" th:action="@{/profile/update-image-user}" enctype="multipart/form-data">
                 <input type="text" name="userId" th:value="${us.id}" hidden>
                 <h4 class="mb-5">Update hình ảnh</h4>
-                <input type="text" placeholder="save with key" name="id" [(ngModel)]="id">
                 <input type="file" (change)="showPreview($event)"  style="overflow: hidden"/>
                 <div class="col-md-12 col-sm-12 mt-3">
                   <input type="submit" value="Cập nhật ảnh" (click)="save()" id="btnUpdateImage" class="btn btn-success mt-3">
@@ -29,12 +28,6 @@
             <form th:action="@{/profile/update-user}" method="post"  >
               <div class="d-flex justify-content-center align-items-center mb-3">
                 <h4 class="text-right">Thông tin tài khoản</h4>
-              </div>
-              <div class="bg-danger" id="error"
-                   th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
-              </div>
-              <div class="bg-success" id="success"
-                   th:if="${not #strings.isEmpty(success)}" th:text="${success}" style="color: white;padding: 10px">
               </div>
               <input type="text" hidden="true" name="userId" th:value="${us.id}">
 
@@ -60,12 +53,6 @@
 
                 </div>
 
-                <div class="col-md-12 mt-2" >
-                  <label class="labels">ID</label>
-                  <input  type="text" [(ngModel)]="us.id" class="form-control"  formControlName="id"  name="id" id="id" ng-required="$scope.uid">
-<!--                  <input type="text" [(ngModel)]="us.id"  class=" form-control "formControlName="id" readonly />-->
-
-                </div>
                 <div class="col-md-12 mt-2">
                   <label class="labels">Email</label>
                   <input  type="text" [(ngModel)]="us.email" class="form-control"  formControlName="email"  name="email" id="email" ng-required="$scope.uid">
@@ -95,7 +82,7 @@
               </div>
 
               <div class="mt-3 text-center">
-                <button class="btn btn-success" id="btnAddLesson" (click)="updateUser()" [disabled]="registerForm.invalid"  type="submit">Lưu thông tin</button>
+                <button class="btn btn-success" id="btnAddLesson" (click)="updateUser()" [disabled]="registerForm.invalid" style="margin-right: 10px"  type="submit">Lưu thông tin</button>
                 <a class="btn btn-danger" [routerLink]="['/page-home']">Hủy bỏ</a>
 
               </div>
