@@ -65,6 +65,8 @@ import {CustomerAuthService} from '../_services/customer-auth.service';
 import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
+import {HistoryComponent} from '../Hien/history/history.component';
+import {HistoryResultComponent} from '../Hien/history-result/history-result.component';
 
 
 
@@ -145,7 +147,8 @@ const routes: Routes = [
   {path: 'exam/:level/testjnpt/:id', component: TestjlptComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsgrammar/:id/:id_exam', component: ResultTestComponent, canActivate: [CustomerAuthService]},
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
-  {path: 'unaccess', component: UnaccessComponent}
+  {path: 'unaccess', component: UnaccessComponent},
+  {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]}
 ];
 
 @NgModule({

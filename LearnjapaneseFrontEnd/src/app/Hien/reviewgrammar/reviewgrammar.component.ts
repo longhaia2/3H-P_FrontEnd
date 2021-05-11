@@ -16,11 +16,14 @@ export class ReviewgrammarComponent implements OnInit {
   dem = 0;
   selectedAS: string[];
   qs: Question[];
+  logName: string;
   constructor(
     private service: ReviewService , private  route: ActivatedRoute,
     private  router: Router) {
   }
   ngOnInit(): void {
+    const userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     // @ts-ignore
     this.ex = new Exam();
     this.rs = new Result();
@@ -30,20 +33,6 @@ export class ReviewgrammarComponent implements OnInit {
       this.selectedAS = new Array(this.qs.length);
     }, error => console.log(error));
   }
-  // // tslint:disable-next-line:typedef
-  // resultQS() {
-  //   let countCorrect = 0;
-  //   for (let i = 0; i < this.qs.length; i++) {
-  //     if (this.qs[i].ansCorrect === this.selectedAS[i]) {
-  //       countCorrect++;
-  //       this.dem++;
-  //       // this.rs.score=this.countCorrect;
-  //     }
-  //   }
-  //   alert('Bạn đã làm đúng ' + this.dem);
-  //   // tslint:disable-next-line:no-unused-expression
-  //   // this.countCorrect;
-  // }
   // tslint:disable-next-line:typedef
   selectAt(index, value) {
     this.selectedAS[index] = value;
