@@ -4,19 +4,25 @@ import {QuestionServiceService} from '../servicesh/question-service.service';
 // @ts-ignore
 import {ActivatedRoute, Router} from '@angular/router';
 import {Question} from '../model/question';
+import {DialogComponent} from '../../Thuan/dialog/dialog.component';
+import {DialogServiceService} from '../../Thuan/service/dialog-service.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ToastrService} from 'ngx-toastr';
 
 // @ts-ignore
 @Component({
   selector: 'app-listquestion',
   templateUrl: './listquestion.component.html',
   styleUrls: ['./listquestion.component.css'],
-  providers: [QuestionServiceService]
+  providers: [QuestionServiceService, ToastrService]
 })
 export class ListquestionComponent implements OnInit {
 
   id: number;
   question: Question[];
-  constructor(private questionService: QuestionServiceService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private questionService: QuestionServiceService, private route: ActivatedRoute, private router: Router,
+              private dialogService: DialogServiceService,
+              private dialog: MatDialog, private tsv: ToastrService) { }
 
   ngOnInit(): void {
     this.list();
@@ -28,16 +34,23 @@ export class ListquestionComponent implements OnInit {
       console.log(data);
     });
   }
-
-  // tslint:disable-next-line:typedef
   delete(id: number) {
-    this.questionService.delete(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error));
+    const confirmDialog = this.dialog.open(DialogComponent, {
+      data: {
+        title: 'Confirm Remove Employee',
+        message: 'BẠN CÓ MUỐN XÓA HAY KHÔNG ? '
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result == true) {
+        this.questionService.delete(id).subscribe(
+          data => {
+            console.log(data);
+            this.reloadData();
+          });
+        this.tsv.success('Xóa thành công', 'Xóa bài học');
+      }
+    });
   }
 
   // tslint:disable-next-line:typedef
