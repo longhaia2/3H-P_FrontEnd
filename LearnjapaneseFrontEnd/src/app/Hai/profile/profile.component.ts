@@ -5,10 +5,8 @@ import {User} from "../../Manh/modelm/user";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Lesson} from "../../Thuan/model/lesson";
-import {AngularFireStorage} from "@angular/fire/storage";
 import {UploadFileServiceService} from "../../Manh/servicem/upload-file-service.service";
 import {finalize} from "rxjs/operators";
-import * as firebase  from "firebase/app";
 
 @Component({
   selector: 'app-profile',
@@ -43,8 +41,11 @@ export class ProfileComponent implements OnInit {
 
   us : User=new User();
 
+  // constructor(private userService: UserServiceService,private formBuilder: FormBuilder,private route: ActivatedRoute,
+  //             private router: Router, private tsv:ToastrService,@Inject(AngularFireStorage) private storage: AngularFireStorage,
+  //             @Inject(UploadFileServiceService) private upFileService: UploadFileServiceService) { }
   constructor(private userService: UserServiceService,private formBuilder: FormBuilder,private route: ActivatedRoute,
-              private router: Router, private tsv:ToastrService,@Inject(AngularFireStorage) private storage: AngularFireStorage,
+              private router: Router, private tsv:ToastrService,
               @Inject(UploadFileServiceService) private upFileService: UploadFileServiceService) { }
 
   ngOnInit(): void {
@@ -70,17 +71,17 @@ export class ProfileComponent implements OnInit {
     this.selectedImage=event.target.files[0];
   }
   save(){
-    const name=this.selectedImage.name;
-    const fileRef= this.storage.ref(name);
-    this.storage.upload(name,this.selectedImage).snapshotChanges().pipe(
-      finalize(()=>{
-        fileRef.getDownloadURL().subscribe((url)=>{
-          this.url=url;
-          this.upFileService.insertImageDetails(this.id,this.url);
-          alert('Upload Succesful')
-        });
-        })
-    ).subscribe();
+    // const name=this.selectedImage.name;
+    // const fileRef= this.storage.ref(name);
+    // this.storage.upload(name,this.selectedImage).snapshotChanges().pipe(
+    //   finalize(()=>{
+    //     fileRef.getDownloadURL().subscribe((url)=>{
+    //       this.url=url;
+    //       this.upFileService.insertImageDetails(this.id,this.url);
+    //       alert('Upload Succesful')
+    //     });
+    //     })
+    // ).subscribe();
   }
   // test(event:any){
   //   const file: File=event.target.file[0];
