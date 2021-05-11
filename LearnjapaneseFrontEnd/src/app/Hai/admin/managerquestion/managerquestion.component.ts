@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ChatService} from '../../Service/chat.service';
-import {User} from '../../../../../common/user';
+
 import {WebsocketService} from '../../Service/websocket.service';
-import * as Connection from '../../../../../common/connection';
 @Component({
   selector: 'app-managerquestion',
   templateUrl: './managerquestion.component.html',

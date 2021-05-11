@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import * as Connection from '../../../../common/connection';
 import * as socketIo from 'socket.io-client';
 const url = 'http://localhost:3000';
 import {Observable, Subject} from 'rxjs';
-import {User} from '../../../../common/user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +25,6 @@ export class WebsocketService {
     });
   }
 
-  emitToServer(connection: Connection, data: User): void{
-    this.clientSocket.emit(connection, data);
-  }
   connect(): Subject<MessageEvent> {
 
     // @ts-ignore

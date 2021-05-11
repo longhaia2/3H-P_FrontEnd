@@ -1,6 +1,6 @@
 var express = require('express');
 var app =express();
-var socket = require('socket.io')
+var socket = require('socket.io');
 var connection =require('./common/connection');
 
 var server = app.listen(3000,()=>{
