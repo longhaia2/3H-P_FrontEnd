@@ -1,12 +1,12 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <link rel="stylesheet" href="menu.component.css">
+<div >
   <div class="container">
     <nav class="menu d-none d-lg-block">
       <div class="row">
         <div class="col-md-8 col-12">
           <ul class="menu-left">
-            <li [routerLink]="['/page-home']"><a>Trang chủ</a></li>
+            <li><a [routerLink]="['/page-home']">Trang chủ</a></li>
             <li>
               <a >Học tập</a>
               <ul>
@@ -17,10 +17,12 @@
                 <li [routerLink]="['/study/N5']">N5</li>
                 <li [routerLink]="['/study/alphabet']">Bảng Chữ Cái</li>
                 <li [routerLink]="['/study/kanji']">Các Bộ Hán Tự Cơ Bản</li>
+
               </ul>
             </li>
             <li><a [routerLink]="['/page-test']">kiểm tra</a></li>
             <li><a [routerLink]="['/listchalenge']">Thách đấu</a></li>
+            <li><a>Tin tức</a></li>
             <li><a [routerLink]="['/infor']">Giới thiệu</a></li>
           </ul>
         </div>
@@ -29,6 +31,8 @@
             <div *ngIf="userNameDsp==null; else elseBlock">
               <div> <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP</a></div>
             </div>
+
+            <!--            <a class=" btn-login" id="link-login1" [routerLink]="['/login']">ĐĂNG NHẬP</a>-->
             <ng-template #elseBlock>
               <table >
                 <thead>
@@ -40,18 +44,12 @@
                        aria-haspopup="true" aria-expanded="false">
                       <i class="fa fa-user"></i>
                     </a>
-<<<<<<< HEAD
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" ><i class="fa fa-user-circle-o"></i> Thông tin</a>
-                      <a class="dropdown-item" ><i class="fa fa-check-square-o"></i> Kết quả thi</a>
-=======
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
 
                       <!--                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" ><i class="fa fa-cogs"></i> Quản lí</a>-->
-                       <a class="dropdown-item"  [routerLink]="['/profile/edit',id_user]" ><i class="fa fa-user-circle-o"></i> Profile</a>
+                      <a class="dropdown-item"  [routerLink]="['/profile/edit',id_user]" ><i class="fa fa-user-circle-o"></i> Thông tin</a>
                       <a class="dropdown-item" (click)="score()"><i class="fa fa-check-square-o"></i> Kết quả thi</a>
->>>>>>> e79f61a2552733605e325a5c4d9c03d87553851e
                       <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
 
                     </div>
@@ -67,4 +65,4 @@
       </div>
     </nav>
   </div>
-
+</div>

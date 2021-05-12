@@ -2,15 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
 import {TokenStorageService} from '../token-storage.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./login.component.css']
-=======
   styleUrls: ['./login.component.css'],
   providers: [ToastrService, AuthService]
->>>>>>> e79f61a2552733605e325a5c4d9c03d87553851e
 })
 export class LoginComponent implements OnInit {
   form: any = {};
@@ -18,15 +15,9 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-<<<<<<< HEAD
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
-=======
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private toastrService: ToastrService) { }
-<<<<<<< HEAD
->>>>>>> e79f61a2552733605e325a5c4d9c03d87553851e
-=======
 
->>>>>>> 4007530d7d7fce636a4487d04e38f902c0b9e711
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private toastrService: ToastrService) { }
+
   ngOnInit(): void {
     // if (this.tokenStorage.getToken()) {
     //   this.isLoggedIn = true;
@@ -43,21 +34,6 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         if (data.error === '403 FORBIDDEN'){
-<<<<<<< HEAD
-          alert(data.message);
-          this.tokenStorage.signOut();
-          window.location.reload();
-          return this.router.navigate(['login']);
-          this.toastrService.success('Đăng nhập thành công');
-        }
-<<<<<<< HEAD
-        // alert('Đăng nhập thành công');
-=======
-
->>>>>>> e79f61a2552733605e325a5c4d9c03d87553851e
-        if (data.role === 'ROLE_ADMIN'){
-          return this.router.navigate(['admin-home']);
-=======
           // this.errorMessage = data.message;
           // this.tokenStorage.signOut();
           // window.location.reload();
@@ -70,7 +46,6 @@ export class LoginComponent implements OnInit {
             return this.router.navigate(['admin-home']);
           }
           return this.router.navigate(['page-home']);
->>>>>>> 4007530d7d7fce636a4487d04e38f902c0b9e711
         }
       },
       err => {

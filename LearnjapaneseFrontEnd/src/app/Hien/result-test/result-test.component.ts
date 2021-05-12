@@ -28,9 +28,6 @@ export class ResultTestComponent implements OnInit {
     this.ex = new Exam();
     this.rs = new Result();
     this.qs = this.route.snapshot.params.id;
-
-    const userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
     this.id = this.route.snapshot.params['id'];
 
     this.reviewService.getResult(this.id).subscribe(data => {

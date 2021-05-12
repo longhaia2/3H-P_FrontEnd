@@ -27,13 +27,8 @@ export class HomepageComponent implements OnInit {
   us: UserScore[];
   p : number = 1;
 
-<<<<<<< HEAD
-  constructor(private lessonService: LessonServiceService, private examService: ExamserviceService, private title: Title,
-              private router: Router) {
-=======
 
   constructor(private lessonService: LessonServiceService, private examService: ExamserviceService, private title: Title) {
->>>>>>> e79f61a2552733605e325a5c4d9c03d87553851e
     this.title.setTitle("Trang Chủ");
   }
 
@@ -57,13 +52,9 @@ export class HomepageComponent implements OnInit {
       console.log(data);
     });
   }
-<<<<<<< HEAD
-
-=======
   ListtopHigh(){
     this.lessonService.getTopHighScoreByScore().subscribe(data => {
       this.rt = data;
     });
   }
->>>>>>> e79f61a2552733605e325a5c4d9c03d87553851e
 }
