@@ -112,25 +112,18 @@ export class TestjlptComponent implements OnInit {
       // @ts-ignore
       targetTime = new Date(targetTime);
     }
-// @ts-ignore
-    const x = setInterval(()=> {
-      if (currentTime > targetTime) {
-        clearInterval(x);
-        for (let i = 0; i < this.qs.length; i++) {
-          if (this.qs[i].ansCorrect === this.selectedAS[i]) {
-            this.dem++;
-          }
-        }
-        this.rs.score = this.dem;
-        let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
-        this.rs.user_id = user_id.userId;
-        this.rs.exam_id = this.route.snapshot.params.id;
-        this.rs.ansSelects = this.selectedAS;
-        this.openDialog();
+      // @ts-ignore
+    this.x= setInterval(()=> {
+      // @ts-ignore
+      if(Math.floor(((targetTime-currentTime)/1000)%60)<1){
         // @ts-ignore
-        targetTime=0;
-        return localStorage.setItem('targetTime', targetTime);
-      } else {
+
+        clearInterval(this.x);
+       document.getElementById('timer').innerHTML='Hết giờ';
+       return this.openDialog();
+     }
+
+       else {
         // @ts-ignore
         currentTime = new Date();
         // @ts-ignore
