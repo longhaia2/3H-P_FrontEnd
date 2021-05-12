@@ -11,12 +11,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 })
 export class StarttestjnptN2Component implements OnInit {
+  logName:string;
   id:number;
   ex : Exam=new Exam();
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private  router: Router) { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.id=this.route.snapshot.params['id'];
     this.examService.get(this.id).subscribe(data=>{
       this.ex=data
