@@ -18,6 +18,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ListquestionComponent implements OnInit {
 
+  logName: String;
   id: number;
   question: Question[];
   constructor(private questionService: QuestionServiceService, private route: ActivatedRoute, private router: Router,
@@ -26,6 +27,8 @@ export class ListquestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.list();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
   // tslint:disable-next-line:typedef
   list(){
