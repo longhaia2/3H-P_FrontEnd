@@ -18,7 +18,11 @@ export class ManageruserComponent implements OnInit {
   user:User;
   username: any;
   elseBlock: any;
+<<<<<<< HEAD
+  logName: String;
+=======
   logName: string
+>>>>>>> origin/main
 
   constructor(private Userservice: UserServiceService,
               private route: ActivatedRoute,

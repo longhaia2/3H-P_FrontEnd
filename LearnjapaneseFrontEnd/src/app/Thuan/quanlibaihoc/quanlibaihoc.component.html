@@ -125,8 +125,6 @@ vice<!DOCTYPE html>
                 </tbody>
               </table>
                             <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
-
-              <div th:replace="admin/pagging::content"></div>
             </div>
           </div>
         </div>
@@ -135,11 +133,6 @@ vice<!DOCTYPE html>
     </div>
   </div>
 </div>
-
-<div th:replace="admin/modal_confirm::content"></div>
-<div th:replace="admin/modal_active::content"></div>
-<div th:replace="admin/modal_disable::content"></div>
-<div th:replace="admin/footer :: content"></div>
 
 </body>
 

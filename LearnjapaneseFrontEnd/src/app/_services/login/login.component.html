@@ -2,10 +2,14 @@
 <head><link rel="stylesheet" href="login.component.css"> </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div style="width: 500px;margin-left: 500px;margin-top: 100px; border: 2px solid black; height: 380px;">
 =======
 <div style="width: 500px;margin-left: 500px;margin-top: 100px; border: 2px solid black; height: 380px; border: 2px solid black;">
 >>>>>>> e79f61a2552733605e325a5c4d9c03d87553851e
+=======
+<div style="width: 500px;margin-left: 500px;margin-top: 100px; padding: 8px; height: 450px; border: 2px solid black;">
+>>>>>>> 4007530d7d7fce636a4487d04e38f902c0b9e711
   <div id="logreg-forms">
     <div class="col-md-12">
       <form class="form-signin">
@@ -61,8 +65,7 @@
             <div
               class="alert alert-danger"
               role="alert"
-              *ngIf="f.submitted && isLoginFailed">
-              Đăng nhập thất bại: {{ errorMessage }}
+              *ngIf="f.submitted && isLoginFailed">{{ errorMessage }}
             </div>
             <div class="alert alert-success" *ngIf="isLoggedIn">
               Logged in as {{ roles }}
