@@ -78,9 +78,11 @@
               </div>
             </form>
             <br><br>
-            <div class="mt-6 " align="center">
+            <div class="mt-6 " style="position: relative; left: 520px">
               <br><br>
+
               <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam" [disabled]="submitForm.invalid" >Thêm câu hỏi</button>
+
               <a class="btn btn-danger"  [routerLink]="['/admin/question']">Hủy bỏ</a>
             </div>
           </div>

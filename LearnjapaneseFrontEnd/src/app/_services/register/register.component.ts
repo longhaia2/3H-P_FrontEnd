@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
               this.tokenStorage.saveToken(data.accessToken);
               this.tokenStorage.saveUser(data);
               if (data.error === '403 FORBIDDEN'){
-                alert(data.message);
+                this.errorMessage = data.message;
                 this.tokenStorage.signOut();
                 window.location.reload();
                 return this.router.navigate(['login']);
@@ -58,7 +58,6 @@ export class RegisterComponent implements OnInit {
         }
       },
       err => {
-        // this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
         this.isSuccessful = false;
       }

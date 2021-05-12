@@ -12,15 +12,15 @@ import {Result} from '../model/result';
 })
 export class ReviewvocabularyComponent implements OnInit {
   rs: Result;
+  logName: string;
   dem = 0;
   ex: Exam;
   qs: Question[];
   resultAS:  string[];
-  logName: string;
   constructor(private service: ReviewService, private  route: ActivatedRoute,
               private  router: Router) { }
   ngOnInit(): void {
-    const userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     this.logName = userName['username'];
     this.ex = new Exam();
     this.rs = new Result();

@@ -3,7 +3,8 @@ import {Question} from '../model/question';
 import {Router} from '@angular/router';
 import {QuestionServiceService} from '../servicesh/question-service.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-addquestion',
   templateUrl: './addquestion.component.html',
@@ -30,7 +31,10 @@ export class AddquestionComponent implements OnInit {
   get ansD(){return this.submitForm.get('ansD')}
   get ansCorrect(){return this.submitForm.get('ansCorrect')}
   qs: Question;
-  constructor(private qsQuestion: QuestionServiceService, private route: Router, private tsv: ToastrService) { }
+
+  constructor(private qsQuestion: QuestionServiceService, private route: Router,
+              private tsv: ToastrService) { }
+
   ngOnInit(): void {
     this.qs = new Question();
   }
@@ -39,9 +43,10 @@ export class AddquestionComponent implements OnInit {
     console.log(this.qs);
     this.qsQuestion.create(this.qs).subscribe(data => {
       this.qs = data;
+
       this.tsv.success('Thêm câu hỏi thành công');
       this.qs=new Question();
-    })
+    });
     this.submitForm.reset();
   }
 }
