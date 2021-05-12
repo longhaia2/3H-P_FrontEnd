@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class N4TuvungOntapComponent  implements OnInit {
   ex: Exam[];
+  logName: string;
 
   constructor(private examservice: ExamserviceService, private route: ActivatedRoute,
               private router: Router) {
@@ -18,6 +19,8 @@ export class N4TuvungOntapComponent  implements OnInit {
 
   ngOnInit(): void {
     this.reloadData();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
 
   reloadData() {

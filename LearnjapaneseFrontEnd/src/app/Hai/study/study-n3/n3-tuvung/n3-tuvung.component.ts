@@ -14,9 +14,11 @@ export class N3TuvungComponent  implements OnInit {
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
               private router: Router) {
   }
-
+  logName: string;
   ngOnInit(): void {
     this.reloadData();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
 
   reloadData() {

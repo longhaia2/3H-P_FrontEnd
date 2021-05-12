@@ -159,7 +159,7 @@
                         Level : <span>{{lson.level}}</span>
                       </h5>
                       <h5 class="title" style="font-size: 100%">
-                        Mô tả : <span>{{lson.description}}</span>
+                        Bài học : <span>{{lson.lesson}}</span>
                       </h5>
                     </div>
                   </div>
@@ -175,10 +175,11 @@
         <div class="col-md-4 col-12">
           <div class="news-left">
             <div class="news-leftTitle">
-              <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách điểm cao</span>
+              <span><i class="fa fa-book" aria-hidden="true"></i> Top thách đấu</span>
             </div>
             <div class="news-list" style="height: 390px;">
               <a *ngFor="let usr of rt| paginate:{ itemsPerPage : 4, currentPage: p};" >
+
                 <a >
                   <div class="news-listItem" >
                     <div class="img">
@@ -196,7 +197,6 @@
                         Mô tả : <span> {{usr[2]}}</span>
                       </h5>
                     </div>
-
                   </div>
                 </a>
               </a>
