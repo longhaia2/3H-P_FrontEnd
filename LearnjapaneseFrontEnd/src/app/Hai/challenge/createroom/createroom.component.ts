@@ -43,6 +43,7 @@ export class CreateroomComponent implements OnInit {
         this.toastrService.success('Vui lòng nhập đủ thông tin!!');
       } else {
         this.checkroom = true;
+        this.cl.status=1
         this.csService.create(this.cl).subscribe(data => {
           this.cl.room_id = data;
           idRoom = data;

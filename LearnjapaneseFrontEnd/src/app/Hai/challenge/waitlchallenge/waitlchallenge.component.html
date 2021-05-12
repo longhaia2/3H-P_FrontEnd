@@ -11,7 +11,7 @@
     <section class="class-content">
       <div class="row">
         <div class="col-md-8 col-12">
-          <div class="class-left"  >
+          <div class="class-left" style="background-color: cornflowerblue" >
             <div class="class-sectionTitle">
               <span>PHÒNG CHỜ THI ĐẤU</span>
             </div>
@@ -24,7 +24,7 @@
                   <div class="content">
                    <div *ngIf="us.id==rs.user_id" >
                      <h6 class="title"  style="font-size: 16px;color: chartreuse;">Chủ phòng: {{us.username}}</h6>
-                     <button [disabled]="!allReady" *ngIf="us.id==id_u_scrore"  (click)="start()" style="width: 200px;background-color: aquamarine;">Bắt đầu</button>
+                     <button [disabled]="allReady" *ngIf="us.id==id_u_scrore"  (click)="start()" style="width: 200px;background-color: aquamarine;">Bắt đầu</button>
                      <h2 style="color: aquamarine" > Mọi người hãy sẵn sàng để chiến nhé!!!</h2>
                     </div>
                     <div>

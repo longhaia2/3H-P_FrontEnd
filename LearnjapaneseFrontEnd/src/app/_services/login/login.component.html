@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head><link rel="stylesheet" href="login.component.css"> </head>
 <body>
-<div style="width: 500px;margin-left: 500px;margin-top: 100px; border: 2px solid black; height: 380px; border: 2px solid black;">
+<div style="width: 500px;margin-left: 500px;margin-top: 100px; padding: 8px; height: 450px; border: 2px solid black;">
   <div id="logreg-forms">
     <div class="col-md-12">
       <form class="form-signin">
@@ -57,8 +57,7 @@
             <div
               class="alert alert-danger"
               role="alert"
-              *ngIf="f.submitted && isLoginFailed">
-              Đăng nhập thất bại: {{ errorMessage }}
+              *ngIf="f.submitted && isLoginFailed">{{ errorMessage }}
             </div>
             <div class="alert alert-success" *ngIf="isLoggedIn">
               Logged in as {{ roles }}

@@ -1,59 +1,80 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <title>Danh sách câu hỏi</title>
-  <div th:replace="admin/init_admin :: header"></div>
+  <title>Quản lí câu hỏi</title>
 </head>
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <app-sidebaradmin></app-sidebaradmin>
+    <app-sidebaradmin [userNameDsp]="logName" ></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
-    <div th:replace="admin/header :: content"></div>
+
     <div class="right_col" role="main">
       <!-- top tiles -->
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3> <small>Danh sách câu hỏi</small></h3>
+            <h1>Danh sách câu hỏi</h1>
+            <br>
           </div>
+
           <div class="title_right">
             <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                </span>
-              </div>
             </div>
           </div>
         </div>
-
-
         <div class="clearfix"></div>
         <div class="col-md-2 col-sm-12">
-          <label>&nbsp;</label>
 
-          <div>
-            <a [routerLink]="['/admin/question/add']" class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
-          </div>
         </div>
         <div class="clearfix"></div>
         <br>
         <div class="row">
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>Học Phần</label>
+            <select [(ngModel)]="hocphan" class="form-control" name="subjectId">
+              <option value="">Tùy chọn</option>
+              <option value="Từ Vựng">Từ vựng</option>
+              <option value="Ngữ Pháp">Ngữ pháp</option>
+              <option value="Đề JPLT">Đề JPLT</option>
+              <option value="Thử Thách">Đề Thử Thách Cùng Nhau</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>Trình Độ</label>
+            <select [(ngModel)]="trinhdo"  class="form-control" name="classId">
+              <option value="">Tùy chọn</option>
+              <option value="N5">N5</option>
+              <option value="N4">N4</option>
+              <option value="N3">N3</option>
+              <option value="N2">N2</option>
+              <option value="N1">N1</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>&nbsp;</label>
+            <div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+          </div>
+
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>&nbsp;</label>
+            <div >
+              <a [routerLink]="['/admin/question/add']" class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
           <div class="col-md-12">
-            <div class="bg-success col-md-12" id="success"
-                 th:if="${not #strings.isEmpty(success)}" th:text="${success}" style="color: white;padding: 10px">
-            </div>
-            <div class="bg-danger col-md-12" id="error"
-                 th:if="${not #strings.isEmpty(error)}" th:text="${error}" style="color: white;padding: 10px">
-            </div>
             <div class="tile-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="sampleTable">
                   <thead>
                   <tr>
-                    <th>ID</th>
+                    <th>STT</th>
                     <th>Học phần</th>
                     <th>Trình độ</th>
                     <th>Nội dung câu hỏi</th>
@@ -66,8 +87,8 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let qs of question">
-                    <td>{{qs.id}}</td>
+                  <tr *ngFor="let qs of question| filter:hocphan| filter: trinhdo;let i=index">
+                    <td>{{i+1}}</td>
                     <td>{{qs.term}}</td>
                     <td>{{qs.level}}</td>
                     <td>{{qs.content}}</td>
@@ -102,9 +123,6 @@
     <!-- page content -->
   </div>
 </div>
-<div th:replace="admin/modal_confirm::content"></div>
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
 <script>
   $("#questionManager").addClass("active");
 </script>

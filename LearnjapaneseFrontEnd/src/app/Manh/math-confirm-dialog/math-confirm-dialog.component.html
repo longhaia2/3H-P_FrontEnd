@@ -1,4 +1,23 @@
+
 <form style="background-color: whitesmoke;padding: 0px;width: 400px;">
+
+
+<div style="background-color: red;
+  display: inline; height: 30px">
+  <div class="cotent-container">
+<!--    <mat-icon id="clode-icon" (click)="closedDialog()" style="position: center">close</mat-icon>-->
+    <span class="content-span full-width" style="color: #0a0a0a; font-size: large" >{{data.message}}</span>
+    <br>
+  </div>
+  <div align="center"> <th><button mat-flat-button id="no-button" style="width: 100px;height: 50px;
+  background-color: whitesmoke;"[mat-dialog-close]="false" >Hủy bỏ</button></th>
+    <th>  <button mat-flat-button id="yes-button" style="background-color: #b6bece; height: 50px;
+  width: 100px;
+  background-color: red;
+  border-radius: 0px;" (click)="dialogRef" [mat-dialog-close]="true" >Đồng ý</button></th></div>
+</div>
+
+<form  style="background-color: #1ABB9C;padding: 5px;width: 300px">
   <!-- Modal -->
   <div aria-labelledby="removeModalCenterTitle" aria-hidden="true" >
     <div class="modal-dialog " >

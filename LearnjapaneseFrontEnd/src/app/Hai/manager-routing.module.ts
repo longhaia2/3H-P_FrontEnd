@@ -65,7 +65,6 @@ import {CustomerAuthService} from '../_services/customer-auth.service';
 import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
-import {DemoComponent} from "../Manh/demo/demo.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {HistoryComponent} from '../Hien/history/history.component';
 import {HistoryResultComponent} from '../Hien/history-result/history-result.component';
