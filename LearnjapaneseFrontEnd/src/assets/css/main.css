@@ -254,7 +254,8 @@ button.btn-showMenu {
 }
 
 .menu-left li>ul>li:hover {
-    background-color: var(--secondary-color);
+    background-color: #c57f6f;
+  cursor: pointer;
 }
 
 .menu-right {

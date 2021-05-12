@@ -12,6 +12,7 @@ import {ToastrService} from 'ngx-toastr';
   providers: [QuestionServiceService, ToastrService]
 })
 export class AddquestionComponent implements OnInit {
+  logName: string;
   submitForm = new FormGroup({
     content: new FormControl('', Validators.required),
     term: new FormControl('', Validators.required),
@@ -21,7 +22,7 @@ export class AddquestionComponent implements OnInit {
     ansC: new FormControl('', Validators.required),
     ansD: new FormControl('', Validators.required),
     ansCorrect: new FormControl('', Validators.required),
-  })
+  });
   get content(){return this.submitForm.get('content')}
   get term(){return this.submitForm.get('term')}
   get level(){return this.submitForm.get('level')}
@@ -37,6 +38,8 @@ export class AddquestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.qs = new Question();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
   // tslint:disable-next-line:typedef
   add(){
