@@ -5,7 +5,7 @@
 </head>
 <body>
 <app-header></app-header>
-<app-menu></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 <main class="class">
   <div class="container">
     <!-- banner -->
@@ -20,34 +20,14 @@
             <div class="class-sectionTitle">
               <span>Danh sách đề thi thử JLPT N3</span>
             </div>
-            <div class="list-subject">
-              <ul >
-                <li style="font-size: 25px" >Thi thử năng lực tiếng Nhật JLPT N3</li>
-                <!--                <li style="font-size: 25px">Đề thi JLPT N4</li>-->
-                <!--                <li style="font-size: 25px">Đề thi JLPT N3</li>-->
-                <!--                <li style="font-size: 25px">Đề thi JLPT N2</li>-->
-                <!--                <li style="font-size: 25px">Đề thi JLPT N1</li>-->
 
-              </ul>
-              <!--                <div class="subject-item">-->
-
-              <!--                  <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
-
-              <!--                  <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
-              <!--                  <img th:src="@{/image/classroom/{image}(image=${item.image})}">-->
-              <!--                </div>-->
-            </div>
-
-            <div class="class-sectionTitle">
-              <span>Danh sách đề thi mới</span>
-            </div>
             <div class="test-list" *ngFor="let ex of exam" >
               <a th:each="item:${listExam}" th:href="@{/kiemtra/info(examId=${item.id})}">
                 <div class="test-listItem">
                   <div class="img">
 
 
-                    <img src="../../../../assets/image/Flag_of_Japan_-_animated.gif" height="478" width="720"/></div>
+                    <img src="../../../../assets/image/exam/ezgif.com-gif-maker.png" height="200" width="200"/></div>
                   <div class="content" (click)="detail(ex.id)" [routerLink]="['/N3/start-test']">
                     <h6 class="title">Mã đề thi:{{ex.codeExam}} <span th:text="${item.codeExam}"></span> <br>
                       Trình độ: <span th:text="${item.exam_subject.name}"></span> {{ex.level}} <span th:text="${item.exam_classroom.classname}"></span></h6>

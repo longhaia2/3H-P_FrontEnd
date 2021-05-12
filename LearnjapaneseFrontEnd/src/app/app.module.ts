@@ -7,7 +7,6 @@ import { ManageraskComponent } from './Manh/managerask/managerask.component';
 import { ListquestionComponent } from './Hien/listquestion/listquestion.component';
 import { AddquestionComponent } from './Hien/addquestion/addquestion.component';
 import { AddsucessComponent } from './Manh/addsucess/addsucess.component';
-
 import { QuanlibaihocComponent } from './Thuan/quanlibaihoc/quanlibaihoc.component';
 import { AddlessonComponent } from './Thuan/quanlibaihoc/addlesson/addlesson.component';
 import { EditbaihocComponent } from './Thuan/quanlibaihoc/editbaihoc/editbaihoc.component';
@@ -69,7 +68,6 @@ import { ManagerexamComponent } from './Hai/admin/managerexam/managerexam.compon
 import { ManagerexamaddComponent } from './Hai/admin/managerexam/managerexamadd/managerexamadd.component';
 import { RegisterComponent } from './_services/register/register.component';
 import { HomeComponent } from './_services/home/home.component';
-import { ProfileComponent } from './_services/profile/profile.component';
 import { BoardAdminComponent } from './_services/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './_services/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './_services/board-user/board-user.component';
@@ -115,9 +113,26 @@ import {ToastrModule} from 'ngx-toastr';
 import { ResultTestComponent } from './Hien/result-test/result-test.component';
 import { ResultVocabularyComponent } from './Hien/result-vocabulary/result-vocabulary.component';
 import { UnaccessComponent } from './Hien/unaccess/unaccess.component';
+import { DemoComponent } from './Manh/demo/demo.component';
+import {MatRadioModule} from "@angular/material/radio";
+import { ProfileComponent } from './Hai/profile/profile.component';
 import { ConfirmLogoutComponent } from './Hien/confirm-logout/confirm-logout.component';
 import { HistoryResultComponent } from './Hien/history-result/history-result.component';
 import { ChooseScoreComponent } from './Hien/choose-score/choose-score.component';
+import {ChatService} from './Hai/Service/chat.service';
+import {WebsocketService} from './Hai/Service/websocket.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { N2NguphapOntapComponent } from './Hai/study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
+import { N2TuvungOntapComponent } from './Hai/study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component';
+import { N3NguphapOntapComponent } from './Hai/study/study-n3/n3-nguphap-ontap/n3-nguphap-ontap.component';
+import { N3TuvungOntapComponent } from './Hai/study/study-n3/n3-tuvung-ontap/n3-tuvung-ontap.component';
+import { N4NguphapOntapComponent } from './Hai/study/study-n4/n4-nguphap-ontap/n4-nguphap-ontap.component';
+import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component';
+import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
+import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
+
 
 
 
@@ -185,7 +200,6 @@ import { ChooseScoreComponent } from './Hien/choose-score/choose-score.component
     ManagerexamaddComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
@@ -222,9 +236,19 @@ import { ChooseScoreComponent } from './Hien/choose-score/choose-score.component
     ResultTestComponent,
     ResultVocabularyComponent,
     UnaccessComponent,
+    DemoComponent,
+    ProfileComponent,
     ConfirmLogoutComponent,
     HistoryResultComponent,
     ChooseScoreComponent,
+    N2NguphapOntapComponent,
+    N2TuvungOntapComponent,
+    N3NguphapOntapComponent,
+    N3TuvungOntapComponent,
+    N4NguphapOntapComponent,
+    N4TuvungOntapComponent,
+    N5NguphapOntapComponent,
+    N5TuvungOntapComponent,
   ],
 
   imports: [
@@ -235,6 +259,7 @@ import { ChooseScoreComponent } from './Hien/choose-score/choose-score.component
     FormsModule,
     CKEditorModule,
     HttpClientModule,
+    MatRadioModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ReactiveFormsModule,
@@ -245,10 +270,14 @@ import { ChooseScoreComponent } from './Hien/choose-score/choose-score.component
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule
   ],
   entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent],
-  providers: [authInterceptorProviders, Title],
+  providers: [authInterceptorProviders, Title, ChatService, WebsocketService],
+
   bootstrap: [AppComponent],
 
 })

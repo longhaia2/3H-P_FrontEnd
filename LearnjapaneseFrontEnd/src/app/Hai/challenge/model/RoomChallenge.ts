@@ -7,4 +7,5 @@ export class RoomChallenge {
   time : string;
   count: number;
   check: boolean;
+  status:number;
 }
