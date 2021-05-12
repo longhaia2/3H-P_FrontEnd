@@ -25,6 +25,9 @@ export class ExamserviceService {
   findAll(): Observable<Exam[]> {
     return this.http.get<Exam[]>(this.url + '/list');
   }
+  getExamNew(): Observable<Exam[]> {
+    return this.http.get<Exam[]>(this.url + '/pp');
+  }
 
   delete(id): Observable<any> {
     return this.http.delete(`${'http://localhost:8080/exam/delete'}/${id}`);
