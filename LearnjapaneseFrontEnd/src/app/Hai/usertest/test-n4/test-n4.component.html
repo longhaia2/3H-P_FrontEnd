@@ -28,11 +28,10 @@
 
                     <img src="../../../../assets/image/exam/ezgif.com-gif-maker.png" height="200" width="200"/></div>
                   <div class="content" (click)="detail(ex.id)" [routerLink]="['/N4/start-test']">
-                    <h6 class="title">Mã đề thi:  {{ex.codeExam}}<br>
-                      Trình độ: {{ex.level}} </h6>
-                    <span> Thời gian: {{ex.timeOut}} phút</span><br>
-                    <p >
-                    </p>
+                    <b>   <span>Mã đề thi: <u>{{ex.codeExam}}</u> </span><br></b>
+                    <b>  <span>Trình độ : <u>{{ex.level}}</u></span><br></b>
+                    <b>   <span>Tên đề thi : <u>{{ex.content}}</u> </span><br> </b>
+                    <b><span> Thời gian: <u>{{ex.timeOut}}</u>  phút</span><br></b>
                   </div>
                 </div>
               </a>

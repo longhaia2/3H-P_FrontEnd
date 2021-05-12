@@ -4,7 +4,7 @@
 <!--<div th:replace="fragments/header :: content"></div>-->
 <!--<div th:replace="fragments/menu :: content"></div>-->
 <app-header></app-header>
-<app-menu></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 <main class="home">
   <div class="container">
     <div class="infomation-exam">
@@ -12,18 +12,13 @@
   </div>
   <div class="container exam-test">
     <section class="container">
-      <!--      <div id="timer">-->
-      <!--        <span><i class="fa fa-clock-o"></i></span>-->
 
-      <!--        <countdown [config]="{ leftTime: 3600, format: 'm:s' }"></countdown>-->
-      <!--        <p id="timer" style="text-align: center;size: 10px"></p>-->
       <h5 style="text-align: center;color: #00aeef"  >
         <strong>   <div id="timer">
           <span><i class="fa fa-clock-o" ></i></span>
         </div>
         </strong>
       </h5>
-      <!--      </div>-->
     </section>
     <form action="/action_page.php">
     <section class="main-exam container">

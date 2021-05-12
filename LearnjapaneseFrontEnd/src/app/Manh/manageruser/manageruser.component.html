@@ -59,10 +59,76 @@
                       <a class="dropdown-item" [routerLink]="['/admin/user/detail' ,user.id]" > <i class="fa fa-question-circle-o"></i> Chi tiết</a>
                     </div>
                   </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <div  class="col-md-4">
+              <button  type="add" [routerLink]="['/admin/manage/user/add' ]" class="btn btn-success">Thêm thành viên
+              </button>
+              <br>
+              <br>
+              <input class="form-control" type="text" name="username" [(ngModel)]="username" (ngModelChange)="search()" placeholder="Tìm kiếm theo tên đăng nhập" >
+              <br>
+            </div>
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="sampleTable">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Họ và tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Giới tính</th>
+                    <th>Tùy chọn</th>
+                  </tr>
+                  </thead>
+                  <tbody >
+                  <tr *ngFor="let user of Users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.fullName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phoneNumber}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle"
+                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" (click)="delete(user.id) " id="confirmDelete" ><i class="fa fa-trash-o" ></i> Xóa</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" [routerLink]="['/admin/user/detail' ,user.id]" > <i class="fa fa-question-circle-o"></i> Chi tiết</a>
+                        </div>
+                      </div>
+
+
+                      <!--                      <button type="submit"  style="border-radius: 12px;width: 50px ; background-color: #00aeef"  class="badge badge-danger mr-2" [routerLink]="['/admin/user/detail' ,user.id]" > Chi tiết</button>-->
+                      <!--                      <button type="delete" style="border-radius: 12px;width: 50px" class="badge badge-danger mr-2" (click)="delete(user.id)"> Xóa</button>-->
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div th:replace="admin/pagging::content">
+                </div>
+              </div>
+            </div>
+
                 </td>
               </tr>
               </tbody>
             </table>
+
           </div>
         </div>
       </div>

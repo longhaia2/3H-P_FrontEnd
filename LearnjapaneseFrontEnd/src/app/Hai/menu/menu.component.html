@@ -7,8 +7,13 @@
         <div class="col-md-8 col-12">
           <ul class="menu-left">
             <li><a [routerLink]="['/page-home']">Trang chủ</a></li>
+
+            <li class="ht">
+              <a >Học tập</a>
+
             <li>
               <a style="cursor: pointer;">Học tập</a>
+
               <ul>
                 <li   [routerLink]="['/study/N1']">N1</li>
                 <li [routerLink]="['/study/N2']">N2</li>
@@ -22,6 +27,9 @@
             </li>
             <li><a [routerLink]="['/page-test']">kiểm tra</a></li>
             <li><a [routerLink]="['/listchalenge']">Thách đấu</a></li>
+
+            <li class="tt"><a th:href="@{/tintuc/list-news}">Tin tức</a></li>
+
             <li><a>Tin tức</a></li>
             <li><a [routerLink]="['/infor']">Giới thiệu</a></li>
           </ul>
