@@ -10,11 +10,14 @@ import {User} from "../modelm/user";
 })
 export class DetailuserComponent implements OnInit {
   id: number;
+  logName: string;
   us : User=new User();
   constructor(private Userservice: UserServiceService, private route: ActivatedRoute,
               private  router: Router) {
   }
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.id=this.route.snapshot.params['id'];
     this.Userservice.get(this.id).subscribe(data=>{
       this.us=data

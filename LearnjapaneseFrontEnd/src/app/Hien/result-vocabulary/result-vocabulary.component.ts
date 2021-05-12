@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   selector: 'app-result-vocabulary',
   templateUrl: './result-vocabulary.component.html',
   styleUrls: ['./result-vocabulary.component.css'],
-  providers:[ReviewService]
+  providers: [ReviewService]
 })
 export class ResultVocabularyComponent implements OnInit {
 
@@ -32,24 +32,22 @@ export class ResultVocabularyComponent implements OnInit {
     this.rs = new Result();
     this.qs = this.route.snapshot.params.id;
 
-    this.id = this.route.snapshot.params['id'];
+    const userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName.username;
+    this.id = this.route.snapshot.params.id;
 
     this.reviewService.getResults(this.id).subscribe(data => {
       console.log(data);
       this.rs = data;
-
-
+      // tslint:disable-next-line:no-shadowed-variable
       this.service.get(data.examId).subscribe(data => {
         this.qs = data;
       }, error => console.log(error));
     }, error => console.log(error));
-
   }
-
+  // tslint:disable-next-line:typedef
   selectAt(index, value) {
     console.log('index: ' + index + ' -- value: ' + value);
-    this.selectedAS[index] = value
+    this.selectedAS[index] = value;
   }
-
-
 }

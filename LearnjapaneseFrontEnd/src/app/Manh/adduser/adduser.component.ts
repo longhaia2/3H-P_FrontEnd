@@ -60,11 +60,11 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import {User} from "../modelm/user";
-import {UserServiceService} from "../servicem/user-service.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
+import {UserServiceService} from "../servicem/user-service.service";
+import {User} from "../modelm/user";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
@@ -72,7 +72,10 @@ import {ToastrService} from "ngx-toastr";
   providers: [UserServiceService, ToastrService]
 })
 export class AdduserComponent implements OnInit {
+  Users: User[];
   us: User;
+  logName: string
+
   isSuccessful = false;
   errorMessage = '';
   registerForm = new FormGroup(
@@ -85,6 +88,7 @@ export class AdduserComponent implements OnInit {
       password: new  FormControl('', [Validators.required, Validators.minLength(6)])
     }
   )
+
   get fullname(){return this.registerForm.get('fullname') }
   get username(){return this.registerForm.get('username') }
   get phone(){return this.registerForm.get('phone') }
@@ -95,8 +99,16 @@ export class AdduserComponent implements OnInit {
               private router: Router, private toastrService:ToastrService) { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
+    this.reloadData();
     // @ts-ignore
     this.us=new User();
+  }
+  reloadData() {
+    this.userService.findAll().subscribe(data => {
+      this.Users = data;
+    });
   }
   onSubmit() {
     this.userService.create(this.us).subscribe(data => {

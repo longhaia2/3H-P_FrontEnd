@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RoomChallenge} from '../model/RoomChallenge';
 import {ServiceService} from '../../service.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -7,19 +7,23 @@ import {Title} from "@angular/platform-browser";
 import {RoomUsers} from "../model/RoomUsers";
 import {ChallengeServiceService} from '../../Service/challenge-service.service';
 import {ServicebtService} from '../../../Service/servicebt.service';
+import {interval, Subscription} from "rxjs";
+import {ChatService} from "../../Service/chat.service";
 
 @Component({
   selector: 'app-waitlchallenge',
   templateUrl: './waitlchallenge.component.html',
   styleUrls: ['./waitlchallenge.component.css'],
-  providers : [ServiceService, ChallengeServiceService]
+  providers : [ServiceService, ChallengeServiceService, ChatService]
 })
 export class WaitlchallengeComponent implements OnInit {
+  private updateSubscription: Subscription;
   public logName: string;
   room_user: RoomUsers = new RoomUsers();
   room: RoomChallenge = new RoomChallenge();
   r_s: RoomUsers[];
   r_s_1: RoomUsers[];
+  r_s_2: RoomUsers[];
   id_u_scrore: number;
   selectedAS: string[];
   user: User[];
@@ -27,17 +31,25 @@ export class WaitlchallengeComponent implements OnInit {
   id: number;
   id_r: number;
   ready: boolean[];
-  allReady: boolean ;
+  allReady: boolean;
   level: string;
   time: string;
+  check: number;
+  index:number=0;
+  check1: number=0;
+  index1:number=1;
+  check2: number=0;
+  index2:number=2;
+  check3: number=0;
+  index3:number=3;
+  Test:number=0;
 
-  constructor(private  lessonServiceService: ServicebtService,private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
+  constructor(private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
               private  router: Router, private title: Title) {
     this.title.setTitle("Đợi Đối Thử");
   }
 
   ngOnInit(): void {
-
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
     this.logName = userName['username'];
     this.id = this.route.snapshot.params['id'];
@@ -57,22 +69,109 @@ export class WaitlchallengeComponent implements OnInit {
     this.setBanker();
     this.service.getUsersRoomList(this.id_r).subscribe(data => {
       this.r_s_1 = data;
-    this.r_s_1.forEach(Element => {
-      console.log(Element);
-      if(Element.status==1) {
-        this.allReady=true;
-        for (let i = 0; i <= this.user.length; i++) {
+      this.r_s_1.forEach(Element => {
+          for (let i = 0; i <= this.r_s_1.length; i++) {
+            if (Element.status == 0) {
+              this.Test++;
+            }
+          }
+      });
+      for (let i = 0; i <= this.user.length; i++) {
+        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 1) {
           this.ready[i] = true;
         }
-      }else {
-        this.allReady = false;
-        for (let i = 0; i <= this.user.length; i++) {
+        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 0) {
           this.ready[i] = false;
         }
       }
+
+      if(this.Test==0){
+        this.allReady = true;
+      }
+      if(this.r_s_1[0].status==1){
+        this.index=0;
+        this.check=1;
+      }else {
+        this.index=0;
+        this.check=0;
+      }
+      if(this.r_s_1[1].status==1){
+        this.index1=1;
+        this.check1=1;
+      }else {
+        this.index1=1;
+        this.check1=0;
+      }
+      if(this.r_s_1[2].status==1){
+        this.index2=2;
+        this.check2=1;
+      }else {
+        this.index2=2;
+        this.check2=0;
+      }
+      if(this.r_s_1[3].status==1){
+        this.index3=3;
+        this.check3=1;
+      }else {
+        this.index3=3;
+        this.check3=0;
+      }
     });
+    this.challengeServiceService.getOneUserByRoom(this.id_r,this.id_u_scrore).subscribe(data=>{
+      this.r_s_2=data;
     });
+    this.startQuiz();
+    this.load();
+    // this.getUserList();
+
   }
+
+
+  load(){
+    this.chat.messages.subscribe(msg => {
+      this.check = msg;
+    });
+    this.chat.messages1.subscribe(msg => {
+      this.check1 = msg;
+    });
+    this.chat.messages2.subscribe(msg => {
+      this.check2 = msg;
+    });
+    this.chat.messages3.subscribe(msg => {
+      this.check3 = msg;
+    });
+    this.chat.mess_id.subscribe(data => {
+      this.index=data;
+    });
+    this.chat.mess_id1.subscribe(data => {
+      this.index1=data;
+    });
+    this.chat.mess_id2.subscribe(data => {
+      this.index2=data;
+    });
+    this.chat.mess_id3.subscribe(data => {
+      this.index3=data;
+    });
+
+  }
+
+  getUserList() {
+    this.service.getUsersRoomList(this.id_r).subscribe(data => {
+      this.r_s_1 = data;
+
+      this.r_s_1.forEach(Element => {
+          for (let i = 0; i <= this.r_s_1.length; i++) {
+            if (Element.status == 0) {
+              this.Test++;
+            }
+          }
+    });
+      if(this.Test==0){
+        this.allReady = true;
+      }
+  })
+  }
+
 
   getRoom() {
     this.service.getroom(this.id_r).subscribe(data => {
@@ -88,48 +187,96 @@ export class WaitlchallengeComponent implements OnInit {
     });
   }
 
+  start() {
+    this.room.status = 0;
+    this.challengeServiceService.updateRoom(this.room.room_id, this.room).subscribe(data => {
+    }, error => console.log(error));
+    this.chat.sendMsg(this.room.room_id);
+  }
 
   startQuiz() {
 
-    if (this.room.level == 'N5' && this.room.time == '5') {
-      this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
-    }
-    if (this.room.level == 'N5' && this.room.time == '10') {
-      this.router.navigate(['/question/N510TT/challenge/2/', this.room.room_id, this.id_u_scrore]);
-    }
-    if (this.room.level == 'N5' && this.room.time == '15') {
-      this.router.navigate(['/question/N515TT/challenge/3/', this.room.room_id, this.id_u_scrore]);
-    }
-    if (this.room.level == 'N4' && this.room.time == '5') {
-      this.router.navigate(['/question/N45TT/challenge/4/', this.room.room_id, this.id_u_scrore]);
-    }
-  }
+    this.chat.messages.subscribe(msg => {
+      this.check = msg;
+      if (this.check == this.room.room_id) {
 
-  settrue(index: number) {
-    this.ready[index] = true;
-    this.r_s_1.forEach(Element => {
-      if ((Element.user_id == this.id_u_scrore)&&Element.banker!=1) {
-        this.room_user.status = 1;
-        this.room_user.banker = Element.banker;
-        this.room_user.score = Element.score;
-        this.challengeServiceService.upDateUser(Element.id, this.room_user).subscribe(data => {
-        }, error => console.log(error));
-      }
-    console.log(Element.status);
-    })
-  }
-  setfalse(index) {
-    this.ready[index] = false;
-    this.allReady = false;
-    this.r_s_1.forEach(Element => {
-      if (Element.user_id == this.id_u_scrore&&Element.banker!=1) {
-        this.room_user.banker = Element.banker;
-        this.room_user.score = Element.score;
-        this.room_user.status = 0;
-        this.challengeServiceService.upDateUser(Element.id, this.room_user).subscribe(data => {
-          console.log(data);
-        }, error => console.log(error));
+        this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
+        if (this.room.level == 'N5' && this.room.time == '5') {
+          this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N5' && this.room.time == '10') {
+          this.router.navigate(['/question/N510TT/challenge/2/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N5' && this.room.time == '15') {
+          this.router.navigate(['/question/N515TT/challenge/3/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N4' && this.room.time == '5') {
+          this.router.navigate(['/question/N45TT/challenge/4/', this.room.room_id, this.id_u_scrore]);
+        }
       }
     });
   }
+
+  startTrue(index: number) {
+    this.ready[index] = true;
+    if(index==0){
+      this.chat.sendMsg(1);
+      this.chat.senID(0);
+    }
+    else if(index==1){
+      this.chat.sendMsg1(1);
+      this.chat.senID1(1)
+    }
+    else if(index==2){
+      this.chat.sendMsg2(1);
+      this.chat.senID2(2)
+    }
+    else
+    {
+      this.chat.sendMsg3(1);
+      this.chat.senID3(3)
+    }
+  }
+
+  startFalse(index: number) {
+    this.ready[index] = false;
+    if(index==0){
+      this.chat.sendMsg(0);
+      this.chat.senID(0);
+    }
+    else if(index==1){
+      this.chat.sendMsg1(0);
+      this.chat.senID1(1)
+    }
+    else if(index==2){
+      this.chat.sendMsg2(0);
+      this.chat.senID2(2)
+    }
+    else
+    {
+      this.chat.sendMsg3(0);
+      this.chat.senID3(3)
+    }
+
+  }
+  //
+
+  settrue() {
+        this.r_s_2.forEach(Element => {
+            this.room_user.status = 1;
+            this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
+            }, error => console.log(error));
+    });
+
+  }
+
+      setfalse()
+      {
+        this.r_s_2.forEach(Element => {
+            this.room_user.status = 0;
+            this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
+            }, error => console.log(error));
+      });
+
+     }
 }
