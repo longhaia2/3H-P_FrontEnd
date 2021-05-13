@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {Lesson} from "../model/lesson";
-import {HttpClient} from "@angular/common/http";
-import {Question} from "../../Hien/model/question";
+import {Observable} from 'rxjs';
+import {Lesson} from '../model/lesson';
+import {HttpClient} from '@angular/common/http';
+
 
 
 @Injectable()
@@ -14,14 +14,14 @@ export class LessonServiceService {
   }
 
   findAll(): Observable<Lesson[]> {
-    return this.http.get<Lesson[]>(this.url + "/all");
+    return this.http.get<Lesson[]>(this.url + '/all');
   }
 
-  findByidlevel(level,term): Observable<Lesson[]> {
+  findByidlevel(level, term): Observable<Lesson[]> {
     return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson'}/${level}/${term}`);
   }
 
-  findByidlessson(level,idLesson): Observable<Lesson[]> {
+  findByidlessson(level, idLesson): Observable<Lesson[]> {
     return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson'}/${level}/lesson/${idLesson}`);
   }
 
@@ -43,10 +43,10 @@ export class LessonServiceService {
   findByLesson(searchtext): Observable<Lesson[]>{
     return this.http.get<Lesson[]>(`${'http://localhost:8080/lesson/timkiem'}/${searchtext}`);
   }
-  getLessonByDesc() : Observable<Lesson[]>{
-    return this.http.get<Lesson[]>(this.url+"/all/baimoi")
+  getLessonByDesc(): Observable<Lesson[]>{
+    return this.http.get<Lesson[]>(this.url + '/all/baimoi');
   }
-  getTopHighScoreByScore() : Observable<any>{
+  getTopHighScoreByScore(): Observable<any>{
     return  this.http.get<any>(`${'http://localhost:8080/challenge/top'}`);
   }
 }

@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class StudyN5Component implements OnInit {
 
   constructor() { }
-
+  logName: string;
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
-
 }

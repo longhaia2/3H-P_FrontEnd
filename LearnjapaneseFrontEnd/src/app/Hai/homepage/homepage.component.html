@@ -14,8 +14,8 @@
       </div>
       <div class="row">
         <div class="col-md-6 col-12">
-          <div class="news-leftTitle">
-            <span><i class="fa fa-graduation-cap" ></i> Danh sách lớp học</span>
+          <div class="news-leftTitle" >
+            <span><i class="fa fa-graduation-cap" ></i> Danh sách cấp độ</span>
           </div>
           <div class="study-left">
             <ul class="nav study-tabHeader" id="pills-tab" role="tablist">
@@ -107,30 +107,30 @@
           </div>
         </div>
       </div>
-        <div class="row">
-          <div class="col-md-12 col-12">
-            <div class="study-banner">
-              <div class="study-banner--1">
-                <div class="item-banner">
-                  <img src="../../../assets/image/learn1.png">
-                  <p>Học tập mọi lúc, mọi nơi</p>
-                </div>
+      <div class="row">
+        <div class="col-md-12 col-12">
+          <div class="study-banner">
+            <div class="study-banner--1">
+              <div class="item-banner">
+                <img src="../../../assets/image/learn1.png">
+                <p>Học tập mọi lúc, mọi nơi</p>
               </div>
-              <div class="study-banner--2">
-                <div class="item-banner">
-                  <img src="../../../assets/image/learn2.png">
-                  <p>Ôn tập đầy đủ các môn học</p>
-                </div>
+            </div>
+            <div class="study-banner--2">
+              <div class="item-banner">
+                <img src="../../../assets/image/learn2.png">
+                <p>Ôn tập đầy đủ các môn học</p>
               </div>
-              <div class="study-banner--3">
-                <div class="item-banner">
-                  <img src="../../../assets/image/learn3.jpg">
-                  <p>Học tập dễ dàng, hiệu quả</p>
-                </div>
+            </div>
+            <div class="study-banner--3">
+              <div class="item-banner">
+                <img src="../../../assets/image/learn3.jpg">
+                <p>Học tập dễ dàng, hiệu quả</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
     <section class="news">
       <div class="section-header">
@@ -159,7 +159,7 @@
                         Level : <span>{{lson.level}}</span>
                       </h5>
                       <h5 class="title" style="font-size: 100%">
-                        Mô tả : <span>{{lson.description}}</span>
+                        Bài học : <span>{{lson.lesson}}</span>
                       </h5>
                     </div>
                   </div>
@@ -167,7 +167,7 @@
               </a>
               <div>
                 <br>
-<!--              <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>-->
+                <!--              <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>-->
               </div>
             </div>
           </div>
@@ -175,10 +175,11 @@
         <div class="col-md-4 col-12">
           <div class="news-left">
             <div class="news-leftTitle">
-              <span><i class="fa fa-book" aria-hidden="true"></i> Danh sách điểm cao</span>
+              <span><i class="fa fa-book" aria-hidden="true"></i> Top thách đấu</span>
             </div>
             <div class="news-list" style="height: 390px;">
               <a *ngFor="let usr of rt| paginate:{ itemsPerPage : 4, currentPage: p};" >
+
                 <a >
                   <div class="news-listItem" >
                     <div class="img">
@@ -196,7 +197,6 @@
                         Mô tả : <span> {{usr[2]}}</span>
                       </h5>
                     </div>
-
                   </div>
                 </a>
               </a>

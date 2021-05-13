@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {DialogComponent} from "../dialog/dialog.component";
-import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from '../dialog/dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,11 @@ import {MatDialog} from "@angular/material/dialog";
 export class DialogServiceService {
 
   constructor(private dialog: MatDialog) { }
-  openConfirmDialog(msg){
-    return    this.dialog.open(DialogComponent,{
+  // tslint:disable-next-line:typedef
+   openConfirmDialog(msg){
+    return    this.dialog.open(DialogComponent, {
       width: '600px',
-      height:'200px',
+      height: '200px',
 
       disableClose: true,
       data: {

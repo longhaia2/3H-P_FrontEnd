@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TestN1Component implements OnInit {
   exam : Exam[];
+
   logName: string
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
@@ -22,8 +23,11 @@ export class TestN1Component implements OnInit {
     this.reloadData();
   }
   reloadData() {
-    this.examService.findBylevel("N1").subscribe(data => {
+    this.examService.findBylevelCodeExam("N1").subscribe(data => {
       this.exam = data;
+      console.log(this.exam);
+      this.examService.getlistExamOrderByJLPTDesc("id");
+
     });
   }
   detail(id: number){

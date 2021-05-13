@@ -18,7 +18,7 @@ export class ManageruserComponent implements OnInit {
   user:User;
   username: any;
   elseBlock: any;
-  logName: String;
+  logName: string;
 
   constructor(private Userservice: UserServiceService,
               private route: ActivatedRoute,
@@ -71,19 +71,4 @@ export class ManageruserComponent implements OnInit {
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

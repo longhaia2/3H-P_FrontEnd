@@ -11,12 +11,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ChitietlessonComponent implements OnInit {
   id:number;
+  logName: string;
   ls: Lesson=new Lesson();
 
   constructor(private lessonService: LessonServiceService, private  route: ActivatedRoute,
               private  router: Router) { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.id = this.route.snapshot.params['id'];
     this.lessonService.get(this.id).subscribe(data=>{
       this.ls = data

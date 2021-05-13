@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./study-n1.component.css']
 })
 export class StudyN1Component implements OnInit {
+  // tslint:disable-next-line:ban-types
   logName: String;
   constructor() { }
 
