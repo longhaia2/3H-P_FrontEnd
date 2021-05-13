@@ -25,6 +25,7 @@ export interface DialogData {
 })
 export class TestjlptComponent implements OnInit {
   logName: string;
+  p:number=1;
   ex: Exam;
   a: number=0;
   b: number=0;

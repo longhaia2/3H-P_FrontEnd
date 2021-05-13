@@ -27,7 +27,7 @@
       <h2 style="text-align: center;font-size: 20px">Thi Online</h2>
       <div class="exam-content" >
         <div class="list-question" >
-          <div class="item-question"  *ngFor="let review of qs; let i = index; let j = index" value="{{review}}" >
+          <div class="item-question"  *ngFor="let review of qs| paginate:{itemsPerPage:8, currentPage:p};; let i = index; let j = index" value="{{review}}" >
             <div class="title">
               <b><span class="question-no">{{i+1}}</span>{{review.content}}</b>
             </div>
@@ -62,6 +62,7 @@
             </div>
           </div>
         </div>
+        <pagination-controls  (pageChange)="p = $event" previousLabel="Trước" nextLabel="Sau"></pagination-controls>
       </div>
     </section>
     </form>

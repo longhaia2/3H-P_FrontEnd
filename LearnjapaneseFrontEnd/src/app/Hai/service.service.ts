@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {RoomChallenge} from './challenge/model/RoomChallenge';
 import {RoomUsers} from './challenge/model/RoomUsers';
 
 @Injectable()
 export class ServiceService {
-
+  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   url='http://localhost:8080/challenge';
 
   constructor(private http:HttpClient) { }

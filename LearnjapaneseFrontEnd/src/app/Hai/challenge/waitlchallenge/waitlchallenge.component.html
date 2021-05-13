@@ -18,7 +18,6 @@
               <span>PHÒNG CHỜ THI ĐẤU</span>
             </div>
             <div class="test-list" >
-
 <!--              viết vòng lặp-->
               <a *ngFor="let us of user, let i = index" >
                 <a *ngFor="let rs of r_s" >
@@ -26,7 +25,7 @@
                   <div class="content">
                    <div *ngIf="us.id==rs.user_id" >
                      <h6 class="title"  style="font-size: 16px;color: chartreuse;">Chủ phòng: {{us.username}}</h6>
-                     <button [disabled]="allReady" *ngIf="us.id==id_u_scrore"  (click)="start()" style="width: 200px;background-color: aquamarine;">Bắt đầu</button>
+                     <button [disabled]="!allReady" *ngIf="us.id==id_u_scrore"  (click)="start()" style="width: 200px;background-color: aquamarine;">Bắt đầu</button>
                      <h2 style="color: aquamarine" > Mọi người hãy sẵn sàng để chiến nhé!!!</h2>
                     </div>
                     <div>
@@ -41,7 +40,7 @@
                         <h6 class="title" > {{us.username}} </h6>
                         <div>
                           <div *ngIf="i==0">
-                          <div style="font-size: 20px;color: chartreuse" *ngIf="(index==0)&&(check==1)" ><b>Đã sẵn sàng</b> </div>
+                          <div style="font-size: 20px;color: chartreuse" *ngIf="(index==0)&&(check==1)" ><b >Đã sẵn sàng</b> </div>
                           <div  style="font-size: 20px;color: chartreuse" *ngIf="(index==0)&&(check==0)" ><b>Chưa sẵn sàng </b></div>
                           </div>
                           <div *ngIf="i==1">
