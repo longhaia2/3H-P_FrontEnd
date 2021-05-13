@@ -46,7 +46,8 @@ export class WaitlchallengeComponent implements OnInit {
   Test:number=0;
 
   constructor(private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
-              private  router: Router) {
+              private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
+    // this.title.setTitle("Đợi Đối Thử");
   }
 
   ngOnInit(): void {
@@ -69,16 +70,16 @@ export class WaitlchallengeComponent implements OnInit {
     this.setBanker();
     this.service.getUsersRoomList(this.id_r).subscribe(data => {
       this.r_s_1 = data;
-        this.r_s_1.forEach(Element => {
-          for (let i = 0; i <= this.r_s_1.length; i++) {
-            if (Element.status == 0) {
-              this.Test++;
-            }
+      this.r_s_1.forEach(Element => {
+        for (let i = 0; i <= this.r_s_1.length; i++) {
+          if (Element.status == 0) {
+            this.Test++;
           }
-        });
-        if(this.Test==0){
-          this.allReady = true;
         }
+      });
+      if(this.Test==0){
+        this.allReady = true;
+      }
       if(this.r_s_1[0].status==1){
         this.index=0;
         this.check=1;
@@ -128,13 +129,13 @@ export class WaitlchallengeComponent implements OnInit {
     this.load();
     this.getUserList();
   }
-    loadbankker(){
-      this.service.get(this.id).subscribe(data => {
-        this.user = data;
-        console.log(this.user.length);
+  loadbankker(){
+    this.service.get(this.id).subscribe(data => {
+      this.user = data;
+      console.log(this.user.length);
 
-      }, error => console.log(error));
-    }
+    }, error => console.log(error));
+  }
   load(){
     this.chat.id.subscribe(msg => {
       if(msg==this.id_u_scrore){
@@ -171,16 +172,16 @@ export class WaitlchallengeComponent implements OnInit {
     this.service.getUsersRoomList(this.id_r).subscribe(data => {
       this.r_s_1 = data;
       this.r_s_1.forEach(Element => {
-          for (let i = 0; i <= this.r_s_1.length; i++) {
-            if (Element.status == 0) {
-              this.Test++;
-            }
+        for (let i = 0; i <= this.r_s_1.length; i++) {
+          if (Element.status == 0) {
+            this.Test++;
           }
-    });
+        }
+      });
       if(this.Test==0){
         this.allReady = true;
       }
-  })
+    })
   }
 
   getRoom() {
@@ -195,9 +196,9 @@ export class WaitlchallengeComponent implements OnInit {
       this.r_s = data;
     });
   }
-     test(){
-      window.location.reload();
-     }
+  test(){
+    window.location.reload();
+  }
   start() {
     this.room.status = 0;
     this.challengeServiceService.updateRoom(this.room.room_id, this.room).subscribe(data => {
@@ -281,21 +282,21 @@ export class WaitlchallengeComponent implements OnInit {
   //
 
   settrue() {
-        this.r_s_2.forEach(Element => {
-            this.room_user.status = 1;
-            this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
-            }, error => console.log(error));
+    this.r_s_2.forEach(Element => {
+      this.room_user.status = 1;
+      this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
+      }, error => console.log(error));
     });
 
   }
 
-      setfalse()
-      {
-        this.r_s_2.forEach(Element => {
-            this.room_user.status = 0;
-            this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
-            }, error => console.log(error));
-      });
+  setfalse()
+  {
+    this.r_s_2.forEach(Element => {
+      this.room_user.status = 0;
+      this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
+      }, error => console.log(error));
+    });
 
-     }
+  }
 }
