@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-study-n5',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudyN5Component implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
   logName: string;
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
