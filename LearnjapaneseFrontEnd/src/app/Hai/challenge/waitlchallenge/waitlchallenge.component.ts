@@ -46,8 +46,7 @@ export class WaitlchallengeComponent implements OnInit {
   Test:number=0;
 
   constructor(private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
-              private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
-    this.title.setTitle("Đợi Đối Thử");
+              private  router: Router) {
   }
 
   ngOnInit(): void {

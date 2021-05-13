@@ -37,9 +37,7 @@ export class ListchallengeComponent implements OnInit {
   sum :number =0;
   isDisabled= true;
 
-  constructor(private chat: ChatService,private roomsv: ServiceService, private route: ActivatedRoute, private router: Router, private title: Title,private challengeSV:ChallengeServiceService, public dialog:MatDialog) {
-      this.title.setTitle("Thử Thách");
-
+  constructor(private roomsv: ServiceService, private route: ActivatedRoute, private router: Router,private challengeSV:ChallengeServiceService, public dialog:MatDialog) {
   }
 
   ngOnInit(): void {

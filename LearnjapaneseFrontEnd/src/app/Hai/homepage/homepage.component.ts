@@ -4,9 +4,6 @@ import {Lesson} from "../../Thuan/model/lesson";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ExamserviceService} from "../admin/serviceadmin/examservice.service";
 import {Exam} from "../admin/model/Exam";
-import {Title} from '@angular/platform-browser';
-import {UserServiceService} from "../../Manh/servicem/user-service.service";
-import {User} from "../../Manh/modelm/user";
 import {UserScore} from "../challenge/model/UserScore";
 import {ResultTop} from "../challenge/model/ResultTop";
 
@@ -28,20 +25,19 @@ export class HomepageComponent implements OnInit {
   p : number = 1;
 
 
-  constructor(private lessonService: LessonServiceService, private examService: ExamserviceService, private title: Title) {
-    this.title.setTitle("Trang Chủ");
+  constructor(private lessonService: LessonServiceService, private examService: ExamserviceService) {
   }
 
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     this.logName = userName['username'];
-    this.reloadData();
+    this.getLesson();
     this.list();
     this.ListtopHigh()
   }
 
-  reloadData() {
+  getLesson() {
     this.lessonService.getLessonByDesc().subscribe(data => {
       this.ls = data;
     });
