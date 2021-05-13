@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {RoomChallenge} from '../model/RoomChallenge';
 import {ServiceService} from '../../service.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,6 +9,7 @@ import {ChallengeServiceService} from '../../Service/challenge-service.service';
 import {ServicebtService} from '../../../Service/servicebt.service';
 import {interval, Subscription} from "rxjs";
 import {ChatService} from "../../Service/chat.service";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-waitlchallenge',
@@ -45,7 +46,7 @@ export class WaitlchallengeComponent implements OnInit {
   Test:number=0;
 
   constructor(private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
-              private  router: Router, private title: Title) {
+              private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
     this.title.setTitle("Đợi Đối Thử");
   }
 
@@ -119,12 +120,28 @@ export class WaitlchallengeComponent implements OnInit {
     this.challengeServiceService.getOneUserByRoom(this.id_r,this.id_u_scrore).subscribe(data=>{
       this.r_s_2=data;
     });
+    this.chat.room_id.subscribe(msg => {
+      if(msg==this.id_r){
+        this._document.defaultView.location.reload();
+      }
+    });
     this.startQuiz();
     this.load();
+    this.getUserList();
   }
+    loadbankker(){
+      this.service.get(this.id).subscribe(data => {
+        this.user = data;
+        console.log(this.user.length);
 
-
+      }, error => console.log(error));
+    }
   load(){
+    this.chat.id.subscribe(msg => {
+      if(msg==this.id_u_scrore){
+        this._document.defaultView.location.reload();
+      }
+    });
     this.chat.messages.subscribe(msg => {
       this.check = msg;
     });
@@ -149,30 +166,27 @@ export class WaitlchallengeComponent implements OnInit {
     this.chat.mess_id3.subscribe(data => {
       this.index3=data;
     });
-
   }
 
-  // getUserList() {
-  //   this.service.getUsersRoomList(this.id_r).subscribe(data => {
-  //     this.r_s_1 = data;
-  //     this.r_s_1.forEach(Element => {
-  //         for (let i = 0; i <= this.r_s_1.length; i++) {
-  //           if (Element.status == 0) {
-  //             this.Test++;
-  //           }
-  //         }
-  //   });
-  //     if(this.Test==0){
-  //       this.allReady = true;
-  //     }
-  // })
-  // }
-
+  getUserList() {
+    this.service.getUsersRoomList(this.id_r).subscribe(data => {
+      this.r_s_1 = data;
+      this.r_s_1.forEach(Element => {
+          for (let i = 0; i <= this.r_s_1.length; i++) {
+            if (Element.status == 0) {
+              this.Test++;
+            }
+          }
+    });
+      if(this.Test==0){
+        this.allReady = true;
+      }
+  })
+  }
 
   getRoom() {
     this.service.getroom(this.id_r).subscribe(data => {
       this.room = data;
-      console.log(data);
     });
   }
 
@@ -182,7 +196,9 @@ export class WaitlchallengeComponent implements OnInit {
       this.r_s = data;
     });
   }
-
+     test(){
+      window.location.reload();
+     }
   start() {
     this.room.status = 0;
     this.challengeServiceService.updateRoom(this.room.room_id, this.room).subscribe(data => {
@@ -214,6 +230,11 @@ export class WaitlchallengeComponent implements OnInit {
   }
 
   startTrue(index: number) {
+    this.service.userRoomList(this.id_r).subscribe(data => {
+      console.log(data);
+      this.r_s = data;
+      this.chat.id_sent(this.r_s[0].user_id);
+    });
     this.ready[index] = true;
     if(index==0){
       this.chat.sendMsg(1);
@@ -234,6 +255,10 @@ export class WaitlchallengeComponent implements OnInit {
     }
   }
   startFalse(index: number) {
+    this.service.userRoomList(this.id_r).subscribe(data => {
+      this.r_s = data;
+      this.chat.id_sent(this.r_s[0].user_id);
+    });
     this.ready[index] = false;
     if(index==0){
       this.chat.sendMsg(0);

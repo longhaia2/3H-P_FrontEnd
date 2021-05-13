@@ -8,6 +8,7 @@ import {User} from "../../../Manh/modelm/user";
 import {ChallengeServiceService} from '../../Service/challenge-service.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogInputPassComponent} from '../dialog-input-pass/dialog-input-pass.component';
+import {ChatService} from "../../Service/chat.service";
 
 
 export interface DialogData {
@@ -17,7 +18,7 @@ export interface DialogData {
   selector: 'app-listchallenge',
   templateUrl: './listchallenge.component.html',
   styleUrls: ['./listchallenge.component.css'],
-  providers: [ServiceService,ChallengeServiceService]
+  providers: [ServiceService,ChallengeServiceService,ChatService]
 })
 export class ListchallengeComponent implements OnInit {
   id_room: number;
@@ -36,7 +37,7 @@ export class ListchallengeComponent implements OnInit {
   sum :number =0;
   isDisabled= true;
 
-  constructor(private roomsv: ServiceService, private route: ActivatedRoute, private router: Router, private title: Title,private challengeSV:ChallengeServiceService, public dialog:MatDialog) {
+  constructor(private chat: ChatService,private roomsv: ServiceService, private route: ActivatedRoute, private router: Router, private title: Title,private challengeSV:ChallengeServiceService, public dialog:MatDialog) {
       this.title.setTitle("Thử Thách");
 
   }
@@ -64,7 +65,6 @@ export class ListchallengeComponent implements OnInit {
             this.challengeSV.Dem(element.room_id).subscribe(data=>{
               this.sum=data;
               element.count = data;
-
               if(element.count===4){
                 element.check=true;
               }
@@ -87,6 +87,7 @@ export class ListchallengeComponent implements OnInit {
     }
   }
   add(idRoom) {
+      this.chat.send_idRoom(idRoom);
       this.room_user.room_id = idRoom;
       this.room_user.score = 0;
       this.room_user.banker=0;
