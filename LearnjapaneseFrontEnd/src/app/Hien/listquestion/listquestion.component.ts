@@ -18,6 +18,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ListquestionComponent implements OnInit {
 
+  hocphan;
+  trinhdo;
   logName: String;
   id: number;
   question: Question[];

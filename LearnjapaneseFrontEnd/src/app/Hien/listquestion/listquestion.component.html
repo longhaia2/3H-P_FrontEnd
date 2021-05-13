@@ -25,14 +25,48 @@
         </div>
         <div class="clearfix"></div>
         <div class="col-md-2 col-sm-12">
-          <label>&nbsp;</label>
 
-          <div>
-            <a [routerLink]="['/admin/question/add']" class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
-          </div>
         </div>
         <div class="clearfix"></div>
         <br>
+        <div class="row">
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>Học Phần</label>
+            <select [(ngModel)]="hocphan" class="form-control" name="subjectId">
+              <option value="">Tùy chọn</option>
+              <option value="Từ Vựng">Từ vựng</option>
+              <option value="Ngữ Pháp">Ngữ pháp</option>
+              <option value="Đề JPLT">Đề JPLT</option>
+              <option value="Thử Thách">Đề Thử Thách Cùng Nhau</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>Trình Độ</label>
+            <select [(ngModel)]="trinhdo"  class="form-control" name="classId">
+              <option value="">Tùy chọn</option>
+              <option value="N5">N5</option>
+              <option value="N4">N4</option>
+              <option value="N3">N3</option>
+              <option value="N2">N2</option>
+              <option value="N1">N1</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>&nbsp;</label>
+            <div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+          </div>
+
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+            <label>&nbsp;</label>
+            <div >
+              <a [routerLink]="['/admin/question/add']" class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-md-12">
             <div class="tile-body">
@@ -40,7 +74,7 @@
                 <table class="table table-bordered" id="sampleTable">
                   <thead>
                   <tr>
-                    <th>ID</th>
+                    <th>STT</th>
                     <th>Học phần</th>
                     <th>Trình độ</th>
                     <th>Nội dung câu hỏi</th>
@@ -53,8 +87,8 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let qs of question">
-                    <td>{{qs.id}}</td>
+                  <tr *ngFor="let qs of question| filter:hocphan| filter: trinhdo;let i=index">
+                    <td>{{i+1}}</td>
                     <td>{{qs.term}}</td>
                     <td>{{qs.level}}</td>
                     <td>{{qs.content}}</td>
@@ -89,9 +123,6 @@
     <!-- page content -->
   </div>
 </div>
-<div th:replace="admin/modal_confirm::content"></div>
-<div th:replace="admin/footer :: content"></div>
-<div th:replace="admin/init_admin :: script"></div>
 <script>
   $("#questionManager").addClass("active");
 </script>

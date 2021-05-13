@@ -14,12 +14,15 @@ import {Exam} from "../../admin/model/Exam";
 export class HomeOntapComponent implements OnInit {
   id:number;
   ex: Exam=new Exam();
+  logName: String;
 
   constructor(private examService: ExamserviceService, private  route: ActivatedRoute,
               private  router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
 
     this.examService.get(this.id).subscribe(data=>{
       this.ex = data

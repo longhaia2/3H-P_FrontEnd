@@ -5,7 +5,7 @@
 </head>
 <body>
 <app-header></app-header>
-<app-menu></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 <main class="class">
   <div class="container">
 
@@ -20,7 +20,7 @@
             <div class="class-sectionTitle">
               <span>みんなの日本語第</span>
             </div>
-            <div style="margin-left: 80px" class="panel-body" [innerHtml]='ls.content'></div>
+            <div  class="panel-body" [innerHtml]='ls.content'></div>
           </div>
         </div>
         <app-sidebar-lesson></app-sidebar-lesson>

@@ -3,7 +3,8 @@ import {Question} from '../model/question';
 import {Router} from '@angular/router';
 import {QuestionServiceService} from '../servicesh/question-service.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-addquestion',
   templateUrl: './addquestion.component.html',
@@ -11,6 +12,7 @@ import {ToastrService} from "ngx-toastr";
   providers: [QuestionServiceService, ToastrService]
 })
 export class AddquestionComponent implements OnInit {
+  logName: string;
   submitForm = new FormGroup({
     content: new FormControl('', Validators.required),
     term: new FormControl('', Validators.required),
@@ -20,7 +22,7 @@ export class AddquestionComponent implements OnInit {
     ansC: new FormControl('', Validators.required),
     ansD: new FormControl('', Validators.required),
     ansCorrect: new FormControl('', Validators.required),
-  })
+  });
   get content(){return this.submitForm.get('content')}
   get term(){return this.submitForm.get('term')}
   get level(){return this.submitForm.get('level')}
@@ -30,18 +32,24 @@ export class AddquestionComponent implements OnInit {
   get ansD(){return this.submitForm.get('ansD')}
   get ansCorrect(){return this.submitForm.get('ansCorrect')}
   qs: Question;
-  constructor(private qsQuestion: QuestionServiceService, private route: Router, private tsv: ToastrService) { }
+
+  constructor(private qsQuestion: QuestionServiceService, private route: Router,
+              private tsv: ToastrService) { }
+
   ngOnInit(): void {
     this.qs = new Question();
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
   }
   // tslint:disable-next-line:typedef
   add(){
     console.log(this.qs);
     this.qsQuestion.create(this.qs).subscribe(data => {
       this.qs = data;
+
       this.tsv.success('Thêm câu hỏi thành công');
       this.qs=new Question();
-    })
+    });
     this.submitForm.reset();
   }
 }

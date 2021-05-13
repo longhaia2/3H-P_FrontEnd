@@ -29,17 +29,16 @@
               <span>Danh sách đề thi mới</span>
             </div>
             <div class="test-list" >
-              <a th:each="item:${listExam}" th:href="@{/kiemtra/info(examId=${item.id})}">
+              <a *ngFor="let ex of exam| paginate:{ itemsPerPage : 4, currentPage: p};">
                 <div class="test-listItem">
                   <div class="img">
-                    <img th:src="@{/image/subject/{image}(image=${item.getExam_subject().image})}" alt="">
+                    <img src="../../../../assets/image/jlpt.png" />
                   </div>
-                  <div class="content">
-                    <h6 class="title">Mã đề thi: <span th:text="${item.codeExam}"></span> <br>
-                      Môn học: <span ></span> - <span th:text="${item.exam_classroom.classname}"></span></h6>
-                    <span> Thời gian: <span > </span> phút</span><br>
-                    <p class="description" >
-                    </p>
+                  <div class="content"  (click)="detail(ex.id)" [routerLink]="['/N1/start-test']">
+                    <b>   <span>Mã đề thi: <u>{{ex.codeExam}}</u> </span><br></b>
+                    <b>  <span>Trình độ : <u>{{ex.level}}</u></span><br></b>
+                    <b>   <span>Tên đề thi : <u>{{ex.content}}</u> </span><br> </b>
+                    <b><span> Thời gian: <u>{{ex.timeOut}}</u>  phút</span><br></b>
                   </div>
                 </div>
               </a>

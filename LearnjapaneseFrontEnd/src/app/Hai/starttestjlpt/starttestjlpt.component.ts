@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 })
 export class StarttestjlptComponent implements OnInit {
+  logName:string;
   id:number;
   ex : Exam=new Exam();
   qs : Question[];
@@ -19,6 +20,8 @@ export class StarttestjlptComponent implements OnInit {
               private  router: Router) { }
 
   ngOnInit(): void {
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.logName = userName['username'];
     this.id=this.route.snapshot.params['id'];
     this.examService.get(this.id).subscribe(data=>{
       this.ex=data

@@ -22,8 +22,10 @@ export class TestN2Component implements OnInit {
     this.reloadData();
   }
   reloadData() {
-    this.examService.findBylevel("N3").subscribe(data => {
+    this.examService.findBylevelCodeExam("N2").subscribe(data => {
       this.exam = data;
+      console.log(this.exam);
+      this.examService.getlistExamOrderByJLPTDesc("id");
     });
   }
   detail(id: number){

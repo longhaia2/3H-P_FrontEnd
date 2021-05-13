@@ -22,8 +22,10 @@ export class TestN3Component implements OnInit {
     this.logName = userName['username'];
   }
   reloadData() {
-    this.examService.findBylevel("N3").subscribe(data => {
+    this.examService.findBylevelCodeExam("N3").subscribe(data => {
       this.exam = data;
+      console.log(this.exam);
+      this.examService.getlistExamOrderByJLPTDesc("id");
     });
   }
   detail(id: number){

@@ -6,7 +6,7 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <app-sidebaradmin></app-sidebaradmin>
+    <app-sidebaradmin [userNameDsp]="logName" ></app-sidebaradmin>
     <app-headeradmin></app-headeradmin>
     <div class="right_col" role="main">
       <div class="">
@@ -30,6 +30,8 @@
                   <option value="">Tùy chọn</option>
                   <option value="Từ vựng">Từ vựng</option>
                   <option value="Ngữ pháp">Ngữ pháp</option>
+                  <option value="Ngữ pháp">Đề JPLT</option>
+                  <option value="Ngữ pháp">Đề Thử Thách Cùng Nhau</option>
                 </select>
                 <span class="error" *ngIf="term.invalid && term.touched">Vui lòng chọn học phần.</span>
               </div>
@@ -78,9 +80,11 @@
               </div>
             </form>
             <br><br>
-            <div class="mt-6 " align="center">
+            <div class="mt-6 " style="position: relative; left: 520px">
               <br><br>
+
               <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam" [disabled]="submitForm.invalid" >Thêm câu hỏi</button>
+
               <a class="btn btn-danger"  [routerLink]="['/admin/question']">Hủy bỏ</a>
             </div>
           </div>

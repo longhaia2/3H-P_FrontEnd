@@ -1,4 +1,4 @@
-vice<!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Quản lí bài học</title>
@@ -100,8 +100,8 @@ vice<!DOCTYPE html>
                 </tr>
                 </thead>
                 <tbody >
-                <tr *ngFor="let lesson of ls |filter: hocphan|filter: trinhdo| paginate:{itemsPerPage:6, currentPage:p};">
-                  <td>{{lesson.id}}</td>
+                <tr *ngFor="let lesson of ls |filter: hocphan|filter: trinhdo| paginate:{itemsPerPage:6, currentPage:p};let i=index">
+                  <td>{{i+1}}</td>
                   <td >{{lesson.lesson}}</td>
                   <td >{{lesson.term}}</td>
                   <td >{{lesson.level}}</td>

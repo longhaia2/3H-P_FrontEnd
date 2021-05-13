@@ -22,7 +22,8 @@ export class ReviewgrammarComponent implements OnInit {
     private  router: Router) {
   }
   ngOnInit(): void {
-    const userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+
     this.logName = userName['username'];
     // @ts-ignore
     this.ex = new Exam();
