@@ -177,4 +177,42 @@ export class WebsocketService {
     };
     return Subject.create(observer, observable);
   }
+  id_connect(): Subject<MessageEvent> {
+    // @ts-ignore
+    this.socket = socketIo.connect(url);
+    let observable = new Observable(observer => {
+      this.socket.on('id',(data) => {
+        // console.log("Received id_user from Websocket Server of LapTop");
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+    let observer = {
+      next: (data: number) => {
+        this.socket.emit('id',data);
+      },
+    };
+    return Subject.create(observer, observable);
+  }
+  _connect(): Subject<MessageEvent> {
+    // @ts-ignore
+    this.socket = socketIo.connect(url);
+    let observable = new Observable(observer => {
+      this.socket.on('room_id',(data) => {
+        // console.log("Received id_user from Websocket Server of LapTop");
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+    let observer = {
+      next: (data: number) => {
+        this.socket.emit('room_id',data);
+      },
+    };
+    return Subject.create(observer, observable);
+  }
 }

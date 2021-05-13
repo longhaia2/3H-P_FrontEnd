@@ -19,8 +19,7 @@ export class MenuComponent implements OnInit {
   id_user:number;
 
   // tslint:disable-next-line:no-input-rename
-  @Input('userNameDsp') userNameDsp: string;
-
+  @Input('userNameDsp') userNameDsp;
 
   constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) { }
   us : User[];

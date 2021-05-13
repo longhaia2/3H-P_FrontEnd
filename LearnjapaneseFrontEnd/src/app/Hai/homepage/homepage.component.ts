@@ -19,7 +19,7 @@ import {ResultTop} from "../challenge/model/ResultTop";
 export class HomepageComponent implements OnInit {
 
 
-  logName: string;
+  logName: string=null;
   id: number;
   rt: ResultTop[];
   ls: Lesson[];
