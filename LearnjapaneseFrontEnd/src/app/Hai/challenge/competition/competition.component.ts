@@ -11,6 +11,7 @@ import {UserScore} from '../model/UserScore';
 import {interval, Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogJoinRoomComponent} from '../dialog-join-room/dialog-join-room.component';
+import {RoomChallenge} from "../model/RoomChallenge";
 
 export interface DialogData{
   correctAnswers: number;
@@ -25,6 +26,7 @@ export interface DialogData{
 export class CompetitionComponent implements OnInit {
        private updateSubscription: Subscription;
       public logName:string;
+      room_ch: RoomChallenge= new RoomChallenge();
       room_user: RoomUsers = new RoomUsers();
       user: User[];
       userRoom: RoomUsers[];
@@ -45,6 +47,7 @@ export class CompetitionComponent implements OnInit {
       quizOver: boolean = false;
       checktimer: boolean;
       x:number;
+      minutes:number=1;
 
 
   constructor(public dialog:MatDialog, private title: Title, private service: ChallengeServiceService, private route: ActivatedRoute, private  router: Router, private userService: ServiceService) {
@@ -52,7 +55,6 @@ export class CompetitionComponent implements OnInit {
   }
 
         ngOnInit() {
-      this.dem();
           let userName = JSON.parse(sessionStorage.getItem("auth-user"));
           this.logName = userName['username'];
           let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
@@ -65,23 +67,31 @@ export class CompetitionComponent implements OnInit {
             this.questions = data;
             this.selectedAS = new Array(this.questions.length);
           }, error => console.log(error));
+
           //get user in room
           this.room_user= new RoomUsers();
           this.id_room=this.route.snapshot.params['id_room'];
+          this.userService.getroom(this.id_room).subscribe(data=>{
+            this.room_ch=data;
+          this.minutes= this.room_ch.time;
+            console.log(this.room_ch.time);
+           console.log(this.minutes);
+            this.dem();
+          });
+
           this.getuser();
           this.getListUsersByScore();
           this.getUsersRoomList();
         }
 
         dem(){
-          let minutes = 2;
           let currentTime = localStorage.getItem('currentTime');
           let targetTime = localStorage.getItem('targetTime');
           if (targetTime == null && currentTime == null) {
             // @ts-ignore
             currentTime = new Date();
             // @ts-ignore
-            targetTime = new Date(currentTime.getTime() + (minutes * 60000));
+            targetTime = new Date(currentTime.getTime() + (this.minutes * 5000));
             localStorage.setItem('currentTime', currentTime);
             localStorage.setItem('targetTime', targetTime);
           }
@@ -92,16 +102,11 @@ export class CompetitionComponent implements OnInit {
             targetTime = new Date(targetTime);
           }
 
-          // @ts-ignore
-          // if(!checkComplete()){
-          //   interval = setInterval(checkComplete, 1000);
-          // }
              this.x = setInterval(()=> {
-              if (currentTime > targetTime) {
+               // @ts-ignore
+              if (Math.floor(((targetTime - currentTime)/1000)%60) <1) {
                 clearInterval(this.x);
-                // @ts-ignore
-                targetTime=null;
-                localStorage.setItem('targetTime', targetTime);
+                document.getElementById('timer').innerHTML = 'Hết Giờ';
                return  this.openDialog();
               } else {
                 // @ts-ignore
@@ -175,6 +180,9 @@ export class CompetitionComponent implements OnInit {
                 }, error => console.log(error));
                 this.updateSubscription = interval(500).subscribe(
                   (val) => { this.getListUsersByScore()});
+                this.updateSubscription=interval(10000).subscribe(value => {
+                  this.updateSubscription.unsubscribe();
+                })
               }
             });
 
@@ -188,6 +196,9 @@ export class CompetitionComponent implements OnInit {
                 }, error => console.log(error));
                 this.updateSubscription = interval(500).subscribe(
                   (val) => { this.getListUsersByScore()});
+                this.updateSubscription=interval(10000).subscribe(value => {
+                  this.updateSubscription.unsubscribe();
+                })
               }
           })
         }

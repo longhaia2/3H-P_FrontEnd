@@ -99,12 +99,13 @@
                 </div>
               </div>
             </div>
-
             <!-- QUIZ OVER -->
             <div class="container mt-5" *ngIf="quizOver">
               <app-endcompetition
                 [questions]="questions"
                 [correctAnswers]="correctAnswers"
+                [id_room]="id_room"
+                [userScore]="userScore"
               ></app-endcompetition>
             </div>
           </div>
@@ -120,7 +121,8 @@
                   <a *ngFor="let us of userScore , let q= index" >
                     <div class="test-listItem" style="margin-left: -30px; width: 97%;">
                       <div class="content">
-                        <h5 class="title" >{{q+1}}. <span  > {{us[0]}} {{us[1]}} {{us[3]}} {{us[4]}}</span></h5>
+                        <h5 class="title" >Biệt danh:<span  > {{us[0]}} </span></h5>
+                        <h5 class="title" style="color: #dfd77d">Điểm: <span  > {{us[1]}} </span></h5>
                       </div>
                     </div>
                   </a>

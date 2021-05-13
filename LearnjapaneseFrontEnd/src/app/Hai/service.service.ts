@@ -10,7 +10,6 @@ export class ServiceService {
   url='http://localhost:8080/challenge';
 
   constructor(private http:HttpClient) { }
-
   create(data):Observable<any>{
     return this.http.post<RoomChallenge>(this.url+'/add',data);
   }

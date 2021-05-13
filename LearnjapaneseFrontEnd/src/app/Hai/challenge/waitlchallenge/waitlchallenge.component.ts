@@ -69,50 +69,49 @@ export class WaitlchallengeComponent implements OnInit {
     this.setBanker();
     this.service.getUsersRoomList(this.id_r).subscribe(data => {
       this.r_s_1 = data;
-      this.r_s_1.forEach(Element => {
+        this.r_s_1.forEach(Element => {
           for (let i = 0; i <= this.r_s_1.length; i++) {
             if (Element.status == 0) {
               this.Test++;
             }
           }
-      });
-      for (let i = 0; i <= this.user.length; i++) {
-        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 1) {
-          this.ready[i] = true;
+        });
+        if(this.Test==0){
+          this.allReady = true;
         }
-        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 0) {
-          this.ready[i] = false;
-        }
-      }
-
-      if(this.Test==0){
-        this.allReady = true;
-      }
       if(this.r_s_1[0].status==1){
         this.index=0;
         this.check=1;
+        this.ready[0] = true;
       }else {
+        this.ready[0] = false;
         this.index=0;
         this.check=0;
       }
       if(this.r_s_1[1].status==1){
         this.index1=1;
         this.check1=1;
+        this.ready[1] = true;
       }else {
+        this.ready[2] = false;
         this.index1=1;
         this.check1=0;
       }
       if(this.r_s_1[2].status==1){
+        this.ready[2] = true;
         this.index2=2;
         this.check2=1;
       }else {
+        this.ready[2] = false;
         this.index2=2;
         this.check2=0;
       }
       if(this.r_s_1[3].status==1){
+        this.ready[3] = true;
         this.index3=3;
         this.check3=1;
       }else {
+        this.ready[3] = false;
         this.index3=3;
         this.check3=0;
       }
@@ -122,8 +121,6 @@ export class WaitlchallengeComponent implements OnInit {
     });
     this.startQuiz();
     this.load();
-    // this.getUserList();
-
   }
 
 
@@ -155,22 +152,21 @@ export class WaitlchallengeComponent implements OnInit {
 
   }
 
-  getUserList() {
-    this.service.getUsersRoomList(this.id_r).subscribe(data => {
-      this.r_s_1 = data;
-
-      this.r_s_1.forEach(Element => {
-          for (let i = 0; i <= this.r_s_1.length; i++) {
-            if (Element.status == 0) {
-              this.Test++;
-            }
-          }
-    });
-      if(this.Test==0){
-        this.allReady = true;
-      }
-  })
-  }
+  // getUserList() {
+  //   this.service.getUsersRoomList(this.id_r).subscribe(data => {
+  //     this.r_s_1 = data;
+  //     this.r_s_1.forEach(Element => {
+  //         for (let i = 0; i <= this.r_s_1.length; i++) {
+  //           if (Element.status == 0) {
+  //             this.Test++;
+  //           }
+  //         }
+  //   });
+  //     if(this.Test==0){
+  //       this.allReady = true;
+  //     }
+  // })
+  // }
 
 
   getRoom() {
@@ -201,16 +197,16 @@ export class WaitlchallengeComponent implements OnInit {
       if (this.check == this.room.room_id) {
 
         this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
-        if (this.room.level == 'N5' && this.room.time == '5') {
+        if (this.room.level == 'N5' && this.room.time == 5) {
           this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
         }
-        if (this.room.level == 'N5' && this.room.time == '10') {
+        if (this.room.level == 'N5' && this.room.time == 10) {
           this.router.navigate(['/question/N510TT/challenge/2/', this.room.room_id, this.id_u_scrore]);
         }
-        if (this.room.level == 'N5' && this.room.time == '15') {
+        if (this.room.level == 'N5' && this.room.time == 15) {
           this.router.navigate(['/question/N515TT/challenge/3/', this.room.room_id, this.id_u_scrore]);
         }
-        if (this.room.level == 'N4' && this.room.time == '5') {
+        if (this.room.level == 'N4' && this.room.time == 5) {
           this.router.navigate(['/question/N45TT/challenge/4/', this.room.room_id, this.id_u_scrore]);
         }
       }
@@ -237,7 +233,6 @@ export class WaitlchallengeComponent implements OnInit {
       this.chat.senID3(3)
     }
   }
-
   startFalse(index: number) {
     this.ready[index] = false;
     if(index==0){
