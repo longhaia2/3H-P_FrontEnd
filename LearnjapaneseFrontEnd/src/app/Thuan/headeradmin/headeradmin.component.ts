@@ -17,7 +17,7 @@ export class HeaderadminComponent implements OnInit {
 
   constructor(private  lessonServiceService: ServicebtService,  private tokenStorage: TokenStorageService,
               public dialog: MatDialog, private tsv: ToastrService, private router: Router) {
-    this.lessonServiceService.loaddCss("../../../assets/assets/css/custom.min.css");
+
   }
 
   ngOnInit(): void {
@@ -26,5 +26,6 @@ export class HeaderadminComponent implements OnInit {
   logout(){
     this.dialog.open(ConfirmLogoutComponent);
   }
+
 
 }

@@ -38,7 +38,7 @@ export class HomepageComponent implements OnInit {
     this.logName = userName['username'];
     this.reloadData();
     this.list();
-    this.ListtopHigh()
+    this.ListtopHigh();
   }
 
   reloadData() {
@@ -57,4 +57,5 @@ export class HomepageComponent implements OnInit {
       this.rt = data;
     });
   }
+
 }
