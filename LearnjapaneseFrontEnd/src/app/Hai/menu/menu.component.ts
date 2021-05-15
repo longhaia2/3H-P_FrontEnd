@@ -17,13 +17,14 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 export class MenuComponent implements OnInit {
   Users: User[];
   id_user:number;
-
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
 
   constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) { }
   us : User[];
   ngOnInit(): void {
+
+    console.log(this.userNameDsp + '--- log user') ;
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
     this.id_user = id_score['userId'];
   }
