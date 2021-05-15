@@ -80,6 +80,7 @@ import {ExamDetailComponent} from "./admin/managerexam/exam-detail/exam-detail.c
 
 
 
+
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},

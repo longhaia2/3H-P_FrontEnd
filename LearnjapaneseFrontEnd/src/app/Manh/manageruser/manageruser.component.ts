@@ -72,18 +72,3 @@ export class ManageruserComponent implements OnInit {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

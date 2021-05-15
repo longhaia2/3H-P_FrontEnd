@@ -38,7 +38,7 @@ export class ListchallengeComponent implements OnInit {
   isDisabled= true;
 
   constructor(private chat: ChatService,private roomsv: ServiceService, private route: ActivatedRoute, private router: Router, private title: Title,private challengeSV:ChallengeServiceService, public dialog:MatDialog) {
-      this.title.setTitle("Thử Thách");
+    // this.title.setTitle("Thử Thách");
 
   }
 
@@ -54,28 +54,28 @@ export class ListchallengeComponent implements OnInit {
     this.list();
   }
 
-    list() {
-      this.roomsv.findAll().subscribe(data => {
-        this.challenge = data;
-        this.resultAS = new Array(this.challenge.length);
-        for (let i =0; i< this.challenge.length; i++){
-          this.resultAS[i] = "";
+  list() {
+    this.roomsv.findAll().subscribe(data => {
+      this.challenge = data;
+      this.resultAS = new Array(this.challenge.length);
+      for (let i =0; i< this.challenge.length; i++){
+        this.resultAS[i] = "";
+      }
+      this.challenge.forEach(element => {
+          this.challengeSV.Dem(element.room_id).subscribe(data=>{
+            this.sum=data;
+            element.count = data;
+            if(element.count===4){
+              element.check=true;
+            }
+            else {
+              element.check=false;
+            }
+          });
         }
-        this.challenge.forEach(element => {
-            this.challengeSV.Dem(element.room_id).subscribe(data=>{
-              this.sum=data;
-              element.count = data;
-              if(element.count===4){
-                element.check=true;
-              }
-              else {
-                element.check=false;
-              }
-            });
-          }
-        );
-      });
-    }
+      );
+    });
+  }
 
   Search() {
     if (this.room_id == "") {
@@ -87,14 +87,14 @@ export class ListchallengeComponent implements OnInit {
     }
   }
   add(idRoom) {
-      this.chat.send_idRoom(idRoom);
-      this.room_user.room_id = idRoom;
-      this.room_user.score = 0;
-      this.room_user.banker=0;
-      this.room_user.status=0;
-      this.roomsv.addroom(this.room_user).subscribe(data => {
-        this.router.navigate(['challenge/wait/',this.room_user.room_id]);
-      })
+    this.chat.send_idRoom(idRoom);
+    this.room_user.room_id = idRoom;
+    this.room_user.score = 0;
+    this.room_user.banker=0;
+    this.room_user.status=0;
+    this.roomsv.addroom(this.room_user).subscribe(data => {
+      this.router.navigate(['challenge/wait/',this.room_user.room_id]);
+    })
   }
   openDialog(idRoom){
     this.id_room=idRoom;

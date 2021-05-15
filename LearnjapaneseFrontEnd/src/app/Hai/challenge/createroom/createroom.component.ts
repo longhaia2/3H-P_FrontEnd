@@ -18,8 +18,7 @@ export class CreateroomComponent implements OnInit {
   checkroom:boolean =false;
   public logName:string;
 
-  constructor(private csService: ServiceService, private router: Router, private title: Title,private toastrService :ToastrService) {
-    this.title.setTitle("Tạo Phòng Chiến");
+  constructor(private csService: ServiceService, private router: Router,private toastrService :ToastrService) {
   }
 
 

@@ -9,8 +9,7 @@ import {Title} from "@angular/platform-browser";
 export class StudyKanjiComponent implements OnInit {
   public logName:string;
 
-  constructor(private title: Title) {
-    this.title.setTitle("Học Kanji");
+  constructor() {
   }
 
   ngOnInit(): void {
