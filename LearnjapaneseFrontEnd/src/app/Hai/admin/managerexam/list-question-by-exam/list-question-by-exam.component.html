@@ -50,16 +50,16 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td >A</td>
-                    <td>B</td>
-                    <td >C</td>
-                    <td >D</td>
-                    <td ></td>
-                    <td>
-                      <a title="Loại bỏ"><i  class="fa fa-times btn btn-danger"></i></a>
+                  <tr *ngFor="let qs of question;let i=index">
+                    <td style="width: 100px">{{i+1}}</td>
+                    <td>{{qs.content}}</td>
+                    <td style="width: 150px">{{qs.ansA}}</td>
+                    <td style="width: 150px">{{qs.ansB}}</td>
+                    <td style="width: 150px">{{qs.ansC}}</td>
+                    <td style="width: 150px">{{qs.ansD}}</td>
+                    <td style="width: 150px">{{qs.ansCorrect}}</td>
+                    <td  style="width: 100px">
+                      <a title="Loại bỏ"><i  (click)="delete(qs.id) " class="fa fa-times btn btn-danger"></i></a>
                     </td>
                   </tr>
                   </tbody>

@@ -131,6 +131,7 @@ import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n
 import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
 import { ExamDetailComponent } from './Hai/admin/managerexam/exam-detail/exam-detail.component';
 import { ListQuestionByExamComponent } from './Hai/admin/managerexam/list-question-by-exam/list-question-by-exam.component';
+import { DialogExitRoomComponent } from './Hai/challenge/dialog-exit-room/dialog-exit-room.component';
 
 
 
@@ -247,6 +248,7 @@ import { ListQuestionByExamComponent } from './Hai/admin/managerexam/list-questi
     N5TuvungOntapComponent,
     ExamDetailComponent,
     ListQuestionByExamComponent,
+    DialogExitRoomComponent,
   ],
 
   imports: [
@@ -273,7 +275,7 @@ import { ListQuestionByExamComponent } from './Hai/admin/managerexam/list-questi
     MatListModule,
     MatToolbarModule
   ],
-  entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent],
+  entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent,DialogExitRoomComponent],
   providers: [authInterceptorProviders, Title, ChatService, WebsocketService],
 
   bootstrap: [AppComponent],

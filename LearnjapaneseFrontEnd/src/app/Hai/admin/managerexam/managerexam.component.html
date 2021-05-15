@@ -98,7 +98,7 @@
                           <i class="fa fa-cog"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" ><i class="fa fa-question-circle-o"></i> List câu hỏi</a>
+                          <a class="dropdown-item" [routerLink]="['/admin/exam/list',exam.id]" ><i class="fa fa-question-circle-o"></i> List câu hỏi</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" [routerLink]="['/admin/exam/edit',exam.id]" ><i class="fa fa-edit" ></i> Cập nhật</a>
                           <div class="dropdown-divider"></div>

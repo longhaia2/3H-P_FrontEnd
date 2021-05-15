@@ -11,6 +11,9 @@ import {interval, Subscription} from "rxjs";
 import {ChatService} from "../../Service/chat.service";
 import {DOCUMENT} from "@angular/common";
 import {GetUserByRoomAsc} from "../model/GetUserByRoomAsc";
+import {DialogServiceService} from "../../../Thuan/service/dialog-service.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogExitRoomComponent} from "../dialog-exit-room/dialog-exit-room.component";
 
 @Component({
   selector: 'app-waitlchallenge',
@@ -47,9 +50,8 @@ export class WaitlchallengeComponent implements OnInit {
   index3:number=3;
   Test:number=0;
 
-  constructor(private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
+  constructor(private dialog: MatDialog,private dialogService: DialogServiceService,private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
               private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
-    // this.title.setTitle("Đợi Đối Thử");
   }
 
   ngOnInit(): void {
@@ -300,6 +302,30 @@ export class WaitlchallengeComponent implements OnInit {
       this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
       }, error => console.log(error));
     });
+  }
 
+  delete(id: number) {
+    const confirmDialog = this.dialog.open(DialogExitRoomComponent, {
+      data: {
+        title: 'Confirm Remove Employee',
+        message: 'Bạn muốn rời phòng thật sao (◕︵◕) ? '
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      // if (result == true) {
+      //   this.questionService.delete(id).subscribe(
+      //     data => {
+      //       console.log(data);
+      //       this.reloadData();
+      //     });
+      // }
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  private reloadData() {
+    // this.questionService.findAll().subscribe(data => {
+    //   this.question = data;
+    // });
   }
 }

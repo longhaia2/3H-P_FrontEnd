@@ -76,6 +76,7 @@ import {N4TuvungOntapComponent} from "./study/study-n4/n4-tuvung-ontap/n4-tuvung
 import {N5NguphapOntapComponent} from "./study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component";
 import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component";
 import {ExamDetailComponent} from "./admin/managerexam/exam-detail/exam-detail.component";
+import {ListQuestionByExamComponent} from "./admin/managerexam/list-question-by-exam/list-question-by-exam.component";
 
 
 
@@ -113,6 +114,7 @@ const routes: Routes = [
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent, canActivate: [AdminAuthService]},
   // {path: 'admin/lesson/edit', component: EditbaihocComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam', component: ManagerexamComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/exam/list/:id', component: ListQuestionByExamComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam/add', component: ManagerexamaddComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent, canActivate: [AdminAuthService]},
   {path: 'admin/question', component: ListquestionComponent, canActivate: [AdminAuthService]},
