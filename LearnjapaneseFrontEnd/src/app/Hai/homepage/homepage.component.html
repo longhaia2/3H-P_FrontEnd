@@ -231,9 +231,9 @@
     </section>
   </div>
   <script>
-    function tai_lai_trang(){
-      location.reload();
-    }
+    $(document).ready(function(){
+      $('#some-id').trigger('click');
+    })
   </script>
 </main>
 <app-footer></app-footer>

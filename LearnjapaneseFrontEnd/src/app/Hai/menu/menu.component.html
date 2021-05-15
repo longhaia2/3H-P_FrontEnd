@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-4 col-12">
           <div  class="menu-right">
-            <div *ngIf="userNameDsp==null; else elseBlock">
+            <div *ngIf="test==null; else elseBlock">
               <div> <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP</a></div>
             </div>
             <ng-template #elseBlock>
@@ -36,7 +36,7 @@
               <table >
                 <thead>
                 <tr style="border: 1px solid #f8f9fa;">
-                  <th style="border: 1px solid #f8f9fa;"><div> <i  style="font-size: 20px">Xin chào: {{userNameDsp}} </i></div></th>
+                  <th style="border: 1px solid #f8f9fa;"><div> <i  style="font-size: 20px">Xin chào: {{test}} </i></div></th>
                   <th style="border: 1px solid #f8f9fa;" ><div class="dropdown" id="div-account" style="margin-left: 10px;font-size: 20px"  >
                     <a class="dropdown-toggle btn-login" id="dropdownMenuButton"
                        type="button" data-toggle="dropdown"

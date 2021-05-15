@@ -17,6 +17,8 @@ export class ChatService {
   mess_id3:Subject<any>;
   id:Subject<any>;
   room_id:Subject<any>;
+  id_out:Subject<any>;
+  id_r_out:Subject<any>;
 
   constructor(private wsService: WebsocketService) {
     this.messages = <Subject<any>>wsService.connect();
@@ -54,8 +56,16 @@ export class ChatService {
     this.id= <Subject<any>>wsService.id_connect();
     map((response: any): any => {
       return response;
-    })
-    this.room_id= <Subject<any>>wsService.id_connect();
+    });
+    this.room_id= <Subject<any>>wsService._connect();
+    map((response: any): any => {
+      return response;
+    });
+    this.id_out= <Subject<any>>wsService.connect_out();
+    map((response: any): any => {
+      return response;
+    }) ;
+    this.id_r_out= <Subject<any>>wsService.connect_id_r_out();
     map((response: any): any => {
       return response;
     })
@@ -89,5 +99,11 @@ export class ChatService {
   }
   send_idRoom(msg){
     this.room_id.next(msg);
+  }
+  send_id_out(msg){
+    this.id_out.next(msg);
+  }
+  send_id_r_out(msg){
+    this.id_r_out.next(msg);
   }
 }
