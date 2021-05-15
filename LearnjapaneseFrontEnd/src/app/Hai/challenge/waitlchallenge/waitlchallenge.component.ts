@@ -50,7 +50,9 @@ export class WaitlchallengeComponent implements OnInit {
   index3:number=3;
   Test:number=0;
 
-  constructor(private dialog: MatDialog,private dialogService: DialogServiceService,private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
+  constructor(private dialog: MatDialog,private dialogService: DialogServiceService,private chat: ChatService
+              , private  lessonServiceService: ServicebtService, private service: ServiceService
+              , private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
               private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
   }
 
@@ -312,13 +314,32 @@ export class WaitlchallengeComponent implements OnInit {
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
-      // if (result == true) {
-      //   this.questionService.delete(id).subscribe(
-      //     data => {
-      //       console.log(data);
-      //       this.reloadData();
-      //     });
-      // }
+      if (result == true) {
+        this.service.getUsersRoomList(this.id_r).subscribe(data => {
+          this.r_s_1 = data;
+         this.r_s_1.forEach(Element=>{
+           if(Element.user_id==id&&Element.banker==1){
+             this.r_s_1[1].banker=1;
+             this.room_user.banker=this.r_s_1[1].banker;
+             this.challengeServiceService.updateMember(this.r_s_1[1].id,this.room_user).subscribe(data=>{
+               this.service.delete(Element.id).subscribe(
+                 data => {
+                   return  this.router.navigate(['listchalenge']);
+                 });
+             })
+           }
+           else if(Element.user_id==id){
+             this.service.delete(Element.id).subscribe(
+               data => {
+                 this.router.navigate(['listchalenge']);
+               });
+           }
+           }
+          )
+
+
+        })
+      }
     });
   }
 
