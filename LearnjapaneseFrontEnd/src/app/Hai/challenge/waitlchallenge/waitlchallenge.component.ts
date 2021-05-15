@@ -10,6 +10,7 @@ import {ServicebtService} from '../../../Service/servicebt.service';
 import {interval, Subscription} from "rxjs";
 import {ChatService} from "../../Service/chat.service";
 import {DOCUMENT} from "@angular/common";
+import {GetUserByRoomAsc} from "../model/GetUserByRoomAsc";
 import {DialogServiceService} from "../../../Thuan/service/dialog-service.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogExitRoomComponent} from "../dialog-exit-room/dialog-exit-room.component";
@@ -31,6 +32,7 @@ export class WaitlchallengeComponent implements OnInit {
   id_u_scrore: number;
   selectedAS: string[];
   user: User[];
+  GetUserByRoomAsc:GetUserByRoomAsc[];
   users: User = new User();
   id: number;
   id_r: number;
@@ -56,11 +58,12 @@ export class WaitlchallengeComponent implements OnInit {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
     this.logName = userName['username'];
     this.id = this.route.snapshot.params['id'];
-    this.service.get(this.id).subscribe(data => {
-      this.user = data;
-      this.selectedAS = new Array(this.user.length);
-      this.ready = new Array(this.user.length);
-      for (let i = 0; i <= this.user.length; i++) {
+    this.service.GetUserByRoomAsc(this.id).subscribe(data => {
+      console.log(data);
+      this.GetUserByRoomAsc = data;
+      this.selectedAS = new Array(this.GetUserByRoomAsc.length);
+      this.ready = new Array(this.GetUserByRoomAsc.length);
+      for (let i = 0; i <= this.GetUserByRoomAsc.length; i++) {
         this.ready[i] = false;
       }
       this.allReady = false;

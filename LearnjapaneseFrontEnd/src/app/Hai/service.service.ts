@@ -26,6 +26,9 @@ export class ServiceService {
   getroom(id_room): Observable<any> {
     return this.http.get(`${'http://localhost:8080/challenge'}/${id_room}`);
   }
+  GetUserByRoomAsc(id): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/challenge/GetUserByRoomAsc'}/${id}`);
+  }
   getUser(): Observable<RoomUsers[]> {
     return this.http.get<RoomUsers[]>(this.url+'/get-user');
   }
