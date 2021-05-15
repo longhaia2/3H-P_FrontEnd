@@ -16,7 +16,7 @@
         <div class="col-md-8 col-12">
           <div class="class-left" style="background-color: cornflowerblue" >
             <div class="class-sectionTitle">
-             <div><span>PHÒNG CHỜ THI ĐẤU</span><button style="margin-left: 320px;" class="button" (click)="delete(1)" ><img src="../../../../assets/image/outroom.png" height="38" width="160"/></button>
+             <div><span>PHÒNG CHỜ THI ĐẤU</span><button style="margin-left: 320px;" class="button" (click)="delete(id_u_scrore)" ><img src="../../../../assets/image/outroom.png" height="38" width="160"/></button>
             </div>
 
             </div>
@@ -27,7 +27,8 @@
                   <div class="test-listItem" >
                     <div class="content">
                       <div *ngIf="us[0]==rs.user_id" >
-                        <h6 class="title"  style="font-size: 16px;color: chartreuse;">Chủ phòng: {{us[1]}}</h6>
+                       <h6 class="title"  style="font-size: 20px;color: chartreuse;">Chủ phòng: {{us[1]}} <b style="color: hotpink"> ❁◕ ‿ ◕❁</b></h6>
+
                         <div *ngIf="!allReady"> <button [disabled]="!allReady" *ngIf="us[0]==id_u_scrore"  class="button disabled" (click)="start()" >
                           <img src="../../../../assets/image/batdau.png" height="38" width="160"/></button>
                         </div>
@@ -40,8 +41,8 @@
                         <div *ngIf="(us[0]!=rs.user_id)&& (us[0]==id_u_scrore)">
                           <h6 class="title" >{{us[1]}} </h6>
                           <div >Hãy sẵn sàng để thi đấu</div>
-                          <div (click)="startTrue(i);settrue()"><img *ngIf="!ready[i]" style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
-                          <div (click)="startFalse(i);setfalse()" > <img *ngIf="ready[i]"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px; margin-top: 10px"/></div>
+                          <div (click)="startTrue(i);settrue()"><img *ngIf="!ready[i]" style="width: 180px;height: 40px;cursor: pointer;; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
+                          <div (click)="startFalse(i);setfalse()" > <img *ngIf="ready[i]"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px;cursor: pointer; margin-top: 10px"/></div>
                         </div>
                         <div *ngIf="(us[0]!=rs.user_id)&& (us[0]!=id_u_scrore) ">
                           <div>
