@@ -66,9 +66,7 @@ import {UnaccessComponent} from '../Hien/unaccess/unaccess.component';
 import {ResultVocabularyComponent} from '../Hien/result-vocabulary/result-vocabulary.component';
 import {AdminAuthService} from '../_services/admin-auth.service';
 import {ProfileComponent} from "./profile/profile.component";
-import {HistoryComponent} from '../Hien/history/history.component';
 import {HistoryResultComponent} from '../Hien/history-result/history-result.component';
-import {ManagerquestionComponent} from "./admin/managerquestion/managerquestion.component";
 import { N2NguphapOntapComponent } from './study/study-n2/n2-nguphap-ontap/n2-nguphap-ontap.component';
 import {N2TuvungOntapComponent} from "./study/study-n2/n2-tuvung-ontap/n2-tuvung-ontap.component";
 import {N3NguphapOntapComponent} from "./study/study-n3/n3-nguphap-ontap/n3-nguphap-ontap.component";
@@ -77,6 +75,9 @@ import {N4NguphapOntapComponent} from "./study/study-n4/n4-nguphap-ontap/n4-ngup
 import {N4TuvungOntapComponent} from "./study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component";
 import {N5NguphapOntapComponent} from "./study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component";
 import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component";
+import {ExamDetailComponent} from "./admin/managerexam/exam-detail/exam-detail.component";
+import {ListQuestionByExamComponent} from "./admin/managerexam/list-question-by-exam/list-question-by-exam.component";
+
 
 
 
@@ -102,6 +103,7 @@ const routes: Routes = [
   {path: 'admin/manage/user/add', component: AdduserComponent, canActivate: [AdminAuthService]},
   {path: 'admin/manage/user', component: ManageruserComponent, canActivate: [AdminAuthService]},
   {path: 'admin/user/detail/:id', component: DetailuserComponent},
+  {path: 'admin/exam/detail/:id', component: ExamDetailComponent,canActivate: [AdminAuthService]},
   {path: 'listchalenge', component: ListchallengeComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/add', component: CreateroomComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/wait/:id', component: WaitlchallengeComponent, canActivate: [CustomerAuthService]},
@@ -112,6 +114,7 @@ const routes: Routes = [
   {path: 'admin/lesson/edit/:id', component: EditbaihocComponent, canActivate: [AdminAuthService]},
   // {path: 'admin/lesson/edit', component: EditbaihocComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam', component: ManagerexamComponent, canActivate: [AdminAuthService]},
+  {path: 'admin/exam/list/:id', component: ListQuestionByExamComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam/add', component: ManagerexamaddComponent, canActivate: [AdminAuthService]},
   {path: 'admin/exam/edit/:id', component: ManagerexamupdateComponent, canActivate: [AdminAuthService]},
   {path: 'admin/question', component: ListquestionComponent, canActivate: [AdminAuthService]},
@@ -168,7 +171,6 @@ const routes: Routes = [
   {path: 'unaccess', component: UnaccessComponent},
   {path: 'profile/edit/:id', component: ProfileComponent},
   {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]},
-  {path: 'qs', component: ManagerquestionComponent}
 ];
 
 @NgModule({

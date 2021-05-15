@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {LessonServiceService} from "../../Thuan/service/lesson-service.service";
 import {Lesson} from "../../Thuan/model/lesson";
@@ -34,7 +35,8 @@ export class HomepageComponent implements OnInit {
     this.logName = userName['username'];
     this.getLesson();
     this.list();
-    this.ListtopHigh()
+    this.ListtopHigh();
+    this.Refresh()
   }
 
   getLesson() {
@@ -52,5 +54,13 @@ export class HomepageComponent implements OnInit {
     this.lessonService.getTopHighScoreByScore().subscribe(data => {
       this.rt = data;
     });
+  }
+  Refresh(){
+    if (localStorage.getItem('refreshed') === null) {
+      localStorage['refreshed'] = true;
+      window.location.reload(true);
+    } else {
+      localStorage.removeItem('refreshed');
+    }
   }
 }

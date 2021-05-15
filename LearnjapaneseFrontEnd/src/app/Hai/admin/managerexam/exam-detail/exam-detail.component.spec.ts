@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageraddquestionComponent } from './manageraddquestion.component';
+import { ExamDetailComponent } from './exam-detail.component';
 
-describe('ManageraddquestionComponent', () => {
-  let component: ManageraddquestionComponent;
-  let fixture: ComponentFixture<ManageraddquestionComponent>;
+describe('ExamDetailComponent', () => {
+  let component: ExamDetailComponent;
+  let fixture: ComponentFixture<ExamDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageraddquestionComponent ]
+      declarations: [ ExamDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageraddquestionComponent);
+    fixture = TestBed.createComponent(ExamDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
