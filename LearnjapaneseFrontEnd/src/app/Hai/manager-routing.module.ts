@@ -81,6 +81,7 @@ import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung
 
 
 
+
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},

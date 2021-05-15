@@ -249,6 +249,8 @@ import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-
     N4TuvungOntapComponent,
     N5NguphapOntapComponent,
     N5TuvungOntapComponent,
+
+
   ],
 
   imports: [
