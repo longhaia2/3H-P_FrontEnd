@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {LessonServiceService} from "../../Thuan/service/lesson-service.service";
 import {Lesson} from "../../Thuan/model/lesson";
@@ -34,7 +35,7 @@ export class HomepageComponent implements OnInit {
     this.logName = userName['username'];
     this.getLesson();
     this.list();
-    this.ListtopHigh();
+    this.ListtopHigh()
   }
 
   getLesson() {
@@ -53,5 +54,4 @@ export class HomepageComponent implements OnInit {
       this.rt = data;
     });
   }
-
 }
