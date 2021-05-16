@@ -23,6 +23,7 @@ export class StarttestjlptComponent implements OnInit {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     if(userName != null){
       this.logName = userName['username'];
+
     }    this.id=this.route.snapshot.params['id'];
     this.examService.get(this.id).subscribe(data=>{
       this.ex=data

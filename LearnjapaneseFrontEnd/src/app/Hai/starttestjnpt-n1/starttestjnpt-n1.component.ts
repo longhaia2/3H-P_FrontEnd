@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   providers: [ExamserviceService]
 })
 export class StarttestjnptN1Component implements OnInit {
-  logName:string;
+  logName:string=null;
   id:number;
   ex : Exam=new Exam();
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
