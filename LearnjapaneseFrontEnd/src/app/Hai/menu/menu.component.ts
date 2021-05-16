@@ -18,8 +18,6 @@ import {ServiceService} from "../service.service";
 export class MenuComponent implements OnInit {
   Users: User;
   id_user:number;
-  test:string=null;
-
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
   @Input('role') role;
@@ -34,6 +32,8 @@ export class MenuComponent implements OnInit {
   }
   us : User[];
   ngOnInit(): void {
+
+    console.log(this.userNameDsp + '--- log user') ;
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
     if(id_score != null){
       this.id_user = id_score['userId'];
