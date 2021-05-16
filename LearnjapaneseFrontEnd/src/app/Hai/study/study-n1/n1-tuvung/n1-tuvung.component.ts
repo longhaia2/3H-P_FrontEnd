@@ -11,14 +11,18 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class N1TuvungComponent  implements OnInit {
   ls: Lesson[];
-  logName: String;
+  logName: String = null;
+  role: string = null;
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
+    if(userName != null){
+      this.logName = userName['username'];
+      this.role = userName['role'];
+    }
     this.reloadData();
   }
 
