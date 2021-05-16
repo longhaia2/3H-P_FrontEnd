@@ -40,7 +40,7 @@
                 <div class="card-body">
                   <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                   <div class="justify-content-md-center" *ngIf="!showExplanation">
-                    <div class="row" *ngFor="let qs of questions; let i = index " value="{{qs}}">
+                    <div class="row" *ngFor="let qs of questions; let i = index ">
                       <div class="row"  *ngIf="!quizOver && i == currentIndex">
                         <div class="quiz"  class="container mt-5" >
                           <h3 style="text-align: center"  >
@@ -50,22 +50,22 @@
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction"
                           style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansA)">
+                          (click)="selectAt(i,'A')">
                           {{qs.ansA}}
                         </button>
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansB)">
+                          (click)="selectAt(i,'B')">
                           {{ qs.ansB}}
                         </button>
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansC)">
+                          (click)="selectAt(i,'C')">
                           {{ qs.ansC}}
                         </button>
                         <button
                           class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;width: 80%; margin-left: 70px;"
-                          (click)="selectAt(i,qs.ansD)">
+                          (click)="selectAt(i,'D')">
                           {{ qs.ansD}}
                         </button>
                       </div>

@@ -99,7 +99,7 @@ export class CompetitionComponent implements OnInit {
             // @ts-ignore
             currentTime = new Date();
             // @ts-ignore
-            targetTime = new Date(currentTime.getTime() + (minutes * 6000));
+            targetTime = new Date(currentTime.getTime() + (minutes * 60000));
             localStorage.setItem('currentTime', currentTime);
             localStorage.setItem('targetTime', targetTime);
           }
@@ -248,19 +248,18 @@ export class CompetitionComponent implements OnInit {
           })
         }
         }
-            selectAt(index, value) {
+
+  selectAt(index, value) {
           this.selectedAS[index] = value;
           this.showExplanation = true;
           this.currentIndex++;
-          for (let i = 0; i < this.questions.length; i++) {
-            if (this.questions[i].ansCorrect === this.selectedAS[i]) {
+            if (this.questions[index].ansCorrect === this.selectedAS[index]) {
               this.hasAnsweredCorrectly = true;
               this.correctAnswers++;
               this.score = this.score + 5;
-              break;
             } else {
               this.hasAnsweredCorrectly = false;
             }
-          }
+
         }
       }

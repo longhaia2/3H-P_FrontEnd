@@ -15,15 +15,6 @@ export class WebsocketService {
     // @ts-ignore
     this.clientSocket = socketIo.connect(url);
   }
-  // @ts-ignore
-  listenToServer(connection: Connection): Observable<any>{
-    this.clientSocket.on(connection, ( data ) => {
-      // @ts-ignore
-      subscribe.next(data);
-      console.log("Received message from Websocket Server");
-      console.log(data);
-    });
-  }
 
   connect(): Subject<MessageEvent> {
 
@@ -211,6 +202,44 @@ export class WebsocketService {
     let observer = {
       next: (data: number) => {
         this.socket.emit('room_id',data);
+      },
+    };
+    return Subject.create(observer, observable);
+  }
+  connect_out(): Subject<MessageEvent> {
+    // @ts-ignore
+    this.socket = socketIo.connect(url);
+    let observable = new Observable(observer => {
+      this.socket.on('id_out',(data) => {
+        // console.log("Received id_user from Websocket Server of LapTop");
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+    let observer = {
+      next: (data: number) => {
+        this.socket.emit('id_out',data);
+      },
+    };
+    return Subject.create(observer, observable);
+  }
+  connect_id_r_out(): Subject<MessageEvent> {
+    // @ts-ignore
+    this.socket = socketIo.connect(url);
+    let observable = new Observable(observer => {
+      this.socket.on('id_r_out',(data) => {
+        // console.log("Received id_user from Websocket Server of LapTop");
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+    let observer = {
+      next: (data: number) => {
+        this.socket.emit('id_r_out',data);
       },
     };
     return Subject.create(observer, observable);

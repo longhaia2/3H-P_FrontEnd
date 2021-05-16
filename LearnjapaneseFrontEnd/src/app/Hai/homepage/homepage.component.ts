@@ -15,9 +15,8 @@ import {ResultTop} from "../challenge/model/ResultTop";
   providers:[LessonServiceService, ExamserviceService,]
 })
 export class HomepageComponent implements OnInit {
-
-
   logName: string=null;
+  role: string=null;
   id: number;
   rt: ResultTop[];
   ls: Lesson[];
@@ -32,7 +31,10 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
+   if(userName!=null){
+     this.logName = userName['username'];
+     this.role=userName['role'];
+   }
     this.getLesson();
     this.list();
     this.ListtopHigh();
