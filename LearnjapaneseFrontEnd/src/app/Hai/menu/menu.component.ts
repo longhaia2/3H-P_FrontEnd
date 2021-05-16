@@ -5,27 +5,28 @@ import {User} from "../../Manh/modelm/user";
 import {ConfirmLogoutComponent} from '../../Hien/confirm-logout/confirm-logout.component';
 import {ToastrService} from 'ngx-toastr';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {ServiceService} from "../service.service";
 
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
-  providers: [ToastrService, TokenStorageService]
+  providers: [ToastrService, TokenStorageService,ServiceService]
 
 })
 export class MenuComponent implements OnInit {
-  Users: User[];
+  Users: User;
   id_user:number;
+  test:string=null;
 
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
+  @Input('role') role;
 
-  constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) { }
+  constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router,private service: ServiceService) { }
   us : User[];
   ngOnInit(): void {
-    let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.id_user = id_score['userId'];
   }
 
 

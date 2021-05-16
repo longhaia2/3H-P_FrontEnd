@@ -13,6 +13,7 @@ import {ToastrService} from "ngx-toastr";
 })
 export class ManagerexamComponent implements OnInit {
 
+  p:number=1;
   hocphan;
   trinhdo;
   searchText;

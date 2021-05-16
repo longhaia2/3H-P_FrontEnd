@@ -10,13 +10,13 @@ http.listen(3000, () => {
     console.log("started on port 3000");
 });
 // let io = require("socket.io")(http);
-io.on("connection", socket => {
-    socket.on("disconnect", function() {
-    });
-    socket.on("message", message => {
-        io.emit("message",message );
-    });
-});
+// io.on("connection", socket => {
+//     socket.on("disconnect", function() {
+//     });
+//     socket.on("message", message => {
+//         io.emit("message",message );
+//     });
+// });
 io.on("connection", socket => {
     socket.on("disconnect", function() {
     });
@@ -25,14 +25,14 @@ io.on("connection", socket => {
         console.log(message);
     });
 });
-io.on("connection", socket => {
-    socket.on("disconnect", function() {
-    });
-    socket.on("st0", message => {
-        io.emit("st0",message );
-        console.log(message);
-    });
-});
+// io.on("connection", socket => {
+//     socket.on("disconnect", function() {
+//     });
+//     socket.on("st0", message => {
+//         io.emit("st0",message );
+//         console.log(message);
+//     });
+// });
 io.on("connection", socket => {
     socket.on("disconnect", function() {
     });
@@ -85,4 +85,17 @@ io.on("connection", socket => {
         io.emit("room_id",message );
     });
 });
-
+io.on("connection", socket => {
+    socket.on("disconnect", function() {
+    });
+    socket.on("id_out", message => {
+        io.emit("id_out",message );
+    });
+});
+io.on("connection", socket => {
+    socket.on("disconnect", function() {
+    });
+    socket.on("id_r_out", message => {
+        io.emit("id_r_out",message );
+    });
+});

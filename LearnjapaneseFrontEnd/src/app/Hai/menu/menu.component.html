@@ -45,8 +45,7 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-
-                      <!--                  <a sec:authorize="hasAnyAuthority('ADMIN','MANAGER')" class="dropdown-item" id="adminManager" ><i class="fa fa-cogs"></i> Quản lí</a>-->
+                      <a *ngIf="role=='ROLE_ADMIN'" class="dropdown-item" id="adminManager" [routerLink]="['/admin-home']"><i class="fa fa-cogs"></i> Quản lí</a>
                       <a class="dropdown-item"  [routerLink]="['/profile/edit',id_user]" ><i class="fa fa-user-circle-o"></i> Thông tin</a>
                       <a class="dropdown-item" (click)="score()"><i class="fa fa-check-square-o"></i> Kết quả thi</a>
                       <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
