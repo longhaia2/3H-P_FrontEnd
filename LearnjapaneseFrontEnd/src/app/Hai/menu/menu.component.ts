@@ -39,6 +39,7 @@ export class MenuComponent implements OnInit {
       this.id_user = id_score['userId'];
     }
 
+
   }
 
   logout(){
