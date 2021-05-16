@@ -1,4 +1,19 @@
-<h1 style="text-align: center">Kết quả!</h1>
+<div class="class-sectionTitle1 test">
+  <span>Bảng Xếp Hạng Điểm</span>
+</div>
+<div style="margin-top: 30px">
+  <ul>
+    <li >
+      <a *ngFor="let us of userScore , let q= index" >
+        <div class="test-listItem" style="margin-left: -30px; width: 97%;">
+          <div class="content">
+            <h5>{{q+1}} Biệt danh:<span > {{us[0]}} đã đạt được  {{us[1]}}  </span></h5>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
 <div class="card mt-5">
   <div class="card-body">
     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->

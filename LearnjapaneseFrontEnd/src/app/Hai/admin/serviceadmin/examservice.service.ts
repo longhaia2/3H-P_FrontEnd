@@ -21,6 +21,10 @@ export class ExamserviceService {
   get(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/exam'}/${id}`);
   }
+  getQSByExam(id): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/exam/list'}/${id}`);
+  }
+
 
   findAll(): Observable<Exam[]> {
     return this.http.get<Exam[]>(this.url + '/list');

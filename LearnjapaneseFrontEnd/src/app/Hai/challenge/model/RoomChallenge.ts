@@ -4,7 +4,7 @@ export class RoomChallenge {
   userCreate : string;
   level : string;
   pass : string;
-  time : string;
+  time : number;
   count: number;
   check: boolean;
   status:number;

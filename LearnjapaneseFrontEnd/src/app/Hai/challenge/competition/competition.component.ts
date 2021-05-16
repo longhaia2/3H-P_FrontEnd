@@ -11,6 +11,8 @@ import {UserScore} from '../model/UserScore';
 import {interval, Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogJoinRoomComponent} from '../dialog-join-room/dialog-join-room.component';
+import {RoomChallenge} from "../model/RoomChallenge";
+import {ChatService} from "../../Service/chat.service";
 
 export interface DialogData{
   correctAnswers: number;
@@ -20,11 +22,12 @@ export interface DialogData{
   selector: 'app-competition',
   templateUrl: './competition.component.html',
   styleUrls: ['./competition.component.css'],
-  providers: [ChallengeServiceService, ServiceService]
+  providers: [ChallengeServiceService, ServiceService,ChatService]
 })
 export class CompetitionComponent implements OnInit {
        private updateSubscription: Subscription;
       public logName:string;
+      room_ch: RoomChallenge= new RoomChallenge();
       room_user: RoomUsers = new RoomUsers();
       user: User[];
       userRoom: RoomUsers[];
@@ -45,14 +48,22 @@ export class CompetitionComponent implements OnInit {
       quizOver: boolean = false;
       checktimer: boolean;
       x:number;
+      minutes:number=1;
+      check: number;
+      index:number=0;
+      check1: number=0;
+      index1:number=1;
+      check2: number=0;
+      index2:number=2;
+      check3: number=0;
+      index3:number=3;
 
 
-  constructor(public dialog:MatDialog, private title: Title, private service: ChallengeServiceService, private route: ActivatedRoute, private  router: Router, private userService: ServiceService) {
+  constructor(private chat: ChatService,public dialog:MatDialog, private title: Title, private service: ChallengeServiceService, private route: ActivatedRoute, private  router: Router, private userService: ServiceService) {
     this.title.setTitle("Đang Chiến");
   }
 
         ngOnInit() {
-      this.dem();
           let userName = JSON.parse(sessionStorage.getItem("auth-user"));
           this.logName = userName['username'];
           let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
@@ -65,16 +76,23 @@ export class CompetitionComponent implements OnInit {
             this.questions = data;
             this.selectedAS = new Array(this.questions.length);
           }, error => console.log(error));
+
           //get user in room
           this.room_user= new RoomUsers();
           this.id_room=this.route.snapshot.params['id_room'];
+          this.userService.getroom(this.id_room).subscribe(data=>{
+            this.room_ch=data;
+          this.minutes= this.room_ch.time;
+            this.dem(this.room_ch.time);
+          });
+
           this.getuser();
           this.getListUsersByScore();
           this.getUsersRoomList();
+          this.load();
         }
 
-        dem(){
-          let minutes = 2;
+            dem(minutes:number){
           let currentTime = localStorage.getItem('currentTime');
           let targetTime = localStorage.getItem('targetTime');
           if (targetTime == null && currentTime == null) {
@@ -92,30 +110,27 @@ export class CompetitionComponent implements OnInit {
             targetTime = new Date(targetTime);
           }
 
-          // @ts-ignore
-          // if(!checkComplete()){
-          //   interval = setInterval(checkComplete, 1000);
-          // }
              this.x = setInterval(()=> {
-              if (currentTime > targetTime) {
+               // @ts-ignore
+              // if (Math.floor(((targetTime - currentTime)/1000)%60) <=0)
+               if(Math.floor(((targetTime - currentTime)/1000))<2){
+                 // @ts-ignore
                 clearInterval(this.x);
-                // @ts-ignore
-                targetTime=null;
-                localStorage.setItem('targetTime', targetTime);
+                document.getElementById('timer').innerHTML = 'Hết Giờ';
                return  this.openDialog();
               } else {
                 // @ts-ignore
                 currentTime = new Date();
                 // @ts-ignore
 
-                if(Math.floor(((targetTime - currentTime)/1000)/60)<1){
+                if( Math.floor(((targetTime - currentTime)/1000)/60)<1){
                   // @ts-ignore
                   document.getElementById('timer').innerHTML = 'Hãy nhanh lên, bạn chỉ còn '+ Math.floor(((targetTime - currentTime)/1000)%60)+' Giây';
 
              }
              else {
                   // @ts-ignore
-                  document.getElementById('timer').innerHTML =Math.floor(((targetTime - currentTime)/1000)/60)+' phút ' + Math.floor(((targetTime - currentTime)/1000)%60)+' Giây';
+                  document.getElementById('timer').innerHTML =Math.floor(((targetTime - currentTime)/1000)/60)+' phút ' + Math.floor(((targetTime - currentTime)/1000)%60)+' Giây' ;
 
                 }
               }
@@ -126,8 +141,7 @@ export class CompetitionComponent implements OnInit {
             localStorage.setItem('currentTime', currentTime);
           }
         }
-
-             openDialog(){
+            openDialog(){
               const dialogRef = this.dialog.open(DialogJoinRoomComponent, {
                 data: {correctAnswers:this.correctAnswers, questions:this.questions}
               });
@@ -136,33 +150,69 @@ export class CompetitionComponent implements OnInit {
                 this.correctAnswers = result;
               });
             }
-
-
             end(){
               clearInterval(this.x);
             }
             getuser(){
               this.service.getuser(this.id_room).subscribe(data=>{
                 this.user=data;
-                console.log(data);
                 this.selectdScode = new Array(this.user.length);
               },error => console.log(error));
             }
-
-          getListUsersByScore(){
+            getListUsersByScore(){
             this.userService.getListUsersByScore(this.id_room).subscribe(data => {
               this.userScore = data;
             });
           }
-
-        getUsersRoomList(){
+            getUsersRoomList(){
           this.userService.getUsersRoomList(this.id_room).subscribe(data => {
             this.userRoom = data;
           });
         }
-
-
-        nextQuestion() {
+            load(){
+            this.chat.messages.subscribe(msg => {
+              this.check = msg;
+            });
+            this.chat.messages1.subscribe(msg => {
+              this.check1 = msg;
+            });
+            this.chat.messages2.subscribe(msg => {
+              this.check2 = msg;
+            });
+            this.chat.messages3.subscribe(msg => {
+              this.check3 = msg;
+            });
+            this.chat.mess_id.subscribe(data => {
+              this.index=data;
+            });
+            this.chat.mess_id1.subscribe(data => {
+              this.index1=data;
+            });
+            this.chat.mess_id2.subscribe(data => {
+              this.index2=data;
+            });
+            this.chat.mess_id3.subscribe(data => {
+              this.index3=data;
+            });
+          }
+            nextQuestion(index:number) {
+              if(index==0){
+                this.chat.sendMsg(this.score);
+                this.chat.senID(0);
+              }
+              else if(index==1){
+                this.chat.sendMsg1(this.score);
+                this.chat.senID1(1)
+              }
+              else if(index==2){
+                this.chat.sendMsg2(this.score);
+                this.chat.senID2(2)
+              }
+              else
+              {
+                this.chat.sendMsg3(this.score);
+                this.chat.senID3(3)
+              }
           this.showExplanation = false;
           if (this.currentIndex >= this.questions.length) {
             this.quizOver = true;
@@ -175,6 +225,9 @@ export class CompetitionComponent implements OnInit {
                 }, error => console.log(error));
                 this.updateSubscription = interval(500).subscribe(
                   (val) => { this.getListUsersByScore()});
+                this.updateSubscription=interval(10000).subscribe(value => {
+                  this.updateSubscription.unsubscribe();
+                })
               }
             });
 
@@ -188,23 +241,25 @@ export class CompetitionComponent implements OnInit {
                 }, error => console.log(error));
                 this.updateSubscription = interval(500).subscribe(
                   (val) => { this.getListUsersByScore()});
+                this.updateSubscription=interval(10000).subscribe(value => {
+                  this.updateSubscription.unsubscribe();
+                })
               }
           })
         }
         }
-        selectAt(index, value) {
+
+  selectAt(index, value) {
           this.selectedAS[index] = value;
           this.showExplanation = true;
           this.currentIndex++;
-          for (let i = 0; i < this.questions.length; i++) {
-            if (this.questions[i].ansCorrect === this.selectedAS[i]) {
+            if (this.questions[index].ansCorrect === this.selectedAS[index]) {
               this.hasAnsweredCorrectly = true;
               this.correctAnswers++;
               this.score = this.score + 5;
-              break;
             } else {
               this.hasAnsweredCorrectly = false;
             }
-          }
+
         }
       }

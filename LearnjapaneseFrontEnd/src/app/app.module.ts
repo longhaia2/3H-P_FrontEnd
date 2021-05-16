@@ -24,12 +24,9 @@ import { TestjlptComponent } from './Hai/usertest/testjlpt/testjlpt.component';
 import { ListtestjlptComponent } from './Hai/usertest/listtestjlpt/listtestjlpt.component';
 import { EndtestjlptComponent } from './Hai/usertest/endtestjlpt/endtestjlpt.component';
 import {RouterModule} from '@angular/router';
-import { ManagerquestionComponent } from './Hai/admin/managerquestion/managerquestion.component';
 import { ManagertestComponent } from './Hai/admin/managertest/managertest.component';
 import { ManagerlisttestComponent } from './Hai/admin/managertest/managerlisttest/managerlisttest.component';
 import { ManageraddtestComponent } from './Hai/admin/managertest/manageraddtest/manageraddtest.component';
-import { ManageraddquestionComponent } from './Hai/admin/managerquestion/manageraddquestion/manageraddquestion.component';
-import { ManagerlistquestionComponent } from './Hai/admin/managerquestion/managerlistquestion/managerlistquestion.component';
 import { ManageraddquestionfortestComponent } from './Hai/admin/managertest/manageraddquestionfortest/manageraddquestionfortest.component';
 import {FooterComponent} from './Hai/footer/footer.component';
 import {ManagerRoutingModule} from './Hai/manager-routing.module';
@@ -133,6 +130,9 @@ import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-
 import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
 import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
 import {NgxAudioPlayerModule} from "ngx-audio-player";
+import { ExamDetailComponent } from './Hai/admin/managerexam/exam-detail/exam-detail.component';
+import { ListQuestionByExamComponent } from './Hai/admin/managerexam/list-question-by-exam/list-question-by-exam.component';
+import { DialogExitRoomComponent } from './Hai/challenge/dialog-exit-room/dialog-exit-room.component';
 
 
 
@@ -163,13 +163,10 @@ import {NgxAudioPlayerModule} from "ngx-audio-player";
     TestjlptComponent,
     ListtestjlptComponent,
     EndtestjlptComponent,
-    ManagerquestionComponent,
     ManageruserComponent,
     ManagertestComponent,
     ManagerlisttestComponent,
     ManageraddtestComponent,
-    ManageraddquestionComponent,
-    ManagerlistquestionComponent,
     ManageraddquestionfortestComponent,
     FooterComponent,
     TestN1Component,
@@ -250,6 +247,9 @@ import {NgxAudioPlayerModule} from "ngx-audio-player";
     N4TuvungOntapComponent,
     N5NguphapOntapComponent,
     N5TuvungOntapComponent,
+    ExamDetailComponent,
+    ListQuestionByExamComponent,
+    DialogExitRoomComponent,
   ],
 
   imports: [
@@ -277,7 +277,7 @@ import {NgxAudioPlayerModule} from "ngx-audio-player";
     MatToolbarModule,
     NgxAudioPlayerModule
   ],
-  entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent],
+  entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent,DialogExitRoomComponent],
   providers: [authInterceptorProviders, Title, ChatService, WebsocketService],
 
   bootstrap: [AppComponent],

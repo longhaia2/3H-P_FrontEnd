@@ -1,6 +1,6 @@
 
 <head>
-  <title>Lớp học</title>
+  <title>Ngữ pháp N4</title>
 </head>
 <body>
 <app-header></app-header>
@@ -8,7 +8,7 @@
 <main class="class">
   <div class="container">
     <!-- banner -->
-    <div class="banner exam-banner1">
+    <div class="banner exam-banner4">
     </div>
     <!-- class content-->
     <section class="class-content">
@@ -24,7 +24,7 @@
             <h1>Các bài học:</h1>
             <tr *ngFor="let lson of ls; index as i">
 
-              <td style="font-size: 15px; color: black;width: 550px" class="item1" [routerLink]="['/study/',lson.level,'nguphap',lson.lesson, lson.id]">
+              <td style="font-size: 15px;cursor:pointer; color: black;width: 550px" class="item1" [routerLink]="['/study/',lson.level,'nguphap',lson.lesson, lson.id]">
                 <span class="label1">Phần {{i+1}} : {{lson.lesson}}</span></td>
             </tr>
 

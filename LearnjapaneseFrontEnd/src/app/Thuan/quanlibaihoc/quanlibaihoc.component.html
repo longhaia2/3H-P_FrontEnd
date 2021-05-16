@@ -45,7 +45,7 @@
                     <option value="0">Tùy chọn</option>
                     <option value="Từ Vựng">Từ vựng</option>
                     <option value="Ngữ Pháp">Ngữ pháp</option>
-                    <option value="Đề JPLT">Đề JPLT</option>
+                    <option value="Đề JLPT">Đề JPLT</option>
                     <option value="Thử Thách">Đề Thử Thách Cùng Nhau</option>
                   </select>
                 </div>
@@ -91,7 +91,7 @@
               <table class="table table-bordered" id="sampleTable">
                 <thead>
                 <tr>
-                  <th>Id</th>
+                  <th>STT</th>
                   <th>Tên bài học</th>
                   <th>Học phần</th>
                   <th>Trình độ</th>
@@ -100,7 +100,7 @@
                 </tr>
                 </thead>
                 <tbody >
-                <tr *ngFor="let lesson of ls |filter: hocphan|filter: trinhdo| paginate:{itemsPerPage:6, currentPage:p};let i=index">
+                <tr *ngFor="let lesson of ls |filter: hocphan|filter: trinhdo| paginate:{itemsPerPage:8, currentPage:p};let i=index">
                   <td>{{i+1}}</td>
                   <td >{{lesson.lesson}}</td>
                   <td >{{lesson.term}}</td>
@@ -124,7 +124,7 @@
                 </tr>
                 </tbody>
               </table>
-                            <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
+              <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
             </div>
           </div>
         </div>

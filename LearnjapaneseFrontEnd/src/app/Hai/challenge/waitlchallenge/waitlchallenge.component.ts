@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {RoomChallenge} from '../model/RoomChallenge';
 import {ServiceService} from '../../service.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,6 +9,11 @@ import {ChallengeServiceService} from '../../Service/challenge-service.service';
 import {ServicebtService} from '../../../Service/servicebt.service';
 import {interval, Subscription} from "rxjs";
 import {ChatService} from "../../Service/chat.service";
+import {DOCUMENT} from "@angular/common";
+import {GetUserByRoomAsc} from "../model/GetUserByRoomAsc";
+import {DialogServiceService} from "../../../Thuan/service/dialog-service.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogExitRoomComponent} from "../dialog-exit-room/dialog-exit-room.component";
 
 @Component({
   selector: 'app-waitlchallenge',
@@ -27,6 +32,7 @@ export class WaitlchallengeComponent implements OnInit {
   id_u_scrore: number;
   selectedAS: string[];
   user: User[];
+  GetUserByRoomAsc:GetUserByRoomAsc[];
   users: User = new User();
   id: number;
   id_r: number;
@@ -44,20 +50,22 @@ export class WaitlchallengeComponent implements OnInit {
   index3:number=3;
   Test:number=0;
 
-  constructor(private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
-              private  router: Router, private title: Title) {
-    this.title.setTitle("Đợi Đối Thử");
+  constructor(private dialog: MatDialog,private dialogService: DialogServiceService,private chat: ChatService
+              , private  lessonServiceService: ServicebtService, private service: ServiceService
+              , private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
+              private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
   }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
     this.logName = userName['username'];
     this.id = this.route.snapshot.params['id'];
-    this.service.get(this.id).subscribe(data => {
-      this.user = data;
-      this.selectedAS = new Array(this.user.length);
-      this.ready = new Array(this.user.length);
-      for (let i = 0; i <= this.user.length; i++) {
+    this.service.GetUserByRoomAsc(this.id).subscribe(data => {
+      console.log(data);
+      this.GetUserByRoomAsc = data;
+      this.selectedAS = new Array(this.GetUserByRoomAsc.length);
+      this.ready = new Array(this.GetUserByRoomAsc.length);
+      for (let i = 0; i <= this.GetUserByRoomAsc.length; i++) {
         this.ready[i] = false;
       }
       this.allReady = false;
@@ -70,49 +78,48 @@ export class WaitlchallengeComponent implements OnInit {
     this.service.getUsersRoomList(this.id_r).subscribe(data => {
       this.r_s_1 = data;
       this.r_s_1.forEach(Element => {
-          for (let i = 0; i <= this.r_s_1.length; i++) {
-            if (Element.status == 0) {
-              this.Test++;
-            }
+        for (let i = 0; i <= this.r_s_1.length; i++) {
+          if (Element.status == 0) {
+            this.Test++;
           }
+        }
       });
-      for (let i = 0; i <= this.user.length; i++) {
-        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 1) {
-          this.ready[i] = true;
-        }
-        if (this.r_s_1[i].user_id == this.id_u_scrore && this.r_s_1[i].status == 0) {
-          this.ready[i] = false;
-        }
-      }
-
       if(this.Test==0){
         this.allReady = true;
       }
       if(this.r_s_1[0].status==1){
         this.index=0;
         this.check=1;
+        this.ready[0] = true;
       }else {
+        this.ready[0] = false;
         this.index=0;
         this.check=0;
       }
       if(this.r_s_1[1].status==1){
         this.index1=1;
         this.check1=1;
+        this.ready[1] = true;
       }else {
+        this.ready[2] = false;
         this.index1=1;
         this.check1=0;
       }
       if(this.r_s_1[2].status==1){
+        this.ready[2] = true;
         this.index2=2;
         this.check2=1;
       }else {
+        this.ready[2] = false;
         this.index2=2;
         this.check2=0;
       }
       if(this.r_s_1[3].status==1){
+        this.ready[3] = true;
         this.index3=3;
         this.check3=1;
       }else {
+        this.ready[3] = false;
         this.index3=3;
         this.check3=0;
       }
@@ -120,14 +127,32 @@ export class WaitlchallengeComponent implements OnInit {
     this.challengeServiceService.getOneUserByRoom(this.id_r,this.id_u_scrore).subscribe(data=>{
       this.r_s_2=data;
     });
+    this.chat.room_id.subscribe(msg => {
+      if(msg==this.id_r){
+        this._document.defaultView.location.reload();
+      }
+    });
+    this.chat.id_r_out.subscribe(msg => {
+      this.chat.id_out.subscribe(data => {
+        if(msg==this.id_r&&data==this.id_u_scrore){
+          this.router.navigate(['listchalenge']);
+        }
+        if(msg==this.id_r&&data!=this.id_u_scrore){
+          this._document.defaultView.location.reload();
+        }
+      });
+    });
     this.startQuiz();
     this.load();
-    // this.getUserList();
-
+    this.getUserList();
   }
 
-
   load(){
+    this.chat.id.subscribe(msg => {
+      if(msg==this.id_u_scrore){
+        this._document.defaultView.location.reload();
+      }
+    });
     this.chat.messages.subscribe(msg => {
       this.check = msg;
     });
@@ -152,31 +177,27 @@ export class WaitlchallengeComponent implements OnInit {
     this.chat.mess_id3.subscribe(data => {
       this.index3=data;
     });
-
   }
 
   getUserList() {
     this.service.getUsersRoomList(this.id_r).subscribe(data => {
       this.r_s_1 = data;
-
       this.r_s_1.forEach(Element => {
-          for (let i = 0; i <= this.r_s_1.length; i++) {
-            if (Element.status == 0) {
-              this.Test++;
-            }
+        for (let i = 0; i <= this.r_s_1.length; i++) {
+          if (Element.status == 0) {
+            this.Test++;
           }
-    });
+        }
+      });
       if(this.Test==0){
         this.allReady = true;
       }
-  })
+    })
   }
-
 
   getRoom() {
     this.service.getroom(this.id_r).subscribe(data => {
       this.room = data;
-      console.log(data);
     });
   }
 
@@ -186,38 +207,70 @@ export class WaitlchallengeComponent implements OnInit {
       this.r_s = data;
     });
   }
-
   start() {
     this.room.status = 0;
     this.challengeServiceService.updateRoom(this.room.room_id, this.room).subscribe(data => {
     }, error => console.log(error));
-    this.chat.sendMsg(this.room.room_id);
+    this.chat.send_id_r_out(this.room.room_id);
   }
 
   startQuiz() {
-
-    this.chat.messages.subscribe(msg => {
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    this.chat.id_r_out.subscribe(msg => {
       this.check = msg;
       if (this.check == this.room.room_id) {
-
-        this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
-        if (this.room.level == 'N5' && this.room.time == '5') {
-          this.router.navigate(['/question/N55TT/challenge/1/', this.room.room_id, this.id_u_scrore]);
+        if (this.room.level == 'N5' && this.room.time == 5) {
+          let number = getRandomInt(68,70);
+          this.router.navigate(['/question/N55TT/challenge/',68, this.room.room_id, this.id_u_scrore]);
         }
-        if (this.room.level == 'N5' && this.room.time == '10') {
-          this.router.navigate(['/question/N510TT/challenge/2/', this.room.room_id, this.id_u_scrore]);
+        if (this.room.level == 'N5' && this.room.time == 10) {
+          let number = getRandomInt(4, 6);
+          this.router.navigate(['/question/N510TT/challenge/55/', this.room.room_id, this.id_u_scrore]);
         }
-        if (this.room.level == 'N5' && this.room.time == '15') {
-          this.router.navigate(['/question/N515TT/challenge/3/', this.room.room_id, this.id_u_scrore]);
+        if (this.room.level == 'N5' && this.room.time == 15) {
+          let number = getRandomInt(7, 9);
+          this.router.navigate(['/question/N515TT/challenge/56/', this.room.room_id, this.id_u_scrore]);
         }
-        if (this.room.level == 'N4' && this.room.time == '5') {
-          this.router.navigate(['/question/N45TT/challenge/4/', this.room.room_id, this.id_u_scrore]);
+        if (this.room.level == 'N4' && this.room.time == 5) {
+          this.router.navigate(['/question/N45TT/challenge/57/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N4' && this.room.time == 10) {
+          let number = getRandomInt(4, 6);
+          this.router.navigate(['/question/N410TT/challenge/60/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N4' && this.room.time == 15) {
+          let number = getRandomInt(7, 9);
+          this.router.navigate(['/question/N415TT/challenge/61/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N3' && this.room.time == 5) {
+          this.router.navigate(['/question/N35TT/challenge/54/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N3' && this.room.time == 10) {
+          this.router.navigate(['/question/N310TT/challenge/59/', this.room.room_id, this.id_u_scrore]);
+        }
+        if (this.room.level == 'N3' && this.room.time == 15) {
+          this.router.navigate(['/question/N315TT/challenge/58/', this.room.room_id, this.id_u_scrore]);
         }
       }
     });
   }
 
+  RandomNum() {
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+      let number = getRandomInt(1, 50);
+    console.log(number);
+    }
+
   startTrue(index: number) {
+    this.service.userRoomList(this.id_r).subscribe(data => {
+      this.r_s = data;
+      this.chat.id_sent(this.r_s[0].user_id);
+    });
     this.ready[index] = true;
     if(index==0){
       this.chat.sendMsg(1);
@@ -237,8 +290,11 @@ export class WaitlchallengeComponent implements OnInit {
       this.chat.senID3(3)
     }
   }
-
   startFalse(index: number) {
+    this.service.userRoomList(this.id_r).subscribe(data => {
+      this.r_s = data;
+      this.chat.id_sent(this.r_s[0].user_id);
+    });
     this.ready[index] = false;
     if(index==0){
       this.chat.sendMsg(0);
@@ -262,21 +318,65 @@ export class WaitlchallengeComponent implements OnInit {
   //
 
   settrue() {
-        this.r_s_2.forEach(Element => {
-            this.room_user.status = 1;
-            this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
-            }, error => console.log(error));
+    this.r_s_2.forEach(Element => {
+      this.room_user.status = 1;
+      this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
+      }, error => console.log(error));
     });
 
   }
 
-      setfalse()
-      {
-        this.r_s_2.forEach(Element => {
-            this.room_user.status = 0;
-            this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
-            }, error => console.log(error));
-      });
+  setfalse()
+  {
+    this.r_s_2.forEach(Element => {
+      this.room_user.status = 0;
+      this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
+      }, error => console.log(error));
+    });
+  }
 
-     }
+  delete(id: number) {
+    const confirmDialog = this.dialog.open(DialogExitRoomComponent, {
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result == true) {
+        this.chat.send_id_r_out(this.id);
+        this.chat.send_id_out(this.id_u_scrore);
+        this.service.getUsersRoomList(this.id_r).subscribe(data => {
+          this.r_s_1 = data;
+         this.r_s_1.forEach(Element=>{
+           if(Element.user_id==id&&Element.banker==1){
+             this.r_s_1[1].banker=1;
+             this.room_user.banker=this.r_s_1[1].banker;
+             this.r_s_1[1].status=1;
+             this.room_user.status=this.r_s_1[1].status;
+             this.challengeServiceService.updateMember(this.r_s_1[1].id,this.room_user).subscribe(data=>{
+               this.service.delete(Element.id).subscribe(
+                 data => {
+                    this.router.navigate(['listchalenge']);
+
+                 });
+             })
+           }
+           else if(Element.user_id==id){
+             this.service.delete(Element.id).subscribe(
+               data => {
+                 this.router.navigate(['listchalenge']);
+               });
+           }
+           }
+          )
+
+
+        })
+      }
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  private reloadData() {
+    // this.questionService.findAll().subscribe(data => {
+    //   this.question = data;
+    // });
+  }
 }

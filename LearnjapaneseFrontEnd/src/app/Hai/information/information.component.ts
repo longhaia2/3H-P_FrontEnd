@@ -8,8 +8,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class InformationComponent implements OnInit {
   public logName:string;
-  constructor(private title: Title) {
-    this.title.setTitle("Giới Thiệu");
+  constructor() {
   }
 
   ngOnInit(): void {

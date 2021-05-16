@@ -33,8 +33,6 @@
                   <option value="">Tùy chọn</option>
                   <option value="Từ Vựng">Từ vựng</option>
                   <option value="Ngữ Pháp">Ngữ pháp</option>
-                  <option value="Đề JPLT">Đề JPLT</option>
-                  <option value="Thử Thách">Đề Thử Thách Cùng Nhau</option>
                 </select>
               </div>
               <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
@@ -84,7 +82,7 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let exam of ex | filter:hocphan| filter: trinhdo">
+                  <tr *ngFor="let exam of ex | filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:8, currentPage:p}">
                     <td>{{exam.id}}</td>
                     <td>{{exam.codeExam}}</td>
                     <td>{{exam.term}}</td>
@@ -98,7 +96,7 @@
                           <i class="fa fa-cog"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" ><i class="fa fa-question-circle-o"></i> List câu hỏi</a>
+                          <a class="dropdown-item" [routerLink]="['/admin/exam/list',exam.id]" ><i class="fa fa-question-circle-o"></i> List câu hỏi</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" [routerLink]="['/admin/exam/edit',exam.id]" ><i class="fa fa-edit" ></i> Cập nhật</a>
                           <div class="dropdown-divider"></div>
@@ -109,6 +107,7 @@
                   </tr>
                   </tbody>
                 </table>
+                <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
               </div>
             </div>
           </form>
