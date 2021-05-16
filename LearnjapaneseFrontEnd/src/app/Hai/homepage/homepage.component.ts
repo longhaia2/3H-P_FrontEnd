@@ -15,14 +15,8 @@ import {ResultTop} from "../challenge/model/ResultTop";
   providers:[LessonServiceService, ExamserviceService,]
 })
 export class HomepageComponent implements OnInit {
-
-<<<<<<< HEAD
-  logName: string = null;
-=======
-
   logName: string=null;
   role: string=null;
->>>>>>> origin/main
   id: number;
   rt: ResultTop[];
   ls: Lesson[];
