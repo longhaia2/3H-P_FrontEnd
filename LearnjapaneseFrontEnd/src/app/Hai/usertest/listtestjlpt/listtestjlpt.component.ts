@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class ListtestjlptComponent implements OnInit {
   exam:Exam[];
+  role:string=null;
   p : number = 1;
   public logName:string;
   constructor(private examserve: ExamserviceService, private router: Router) { }
@@ -20,6 +21,8 @@ export class ListtestjlptComponent implements OnInit {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
     if(userName != null){
       this.logName = userName['username'];
+      this.role=userName['role'];
+
     }    this.examserve.getExamNew().subscribe(data=>{
       this.exam=data;
     })

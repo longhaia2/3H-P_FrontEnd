@@ -12,6 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class TestN2Component implements OnInit {
   exam: Exam[];
   logName: string;
+  role:string=null;
+
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
@@ -20,6 +22,8 @@ export class TestN2Component implements OnInit {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     if(userName != null){
       this.logName = userName['username'];
+      this.role=userName['role'];
+
     }    this.reloadData();
   }
   reloadData() {

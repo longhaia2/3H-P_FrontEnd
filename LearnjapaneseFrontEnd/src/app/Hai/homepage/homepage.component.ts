@@ -15,8 +15,6 @@ import {ResultTop} from "../challenge/model/ResultTop";
   providers:[LessonServiceService, ExamserviceService,]
 })
 export class HomepageComponent implements OnInit {
-
-
   logName: string=null;
   role: string=null;
   id: number;

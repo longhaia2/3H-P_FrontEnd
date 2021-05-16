@@ -30,6 +30,7 @@ export class TestjlptComponent implements OnInit {
   a: number=0;
   b: number=0;
   rs: Result;
+  role:string=null;
   dem = 0;
   selectedAS: string[];
   qs: Question[];
@@ -43,6 +44,8 @@ export class TestjlptComponent implements OnInit {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     if(userName != null){
       this.logName = userName['username'];
+      this.role=userName['role'];
+
     }    this.ex = new Exam();
     this.rs = new Result();
     this.ex = new Exam();
