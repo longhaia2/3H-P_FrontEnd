@@ -1,75 +1,82 @@
 
+<head>
+  <title>Đợi đối thủ</title>
+</head>
 <app-header></app-header>
-<app-menu [userNameDsp]="logName"></app-menu>
+<app-menu [userNameDsp]="logName" [role]="role"></app-menu>
 
 <main class="class">
   <div class="container">
     <!-- banner -->
     <div class="banner exam-banner9">
     </div>
-    <!-- class content-->
     <section class="class-content">
       <div class="row">
         <div class="col-md-8 col-12">
           <div class="class-left" style="background-color: cornflowerblue" >
             <div class="class-sectionTitle">
-              <span>PHÒNG CHỜ THI ĐẤU</span>
+             <div><span>PHÒNG CHỜ THI ĐẤU</span><button style="margin-left: 320px;" class="button" (click)="delete(id_u_scrore)" ><img src="../../../../assets/image/outroom.png" height="38" width="160"/></button>
+            </div>
+
             </div>
             <div class="test-list" >
-
-<!--              viết vòng lặp-->
-              <a *ngFor="let us of user, let i = index" >
+              <!--              viết vòng lặp-->
+              <a *ngFor="let us of GetUserByRoomAsc, let i = index" >
                 <a *ngFor="let rs of r_s" >
-                <div class="test-listItem" >
-                  <div class="content">
-                   <div *ngIf="us.id==rs.user_id" >
-                     <h6 class="title"  style="font-size: 16px;color: chartreuse;">Chủ phòng: {{us.username}}</h6>
-                     <button [disabled]="allReady" *ngIf="us.id==id_u_scrore"  (click)="start()" style="width: 200px;background-color: aquamarine;">Bắt đầu</button>
-                     <h2 style="color: aquamarine" > Mọi người hãy sẵn sàng để chiến nhé!!!</h2>
-                    </div>
-                    <div>
-                    <div *ngIf="(us.id!=rs.user_id)&& (us.id==id_u_scrore)">
-                      <h6 class="title" >{{us.username}} </h6>
-                      <div >Hãy sẵn sàng để thi đấu</div>
-                     <div (click)="startTrue(i);settrue()"><img *ngIf="!ready[i]" style="width: 180px;height: 40px; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
-                    <div (click)="startFalse(i);setfalse()" > <img *ngIf="ready[i]"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px; margin-top: 10px"/></div>
-                    </div>
-                      <div *ngIf="(us.id!=rs.user_id)&& (us.id!=id_u_scrore) ">
-                        <div>
-                        <h6 class="title" > {{us.username}} </h6>
-                        <div>
-                          <div *ngIf="i==0">
-                          <div style="font-size: 20px;color: chartreuse" *ngIf="(index==0)&&(check==1)" ><b>Đã sẵn sàng</b> </div>
-                          <div  style="font-size: 20px;color: chartreuse" *ngIf="(index==0)&&(check==0)" ><b>Chưa sẵn sàng </b></div>
-                          </div>
-                          <div *ngIf="i==1">
-                          <div style="font-size: 20px;color: chartreuse" *ngIf="(index1==1)&&(check1==1)" ><b>Đã sẵn sàng</b> </div>
-                          <div  style="font-size: 20px;color: chartreuse" *ngIf="(index1==1)&&(check1==0)" ><b>Chưa sẵn sàng </b></div>
-                          </div>
-                          <div *ngIf="i==2">
-                          <div style="font-size: 20px;color: chartreuse" *ngIf="(index2==2)&&(check2==1)" ><b>Đã sẵn sàng</b> </div>
-                          <div  style="font-size: 20px;color: chartreuse" *ngIf="(index2==2)&&(check2==0)"  ><b>Chưa sẵn sàng </b></div>
-                          </div>
-                          <div *ngIf="i==3">
-                          <div style="font-size: 20px;color: chartreuse" *ngIf="(index3==3)&&(check3==1)" ><b>Đã sẵn sàng</b> </div>
-                          <div  style="font-size: 20px;color: chartreuse" *ngIf="(index3==3)&&(check3==0)" ><b>Chưa sẵn sàng </b></div>
-                          </div>
+                  <div class="test-listItem" >
+                    <div class="content">
+                      <div *ngIf="us[0]==rs.user_id" >
+                       <h6 class="title"  style="font-size: 20px;color: chartreuse;">Chủ phòng: {{us[1]}} <b style="color: hotpink"> ❁◕ ‿ ◕❁</b></h6>
+
+                        <div *ngIf="!allReady"> <button [disabled]="allReady" *ngIf="us[0]==id_u_scrore"  class="button disabled " (click)="start()" >
+                          <img src="../../../../assets/image/batdau.png" height="38" width="160"/></button>
                         </div>
+                        <div *ngIf="allReady"> <button [disabled]="!allReady" *ngIf="us[0]==id_u_scrore"  class="button " (click)="start()">
+                          <img src="../../../../assets/image/batdau.png" height="38" width="160"/></button>
+                        </div>
+                        <!--                     <h2 style="color: aquamarine" > Mọi người hãy sẵn sàng để chiến nhé!!!</h2>-->
+                      </div>
+                      <div>
+                        <div *ngIf="(us[0]!=rs.user_id)&& (us[0]==id_u_scrore)">
+                          <h6 class="title" >{{us[1]}} </h6>
+                          <div >Hãy sẵn sàng để thi đấu</div>
+                          <div (click)="startTrue(i);settrue()"><img *ngIf="!ready[i]" style="width: 180px;height: 40px;cursor: pointer;; margin-top: 10px" src="../../../../assets/image/ss-btn.png"></div>
+                          <div (click)="startFalse(i);setfalse()" > <img *ngIf="ready[i]"  src="../../../../assets/image/da-btn.png" style="width: 180px;height: 40px;cursor: pointer; margin-top: 10px"/></div>
+                        </div>
+                        <div *ngIf="(us[0]!=rs.user_id)&& (us[0]!=id_u_scrore) ">
+                          <div>
+                            <h6 class="title" > {{us[1]}} </h6>
+                            <div>
+                              <div *ngIf="i==0">
+                                <div style="font-size: 20px;color: chartreuse" *ngIf="(index==0)&&(check==1)" ><b >Đã sẵn sàng</b> </div>
+                                <div  style="font-size: 20px;color: chartreuse" *ngIf="(index==0)&&(check==0)" ><b>Chưa sẵn sàng </b></div>
+                              </div>
+                              <div *ngIf="i==1">
+                                <div style="font-size: 20px;color: chartreuse" *ngIf="(index1==1)&&(check1==1)" ><b>Đã sẵn sàng</b> </div>
+                                <div  style="font-size: 20px;color: chartreuse" *ngIf="(index1==1)&&(check1==0)" ><b>Chưa sẵn sàng </b></div>
+                              </div>
+                              <div *ngIf="i==2">
+                                <div style="font-size: 20px;color: chartreuse" *ngIf="(index2==2)&&(check2==1)" ><b>Đã sẵn sàng</b> </div>
+                                <div  style="font-size: 20px;color: chartreuse" *ngIf="(index2==2)&&(check2==0)"  ><b>Chưa sẵn sàng </b></div>
+                              </div>
+                              <div *ngIf="i==3">
+                                <div style="font-size: 20px;color: chartreuse" *ngIf="(index3==3)&&(check3==1)" ><b>Đã sẵn sàng</b> </div>
+                                <div  style="font-size: 20px;color: chartreuse" *ngIf="(index3==3)&&(check3==0)" ><b>Chưa sẵn sàng </b></div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </a>
-              </a>
-            </div>
             </div>
           </div>
+        </div>
         <app-sidebar></app-sidebar>
       </div>
     </section>
   </div>
 </main>
 <app-footer></app-footer>
-
-

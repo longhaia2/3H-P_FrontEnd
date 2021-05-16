@@ -9,8 +9,7 @@ import {Title} from "@angular/platform-browser";
 export class StudyAlphabetComponent implements OnInit {
   public logName:string;
 
-  constructor(private title: Title) {
-    this.title.setTitle("Học Chữ Cái");
+  constructor() {
   }
 
   ngOnInit(): void {

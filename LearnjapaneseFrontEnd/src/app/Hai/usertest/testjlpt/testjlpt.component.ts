@@ -25,6 +25,7 @@ export interface DialogData {
 })
 export class TestjlptComponent implements OnInit {
   logName: string;
+  p:number=1;
   ex: Exam;
   a: number=0;
   b: number=0;
@@ -109,7 +110,8 @@ export class TestjlptComponent implements OnInit {
     }
       // @ts-ignore
     const x = setInterval(()=> {
-      if (currentTime > targetTime) {
+      // @ts-ignore
+      if (Math.floor(((targetTime - currentTime)/1000))<2) {
         clearInterval(x);
         for (let i = 0; i < this.qs.length; i++) {
           if (this.qs[i].ansCorrect === this.selectedAS[i]) {

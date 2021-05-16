@@ -39,6 +39,13 @@ export class ChallengeServiceService {
   updateRoom(id_score, data): Observable<any> {
     return this.http.put(`${'http://localhost:8080/challenge/update-room'}/${id_score}`, data);
   }
+  updateRoomExam(id_score, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/challenge/update-roomexam'}/${id_score}`, data);
+  }
+
+  updateMember(id_score, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/challenge/update-member'}/${id_score}`, data);
+  }
 
   getOneUserByRoom(room_id, id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/challenge/user-room'}/${room_id}/${id}`);

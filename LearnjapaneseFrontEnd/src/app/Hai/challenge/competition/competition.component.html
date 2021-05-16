@@ -40,7 +40,7 @@
                 <div class="card-body">
                   <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                   <div class="justify-content-md-center" *ngIf="!showExplanation">
-                    <div class="row" *ngFor="let qs of questions; let i = index " value="{{qs}}">
+                    <div class="row" *ngFor="let qs of questions; let i = index ">
                       <div class="row"  *ngIf="!quizOver && i == currentIndex">
                         <div class="quiz"  class="container mt-5" >
                           <h3 style="text-align: center"  >
@@ -71,7 +71,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row justify-content-md-center" *ngIf="showExplanation">
+                  <div *ngFor="let us of user , let q= index" >
+                  <div class="row justify-content-md-center" *ngIf="showExplanation&&us.id==id_u_scrore">
                     <div class="col-sm-12 col-lg-8">
                       <div class="alert alert-danger" *ngIf="!hasAnsweredCorrectly" role="alert">
                         Bạn trả lời sai rồi, Đúng là đáp án:
@@ -89,22 +90,24 @@
                       <button
                         class="btn btn-block btn-info cursor-restriction"
                         style="margin-top: 24px"
-                        (click)="nextQuestion()"
+                        (click)="nextQuestion(q)"
                       >
                         <span *ngIf="currentIndex < questions.length">Câu hỏi tiếp theo!</span>
                         <span *ngIf="currentIndex == questions.length" (click)="end()">Kết thúc!!</span>
                       </button>
                     </div>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
-
             <!-- QUIZ OVER -->
             <div class="container mt-5" *ngIf="quizOver">
               <app-endcompetition
                 [questions]="questions"
                 [correctAnswers]="correctAnswers"
+                [id_room]="id_room"
+                [userScore]="userScore"
               ></app-endcompetition>
             </div>
           </div>
@@ -120,7 +123,22 @@
                   <a *ngFor="let us of userScore , let q= index" >
                     <div class="test-listItem" style="margin-left: -30px; width: 97%;">
                       <div class="content">
-                        <h5 class="title" >{{q+1}}. <span  > {{us[0]}} {{us[1]}} {{us[3]}} {{us[4]}}</span></h5>
+                        <div *ngIf="q==0">
+                        <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                        <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
+                        </div>
+                        <div *ngIf="q==1">
+                          <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                          <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
+                        </div>
+                        <div *ngIf="q==2">
+                          <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                          <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
+                        </div>
+                        <div *ngIf="q==3">
+                          <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                          <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
+                        </div>
                       </div>
                     </div>
                   </a>

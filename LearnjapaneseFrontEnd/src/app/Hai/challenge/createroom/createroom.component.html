@@ -1,7 +1,9 @@
-
+<head>
+  <title>Tạo phòng chiến</title>
+</head>
 <body>
 <app-header></app-header>
-<app-menu [userNameDsp]="logName"></app-menu>
+<app-menu [userNameDsp]="logName" [role]="role"></app-menu>
 <main class="class">
   <div class="container">
     <!-- banner -->
@@ -57,9 +59,9 @@
                   <tr>
                     <th>
                         <select [(ngModel)]="cl.time" class="form-control" name="classID" id="classid">
-                          <option value="5" >5 Phút</option>
-                          <option value="10" >10 Phút</option>
-                          <option value="15" >15 Phút</option>
+                          <option value=5 >5 Phút</option>
+                          <option value=10 >10 Phút</option>
+                          <option value=15 >15 Phút</option>
                         </select>
                     </th>
                   </tr>
