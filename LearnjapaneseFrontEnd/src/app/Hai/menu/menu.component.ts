@@ -18,11 +18,6 @@ import {ServiceService} from "../service.service";
 export class MenuComponent implements OnInit {
   Users: User;
   id_user:number;
-<<<<<<< HEAD
-=======
-  test:string=null;
-
->>>>>>> origin/main
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
   @Input('role') role;
