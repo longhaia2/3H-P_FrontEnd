@@ -27,6 +27,10 @@ export class MenuComponent implements OnInit {
   constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router,private service: ServiceService) { }
   us : User[];
   ngOnInit(): void {
+    let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
+    if(id_score!=null) {
+      this.id_user = id_score['userId'];
+    }
   }
 
 
