@@ -20,6 +20,7 @@ export class ResultVocabularyComponent implements OnInit {
   rs: Result = new Result();
   logName: string;
   check: boolean;
+  role: string = null;
 
   constructor(private service: ReviewService, private reviewService: ReviewService, private  route: ActivatedRoute) {
   }
@@ -27,7 +28,11 @@ export class ResultVocabularyComponent implements OnInit {
   ngOnInit(): void {
 
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
+    if (userName != null){
+      this.logName = userName ['username'];
+      this.role = userName['role'];
+    }
+
     this.ex = new Exam();
     this.rs = new Result();
     this.qs = this.route.snapshot.params.id;
