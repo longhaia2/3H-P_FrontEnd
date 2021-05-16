@@ -10,6 +10,10 @@ import {ServicebtService} from '../../../Service/servicebt.service';
 import {interval, Subscription} from "rxjs";
 import {ChatService} from "../../Service/chat.service";
 import {DOCUMENT} from "@angular/common";
+import {GetUserByRoomAsc} from "../model/GetUserByRoomAsc";
+import {DialogServiceService} from "../../../Thuan/service/dialog-service.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogExitRoomComponent} from "../dialog-exit-room/dialog-exit-room.component";
 
 @Component({
   selector: 'app-waitlchallenge',
@@ -28,6 +32,7 @@ export class WaitlchallengeComponent implements OnInit {
   id_u_scrore: number;
   selectedAS: string[];
   user: User[];
+  GetUserByRoomAsc:GetUserByRoomAsc[];
   users: User = new User();
   id: number;
   id_r: number;
@@ -45,20 +50,22 @@ export class WaitlchallengeComponent implements OnInit {
   index3:number=3;
   Test:number=0;
 
-  constructor(private chat: ChatService, private  lessonServiceService: ServicebtService, private service: ServiceService, private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
+  constructor(private dialog: MatDialog,private dialogService: DialogServiceService,private chat: ChatService
+              , private  lessonServiceService: ServicebtService, private service: ServiceService
+              , private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
               private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
-    // this.title.setTitle("Đợi Đối Thử");
   }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
     this.logName = userName['username'];
     this.id = this.route.snapshot.params['id'];
-    this.service.get(this.id).subscribe(data => {
-      this.user = data;
-      this.selectedAS = new Array(this.user.length);
-      this.ready = new Array(this.user.length);
-      for (let i = 0; i <= this.user.length; i++) {
+    this.service.GetUserByRoomAsc(this.id).subscribe(data => {
+      console.log(data);
+      this.GetUserByRoomAsc = data;
+      this.selectedAS = new Array(this.GetUserByRoomAsc.length);
+      this.ready = new Array(this.GetUserByRoomAsc.length);
+      for (let i = 0; i <= this.GetUserByRoomAsc.length; i++) {
         this.ready[i] = false;
       }
       this.allReady = false;
@@ -297,6 +304,49 @@ export class WaitlchallengeComponent implements OnInit {
       this.challengeServiceService.updateStatus(Element.id, this.room_user).subscribe(data => {
       }, error => console.log(error));
     });
+  }
 
+  delete(id: number) {
+    const confirmDialog = this.dialog.open(DialogExitRoomComponent, {
+      data: {
+        title: 'Confirm Remove Employee',
+        message: 'Bạn muốn rời phòng thật sao (◕︵◕) ? '
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result == true) {
+        this.service.getUsersRoomList(this.id_r).subscribe(data => {
+          this.r_s_1 = data;
+         this.r_s_1.forEach(Element=>{
+           if(Element.user_id==id&&Element.banker==1){
+             this.r_s_1[1].banker=1;
+             this.room_user.banker=this.r_s_1[1].banker;
+             this.challengeServiceService.updateMember(this.r_s_1[1].id,this.room_user).subscribe(data=>{
+               this.service.delete(Element.id).subscribe(
+                 data => {
+                   return  this.router.navigate(['listchalenge']);
+                 });
+             })
+           }
+           else if(Element.user_id==id){
+             this.service.delete(Element.id).subscribe(
+               data => {
+                 this.router.navigate(['listchalenge']);
+               });
+           }
+           }
+          )
+
+
+        })
+      }
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  private reloadData() {
+    // this.questionService.findAll().subscribe(data => {
+    //   this.question = data;
+    // });
   }
 }

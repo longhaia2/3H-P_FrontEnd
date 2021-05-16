@@ -8,6 +8,7 @@ import {DialogComponent} from '../../Thuan/dialog/dialog.component';
 import {DialogServiceService} from '../../Thuan/service/dialog-service.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ToastrService} from 'ngx-toastr';
+import {ExamService} from "../servicesh/exam.service";
 
 // @ts-ignore
 @Component({
@@ -23,6 +24,7 @@ export class ListquestionComponent implements OnInit {
   logName: String;
   id: number;
   question: Question[];
+  EX_QS:ExamService[];
   constructor(private questionService: QuestionServiceService, private route: ActivatedRoute, private router: Router,
               private dialogService: DialogServiceService,
               private dialog: MatDialog, private tsv: ToastrService) { }
@@ -40,6 +42,7 @@ export class ListquestionComponent implements OnInit {
     });
   }
   delete(id: number) {
+    console.log(id);
     const confirmDialog = this.dialog.open(DialogComponent, {
       data: {
         title: 'Confirm Remove Employee',

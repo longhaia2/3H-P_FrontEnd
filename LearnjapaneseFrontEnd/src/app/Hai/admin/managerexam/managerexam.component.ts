@@ -16,7 +16,7 @@ export class ManagerexamComponent implements OnInit {
   hocphan;
   trinhdo;
   searchText;
-
+  id:number;
   logName: string;
 
   ex:Exam[];
@@ -26,6 +26,10 @@ export class ManagerexamComponent implements OnInit {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     this.logName = userName['username'];
   this.list();
+    this.id=this.route.snapshot.params['id'];
+    this.examserviceService.get(this.id).subscribe(data=>{
+      this.ex=data
+    },error => console.log(error));
 
   }
   list(){
