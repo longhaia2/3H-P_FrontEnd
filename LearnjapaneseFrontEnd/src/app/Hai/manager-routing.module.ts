@@ -77,10 +77,6 @@ import {N4NguphapOntapComponent} from "./study/study-n4/n4-nguphap-ontap/n4-ngup
 import {N4TuvungOntapComponent} from "./study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component";
 import {N5NguphapOntapComponent} from "./study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component";
 import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component";
-
-
-
-
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},

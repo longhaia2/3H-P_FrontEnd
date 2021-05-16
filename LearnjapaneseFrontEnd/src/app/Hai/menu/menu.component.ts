@@ -21,12 +21,28 @@ export class MenuComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp: string;
 
+  constructor( public dialog: MatDialog,  private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) {
 
-  constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) { }
+  }
+
+
+  refreshPage() {
+    window.location.reload();
+  }
   us : User[];
   ngOnInit(): void {
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.id_user = id_score['userId'];
+    if(id_score != null){
+      this.id_user = id_score['userId'];
+    }
+
+    //
+    // if (localStorage.getItem('refreshed') === null) {
+    //   localStorage['refreshed'] = true;
+    //   window.location.reload(true);
+    // } else {
+    //   localStorage.removeItem('refreshed');
+    // }
   }
 
 
@@ -36,6 +52,7 @@ export class MenuComponent implements OnInit {
 
   score() {
    this.router.navigate(['score'])
+
 
   }
 

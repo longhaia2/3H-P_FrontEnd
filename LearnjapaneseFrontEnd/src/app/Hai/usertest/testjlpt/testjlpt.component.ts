@@ -40,8 +40,9 @@ export class TestjlptComponent implements OnInit {
   ngOnInit(): void {
 
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
-    this.ex = new Exam();
+    if(userName != null){
+      this.logName = userName['username'];
+    }    this.ex = new Exam();
     this.rs = new Result();
     this.ex = new Exam();
     let levelCurent = this.route.snapshot.params['level'];
@@ -67,8 +68,6 @@ export class TestjlptComponent implements OnInit {
     });
 
   }
-
-
   addResult(idResult){
     for (let i = 0; i < this.qs.length; i++) {
       if (this.qs[i].ansCorrect === this.selectedAS[i]) {
@@ -86,15 +85,11 @@ export class TestjlptComponent implements OnInit {
       this.router.navigate(['resultsgrammar/', idResult, this.rs.exam_id]);
     });
   }
-
-
   selectAt(index, value) {
     console.log("index: " + index + " -- value: " + value);
     this.selectedAS[index] = value;
   }
   local(){
-
-
     let minutes = 2;
     let currentTime = localStorage.getItem('currentTime');
     let targetTime = localStorage.getItem('targetTime');
@@ -113,14 +108,23 @@ export class TestjlptComponent implements OnInit {
       targetTime = new Date(targetTime);
     }
       // @ts-ignore
-    this.x= setInterval(()=> {
-      // @ts-ignore
-      if(Math.floor(((targetTime-currentTime)/1000)%60)<1){
+    const x = setInterval(()=> {
+      if (currentTime > targetTime) {
+        clearInterval(x);
+        for (let i = 0; i < this.qs.length; i++) {
+          if (this.qs[i].ansCorrect === this.selectedAS[i]) {
+            this.dem++;
+          }
+        }
+        this.rs.score = this.dem;
+        let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
+        this.rs.user_id = user_id.userId;
+        this.rs.exam_id = this.route.snapshot.params.id;
+        this.rs.ansSelects = this.selectedAS;
+        this.openDialog();
         // @ts-ignore
-
-        clearInterval(this.x);
-       document.getElementById('timer').innerHTML='Hết giờ';
-       return this.openDialog();
+        targetTime=0;
+        return localStorage.setItem('targetTime', targetTime);
      }
 
        else {

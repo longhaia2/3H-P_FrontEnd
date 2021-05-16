@@ -35,7 +35,10 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
+    if(userName != null){
+      this.logName = userName['username'];
+    }
+   //
     this.reloadData();
     this.list();
     this.ListtopHigh()

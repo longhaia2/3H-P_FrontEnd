@@ -132,6 +132,7 @@ import { N4NguphapOntapComponent } from './Hai/study/study-n4/n4-nguphap-ontap/n
 import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component';
 import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
 import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
+import {NgxAudioPlayerModule} from "ngx-audio-player";
 
 
 
@@ -273,7 +274,8 @@ import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgxAudioPlayerModule
   ],
   entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent],
   providers: [authInterceptorProviders, Title, ChatService, WebsocketService],
