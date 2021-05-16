@@ -20,8 +20,9 @@ export class TestN4Component implements OnInit {
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
-    this.reloadData();
+    if(userName != null){
+      this.logName = userName['username'];
+    }       this.reloadData();
   }
   reloadData() {
     this.examService.findBylevelCodeExam("N4").subscribe(data => {

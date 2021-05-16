@@ -18,8 +18,9 @@ export class ListtestjlptComponent implements OnInit {
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.logName = userName['username'];
-    this.examserve.getExamNew().subscribe(data=>{
+    if(userName != null){
+      this.logName = userName['username'];
+    }    this.examserve.getExamNew().subscribe(data=>{
       this.exam=data;
     })
   }

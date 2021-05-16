@@ -129,6 +129,7 @@ import { N4NguphapOntapComponent } from './Hai/study/study-n4/n4-nguphap-ontap/n
 import { N4TuvungOntapComponent } from './Hai/study/study-n4/n4-tuvung-ontap/n4-tuvung-ontap.component';
 import { N5NguphapOntapComponent } from './Hai/study/study-n5/n5-nguphap-ontap/n5-nguphap-ontap.component';
 import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component';
+import {NgxAudioPlayerModule} from "ngx-audio-player";
 import { ExamDetailComponent } from './Hai/admin/managerexam/exam-detail/exam-detail.component';
 import { ListQuestionByExamComponent } from './Hai/admin/managerexam/list-question-by-exam/list-question-by-exam.component';
 import { DialogExitRoomComponent } from './Hai/challenge/dialog-exit-room/dialog-exit-room.component';
@@ -273,7 +274,8 @@ import { DialogExitRoomComponent } from './Hai/challenge/dialog-exit-room/dialog
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgxAudioPlayerModule
   ],
   entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent,DialogExitRoomComponent],
   providers: [authInterceptorProviders, Title, ChatService, WebsocketService],

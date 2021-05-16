@@ -78,10 +78,6 @@ import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung
 import {ExamDetailComponent} from "./admin/managerexam/exam-detail/exam-detail.component";
 import {ListQuestionByExamComponent} from "./admin/managerexam/list-question-by-exam/list-question-by-exam.component";
 
-
-
-
-
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'page-home'},
   {path: 'page-home', component: HomepageComponent, data:{ title: 'Trang Chủ'}},

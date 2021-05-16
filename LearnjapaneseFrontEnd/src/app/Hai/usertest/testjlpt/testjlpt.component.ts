@@ -41,8 +41,9 @@ export class TestjlptComponent implements OnInit {
   ngOnInit(): void {
 
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
-    this.ex = new Exam();
+    if(userName != null){
+      this.logName = userName['username'];
+    }    this.ex = new Exam();
     this.rs = new Result();
     this.ex = new Exam();
     let levelCurent = this.route.snapshot.params['level'];
@@ -68,8 +69,6 @@ export class TestjlptComponent implements OnInit {
     });
 
   }
-
-
   addResult(idResult){
     for (let i = 0; i < this.qs.length; i++) {
       if (this.qs[i].ansCorrect === this.selectedAS[i]) {
@@ -87,15 +86,11 @@ export class TestjlptComponent implements OnInit {
       this.router.navigate(['resultsgrammar/', idResult, this.rs.exam_id]);
     });
   }
-
-
   selectAt(index, value) {
     console.log("index: " + index + " -- value: " + value);
     this.selectedAS[index] = value;
   }
   local(){
-
-
     let minutes = 2;
     let currentTime = localStorage.getItem('currentTime');
     let targetTime = localStorage.getItem('targetTime');
@@ -113,7 +108,7 @@ export class TestjlptComponent implements OnInit {
       // @ts-ignore
       targetTime = new Date(targetTime);
     }
-// @ts-ignore
+      // @ts-ignore
     const x = setInterval(()=> {
       // @ts-ignore
       if (Math.floor(((targetTime - currentTime)/1000))<2) {
@@ -132,7 +127,9 @@ export class TestjlptComponent implements OnInit {
         // @ts-ignore
         targetTime=0;
         return localStorage.setItem('targetTime', targetTime);
-      } else {
+     }
+
+       else {
         // @ts-ignore
         currentTime = new Date();
         // @ts-ignore
