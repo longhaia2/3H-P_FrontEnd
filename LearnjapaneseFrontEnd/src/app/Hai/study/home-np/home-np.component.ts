@@ -12,7 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class HomeNpComponent implements OnInit {
   id:number;
   ls: Lesson=new Lesson();
-  logName: String;
+  logName: string = null;
+  role : string = null;
 
 
   constructor(private lessonService: LessonServiceService, private  route: ActivatedRoute,
@@ -21,8 +22,10 @@ export class HomeNpComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
-
+    if(userName != null){
+      this.logName = userName['username'];
+      this.role = userName['role'];
+    }
     this.lessonService.get(this.id).subscribe(data=>{
       this.ls = data
     }, error => console.log(error));

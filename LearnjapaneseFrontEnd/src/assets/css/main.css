@@ -1132,6 +1132,20 @@ width: 300px;
   align-items: center;
   margin-bottom: 1rem;
 }
+.exam-banner00{
+  background-image: url("../image/banner-lesson/Capture.PNG");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 350px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+
+}
 .exam-banner1{
   background-image: url("../image/banner-lesson/banner-study-N1.jpg");
   background-position: center;
