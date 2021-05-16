@@ -16,7 +16,7 @@ export class TestN2Component implements OnInit {
 
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
-              private router: Router) { }git
+              private router: Router) { }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
