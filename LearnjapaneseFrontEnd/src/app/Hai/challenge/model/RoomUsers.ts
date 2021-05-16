@@ -5,5 +5,6 @@ export class RoomUsers {
   score : number;
   banker: number;
   status: number;
+  exam_id:number;
 
 }

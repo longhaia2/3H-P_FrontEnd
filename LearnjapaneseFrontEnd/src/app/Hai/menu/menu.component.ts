@@ -5,30 +5,42 @@ import {User} from "../../Manh/modelm/user";
 import {ConfirmLogoutComponent} from '../../Hien/confirm-logout/confirm-logout.component';
 import {ToastrService} from 'ngx-toastr';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {ServiceService} from "../service.service";
 
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
-  providers: [ToastrService, TokenStorageService]
+  providers: [ToastrService, TokenStorageService,ServiceService]
 
 })
 export class MenuComponent implements OnInit {
-  Users: User[];
+  Users: User;
   id_user:number;
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
+  @Input('role') role;
 
-  constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) { }
+  constructor( public dialog: MatDialog,  private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) {
+
+  }
+
+
+  refreshPage() {
+    window.location.reload();
+  }
   us : User[];
   ngOnInit(): void {
 
     console.log(this.userNameDsp + '--- log user') ;
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.id_user = id_score['userId'];
-  }
+    if(id_score != null){
+      this.id_user = id_score['userId'];
+    }
 
+
+  }
 
   logout(){
     this.dialog.open(ConfirmLogoutComponent);
@@ -36,6 +48,7 @@ export class MenuComponent implements OnInit {
 
   score() {
    this.router.navigate(['score'])
+
 
   }
 

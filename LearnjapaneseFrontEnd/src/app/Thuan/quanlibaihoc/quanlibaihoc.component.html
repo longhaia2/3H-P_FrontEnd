@@ -45,7 +45,7 @@
                     <option value="0">Tùy chọn</option>
                     <option value="Từ Vựng">Từ vựng</option>
                     <option value="Ngữ Pháp">Ngữ pháp</option>
-                    <option value="Đề JPLT">Đề JPLT</option>
+                    <option value="Đề JLPT">Đề JPLT</option>
                     <option value="Thử Thách">Đề Thử Thách Cùng Nhau</option>
                   </select>
                 </div>
@@ -100,7 +100,7 @@
                 </tr>
                 </thead>
                 <tbody >
-                <tr *ngFor="let lesson of ls |filter: hocphan|filter: trinhdo| paginate:{itemsPerPage:6, currentPage:p};let i=index">
+                <tr *ngFor="let lesson of ls |filter: hocphan|filter: trinhdo| paginate:{itemsPerPage:8, currentPage:p};let i=index">
                   <td>{{i+1}}</td>
                   <td >{{lesson.lesson}}</td>
                   <td >{{lesson.term}}</td>

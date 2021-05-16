@@ -13,14 +13,19 @@ import {Exam} from "../../admin/model/Exam";
 export class TestN5Component implements OnInit {
   exam: Exam[];
   logName: string;
+  role:string=null;
+
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
-    this.reloadData();
+    if(userName != null){
+      this.logName = userName['username'];
+      this.role=userName['role'];
+
+    }    this.reloadData();
   }
   reloadData() {
     this.examService.findBylevelCodeExam("N5").subscribe(data => {
