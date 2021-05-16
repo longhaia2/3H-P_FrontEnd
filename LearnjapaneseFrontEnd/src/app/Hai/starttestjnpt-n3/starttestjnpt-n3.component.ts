@@ -19,7 +19,9 @@ export class StarttestjnptN3Component implements OnInit {
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
+    if(userName != null){
+      this.logName = userName['username'];
+    }
     this.id=this.route.snapshot.params['id'];
     this.examService.get(this.id).subscribe(data=>{
       this.ex=data

@@ -19,7 +19,9 @@ export class TestN3Component implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
+    if(userName != null){
+      this.logName = userName['username'];
+    }   this.reloadData();
   }
   reloadData() {
     this.examService.findBylevelCodeExam("N3").subscribe(data => {
