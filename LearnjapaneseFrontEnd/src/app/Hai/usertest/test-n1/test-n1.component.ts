@@ -13,7 +13,7 @@ export class TestN1Component implements OnInit {
   exam : Exam[];
   role:string=null;
 
-  logName: string
+  logName: string;
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
