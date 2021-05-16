@@ -22,16 +22,11 @@ export class MenuComponent implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
+  @Input('role') role;
 
   constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router,private service: ServiceService) { }
   us : User[];
   ngOnInit(): void {
-    let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.id_user = id_score['userId'];
-    this.service.getUserNow(this.id_user).subscribe(data=>{
-      this.Users=data;
-      this.test=this.Users.username;
-    })
   }
 
 
