@@ -3,7 +3,7 @@ import {ServiceService} from '../../service.service';
 import {RoomChallenge} from '../model/RoomChallenge';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RoomUsers} from '../model/RoomUsers';
-import {Title} from '@angular/platform-browser';
+import {Title} from "@angular/platform-browser";
 import {User} from "../../../Manh/modelm/user";
 import {ChallengeServiceService} from '../../Service/challenge-service.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -30,8 +30,7 @@ export class ListchallengeComponent implements OnInit {
   user_test: number;
   resultAS:  string[];
   room_id :any;
-  public logName: string=null;
-  role: string=null;
+  public logName: string;
   p : number = 1;
   id: number;
   challenge: RoomChallenge[];
@@ -47,11 +46,7 @@ export class ListchallengeComponent implements OnInit {
     this.cl = new RoomChallenge();
     this.room_user = new RoomUsers();
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    if(userName!=null){
-      this.logName = userName['username'];
-      this.role=userName['role'];
-    }
-
+    this.logName = userName['username'];
     let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
     this.user_test =user_id['userId'];
     this.room_user.user_id = user_id['userId'];

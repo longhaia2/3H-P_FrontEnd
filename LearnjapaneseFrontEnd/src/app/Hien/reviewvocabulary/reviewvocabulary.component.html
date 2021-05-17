@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
   <title>Ôn tập từ vựng</title>
 </head>
 <body>
 <app-header></app-header>
-<app-menu [userNameDsp]="logName" [role]="role"></app-menu>
+<app-menu [userNameDsp]="logName"></app-menu>
 <h1 align="center" style="color: #151414; font-size: x-large"> Ôn tập từ vựng bài 1</h1>
 <div class="form" *ngFor="let review of qs; let i = index; let j = index" value="{{review}}">
   <input type="text" style="font-size: 30px" name="values" autocomplete="off" required

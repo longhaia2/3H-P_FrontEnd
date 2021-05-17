@@ -8,14 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class StudyN2Component implements OnInit {
 
   constructor() { }
-  logName: string = null;
-  role: string = null;
+  logName: string;
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role = userName['role'];
-    }
+    this.logName = userName['username'];
   }
 
 }

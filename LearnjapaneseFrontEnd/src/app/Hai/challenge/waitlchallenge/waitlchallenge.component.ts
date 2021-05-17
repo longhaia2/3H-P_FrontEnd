@@ -231,8 +231,8 @@ export class WaitlchallengeComponent implements OnInit {
           if (Element.room_id == this.room.room_id) {
             if (this.check == this.room.room_id) {
               if (this.room.level == 'N5' && this.room.time == 5) {
-                this.router.navigate(['/question/N55TT/challenge/',68, this.room.room_id, this.id_u_scrore]);
-                this.room_user.exam_id=68;
+                this.router.navigate(['/question/N55TT/challenge/',53, this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=53;
                 this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
               }
               if (this.room.level == 'N5' && this.room.time == 10) {
