@@ -6,16 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./study-n4.component.css']
 })
 export class StudyN4Component implements OnInit {
-  logName: string = null;
-  role: string = null
+  logName: string;
   constructor() { }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role = userName['role'];
-    }
+    this.logName = userName['username'];
   }
 
 }

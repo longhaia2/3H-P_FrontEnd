@@ -14,18 +14,15 @@ export class HistoryResultComponent implements OnInit {
   rs: ResultByID[];
   logName: string;
   idNow:number;
-  role: string = null;
 
   constructor(private scoresv: ScoreService) { }
 
   ngOnInit(): void {
+    console.log(sessionStorage.getItem('auth-user'));
 
-    let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if (userName != null){
-      this.logName = userName ['username'];
-      this.role = userName['role'];
-    }
-
+    const user = JSON.parse(sessionStorage.getItem('auth-user'));
+    const username = user.username;
+    this.logName = username;
     let idScore = JSON.parse(sessionStorage.getItem("auth-user"));
     this.idNow = idScore['userId'];
 
@@ -40,7 +37,7 @@ export class HistoryResultComponent implements OnInit {
     //   this.rs = [...data.dataResponse];
     //   console.log(this.rs.length);
     // });
-    this.scoresv.GetResultById(userName).subscribe(data => {
+    this.scoresv.GetResultById(username).subscribe(data => {
       console.log(data);
       this.rs = data.dataResponse;
       console.log(this.rs);

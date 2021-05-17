@@ -38,7 +38,6 @@ io.on("connection", socket => {
     });
     socket.on("st2", message => {
         io.emit("st2",message );
-        console.log(message);
     });
 });
 io.on("connection", socket => {
@@ -46,7 +45,6 @@ io.on("connection", socket => {
     });
     socket.on("st3", message => {
         io.emit("st3",message );
-        console.log(message);
     });
 });
 io.on("connection", socket => {

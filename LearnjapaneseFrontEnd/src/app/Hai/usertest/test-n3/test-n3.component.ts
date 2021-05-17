@@ -12,7 +12,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class TestN3Component implements OnInit {
   exam: Exam[];
   logName: string;
-  role:string=null;
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
@@ -20,11 +19,7 @@ export class TestN3Component implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role=userName['role'];
-
-    }   this.reloadData();
+    this.logName = userName['username'];
   }
   reloadData() {
     this.examService.findBylevelCodeExam("N3").subscribe(data => {

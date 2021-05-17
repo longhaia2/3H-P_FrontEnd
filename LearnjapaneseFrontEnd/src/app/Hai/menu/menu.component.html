@@ -29,9 +29,8 @@
         <div class="col-md-4 col-12">
           <div  class="menu-right">
             <div *ngIf="userNameDsp==null; else elseBlock">
-              <div> <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP </a></div>
+              <div> <a class=" btn-login" id="link-login" [routerLink]="['/login']">ĐĂNG NHẬP</a></div>
             </div>
-          </div>
             <ng-template #elseBlock>
               <div  class="menu-right">
               <table >
@@ -62,6 +61,7 @@
 
           </div>
         </div>
+      </div>
     </nav>
   </div>
 </div>
