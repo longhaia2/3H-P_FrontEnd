@@ -25,7 +25,7 @@
             <tr *ngFor="let exs of ex; index as i">
 
               <td style="font-size: 15px;cursor:pointer; color: black;width: 550px" class="item1" [routerLink]="['/study/',exs.level,'tuvung','ontap',exs.codeExam, exs.id]">
-                <span class="label1">Phần {{i+1}} : {{exs.codeExam}}</span></td>
+                <span class="label1">Phần {{i+1}} : {{exs.content}}</span></td>
             </tr>
 
           </div>
