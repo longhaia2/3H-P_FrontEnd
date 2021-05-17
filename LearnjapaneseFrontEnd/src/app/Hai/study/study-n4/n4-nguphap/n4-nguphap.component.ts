@@ -11,8 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class N4NguphapComponent  implements OnInit {
   ls: Lesson[];
-  role: string = null;
-  logName: string= null;
+  logName: string;
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
               private router: Router) {
   }
@@ -20,10 +19,7 @@ export class N4NguphapComponent  implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role = userName['role'];
-    }
+    this.logName = userName['username'];
   }
 
   reloadData() {

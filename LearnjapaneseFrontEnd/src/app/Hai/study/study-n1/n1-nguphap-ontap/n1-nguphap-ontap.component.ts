@@ -13,8 +13,7 @@ import {Exam} from "../../../admin/model/Exam";
 })
 export class N1NguphapOntapComponent  implements OnInit {
   ex: Exam[];
-  logName: String = null;
-  role: string = null;
+  logName: String;
 
   constructor(private examservice: ExamserviceService, private route: ActivatedRoute,
               private router: Router) {
@@ -23,10 +22,7 @@ export class N1NguphapOntapComponent  implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role = userName['role'];
-    }
+    this.logName = userName['username'];
   }
 
   reloadData() {

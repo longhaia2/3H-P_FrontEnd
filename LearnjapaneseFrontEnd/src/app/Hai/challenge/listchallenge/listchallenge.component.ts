@@ -30,8 +30,7 @@ export class ListchallengeComponent implements OnInit {
   user_test: number;
   resultAS:  string[];
   room_id :any;
-  public logName: string=null;
-  role: string=null;
+  public logName: string;
   p : number = 1;
   id: number;
   challenge: RoomChallenge[];
@@ -47,11 +46,7 @@ export class ListchallengeComponent implements OnInit {
     this.cl = new RoomChallenge();
     this.room_user = new RoomUsers();
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    if(userName!=null){
-      this.logName = userName['username'];
-      this.role=userName['role'];
-    }
-
+    this.logName = userName['username'];
     let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
     this.user_test =user_id['userId'];
     this.room_user.user_id = user_id['userId'];
@@ -93,6 +88,7 @@ export class ListchallengeComponent implements OnInit {
   }
   add(idRoom) {
     this.chat.send_idRoom(idRoom);
+    this.chat.send_id_out(this.user_test);
     this.room_user.room_id = idRoom;
     this.room_user.score = 0;
     this.room_user.banker=0;

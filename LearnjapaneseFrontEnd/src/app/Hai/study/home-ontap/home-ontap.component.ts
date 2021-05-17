@@ -14,8 +14,7 @@ import {Exam} from "../../admin/model/Exam";
 export class HomeOntapComponent implements OnInit {
   id:number;
   ex: Exam=new Exam();
-  logName: string= null;
-  role : string= null;
+  logName: String;
 
   constructor(private examService: ExamserviceService, private  route: ActivatedRoute,
               private  router: Router) { }
@@ -23,10 +22,8 @@ export class HomeOntapComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName!=null){
-      this.logName = userName['username'];
-      this.role=userName['role'];
-    }
+    this.logName = userName['username'];
+
     this.examService.get(this.id).subscribe(data=>{
       this.ex = data
     }, error => console.log(error));

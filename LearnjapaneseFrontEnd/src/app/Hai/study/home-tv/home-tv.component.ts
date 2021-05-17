@@ -12,8 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class HomeTvComponent implements OnInit {
   id:number;
   ls: Lesson=new Lesson();
-  logName: string = null;
-  role : string= null;
+  logName: String;
 
   constructor(private lessonService: LessonServiceService, private  route: ActivatedRoute,
               private  router: Router) { }
@@ -21,10 +20,8 @@ export class HomeTvComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role = userName['role'];
-    }
+    this.logName = userName['username'];
+
     this.lessonService.get(this.id).subscribe(data=>{
       this.ls = data
     }, error => console.log(error));

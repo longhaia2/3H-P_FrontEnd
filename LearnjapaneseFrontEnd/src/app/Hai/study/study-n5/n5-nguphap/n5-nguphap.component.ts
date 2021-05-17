@@ -11,18 +11,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class N5NguphapComponent  implements OnInit {
   ls: Lesson[];
-  logName: string = null;
-  role: string = null;
+  logName: string;
   constructor(private lessonService: LessonServiceService, private route: ActivatedRoute,
               private router: Router) {
   }
   ngOnInit(): void {
     this.reloadData();
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role = userName['role'];
-    }
+    this.logName = userName['username'];
   }
   reloadData() {
     this.lessonService.findByidlevel("N5","Ngữ pháp").subscribe(data => {

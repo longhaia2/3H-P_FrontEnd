@@ -7,16 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudyN1Component implements OnInit {
   // tslint:disable-next-line:ban-types
-  logName: String = null;
-  role: string = null;
+  logName: String;
   constructor() { }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if (userName != null) {
-      this.logName = userName['username'];
-      this.role = userName['role'];
-    }
+    this.logName = userName['username'];
   }
 
 }

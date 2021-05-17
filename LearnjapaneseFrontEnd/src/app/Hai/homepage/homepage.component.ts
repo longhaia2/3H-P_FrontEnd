@@ -15,6 +15,8 @@ import {ResultTop} from "../challenge/model/ResultTop";
   providers:[LessonServiceService, ExamserviceService,]
 })
 export class HomepageComponent implements OnInit {
+
+
   logName: string=null;
   role: string=null;
   id: number;
@@ -35,6 +37,8 @@ export class HomepageComponent implements OnInit {
      this.logName = userName['username'];
      this.role=userName['role'];
    }
+
+
     this.getLesson();
     this.list();
     this.ListtopHigh();
@@ -58,6 +62,7 @@ export class HomepageComponent implements OnInit {
     });
   }
   Refresh(){
+
     if (localStorage.getItem('refreshed') === null) {
       localStorage['refreshed'] = true;
       window.location.reload(true);
