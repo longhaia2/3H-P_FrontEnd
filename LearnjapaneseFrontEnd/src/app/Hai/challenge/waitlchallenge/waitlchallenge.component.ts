@@ -52,8 +52,8 @@ export class WaitlchallengeComponent implements OnInit {
   Test:number=0;
 
   constructor(private dialog: MatDialog,private dialogService: DialogServiceService,private chat: ChatService
-              , private  lessonServiceService: ServicebtService, private service: ServiceService
-              , private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
+    , private  lessonServiceService: ServicebtService, private service: ServiceService
+    , private  route: ActivatedRoute, private challengeServiceService: ChallengeServiceService,
               private  router: Router, private title: Title, @Inject(DOCUMENT) private _document: Document) {
   }
 
@@ -65,7 +65,6 @@ export class WaitlchallengeComponent implements OnInit {
     }
     this.id = this.route.snapshot.params['id'];
     this.service.GetUserByRoomAsc(this.id).subscribe(data => {
-      console.log(data);
       this.GetUserByRoomAsc = data;
       this.selectedAS = new Array(this.GetUserByRoomAsc.length);
       this.ready = new Array(this.GetUserByRoomAsc.length);
@@ -131,12 +130,8 @@ export class WaitlchallengeComponent implements OnInit {
     this.challengeServiceService.getOneUserByRoom(this.id_r,this.id_u_scrore).subscribe(data=>{
       this.r_s_2=data;
     });
+
     this.chat.room_id.subscribe(msg => {
-      if(msg==this.id_r){
-        this._document.defaultView.location.reload();
-      }
-    });
-    this.chat.id_r_out.subscribe(msg => {
       this.chat.id_out.subscribe(data => {
         if(msg==this.id_r&&data==this.id_u_scrore){
           this.router.navigate(['listchalenge']);
@@ -146,6 +141,11 @@ export class WaitlchallengeComponent implements OnInit {
         }
       });
     });
+    // this.chat.room_id.subscribe(msg => {
+    //   if(msg==this.id_r){
+    //     this._document.defaultView.location.reload();
+    //   }
+    // });
     this.startQuiz();
     this.load();
     this.getUserList();
@@ -224,65 +224,65 @@ export class WaitlchallengeComponent implements OnInit {
     }
     this.chat.id_r_out.subscribe(msg => {
       this.check = msg;
-          let number = getRandomInt(68,70);
-          this.service.getUsersRoomList(this.id_r).subscribe(data => {
-            this.r_s_1 = data;
-            this.r_s_1.forEach(Element => {
-                if (Element.room_id == this.room.room_id) {
-      if (this.check == this.room.room_id) {
-        if (this.room.level == 'N5' && this.room.time == 5) {
-          this.router.navigate(['/question/N55TT/challenge/',68, this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=68;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N5' && this.room.time == 10) {
-          let number = getRandomInt(4, 6);
-          this.router.navigate(['/question/N510TT/challenge/55/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=55;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N5' && this.room.time == 15) {
-          let number = getRandomInt(7, 9);
-          this.router.navigate(['/question/N515TT/challenge/56/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=56;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N4' && this.room.time == 5) {
-          this.router.navigate(['/question/N45TT/challenge/57/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=57;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N4' && this.room.time == 10) {
-          let number = getRandomInt(4, 6);
-          this.router.navigate(['/question/N410TT/challenge/60/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=60;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N4' && this.room.time == 15) {
-          let number = getRandomInt(7, 9);
-          this.router.navigate(['/question/N415TT/challenge/61/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=68;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N3' && this.room.time == 5) {
-          this.router.navigate(['/question/N35TT/challenge/54/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=54;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N3' && this.room.time == 10) {
-          this.router.navigate(['/question/N310TT/challenge/59/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=59;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-        if (this.room.level == 'N3' && this.room.time == 15) {
-          this.router.navigate(['/question/N315TT/challenge/58/', this.room.room_id, this.id_u_scrore]);
-          this.room_user.exam_id=58;
-          this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
-        }
-      }
-                }
-            });
-          });
+      let number = getRandomInt(68,70);
+      this.service.getUsersRoomList(this.id_r).subscribe(data => {
+        this.r_s_1 = data;
+        this.r_s_1.forEach(Element => {
+          if (Element.room_id == this.room.room_id) {
+            if (this.check == this.room.room_id) {
+              if (this.room.level == 'N5' && this.room.time == 5) {
+                this.router.navigate(['/question/N55TT/challenge/',68, this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=68;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N5' && this.room.time == 10) {
+                let number = getRandomInt(4, 6);
+                this.router.navigate(['/question/N510TT/challenge/55/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=55;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N5' && this.room.time == 15) {
+                let number = getRandomInt(7, 9);
+                this.router.navigate(['/question/N515TT/challenge/56/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=56;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N4' && this.room.time == 5) {
+                this.router.navigate(['/question/N45TT/challenge/57/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=57;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N4' && this.room.time == 10) {
+                let number = getRandomInt(4, 6);
+                this.router.navigate(['/question/N410TT/challenge/60/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=60;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N4' && this.room.time == 15) {
+                let number = getRandomInt(7, 9);
+                this.router.navigate(['/question/N415TT/challenge/61/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=68;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N3' && this.room.time == 5) {
+                this.router.navigate(['/question/N35TT/challenge/54/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=54;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N3' && this.room.time == 10) {
+                this.router.navigate(['/question/N310TT/challenge/59/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=59;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+              if (this.room.level == 'N3' && this.room.time == 15) {
+                this.router.navigate(['/question/N315TT/challenge/58/', this.room.room_id, this.id_u_scrore]);
+                this.room_user.exam_id=58;
+                this.challengeServiceService.updateRoomExam(Element.id,this.room_user).subscribe();
+              }
+            }
+          }
+        });
+      });
     });
   }
 
@@ -291,9 +291,9 @@ export class WaitlchallengeComponent implements OnInit {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-      let number = getRandomInt(1, 50);
+    let number = getRandomInt(1, 50);
     console.log(number);
-    }
+  }
 
   startTrue(index: number) {
     this.service.userRoomList(this.id_r).subscribe(data => {
@@ -369,31 +369,31 @@ export class WaitlchallengeComponent implements OnInit {
     });
     confirmDialog.afterClosed().subscribe(result => {
       if (result == true) {
-        this.chat.send_id_r_out(this.id);
+        this.chat.send_idRoom(this.id);
         this.chat.send_id_out(this.id_u_scrore);
         this.service.getUsersRoomList(this.id_r).subscribe(data => {
           this.r_s_1 = data;
-         this.r_s_1.forEach(Element=>{
-           if(Element.user_id==id&&Element.banker==1){
-             this.r_s_1[1].banker=1;
-             this.room_user.banker=this.r_s_1[1].banker;
-             this.r_s_1[1].status=1;
-             this.room_user.status=this.r_s_1[1].status;
-             this.challengeServiceService.updateMember(this.r_s_1[1].id,this.room_user).subscribe(data=>{
-               this.service.delete(Element.id).subscribe(
-                 data => {
-                    this.router.navigate(['listchalenge']);
+          this.r_s_1.forEach(Element=>{
+              if(Element.user_id==id&&Element.banker==1){
+                this.r_s_1[1].banker=1;
+                this.room_user.banker=this.r_s_1[1].banker;
+                this.r_s_1[1].status=1;
+                this.room_user.status=this.r_s_1[1].status;
+                this.challengeServiceService.updateMember(this.r_s_1[1].id,this.room_user).subscribe(data=>{
+                  this.service.delete(Element.id).subscribe(
+                    data => {
+                      this.router.navigate(['listchalenge']);
 
-                 });
-             })
-           }
-           else if(Element.user_id==id){
-             this.service.delete(Element.id).subscribe(
-               data => {
-                 this.router.navigate(['listchalenge']);
-               });
-           }
-           }
+                    });
+                })
+              }
+              else if(Element.user_id==id){
+                this.service.delete(Element.id).subscribe(
+                  data => {
+                    this.router.navigate(['listchalenge']);
+                  });
+              }
+            }
           )
 
 

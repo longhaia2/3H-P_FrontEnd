@@ -3,7 +3,7 @@ import {ServiceService} from '../../service.service';
 import {RoomChallenge} from '../model/RoomChallenge';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RoomUsers} from '../model/RoomUsers';
-import {Title} from "@angular/platform-browser";
+import {Title} from '@angular/platform-browser';
 import {User} from "../../../Manh/modelm/user";
 import {ChallengeServiceService} from '../../Service/challenge-service.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -93,6 +93,7 @@ export class ListchallengeComponent implements OnInit {
   }
   add(idRoom) {
     this.chat.send_idRoom(idRoom);
+    this.chat.send_id_out(this.user_test);
     this.room_user.room_id = idRoom;
     this.room_user.score = 0;
     this.room_user.banker=0;

@@ -7,12 +7,13 @@ import {ExamserviceService} from "../admin/serviceadmin/examservice.service";
 import {Exam} from "../admin/model/Exam";
 import {UserScore} from "../challenge/model/UserScore";
 import {ResultTop} from "../challenge/model/ResultTop";
+import {ChatService} from "../Service/chat.service";
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
-  providers:[LessonServiceService, ExamserviceService,]
+  providers:[LessonServiceService, ExamserviceService,ChatService]
 })
 export class HomepageComponent implements OnInit {
   logName: string=null;
@@ -23,9 +24,10 @@ export class HomepageComponent implements OnInit {
   ex: Exam[];
   us: UserScore[];
   p : number = 1;
+  id_u:number;
 
 
-  constructor(private lessonService: LessonServiceService, private examService: ExamserviceService) {
+  constructor(private lessonService: LessonServiceService, private examService: ExamserviceService,private chat:ChatService) {
   }
 
 
@@ -35,10 +37,15 @@ export class HomepageComponent implements OnInit {
      this.logName = userName['username'];
      this.role=userName['role'];
    }
+    this.id_u = userName['userId'];
     this.getLesson();
     this.list();
     this.ListtopHigh();
-    this.Refresh()
+    if(this.role=='ROLE_ADMIN') {
+      this.Refresh();
+    }
+
+
   }
 
   getLesson() {
@@ -49,7 +56,6 @@ export class HomepageComponent implements OnInit {
   list(){
     this.examService.findAll().subscribe(data => {
       this.ex = data;
-      console.log(data);
     });
   }
   ListtopHigh(){
@@ -57,6 +63,7 @@ export class HomepageComponent implements OnInit {
       this.rt = data;
     });
   }
+
   Refresh(){
     if (localStorage.getItem('refreshed') === null) {
       localStorage['refreshed'] = true;

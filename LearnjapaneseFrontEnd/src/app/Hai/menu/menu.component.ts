@@ -32,8 +32,6 @@ export class MenuComponent implements OnInit {
   }
   us : User[];
   ngOnInit(): void {
-
-    console.log(this.userNameDsp + '--- log user') ;
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
     if(id_score != null){
       this.id_user = id_score['userId'];
