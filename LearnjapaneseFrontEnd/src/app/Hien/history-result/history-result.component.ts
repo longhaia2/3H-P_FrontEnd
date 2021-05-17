@@ -29,17 +29,6 @@ export class HistoryResultComponent implements OnInit {
     let idScore = JSON.parse(sessionStorage.getItem("auth-user"));
     this.idNow = idScore['userId'];
 
-    // this.rs = new Result();
-
-    // this.scoresv.getgrammar(username).subscribe(data => {
-    //    this.rs = [...data.dataResponse];
-    //    console.log(this.rs.length);
-    // });
-    //
-    // this.scoresv.getvocabulary(username).subscribe(data => {
-    //   this.rs = [...data.dataResponse];
-    //   console.log(this.rs.length);
-    // });
     this.scoresv.GetResultById(userName).subscribe(data => {
       console.log(data);
       this.rs = data.dataResponse;
