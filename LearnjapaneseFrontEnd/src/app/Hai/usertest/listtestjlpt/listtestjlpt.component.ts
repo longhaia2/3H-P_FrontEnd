@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class ListtestjlptComponent implements OnInit {
   exam:Exam[];
+  role:string;
   p : number = 1;
   public logName:string;
   constructor(private examserve: ExamserviceService, private router: Router) { }
