@@ -19,8 +19,9 @@
 <body>
 <!--<div th:replace="fragments/header :: content"></div>-->
 <app-header></app-header>
-<app-menu  [userNameDsp]="logName"></app-menu>
-<!--<div th:replace="fragments/menu :: content"></div>-->
+
+<app-menu  [userNameDsp]="logName" [role]="role" ></app-menu>
+
 <main class="home">
   <div class="container exam-test">
     <section class="main-exam container">
