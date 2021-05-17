@@ -57,6 +57,8 @@ export class CompetitionComponent implements OnInit {
   index2:number=2;
   check3: number=0;
   index3:number=3;
+  role: string=null;
+
 
 
   constructor(private chat: ChatService,public dialog:MatDialog, private title: Title, private service: ChallengeServiceService, private route: ActivatedRoute, private  router: Router, private userService: ServiceService) {
@@ -65,7 +67,11 @@ export class CompetitionComponent implements OnInit {
 
   ngOnInit() {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.logName = userName['username'];
+    if(userName!=null){
+      this.logName = userName['username'];
+      this.role=userName['role'];
+    }
+
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
     this.id_u_scrore = id_score['userId'];
     //get đề thi
@@ -110,6 +116,7 @@ export class CompetitionComponent implements OnInit {
       targetTime = new Date(targetTime);
     }
 
+    // @ts-ignore
     this.x = setInterval(()=> {
       // @ts-ignore
       // if (Math.floor(((targetTime - currentTime)/1000)%60) <=0)
