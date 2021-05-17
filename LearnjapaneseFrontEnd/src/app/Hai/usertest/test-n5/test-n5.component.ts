@@ -13,7 +13,7 @@ import {Exam} from "../../admin/model/Exam";
 export class TestN5Component implements OnInit {
   exam: Exam[];
   logName: string;
-
+  role:string;
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
 

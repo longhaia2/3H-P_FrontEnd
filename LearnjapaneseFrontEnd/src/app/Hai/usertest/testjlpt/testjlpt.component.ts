@@ -12,6 +12,7 @@ import {MAT_RADIO_DEFAULT_OPTIONS} from "@angular/material/radio";
 export interface DialogData {
   idResult: number;
   idExam: number;
+
 }
 @Component({
   selector: 'app-testjlpt',
@@ -25,6 +26,7 @@ export interface DialogData {
 })
 export class TestjlptComponent implements OnInit {
   logName: string;
+  role:string;
   p:number=1;
   ex: Exam;
   a: number=0;

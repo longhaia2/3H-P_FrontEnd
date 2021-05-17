@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class TestN4Component implements OnInit {
   exam: Exam[];
   logName: string;
-
+  role:string;
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
