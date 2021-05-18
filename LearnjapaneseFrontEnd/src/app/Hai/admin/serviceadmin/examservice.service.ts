@@ -57,4 +57,7 @@ export class ExamserviceService {
   getlistExamOrderByJLPTDesc(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/exam'}/pp/${id}`);
   }
+  getlistExamOrderByIdDesc(): Observable<any>{
+    return this.http.get(`${'http://localhost:8080/exam'}/all/exam`);
+  }
 }

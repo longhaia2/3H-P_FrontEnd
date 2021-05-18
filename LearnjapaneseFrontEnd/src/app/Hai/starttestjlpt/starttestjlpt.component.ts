@@ -15,6 +15,7 @@ export class StarttestjlptComponent implements OnInit {
   logName:string;
   role:string=null;
   id:number;
+  role: string;
   ex : Exam=new Exam();
   qs : Question[];
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
