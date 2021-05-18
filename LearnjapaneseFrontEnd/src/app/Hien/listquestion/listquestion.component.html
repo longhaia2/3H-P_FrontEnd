@@ -10,25 +10,17 @@
     <app-headeradmin></app-headeradmin>
 
     <div class="right_col" role="main">
-      <!-- top tiles -->
       <div class="">
         <div class="page-title">
           <div class="title_left">
             <h1>Danh sách câu hỏi</h1>
             <br>
           </div>
-
-          <div class="title_right">
-            <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-            </div>
-          </div>
         </div>
         <div class="clearfix"></div>
-        <div class="col-md-2 col-sm-12">
 
-        </div>
-        <div class="clearfix"></div>
         <br>
+      <form >
         <div class="row">
           <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
             <label>Học Phần</label>
@@ -58,8 +50,7 @@
           </div>
           <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
           </div>
-
-          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
+          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3" style="margin-left: 239px;">
             <label>&nbsp;</label>
             <div >
               <a [routerLink]="['/admin/question/add']" class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
@@ -116,7 +107,7 @@
             </div>
           </div>
         </div>
-
+      </form>
       </div>
     </div>
     <!-- page content -->

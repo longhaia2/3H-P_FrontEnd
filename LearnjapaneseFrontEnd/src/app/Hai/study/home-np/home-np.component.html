@@ -8,8 +8,11 @@
 <main class="class">
   <div class="container">
 
-    <div class="banner exam-banner1">
-    </div>
+    <div *ngIf="ls.level=='N5'" class="banner exam-banner5"></div>
+    <div *ngIf="ls.level=='N4'" class="banner exam-banner4"></div>
+    <div *ngIf="ls.level=='N3'" class="banner exam-banner3"></div>
+    <div *ngIf="ls.level=='N2'" class="banner exam-banner2"></div>
+    <div *ngIf="ls.level=='N1'" class="banner exam-banner1"></div>
 
     <section class="class-content">
       <div class="row">
@@ -19,7 +22,8 @@
             <div class="class-sectionTitle">
               <span>みんなの日本語第</span>
             </div>
-            <div style="margin-left: 80px" class="panel-body" [innerHtml]='ls.content'></div>
+            <div style="border: 1px solid green;background-color: aliceblue;border-radius: 8px;width: 100%" > <div style="margin-left: 10px"  class="panel-body" [innerHtml]='ls.content'></div></div>
+
           </div>
         </div>
         <app-sidebar-lesson></app-sidebar-lesson>

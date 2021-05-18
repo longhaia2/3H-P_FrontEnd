@@ -56,7 +56,7 @@ export class ListquestionComponent implements OnInit {
             console.log(data);
             this.reloadData();
           });
-        this.tsv.success('Xóa thành công', 'Xóa bài học');
+        this.tsv.success('Xóa thành công', 'Xóa câu hỏi');
       }
     });
   }

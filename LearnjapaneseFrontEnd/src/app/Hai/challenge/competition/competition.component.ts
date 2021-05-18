@@ -241,7 +241,11 @@ export class CompetitionComponent implements OnInit {
           this.room_user.score=this.score;
           this.service.upDateUser(Element.id, this.room_user).subscribe(data => {
           }, error => console.log(error));
-
+          this.updateSubscription = interval(500).subscribe(
+            (val) => { this.getListUsersByScore()});
+          this.updateSubscription=interval(10000).subscribe(value => {
+            this.updateSubscription.unsubscribe();
+          })
         }
       });
 
@@ -253,6 +257,11 @@ export class CompetitionComponent implements OnInit {
           this.room_user.score=this.score;
           this.service.upDateUser(Element.id, this.room_user).subscribe(data => {
           }, error => console.log(error));
+          this.updateSubscription = interval(500).subscribe(
+            (val) => { this.getListUsersByScore()});
+          this.updateSubscription=interval(10000).subscribe(value => {
+            this.updateSubscription.unsubscribe();
+          })
         }
       })
     }
