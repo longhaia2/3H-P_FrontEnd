@@ -191,15 +191,27 @@ export class CompetitionComponent implements OnInit {
     });
     this.chat.mess_id.subscribe(data => {
       this.index=data;
+      if(this.index==0){
+        this.reloadData();
+      }
     });
     this.chat.mess_id1.subscribe(data => {
       this.index1=data;
+      if(this.index1==1){
+        this.reloadData();
+      }
     });
     this.chat.mess_id2.subscribe(data => {
       this.index2=data;
+      if(this.index2==2){
+        this.reloadData();
+      }
     });
     this.chat.mess_id3.subscribe(data => {
       this.index3=data;
+      if(this.index3==3){
+        this.reloadData();
+      }
     });
   }
   nextQuestion(index:number) {
@@ -226,15 +238,10 @@ export class CompetitionComponent implements OnInit {
       this.userRoom.forEach(Element => {
         if (Element.user_id == this.id_u_scrore) {
           this.room_user.banker = Element.banker;
-          console.log(this.score);
           this.room_user.score=this.score;
           this.service.upDateUser(Element.id, this.room_user).subscribe(data => {
           }, error => console.log(error));
-          this.updateSubscription = interval(500).subscribe(
-            (val) => { this.getListUsersByScore()});
-          this.updateSubscription=interval(10000).subscribe(value => {
-            this.updateSubscription.unsubscribe();
-          })
+
         }
       });
 
@@ -246,11 +253,6 @@ export class CompetitionComponent implements OnInit {
           this.room_user.score=this.score;
           this.service.upDateUser(Element.id, this.room_user).subscribe(data => {
           }, error => console.log(error));
-          this.updateSubscription = interval(500).subscribe(
-            (val) => { this.getListUsersByScore()});
-          this.updateSubscription=interval(10000).subscribe(value => {
-            this.updateSubscription.unsubscribe();
-          })
         }
       })
     }
@@ -268,5 +270,10 @@ export class CompetitionComponent implements OnInit {
       this.hasAnsweredCorrectly = false;
     }
 
+  }
+  private reloadData() {
+    this.userService.getListUsersByScore(this.id_room).subscribe(data => {
+      this.userScore = data;
+    });
   }
 }

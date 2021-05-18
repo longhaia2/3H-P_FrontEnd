@@ -13,6 +13,7 @@ import {ExamserviceService} from "../admin/serviceadmin/examservice.service";
 export class StarttestjnptN4Component implements OnInit {
   logName:string;
   id:number;
+  role:string=null;
   ex : Exam=new Exam();
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private  router: Router) { }

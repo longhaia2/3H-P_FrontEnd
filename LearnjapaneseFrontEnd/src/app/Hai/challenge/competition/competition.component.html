@@ -74,13 +74,13 @@
                   <div *ngFor="let us of user , let q= index" >
                   <div class="row justify-content-md-center" *ngIf="showExplanation&&us.id==id_u_scrore">
                     <div class="col-sm-12 col-lg-8">
-                      <div class="alert alert-danger" *ngIf="!hasAnsweredCorrectly" role="alert">
-                        Bạn trả lời sai rồi, Đúng là đáp án:
-                        {{ currentQuestion.ansCorrect }}
-                      </div>
-                      <div class="alert alert-success" *ngIf="hasAnsweredCorrectly" role="alert">
-                        Bạn đang làm tốt!
-                      </div>
+<!--                      <div class="alert alert-danger" *ngIf="!hasAnsweredCorrectly" role="alert">-->
+<!--                        Bạn trả lời sai rồi, Đúng là đáp án:-->
+<!--                        {{ currentQuestion.ansCorrect }}-->
+<!--                      </div>-->
+<!--                      <div class="alert alert-success" *ngIf="hasAnsweredCorrectly" role="alert">-->
+<!--                        Bạn đang làm tốt!-->
+<!--                      </div>-->
 <!--                      <img-->
 <!--                        class="card-img-top"-->
 <!--                        *ngIf="currentQuestion.answerImage"-->
@@ -124,19 +124,19 @@
                     <div class="test-listItem" style="margin-left: -30px; width: 97%;">
                       <div class="content">
                         <div *ngIf="q==0">
-                        <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                        <h5 class="title" > <span > {{us[0]}} </span></h5>
                         <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                         <div *ngIf="q==1">
-                          <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                          <h5 class="title" ><span > {{us[0]}} </span></h5>
                           <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                         <div *ngIf="q==2">
-                          <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                          <h5 class="title" ><span > {{us[0]}} </span></h5>
                           <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                         <div *ngIf="q==3">
-                          <h5 class="title" > Biệt danh:<span > {{us[0]}} </span></h5>
+                          <h5 class="title" ><span > {{us[0]}} </span></h5>
                           <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                       </div>
