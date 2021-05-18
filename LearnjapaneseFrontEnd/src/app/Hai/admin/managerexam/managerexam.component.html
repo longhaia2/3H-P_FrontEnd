@@ -31,8 +31,10 @@
                 <label>Học Phần</label>
                 <select [(ngModel)]="hocphan" class="form-control" name="subjectId">
                   <option value="">Tùy chọn</option>
-                  <option value="Từ Vựng">Từ vựng</option>
-                  <option value="Ngữ Pháp">Ngữ pháp</option>
+                  <option value="Từ vựng">Từ vựng</option>
+                  <option value="Ngữ pháp">Ngữ pháp</option>
+                  <option value="Đề JLPT">Đề JLPT</option>
+                  <option value="Thử thách">Đề Thử Thách Cùng Nhau</option>
                 </select>
               </div>
               <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
@@ -82,8 +84,8 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let exam of ex | filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:8, currentPage:p}">
-                    <td>{{exam.id}}</td>
+                  <tr *ngFor="let exam of ex | filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:8, currentPage:p};let i=index">
+                    <td>{{i+1}}</td>
                     <td>{{exam.codeExam}}</td>
                     <td>{{exam.term}}</td>
                     <td>{{exam.level}}</td>

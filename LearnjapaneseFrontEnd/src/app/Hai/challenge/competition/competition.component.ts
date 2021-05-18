@@ -57,6 +57,8 @@ export class CompetitionComponent implements OnInit {
   index2:number=2;
   check3: number=0;
   index3:number=3;
+  role: string=null;
+
 
 
   constructor(private chat: ChatService,public dialog:MatDialog, private title: Title, private service: ChallengeServiceService, private route: ActivatedRoute, private  router: Router, private userService: ServiceService) {
@@ -65,7 +67,11 @@ export class CompetitionComponent implements OnInit {
 
   ngOnInit() {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.logName = userName['username'];
+    if(userName!=null){
+      this.logName = userName['username'];
+      this.role=userName['role'];
+    }
+
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
     this.id_u_scrore = id_score['userId'];
     //get đề thi
@@ -110,6 +116,7 @@ export class CompetitionComponent implements OnInit {
       targetTime = new Date(targetTime);
     }
 
+    // @ts-ignore
     this.x = setInterval(()=> {
       // @ts-ignore
       // if (Math.floor(((targetTime - currentTime)/1000)%60) <=0)
@@ -184,15 +191,27 @@ export class CompetitionComponent implements OnInit {
     });
     this.chat.mess_id.subscribe(data => {
       this.index=data;
+      if(this.index==0){
+        this.reloadData();
+      }
     });
     this.chat.mess_id1.subscribe(data => {
       this.index1=data;
+      if(this.index1==1){
+        this.reloadData();
+      }
     });
     this.chat.mess_id2.subscribe(data => {
       this.index2=data;
+      if(this.index2==2){
+        this.reloadData();
+      }
     });
     this.chat.mess_id3.subscribe(data => {
       this.index3=data;
+      if(this.index3==3){
+        this.reloadData();
+      }
     });
   }
   nextQuestion(index:number) {
@@ -219,15 +238,10 @@ export class CompetitionComponent implements OnInit {
       this.userRoom.forEach(Element => {
         if (Element.user_id == this.id_u_scrore) {
           this.room_user.banker = Element.banker;
-          console.log(this.score);
           this.room_user.score=this.score;
           this.service.upDateUser(Element.id, this.room_user).subscribe(data => {
           }, error => console.log(error));
-          this.updateSubscription = interval(500).subscribe(
-            (val) => { this.getListUsersByScore()});
-          this.updateSubscription=interval(10000).subscribe(value => {
-            this.updateSubscription.unsubscribe();
-          })
+
         }
       });
 
@@ -239,11 +253,6 @@ export class CompetitionComponent implements OnInit {
           this.room_user.score=this.score;
           this.service.upDateUser(Element.id, this.room_user).subscribe(data => {
           }, error => console.log(error));
-          this.updateSubscription = interval(500).subscribe(
-            (val) => { this.getListUsersByScore()});
-          this.updateSubscription=interval(10000).subscribe(value => {
-            this.updateSubscription.unsubscribe();
-          })
         }
       })
     }
@@ -261,5 +270,10 @@ export class CompetitionComponent implements OnInit {
       this.hasAnsweredCorrectly = false;
     }
 
+  }
+  private reloadData() {
+    this.userService.getListUsersByScore(this.id_room).subscribe(data => {
+      this.userScore = data;
+    });
   }
 }

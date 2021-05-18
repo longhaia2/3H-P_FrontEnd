@@ -8,12 +8,17 @@ import {Title} from "@angular/platform-browser";
 })
 export class InformationComponent implements OnInit {
   public logName:string;
+  role: string=null;
   constructor() {
   }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.logName = userName['username'];
+    if(userName!=null){
+      this.logName = userName['username'];
+      this.role=userName['role'];
+    }
+
   }
 
 }

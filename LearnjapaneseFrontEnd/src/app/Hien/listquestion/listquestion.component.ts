@@ -18,7 +18,7 @@ import {ExamService} from "../servicesh/exam.service";
   providers: [QuestionServiceService, ToastrService]
 })
 export class ListquestionComponent implements OnInit {
-
+  p:number=1;
   hocphan;
   trinhdo;
   logName: String;

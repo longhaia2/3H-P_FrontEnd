@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class StarttestjlptComponent implements OnInit {
   logName:string;
+  role:string=null;
   id:number;
   role: string;
   ex : Exam=new Exam();

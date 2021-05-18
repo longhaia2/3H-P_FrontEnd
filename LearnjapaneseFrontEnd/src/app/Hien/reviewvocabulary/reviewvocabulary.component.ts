@@ -34,7 +34,6 @@ export class ReviewvocabularyComponent implements OnInit {
     }, error => console.log(error));
   }
   selectAt(index, value) {
-    console.log("index: "+index + " -- value: "+value)
     this.resultAS[index] = value;
   }
   addResults(idResult){
