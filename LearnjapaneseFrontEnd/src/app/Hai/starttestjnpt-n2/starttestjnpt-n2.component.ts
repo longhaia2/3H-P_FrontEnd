@@ -14,6 +14,7 @@ export class StarttestjnptN2Component implements OnInit {
   logName:string;
   id:number;
   ex : Exam=new Exam();
+  role: string;
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private  router: Router) { }
 

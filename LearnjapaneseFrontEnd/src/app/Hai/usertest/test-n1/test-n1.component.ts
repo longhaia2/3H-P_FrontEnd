@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TestN1Component implements OnInit {
   exam : Exam[];
+  role: string;
 
   logName: string;
 

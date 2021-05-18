@@ -14,6 +14,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class StarttestjlptComponent implements OnInit {
   logName:string;
   id:number;
+  role: string;
   ex : Exam=new Exam();
   qs : Question[];
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
