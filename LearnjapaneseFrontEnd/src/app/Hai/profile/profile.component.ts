@@ -21,7 +21,8 @@ export class ProfileComponent implements OnInit {
   id: string;
   file: string;
   Users: User[];
-  logName: string;
+  logName: string=null;
+  role:string=null;
   registerForm = new FormGroup(
     {
       fullname: new  FormControl('',Validators.required),
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
       email: new  FormControl('', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       password: new  FormControl('', [Validators.required, Validators.minLength(6)])
     }
-  )
+  );
   get fullname(){return this.registerForm.get('fullname') }
   get username(){return this.registerForm.get('username') }
   get phone(){return this.registerForm.get('phone') }
@@ -40,26 +41,21 @@ export class ProfileComponent implements OnInit {
   get password(){return this.registerForm.get('password') }
 
   us : User=new User();
-
-  // constructor(private userService: UserServiceService,private formBuilder: FormBuilder,private route: ActivatedRoute,
-  //             private router: Router, private tsv:ToastrService,@Inject(AngularFireStorage) private storage: AngularFireStorage,
-  //             @Inject(UploadFileServiceService) private upFileService: UploadFileServiceService) { }
   constructor(private userService: UserServiceService,private formBuilder: FormBuilder,private route: ActivatedRoute,
               private router: Router, private tsv:ToastrService,
               @Inject(UploadFileServiceService) private upFileService: UploadFileServiceService) { }
 
   ngOnInit(): void {
-    // let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    // this.logName = userName['username'];
-    //
-    // this.reloadData();
-    // // @ts-ignoreca
-    // this.us=new User();
+    let userName = JSON.parse(sessionStorage.getItem("auth-user"));
+    if(userName!=null){
+      this.logName = userName['username'];
+      this.role=userName['role'];
+    }
     this.upFileService.getImageDetailList()
     this.id=this.route.snapshot.params['id'];
-    console.log(this.id);
     this.userService.get(this.id).subscribe(data=>{
-      this.us = data
+      this.us = data;
+      console.log(this.us);
     },error => console.log(error));
   }
   // reloadData() {
@@ -97,7 +93,7 @@ export class ProfileComponent implements OnInit {
     this.userService.update(this.id,this.us).subscribe(data=>{
       console.log(data);
       this.router.navigate(['list']);
-      this.tsv.success('Sửa thành công', 'Sửa bài học');
+      this.tsv.success('Sửa thành công', 'Sửa thông tin thành viên');
     },error => console.log(error));
   }
 

@@ -124,19 +124,23 @@
                     <div class="test-listItem" style="margin-left: -30px; width: 97%;">
                       <div class="content">
                         <div *ngIf="q==0">
-                        <h5 class="title"  > <span > {{us[0]}} </span></h5>
+                        <h5 class="title"  *ngIf="us[2]==id_u_scrore"  style="color: #35dcae;font-size: 23px"> <span > {{us[0]}} </span></h5>
+                          <h5 class="title"  *ngIf="us[2]!=id_u_scrore"  style="font-size: 25px"> <span > {{us[0]}} </span></h5>
                         <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                         <div *ngIf="q==1">
-                          <h5 class="title" ><span > {{us[0]}} </span></h5>
+                          <h5 class="title"  *ngIf="us[2]==id_u_scrore"  style="color: #35dcae;font-size: 23px"> <span > {{us[0]}} </span></h5>
+                          <h5 class="title"  *ngIf="us[2]!=id_u_scrore"  style="font-size: 25px"> <span > {{us[0]}} </span></h5>
                           <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                         <div *ngIf="q==2">
-                          <h5 class="title" ><span > {{us[0]}} </span></h5>
+                          <h5 class="title"  *ngIf="us[2]==id_u_scrore"  style="color: #35dcae;font-size: 23px"> <span > {{us[0]}} </span></h5>
+                          <h5 class="title"  *ngIf="us[2]!=id_u_scrore"  style="font-size: 25px"> <span > {{us[0]}} </span></h5>
                           <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                         <div *ngIf="q==3">
-                          <h5 class="title" ><span > {{us[0]}} </span></h5>
+                          <h5 class="title"  *ngIf="us[2]==id_u_scrore"  style="color: #35dcae;font-size: 23px"> <span > {{us[0]}} </span></h5>
+                          <h5 class="title"  *ngIf="us[2]!=id_u_scrore"  style="font-size: 25px"> <span > {{us[0]}} </span></h5>
                           <h5 class="title" style="color: #dfd77d"> Điểm: <span  > {{us[1]}} </span></h5>
                         </div>
                       </div>

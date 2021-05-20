@@ -28,7 +28,7 @@
                       <div *ngIf="us[0]==rs.user_id" >
                        <h6 class="title"  style="font-size: 20px;color: chartreuse;">Chủ phòng: {{us[1]}} <b style="color: hotpink"> ❁◕ ‿ ◕❁</b></h6>
 
-                        <div *ngIf="!allReady"> <button [disabled]="allReady" *ngIf="us[0]==id_u_scrore"  class="button disabled " (click)="start()" >
+                        <div *ngIf="!allReady"> <button [disabled]="allReady" *ngIf="us[0]==id_u_scrore"  class="button disabled "  >
                           <img src="../../../../assets/image/batdau.png" height="38" width="160"/></button>
                         </div>
                         <div *ngIf="allReady"> <button [disabled]="!allReady" *ngIf="us[0]==id_u_scrore"  class="button " (click)="start()">

@@ -22,6 +22,7 @@ export class DialogInputPassComponent implements OnInit {
   room_user: RoomUsers;
   PassRoom: string;
   checkpass: boolean = true;
+  user_id:number;
 
   constructor(private chat: ChatService,private roomsv: ServiceService, private route: ActivatedRoute, private router: Router,public dialog:MatDialog,private toastrService: ToastrService,
     public dialogRef: MatDialogRef<DialogInputPassComponent>,
@@ -31,6 +32,7 @@ export class DialogInputPassComponent implements OnInit {
     this.cl = new RoomChallenge();
     this.room_user = new RoomUsers();
     let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
+    this.user_id = user_id['userId'];
     this.room_user.user_id = user_id['userId'];
     this.room_user.room_id = this.cl.room_id;
   }
@@ -39,6 +41,7 @@ export class DialogInputPassComponent implements OnInit {
       this.cl=data;
       if(this.cl.pass==this.PassRoom){
         this.chat.send_idRoom(this.data.id_room);
+        this.chat.send_id_out (this.user_id);
         this.room_user.room_id = this.data.id_room;
         this.room_user.score = 0;
         this.room_user.banker=0;
