@@ -16,12 +16,17 @@ export class ReviewvocabularyComponent implements OnInit {
   dem = 0;
   ex: Exam;
   qs: Question[];
+  role: string = null;
   resultAS:  string[];
   constructor(private service: ReviewService, private  route: ActivatedRoute,
               private  router: Router) { }
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    this.logName = userName['username'];
+    if (userName !=null){
+      this.logName = userName['username'];
+      this.role = userName['role'];
+    }
+
     this.ex = new Exam();
     this.rs = new Result();
     this.qs = this.route.snapshot.params['id'];

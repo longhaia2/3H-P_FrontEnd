@@ -17,14 +17,18 @@ export class ReviewgrammarComponent implements OnInit {
   selectedAS: string[];
   qs: Question[];
   logName: string;
+  role: string = null;
   constructor(
     private service: ReviewService , private  route: ActivatedRoute,
     private  router: Router) {
   }
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
+    if (userName !=null){
+      this.logName = userName['username'];
+      this.role = userName['role'];
+    }
 
-    this.logName = userName['username'];
     // @ts-ignore
     this.ex = new Exam();
     this.rs = new Result();
