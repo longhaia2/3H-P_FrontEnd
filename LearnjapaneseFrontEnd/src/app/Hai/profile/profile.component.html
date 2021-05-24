@@ -36,7 +36,9 @@
               <div class="row mt-6">
                 <div class="col-md-12 mt-2">
                   <label class="labels">Tên đăng nhập</label>
-                  <input  type="text" [(ngModel)]="us.username" class="form-control"  formControlName="username"  name="username" id="username" ng-required="$scope.uid">
+                  <input type="text" class="form-control" [ngModel]="us.username"   >
+
+<!--                  <input  type="text" [(ngModel)]="us.username" class="form-control"  formControlName="username"  name="username" id="username" ng-required="$scope.uid">-->
 
 <!--                  <input type="text" [(ngModel)]="us.username" formControlName="username" required minlength="4"-->
 <!--                         required maxlength="10"-->
