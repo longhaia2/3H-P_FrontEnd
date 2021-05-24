@@ -29,6 +29,7 @@ export class TestjlptComponent implements OnInit {
   role:string;
   p:number=1;
   ex: Exam;
+  x:number;
   a: number=0;
   b: number=0;
   rs: Result;
@@ -73,6 +74,8 @@ export class TestjlptComponent implements OnInit {
 
 
   addResult(idResult){
+    clearInterval(this.x);
+
     for (let i = 0; i < this.qs.length; i++) {
       if (this.qs[i].ansCorrect === this.selectedAS[i]) {
         this.dem++;
@@ -87,12 +90,13 @@ export class TestjlptComponent implements OnInit {
     this.service.addResult(this.rs).subscribe(data => {
       idResult = data.dataResponse;
       this.router.navigate(['resultsgrammar/', idResult, this.rs.exam_id]);
+      localStorage.setItem('targetTime', null);
+      localStorage.clear();
     });
   }
 
 
   selectAt(index, value) {
-    console.log("index: " + index + " -- value: " + value);
     this.selectedAS[index] = value;
   }
   local(){
@@ -116,10 +120,10 @@ export class TestjlptComponent implements OnInit {
       targetTime = new Date(targetTime);
     }
 // @ts-ignore
-    const x = setInterval(()=> {
+    this.x = setInterval(()=> {
       // @ts-ignore
       if (Math.floor(((targetTime - currentTime)/1000))<2) {
-        clearInterval(x);
+        clearInterval(this.x);
         for (let i = 0; i < this.qs.length; i++) {
           if (this.qs[i].ansCorrect === this.selectedAS[i]) {
             this.dem++;

@@ -42,7 +42,7 @@ export class ManagerexamComponent implements OnInit {
   delete(id: number){
     this.examserviceService.delete(id).subscribe(data=>{console.log(data);this.list();},
       error => console.log(error));
-    this.trv.success('Thành công', 'Thêm đề thi');
+    this.trv.success('Thành công', 'Xóa đề thi');
     window.location.reload();
   }
   updateEx(id: number){

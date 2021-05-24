@@ -36,6 +36,7 @@ export class ListchallengeComponent implements OnInit {
   challenge: RoomChallenge[];
   sum :number =0;
   isDisabled= true;
+  role: string=null;
 
   constructor(private chat: ChatService,private roomsv: ServiceService, private route: ActivatedRoute, private router: Router, private title: Title,private challengeSV:ChallengeServiceService, public dialog:MatDialog) {
     // this.title.setTitle("Thử Thách");
@@ -46,7 +47,11 @@ export class ListchallengeComponent implements OnInit {
     this.cl = new RoomChallenge();
     this.room_user = new RoomUsers();
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
-    this.logName = userName['username'];
+    if(userName!=null){
+      this.logName = userName['username'];
+      this.role=userName['role'];
+    }
+
     let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
     this.user_test =user_id['userId'];
     this.room_user.user_id = user_id['userId'];

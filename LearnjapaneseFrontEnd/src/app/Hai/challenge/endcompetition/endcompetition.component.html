@@ -1,13 +1,15 @@
 <div class="class-sectionTitle1 test">
   <span>Bảng Xếp Hạng Điểm</span>
 </div>
-<div style="margin-top: 30px">
+<div style="margin-top: 30px;background-color: aliceblue">
   <ul>
     <li >
       <a *ngFor="let us of userScore , let q= index" >
-        <div class="test-listItem" style="margin-left: -30px; width: 97%;">
+        <div class="test-listItem" style="margin-left: -30px; width: 97%;margin-top: 5px">
           <div class="content">
-            <h5>{{q+1}} Biệt danh:<span > {{us[0]}} đã đạt được  {{us[1]}}  </span></h5>
+            <h5><span style="color: yellow" *ngIf="q==0">Người chiến thắng {{us[0]}} đã đạt được  {{us[1]}} điểm</span>
+              <span *ngIf="q!=0" > {{us[0]}} đã đạt được  {{us[1]}} điểm xếp hạng thứ {{q+1}}  </span>
+            </h5>
           </div>
         </div>
       </a>

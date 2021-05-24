@@ -25,8 +25,6 @@ export class RegisterComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-        console.log(this.tokenStorage.getUser());
-        console.log(data);
         this.isSignUpFailed = false;
         this.isSuccessful = true;
         if (data.error == null) {

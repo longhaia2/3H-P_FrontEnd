@@ -19,7 +19,6 @@ export class MenuComponent implements OnInit {
   Users: User;
   id_user:number;
   test:string=null;
-
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
   @Input('role') role;
@@ -27,6 +26,8 @@ export class MenuComponent implements OnInit {
   constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router,private service: ServiceService) { }
   us : User[];
   ngOnInit(): void {
+    let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
+    this.id_user = id_score['userId'];
   }
 
 

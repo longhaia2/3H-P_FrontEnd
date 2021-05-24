@@ -15,7 +15,7 @@ import {DialogComponent} from "../../../../Thuan/dialog/dialog.component";
   providers:[ExamserviceService,QuestionServiceService,ToastrService]
 })
 export class ListQuestionByExamComponent implements OnInit {
-
+p:number=1;
   hocphan;
   trinhdo;
   searchText;

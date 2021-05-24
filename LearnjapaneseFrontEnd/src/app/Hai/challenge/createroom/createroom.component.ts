@@ -17,7 +17,7 @@ export class CreateroomComponent implements OnInit {
   cl:RoomChallenge = new RoomChallenge();
   checkroom:boolean =false;
   public logName:string;
-
+  role: string=null;
   constructor(private csService: ServiceService, private router: Router,private toastrService :ToastrService) {
   }
 
@@ -26,8 +26,12 @@ export class CreateroomComponent implements OnInit {
   ngOnInit(): void {
     this.room_user= new RoomUsers();
     let userName = JSON.parse(sessionStorage.getItem("auth-user"));
+    if(userName!=null){
+      this.logName = userName['username'];
+      this.role=userName['role'];
+    }
+
     this.cl.userCreate = userName['username'];
-    this.logName = userName['username'];
 
   }
   add(idRoom){

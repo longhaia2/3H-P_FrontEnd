@@ -184,18 +184,18 @@
                 <a >
                   <div class="news-listItem" >
                     <div class="img">
-                      <img src="../../../assets/image/tophigh/tophigh.gif" height="640" width="470"/></div>
+                      <img src="{{usr[0]}}" height="220" width="220"/></div>
 
                     <div class="content">
 
                       <h5 class="title" style="font-size: 100%">
-                        Tên: <span >  {{usr[0]}}  </span>
+                        Tên: <span >  {{usr[1]}}  </span>
                       </h5>
                       <h5 class="title" style="font-size: 100%">
-                        Điểm : <span>{{usr[1]}}</span>
+                        Điểm : <span>{{usr[2]}}</span>
                       </h5>
                       <h5 class="title" style="font-size: 100%">
-                        Mô tả : <span> {{usr[2]}}</span>
+                        Mô tả : <span> {{usr[3]}}</span>
                       </h5>
                     </div>
                   </div>
@@ -210,16 +210,56 @@
               <span><i class="fa fa-newspaper-o" ></i> Danh sách tin tức mới</span>
             </div>
             <div class="news-list" style="height: 390px;">
-              <a th:href="@{/tintuc(newsId=${item.id})}" th:each="item:${listNews}">
+              <a >
                 <div class="news-listItem">
                   <div class="img">
-                    <img th:src="@{/image/news/{image}(image=${item.image})}" alt="">
+                    <img src="../../../assets/image/lesson/covid.jpg" height="183" width="275"/>
                   </div>
+                  <div class="content">
+                    <h4 class="title" th:text="${item.title}">Cập nhật dịch Covid-19
+                    </h4>
+                    <span class="description">
+                      <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}">20/05/2021 17:28</span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+              <a>
+                <div class="news-listItem">
+                  <div class="img"><img src="../../../assets/image/lesson/hoc-tieng-nhat.jpg" height="824"
+                                        width="1200"/>
+                  </div>
+                  <div class="content">
+                    <h4 class="title" th:text="${item.title}">Học Trực Tuyến Cần Kĩ Năng gì?
+                    </h4>
+                    <span class="description">
+                      <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}">11/05/2021 23:28</span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+              <a >
+                <div class="news-listItem">
+                  <div class="img">
+                    <img src="../../../assets/image/lesson/hoc.png" height="371" width="660"/></div>
                   <div class="content">
                     <h4 class="title" th:text="${item.title}">Bí kíp học tập đạt kết quả cao
                     </h4>
                     <span class="description">
                       <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}">11/05/2021 23:28</span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+              <a >
+                <div class="news-listItem">
+                  <div class="img">
+                    <img src="../../../assets/image/lesson/online1.jpg" height="140" width="255"/></div>
+                  <div class="content">
+                    <h4 class="title" th:text="${item.title}">Học Trực Tuyến Có Tốt Không?
+                    </h4>
+                    <span class="description">
+                      <i class="fa fa-angle-double-right"></i>Thời gian:<span th:text="${#dates.format(item.insertDate, 'dd/MM/yyy HH:mm')}">14/05/2021 08:38</span>
                     </span>
                   </div>
                 </div>
