@@ -102,7 +102,7 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
   {path: 'admin/manage/user/add', component: AdduserComponent, canActivate: [AdminAuthService]},
   {path: 'admin/manage/user', component: ManageruserComponent, canActivate: [AdminAuthService]},
-  {path: 'admin/user/detail/:id', component: DetailuserComponent},
+  {path: 'admin/user/detail/:id', component: DetailuserComponent,canActivate: [AdminAuthService]},
   {path: 'admin/exam/detail/:id', component: ExamDetailComponent,canActivate: [AdminAuthService]},
   {path: 'listchalenge', component: ListchallengeComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/add', component: CreateroomComponent, canActivate: [CustomerAuthService]},

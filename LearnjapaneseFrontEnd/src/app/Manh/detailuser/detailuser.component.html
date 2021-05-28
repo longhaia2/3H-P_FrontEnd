@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <title>Thông tin thành viêb</title>
+  <title>Thông tin thành viên</title>
   <div th:replace="admin/init_admin :: header"></div>
 </head>
 <body class="nav-md">
@@ -14,11 +14,11 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3> <small>Thông tin người dùng</small></h3>
+            <h3> <small>Quản lý người dùng</small></h3>
           </div>
         </div>
         <div class="clearfix"></div>
-        <div class="row">
+        <div class="row" >
           <div class="col-md-12">
             <div class="x_title">
               <div class="clearfix"></div>
@@ -26,47 +26,89 @@
           </div>
           <div class="col-md-4 border-right">
             <div class="d-flex flex-column align-items-center text-center">
-              <img style="width:70%" class="mt-5" th:src="@{/image/user/{image}(image=${us.image})}">
-              <span class="font-weight-bold mt-3">Ảnh đại diện</span>
+              <img src="{{us.image}}" /><span class="font-weight-bold mt-3" style="font-size: 16px">Ảnh đại diện</span>
             </div>
           </div>
-          <div class="col-md-8 border-right">
-            <div class="p-3">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Thông tin tài khoản</h4>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-6">
-                  <label class="labels">ID</label>
-                  <input type="text" class="form-control" [ngModel]="us.id" readonly  >
+          <div class="col-sm-8">
+            <div class="card-block">
+              <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: #0a0a0a;font-size: 16px">Thông tin tài khoản</h6>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p class="m-b-10 f-w-600" style="font-size: 16px">Mã người dùng</p>
+                  <h6 class="text-muted f-w-400" style="font-size: 16px">{{us.id}}</h6>
                 </div>
-                <div class="col-md-6">
-                  <label class="labels">Tên đăng nhập</label>
-                  <input type="text" class="form-control" [ngModel]="us.username" readonly  >
-                </div>
-                <div class="col-md-6">
-                  <label class="labels">Họ và tên</label>
-                  <input type="text" class="form-control" [ngModel]="us.fullName"  readonly >
+                <div class="col-sm-6">
+                  <p class="m-b-10 f-w-600" style="font-size: 16px">Tên đăng nhập</p>
+                  <h6 class="text-muted f-w-400" style="font-size: 16px">{{us.username}}</h6>
                 </div>
               </div>
-              <div class="row mt-3">
-                <div class="col-md-6">
-                  <label class="labels">Email</label>
-                  <input type="text" class="form-control" [ngModel]="us.email"  readonly >
+              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p class="m-b-10 f-w-600" style="font-size: 16px">Họ và tên</p>
+                  <h6 class="text-muted f-w-400" style="font-size: 16px">{{us.fullName}}</h6>
                 </div>
-                <div class="col-md-6">
-                  <label class="labels">Số điện thoại </label>
-                  <input type="number" class="form-control" [ngModel]="us.phoneNumber"  readonly >
+                <div class="col-sm-6">
+                  <p class="m-b-10 f-w-600" style="font-size: 16px">Email</p>
+                  <h6 class="text-muted f-w-400" style="font-size: 16px">{{us.email}}</h6>
                 </div>
               </div>
-              <div class="row mt-3" >
-                <div class="col-md-6">
-                  <label class="labels">Giới tính</label>
-                  <input type="text" class="form-control" [ngModel]="us.gender" readonly >
+              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p class="m-b-10 f-w-600" style="font-size: 16px">Số điện thoại</p>
+                  <h6 class="text-muted f-w-400">{{us.phoneNumber}}</h6>
+                </div>
+                <div class="col-sm-6">
+                  <p class="m-b-10 f-w-600" style="font-size: 16px">Giới tính</p>
+                  <h6 class="text-muted f-w-400" style="font-size: 16px">{{us.gender}}</h6>
                 </div>
               </div>
             </div>
           </div>
+<!--          <div class="col-md-8 border-right">-->
+<!--            <div class="p-3">-->
+<!--              <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--                <h4 class="text-right">Thông tin tài khoản</h4>-->
+<!--              </div>-->
+<!--              <div class="row mt-2">-->
+<!--                <div class="col-md-6">-->
+<!--                  <label class="labels">Mã người dùng</label>-->
+<!--                  <input type="text" style="background-color: whitesmoke" class="form-control" [ngModel]="us.id" readonly  >-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                  <label class="labels">Tên đăng nhập</label>-->
+<!--                  <input type="text" class="form-control" [ngModel]="us.username" readonly  >-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                  <label class="labels">Họ và tên</label>-->
+<!--                  <input type="text" class="form-control" [ngModel]="us.fullName"  readonly >-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="row mt-3">-->
+<!--                <div class="col-md-6">-->
+<!--                  <label class="labels">Email</label>-->
+<!--                  <input type="text" class="form-control" [ngModel]="us.email"  readonly >-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                  <label class="labels">Số điện thoại </label>-->
+<!--                  <input type="number" class="form-control" [ngModel]="us.phoneNumber"  readonly >-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="row mt-3" >-->
+<!--                <div class="col-md-6">-->
+<!--                  <label class="labels">Giới tính</label>-->
+<!--                  <input type="text" class="form-control" [ngModel]="us.gender" readonly >-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="row mt-3" >-->
+<!--                <div class="col-md-6">-->
+<!--                  <label class="labels">Thời gian đăng kí</label>-->
+<!--                  <input type="text" class="form-control" [ngModel]="us.created_at" readonly >-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
     </div>
@@ -75,3 +117,4 @@
 </div>
 </body>
 </html>
+

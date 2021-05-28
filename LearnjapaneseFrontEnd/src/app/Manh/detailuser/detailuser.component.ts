@@ -11,7 +11,7 @@ import {User} from "../modelm/user";
 export class DetailuserComponent implements OnInit {
   id: number;
   logName: string;
-  us : User=new User();
+  us : User;
   constructor(private Userservice: UserServiceService, private route: ActivatedRoute,
               private  router: Router) {
   }
@@ -20,7 +20,7 @@ export class DetailuserComponent implements OnInit {
     this.logName = userName['username'];
     this.id=this.route.snapshot.params['id'];
     this.Userservice.get(this.id).subscribe(data=>{
-      this.us=data
+      this.us=data;
     },error => console.log(error));
   }
 }

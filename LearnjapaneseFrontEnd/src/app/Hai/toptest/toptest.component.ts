@@ -24,7 +24,6 @@ export class ToptestComponent implements OnInit {
   list(){
     this.examService.getlistExamOrderByIdDesc().subscribe(data =>{
       this.ex = data;
-      console.log(data);
     });
   }
 }

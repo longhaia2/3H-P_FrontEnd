@@ -46,10 +46,9 @@ p:number=1;
       if (result == true) {
         this.questionService.delete(id).subscribe(
           data => {
-            console.log(data);
             this.reloadData();
           });
-        this.tsv.success('Xóa thành công', 'Xóa bài học');
+        this.tsv.success('Xóa thành công', 'Xóa câu hỏi');
       }
     });
   }
@@ -61,5 +60,8 @@ p:number=1;
       console.log(data);
     },error => console.log(error));
   }
+addQS(id){
+    this.router.navigate(['admin/exam/detail/',id])
 
+}
 }
