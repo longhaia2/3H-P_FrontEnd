@@ -86,10 +86,9 @@ export class ProfileComponent implements OnInit {
         fileRef.getDownloadURL().subscribe((url) => {
           this.url = url;
           this.uploadFileService.insertImageDetails(this.id, this.url);
-          this.tsv.success('Cập nhật thành công', 'Cập nhật ảnh đại diện thành công ');
           this.us.image = this.url;
           this.UserService.update(this.id, this.us).subscribe();
-
+          this.tsv.success('Cập nhật thành công', 'Cập nhật ảnh đại diện');
         });
       })
     ).subscribe();
@@ -103,7 +102,7 @@ export class ProfileComponent implements OnInit {
     this.UserService.update(this.id, this.us).subscribe(data => {
       console.log(data);
       this.router.navigate(['list']);
-      this.tsv.success('Cập nhật thành công', 'Cập nhật thông tin thành công ');
+      this.tsv.success('Cập nhật thành công', 'Cập nhật thông tin');
     }, error => console.log(error));
   }
 

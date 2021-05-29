@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Thông tin thành viên</title>
+</head>
 <body>
 <app-header></app-header>
 <app-menu [userNameDsp]="logName"  [role]="role"></app-menu>
@@ -19,8 +22,8 @@
       </div>
       <div class="col-md-5 border-right">
         <div class="d-flex flex-column align-items-center text-center">
-          <form>
-          <span class="font-weight-bold mt-3" style="text-align: center;color: #05B2D2;size: 70px">CẬP NHẬT ẢNH ĐẠI DIỆN</span>
+          <form style="margin-left: 200px">
+          <span class="font-weight-bold mt-3" style="text-align: center;size: 70px">CẬP NHẬT ẢNH ĐẠI DIỆN</span>
 
 <!--            <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">-->
           <br><br>
@@ -29,8 +32,11 @@
           <button class="btn btn-success" id="save"  (click)="save()"  style="margin-right: 10px"  type="submit">Cập nhật ảnh</button>
             <input type="hidden"  [(ngModel)]="us.image" >
             <br><br>
-            <img src="{{us.image}}" /><span class="font-weight-bold mt-3" style="font-size: 16px">Ảnh đại diện</span>
-<!--            <button (click)="view()">View</button>-->
+            <div class="col-md-4 border-right" style="width: 600px;margin-left: 300px">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img src="{{us.image}}" /><span class="font-weight-bold mt-3" style="font-size: 16px">Ảnh đại diện</span>
+              </div>
+            </div>
 
           </form>
         </div>
@@ -42,12 +48,12 @@
       <div class="col-md-7 border-right">
 
         <div style="text-align: center" class="d-flex justify-content-between align-items-center mb-3">
-            <h4 style="text-align: center;color: #05B2D2;size: 70px;font-family: 'Times New Roman' " class="text-right">THÔNG TIN TÀI KHOẢN</h4>
+            <h4 style="text-align: center;margin-left: 200px;size: 70px;font-family: 'Times New Roman' " class="text-right">THÔNG TIN TÀI KHOẢN</h4>
           </div>
-        <form [formGroup]="registerForm"  method="post" enctype="multipart/form-data">
+        <form [formGroup]="registerForm" style="margin-left: 100px"  method="post" enctype="multipart/form-data">
 
         <div class="col-md-6">
-          <div class="p-2">
+          <div class="p-2" style="width: 470px;">
           <div class="col-md-12 mt-2">
             <b>  <label class="labels">Tên đăng nhập</label></b>
               <input type="text" class="form-control" [(ngModel)]="us.username" class="form-control"  formControlName="username" name="username" id="username" ng-required="$scope.uid" readonly>
@@ -84,7 +90,7 @@
 
               <div class="mt-3 text-center">
                 <button class="btn btn-success" id="updateuser"  (click)="updateUser()" [disabled]="registerForm.invalid" style="margin-right: 10px"  type="submit">Lưu thông tin</button>
-                <a class="btn btn-danger" [routerLink]="['/page-home']">Hủy bỏ</a>
+                <a class="btn btn-danger" style="color: white;" [routerLink]="['/page-home']">Hủy bỏ</a>
 
               </div>
           </div>
