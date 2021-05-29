@@ -19,14 +19,11 @@ export class ToptestComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-  // @ts-ignore
-
     this.list();
   }
   list(){
-    this.examService.findAll().subscribe(data =>{
+    this.examService.getlistExamOrderByIdDesc().subscribe(data =>{
       this.ex = data;
-      console.log(data);
     });
   }
 }

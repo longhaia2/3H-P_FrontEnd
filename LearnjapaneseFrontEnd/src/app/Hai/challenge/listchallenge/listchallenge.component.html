@@ -23,7 +23,7 @@
                 <input  type="search" name="" id="ctr-search-room" [(ngModel)]="room_id" (ngModelChange)="Search()" style="margin-right: 10px" class="text-center form-control" value="" title="" placeholder="Tìm theo mã phòng">
               </div>
               <a [routerLink]="['/challenge/add']" class="click"><img src="../../../../assets/image/ctr-lr-create-btn.png" style="height: 40px;width: 150px;margin-right: 10px;margin-bottom: 5px"/></a>
-              <a href="" data-toggle="modal" class="click" onclick="open_find_room();"><img src="../../../../assets/image/ctr-lr-join-btn.png" style="height: 40px;width: 150px;margin-right: 10px;margin-bottom: 5px"></a>
+<!--              <a href="" data-toggle="modal" class="click" onclick="open_find_room();"><img src="../../../../assets/image/ctr-lr-join-btn.png" style="height: 40px;width: 150px;margin-right: 10px;margin-bottom: 5px"></a>-->
             </div>
             <div>
               <table class="table"><thead>
@@ -45,7 +45,7 @@
                   <td>{{roomChallenge.level}}</td>
                   <td>{{roomChallenge.time +' Phút'}}</td>
                   <td>{{roomChallenge.count+'/4'}}</td>
-                  <td *ngIf="roomChallenge.check">Đang đấu</td>
+                  <td *ngIf="roomChallenge.check">Phòng đầy</td>
                     <td *ngIf="!roomChallenge.check">Phòng chờ</td>
                    <td *ngIf="roomChallenge.check"><button [disabled]="isDisabled" type="button" class="btn btn-danger">Chiến</button></td>
                     <td *ngIf="!roomChallenge.check&&roomChallenge.pass==null" (click)="add(roomChallenge.room_id)"><button type="button" class="btn btn-danger" >Chiến</button></td>

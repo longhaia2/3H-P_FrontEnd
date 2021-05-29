@@ -30,13 +30,13 @@ export class ListchallengeComponent implements OnInit {
   user_test: number;
   resultAS:  string[];
   room_id :any;
-  public logName: string=null;
-  role: string=null;
+  public logName: string;
   p : number = 1;
   id: number;
   challenge: RoomChallenge[];
   sum :number =0;
   isDisabled= true;
+  role: string=null;
 
   constructor(private chat: ChatService,private roomsv: ServiceService, private route: ActivatedRoute, private router: Router, private title: Title,private challengeSV:ChallengeServiceService, public dialog:MatDialog) {
     // this.title.setTitle("Thử Thách");
@@ -93,6 +93,7 @@ export class ListchallengeComponent implements OnInit {
   }
   add(idRoom) {
     this.chat.send_idRoom(idRoom);
+    this.chat.send_id_out(this.user_test);
     this.room_user.room_id = idRoom;
     this.room_user.score = 0;
     this.room_user.banker=0;

@@ -18,7 +18,7 @@ import {ExamService} from "../servicesh/exam.service";
   providers: [QuestionServiceService, ToastrService]
 })
 export class ListquestionComponent implements OnInit {
-
+  p:number=1;
   hocphan;
   trinhdo;
   logName: String;
@@ -56,7 +56,7 @@ export class ListquestionComponent implements OnInit {
             console.log(data);
             this.reloadData();
           });
-        this.tsv.success('Xóa thành công', 'Xóa bài học');
+        this.tsv.success('Xóa thành công', 'Xóa câu hỏi');
       }
     });
   }

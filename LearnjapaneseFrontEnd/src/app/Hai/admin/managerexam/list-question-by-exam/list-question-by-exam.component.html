@@ -25,7 +25,7 @@
           <div class="col-md-12 col-sm-12">
                        <div class="col-md-2 col-sm-12">
               <div>
-                <a  class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
+                <a  class="btn btn-success" (click)="addQS(id)"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let qs of question;let i=index">
+                  <tr *ngFor="let qs of question| paginate:{itemsPerPage:8, currentPage:p};let i=index">
                     <td style="width: 100px">{{i+1}}</td>
                     <td>{{qs.content}}</td>
                     <td style="width: 150px">{{qs.ansA}}</td>
@@ -64,6 +64,7 @@
                   </tr>
                   </tbody>
                 </table>
+                <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@ import {DialogComponent} from "../../../../Thuan/dialog/dialog.component";
   providers:[ExamserviceService,QuestionServiceService,ToastrService]
 })
 export class ListQuestionByExamComponent implements OnInit {
-
+p:number=1;
   hocphan;
   trinhdo;
   searchText;
@@ -46,10 +46,9 @@ export class ListQuestionByExamComponent implements OnInit {
       if (result == true) {
         this.questionService.delete(id).subscribe(
           data => {
-            console.log(data);
             this.reloadData();
           });
-        this.tsv.success('Xóa thành công', 'Xóa bài học');
+        this.tsv.success('Xóa thành công', 'Xóa câu hỏi');
       }
     });
   }
@@ -61,5 +60,8 @@ export class ListQuestionByExamComponent implements OnInit {
       console.log(data);
     },error => console.log(error));
   }
+addQS(id){
+    this.router.navigate(['admin/exam/detail/',id])
 
+}
 }

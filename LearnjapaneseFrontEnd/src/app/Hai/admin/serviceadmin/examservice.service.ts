@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Exam} from '../model/Exam';
+import {Question} from "../../../Hien/model/question";
 // import {url} from "inspector";
 
 @Injectable({
@@ -25,12 +26,14 @@ export class ExamserviceService {
     return this.http.get(`${'http://localhost:8080/exam/list'}/${id}`);
   }
 
-
   findAll(): Observable<Exam[]> {
     return this.http.get<Exam[]>(this.url + '/list');
   }
   getExamNew(): Observable<Exam[]> {
     return this.http.get<Exam[]>(this.url + '/pp');
+  }
+  QsnotExam(level): Observable<Question[]> {
+    return this.http.get<Question[]>(`${'http://localhost:8080/exam/list-qs'}/${level}`);
   }
 
   delete(id): Observable<any> {
@@ -56,5 +59,8 @@ export class ExamserviceService {
 
   getlistExamOrderByJLPTDesc(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/exam'}/pp/${id}`);
+  }
+  getlistExamOrderByIdDesc(): Observable<any>{
+    return this.http.get(`${'http://localhost:8080/exam'}/all/exam`);
   }
 }

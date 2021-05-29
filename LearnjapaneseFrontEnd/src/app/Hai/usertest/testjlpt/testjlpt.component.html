@@ -27,13 +27,13 @@
       <h2 style="text-align: center;font-size: 20px">Thi Online</h2>
       <div class="exam-content" >
         <div class="list-question" >
-          <div class="item-question"  *ngFor="let review of qs| paginate:{itemsPerPage:8, currentPage:p};; let i = index; let j = index" value="{{review}}" >
+          <div class="item-question"  *ngFor="let review of qs| paginate:{itemsPerPage:8, currentPage:p}; let i = index; let j = index" value="{{review}}" >
             <div class="title">
               <b><span class="question-no">{{i+1}}</span>{{review.content}}</b>
             </div>
             <div >
               <div  class="content-ans">
-                <mat-radio-button class="sp" type="radio" name="{{j+1}}"   value="{{review.ansA}}" title=""  (click)="selectAt(i,'A')">A. {{review.ansA}} </mat-radio-button>
+                <mat-radio-button class="sp" type="radio" name="{{j+1}}"   value="{{review.ansA}}" title=""  (click)="selectAt(i,'A')"> A. {{review.ansA}} </mat-radio-button>
 <!--                <input class="sp" type="radio" name="{{j+1}}"   value="{{review.ansA}}" title=""  (click)="selectAt(i,'A')" >-->
 <!--                <span  class="sp">A. {{review.ansA}}</span>-->
               </div>

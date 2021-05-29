@@ -12,24 +12,19 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class TestN1Component implements OnInit {
   exam : Exam[];
   role:string=null;
-
-  logName: string
+  logName: string;
 
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role=userName['role'];
-
-    }    this.reloadData();
+    this.logName = userName['username'];
+    this.reloadData();
   }
   reloadData() {
     this.examService.findBylevelCodeExam("N1").subscribe(data => {
       this.exam = data;
-      console.log(this.exam);
       this.examService.getlistExamOrderByJLPTDesc("id");
 
     });

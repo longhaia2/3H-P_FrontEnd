@@ -44,5 +44,8 @@ export class ServiceService {
   delete(id): Observable<any> {
     return this.http.delete(`${'http://localhost:8080/challenge/delete'}/${id}`);
   }
+  getUserNow(id): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/user'}/${id}`);
+  }
 
 }

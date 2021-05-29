@@ -15,6 +15,8 @@ import {ResultTop} from "../challenge/model/ResultTop";
   providers:[LessonServiceService, ExamserviceService,]
 })
 export class HomepageComponent implements OnInit {
+
+
   logName: string=null;
   role: string=null;
   id: number;
@@ -23,6 +25,7 @@ export class HomepageComponent implements OnInit {
   ex: Exam[];
   us: UserScore[];
   p : number = 1;
+  finalPercentage: number;
 
 
   constructor(private lessonService: LessonServiceService, private examService: ExamserviceService) {
@@ -38,7 +41,9 @@ export class HomepageComponent implements OnInit {
     this.getLesson();
     this.list();
     this.ListtopHigh();
-    this.Refresh()
+    if(userName['role']=="ROLE_ADMIN") {
+      this.Refresh()
+    }
   }
 
   getLesson() {
@@ -49,15 +54,19 @@ export class HomepageComponent implements OnInit {
   list(){
     this.examService.findAll().subscribe(data => {
       this.ex = data;
-      console.log(data);
     });
   }
   ListtopHigh(){
     this.lessonService.getTopHighScoreByScore().subscribe(data => {
       this.rt = data;
+      console.log(this.rt[1].username);
+    this.rt.forEach(Element=>{
+      console.log(Element.username);
+    })
     });
   }
   Refresh(){
+
     if (localStorage.getItem('refreshed') === null) {
       localStorage['refreshed'] = true;
       window.location.reload(true);

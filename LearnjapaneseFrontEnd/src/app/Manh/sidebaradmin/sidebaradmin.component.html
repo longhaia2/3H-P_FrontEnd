@@ -7,12 +7,21 @@
         <a th:href="@{/admin/home}" class="site_title"><i class="fa fa-graduation-cap"></i> <span>3H&P</span></a>
       </div>
 
-      <div class="clearfix"></div>
       <div class="profile clearfix">
+        <div class="profile_pic">
+          <img src="{{us.image}}" class="img-circle profile_img">
+        </div>
         <div class="profile_info">
-          <span style="font-size: 20px; color: whitesmoke">Xin chào {{userNameDsp}}</span>
+          <span>Xin chào ,</span>
+          <h2 style=" color:cornflowerblue">{{userNameDsp}}</h2>
         </div>
       </div>
+<!--      <div class="clearfix"></div>-->
+<!--      <div class="profile clearfix">-->
+<!--        <div class="profile_info">-->
+<!--          <span style="font-size: 18px; color:cornflowerblue">Xin chào </span>-->
+<!--        </div>-->
+<!--      </div>-->
       <!-- /menu profile quick info -->
 
       <br />
@@ -20,7 +29,7 @@
       <!-- sidebar menu -->
       <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
         <div class="menu_section">
-          <h3>Trang quản lý</h3>
+          <h3 style="font-size: 16px">Trang quản lý</h3>
           <ul class="nav side-menu">
             <li id="homeManager" sec:authorize="hasAnyAuthority('ADMIN')">
               <a [routerLink]="['/admin-home']" ><i class="fa fa-home" ></i> Trang chủ</a>

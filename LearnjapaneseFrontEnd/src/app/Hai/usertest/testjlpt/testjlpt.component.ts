@@ -12,6 +12,7 @@ import {MAT_RADIO_DEFAULT_OPTIONS} from "@angular/material/radio";
 export interface DialogData {
   idResult: number;
   idExam: number;
+
 }
 @Component({
   selector: 'app-testjlpt',
@@ -25,13 +26,14 @@ export interface DialogData {
 })
 export class TestjlptComponent implements OnInit {
   logName: string;
+  role:string;
   p:number=1;
   ex: Exam;
+  x:number;
   a: number=0;
   b: number=0;
   x:number;
   rs: Result;
-  role:string=null;
   dem = 0;
   selectedAS: string[];
   qs: Question[];
@@ -43,11 +45,8 @@ export class TestjlptComponent implements OnInit {
   ngOnInit(): void {
 
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
-    if(userName != null){
-      this.logName = userName['username'];
-      this.role=userName['role'];
-
-    }    this.ex = new Exam();
+    this.logName = userName['username'];
+    this.ex = new Exam();
     this.rs = new Result();
     this.ex = new Exam();
     let levelCurent = this.route.snapshot.params['level'];
@@ -73,7 +72,11 @@ export class TestjlptComponent implements OnInit {
     });
 
   }
+
+
   addResult(idResult){
+    clearInterval(this.x);
+
     for (let i = 0; i < this.qs.length; i++) {
       if (this.qs[i].ansCorrect === this.selectedAS[i]) {
         this.dem++;
@@ -88,14 +91,19 @@ export class TestjlptComponent implements OnInit {
     this.service.addResult(this.rs).subscribe(data => {
       idResult = data.dataResponse;
       this.router.navigate(['resultsgrammar/', idResult, this.rs.exam_id]);
+      localStorage.setItem('targetTime', null);
+      localStorage.clear();
     });
   }
+
+
   selectAt(index, value) {
-    console.log("index: " + index + " -- value: " + value);
     this.selectedAS[index] = value;
   }
   local(){
-    let minutes = 2;
+
+
+    let minutes = 30;
     let currentTime = localStorage.getItem('currentTime');
     let targetTime = localStorage.getItem('targetTime');
     if (targetTime == null && currentTime == null) {
@@ -112,33 +120,26 @@ export class TestjlptComponent implements OnInit {
       // @ts-ignore
       targetTime = new Date(targetTime);
     }
-    this.x =setInterval(()=> {
+// @ts-ignore
+    this.x = setInterval(()=> {
       // @ts-ignore
-     //  if (Math.floor(((targetTime - currentTime)/1000))<2) {
-     //    clearInterval(x);
-     //    for (let i = 0; i < this.qs.length; i++) {
-     //      if (this.qs[i].ansCorrect === this.selectedAS[i]) {
-     //        this.dem++;
-     //      }
-     //    }
-     //    this.rs.score = this.dem;
-     //    let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
-     //    this.rs.user_id = user_id.userId;
-     //    this.rs.exam_id = this.route.snapshot.params.id;
-     //    this.rs.ansSelects = this.selectedAS;
-     //    this.openDialog();
-     //    // @ts-ignore
-     //    targetTime=0;
-     //    return localStorage.setItem('targetTime', targetTime);
-     // }
-      if(Math.floor(((targetTime - currentTime)/1000))<2){
-        // @ts-ignore
+      if (Math.floor(((targetTime - currentTime)/1000))<2) {
         clearInterval(this.x);
-        document.getElementById('timer').innerHTML = 'Hết Giờ';
-        return  this.openDialog();
-      }
-
-       else {
+        for (let i = 0; i < this.qs.length; i++) {
+          if (this.qs[i].ansCorrect === this.selectedAS[i]) {
+            this.dem++;
+          }
+        }
+        this.rs.score = this.dem;
+        let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
+        this.rs.user_id = user_id.userId;
+        this.rs.exam_id = this.route.snapshot.params.id;
+        this.rs.ansSelects = this.selectedAS;
+        this.openDialog();
+        // @ts-ignore
+        targetTime=0;
+        return localStorage.setItem('targetTime', targetTime);
+      } else {
         // @ts-ignore
         currentTime = new Date();
         // @ts-ignore

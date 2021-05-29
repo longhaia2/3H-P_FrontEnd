@@ -19,28 +19,17 @@ export class MenuComponent implements OnInit {
   Users: User;
   id_user:number;
   test:string=null;
-
   // tslint:disable-next-line:no-input-rename
   @Input('userNameDsp') userNameDsp;
   @Input('role') role;
 
-  constructor( public dialog: MatDialog,  private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router) {
-
-  }
-
-
-  refreshPage() {
-    window.location.reload();
-  }
+  constructor( public dialog: MatDialog, private tsv: ToastrService,private tokenStorage: TokenStorageService, private  router: Router,private service: ServiceService) { }
   us : User[];
   ngOnInit(): void {
     let id_score = JSON.parse(sessionStorage.getItem("auth-user"));
-    if(id_score != null){
-      this.id_user = id_score['userId'];
-    }
-
-
+    this.id_user = id_score['userId'];
   }
+
 
   logout(){
     this.dialog.open(ConfirmLogoutComponent);
@@ -48,7 +37,6 @@ export class MenuComponent implements OnInit {
 
   score() {
    this.router.navigate(['score'])
-
 
   }
 
