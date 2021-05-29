@@ -26,7 +26,8 @@ export class StarttestjlptComponent implements OnInit {
       this.logName = userName['username'];
       this.role=userName['role'];
 
-    }    this.id=this.route.snapshot.params['id'];
+    }
+    this.id=this.route.snapshot.params['id'];
     this.examService.get(this.id).subscribe(data=>{
       this.ex=data
     },error => console.log(error));

@@ -29,6 +29,7 @@ export class TestjlptComponent implements OnInit {
   ex: Exam;
   a: number=0;
   b: number=0;
+  x:number;
   rs: Result;
   role:string=null;
   dem = 0;
@@ -111,26 +112,31 @@ export class TestjlptComponent implements OnInit {
       // @ts-ignore
       targetTime = new Date(targetTime);
     }
+    this.x =setInterval(()=> {
       // @ts-ignore
-    const x = setInterval(()=> {
-      // @ts-ignore
-      if (Math.floor(((targetTime - currentTime)/1000))<2) {
-        clearInterval(x);
-        for (let i = 0; i < this.qs.length; i++) {
-          if (this.qs[i].ansCorrect === this.selectedAS[i]) {
-            this.dem++;
-          }
-        }
-        this.rs.score = this.dem;
-        let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
-        this.rs.user_id = user_id.userId;
-        this.rs.exam_id = this.route.snapshot.params.id;
-        this.rs.ansSelects = this.selectedAS;
-        this.openDialog();
+     //  if (Math.floor(((targetTime - currentTime)/1000))<2) {
+     //    clearInterval(x);
+     //    for (let i = 0; i < this.qs.length; i++) {
+     //      if (this.qs[i].ansCorrect === this.selectedAS[i]) {
+     //        this.dem++;
+     //      }
+     //    }
+     //    this.rs.score = this.dem;
+     //    let user_id = JSON.parse(sessionStorage.getItem('auth-user'));
+     //    this.rs.user_id = user_id.userId;
+     //    this.rs.exam_id = this.route.snapshot.params.id;
+     //    this.rs.ansSelects = this.selectedAS;
+     //    this.openDialog();
+     //    // @ts-ignore
+     //    targetTime=0;
+     //    return localStorage.setItem('targetTime', targetTime);
+     // }
+      if(Math.floor(((targetTime - currentTime)/1000))<2){
         // @ts-ignore
-        targetTime=0;
-        return localStorage.setItem('targetTime', targetTime);
-     }
+        clearInterval(this.x);
+        document.getElementById('timer').innerHTML = 'Hết Giờ';
+        return  this.openDialog();
+      }
 
        else {
         // @ts-ignore

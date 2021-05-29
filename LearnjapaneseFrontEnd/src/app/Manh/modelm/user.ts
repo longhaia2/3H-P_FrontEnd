@@ -7,5 +7,6 @@ export class User {
   email: string;
   phoneNumber: string;
   gender: string;
-
+  image:string;
+  created_at:string;
 }

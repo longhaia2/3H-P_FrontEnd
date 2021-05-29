@@ -18,6 +18,9 @@ export class UserServiceService {
   update(id, data): Observable<any> {
     return this.http.put(`${'http://localhost:8080/user'}/${id}`, data);
   }
+  updateImage(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/user/update-image'}/${id}`, data);
+  }
   create(data): Observable<any> {
     return this.http.post<User>(this.url + '/add', data);
   }
