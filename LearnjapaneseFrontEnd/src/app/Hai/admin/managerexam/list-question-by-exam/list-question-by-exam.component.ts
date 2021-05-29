@@ -7,6 +7,7 @@ import {DialogServiceService} from "../../../../Thuan/service/dialog-service.ser
 import {MatDialog} from "@angular/material/dialog";
 import {ToastrService} from "ngx-toastr";
 import {DialogComponent} from "../../../../Thuan/dialog/dialog.component";
+import {Exam} from "../../model/Exam";
 
 @Component({
   selector: 'app-list-question-by-exam',
@@ -20,7 +21,9 @@ p:number=1;
   trinhdo;
   searchText;
   id:number;
+  coutQS:number=0;
   logName: string;
+  exam:Exam;
   question: Question[];
   constructor(private examService:ExamserviceService,private questionService: QuestionServiceService, private route: ActivatedRoute, private router: Router,
               private dialogService: DialogServiceService,
@@ -34,6 +37,15 @@ p:number=1;
       this.question=data;
       console.log(data);
     },error => console.log(error));
+    this.examService.get(this.id).subscribe(data => {
+      this.exam = data;
+    });
+    this.cout();
+  }
+  cout(){
+    this.examService.Dem(this.id).subscribe(data=>{
+      this.coutQS=data;
+    })
   }
   delete(id: number) {
     const confirmDialog = this.dialog.open(DialogComponent, {
@@ -44,7 +56,7 @@ p:number=1;
     });
     confirmDialog.afterClosed().subscribe(result => {
       if (result == true) {
-        this.questionService.delete(id).subscribe(
+        this.examService.deleteQS(id).subscribe(
           data => {
             this.reloadData();
           });
@@ -57,11 +69,7 @@ p:number=1;
   private reloadData() {
     this.examService.getQSByExam(this.id).subscribe(data=>{
       this.question=data;
-      console.log(data);
     },error => console.log(error));
+    this.cout();
   }
-addQS(id){
-    this.router.navigate(['admin/exam/detail/',id])
-
-}
 }

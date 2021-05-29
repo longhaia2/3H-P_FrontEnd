@@ -25,7 +25,7 @@ export class HomepageComponent implements OnInit {
   ex: Exam[];
   us: UserScore[];
   p : number = 1;
-  finalPercentage: number;
+  // finalPercentage: number=0;
 
 
   constructor(private lessonService: LessonServiceService, private examService: ExamserviceService) {
@@ -59,9 +59,8 @@ export class HomepageComponent implements OnInit {
   ListtopHigh(){
     this.lessonService.getTopHighScoreByScore().subscribe(data => {
       this.rt = data;
-      console.log(this.rt[1].username);
     this.rt.forEach(Element=>{
-      console.log(Element.username);
+      Element[6]=Math.floor((Element[2]*100)/(Element[4]*5));
     })
     });
   }

@@ -3,6 +3,7 @@ import {Exam} from "../../model/Exam";
 import {ExamserviceService} from "../../serviceadmin/examservice.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Question} from "../../../../Hien/model/question";
+import {ExamQuestion} from "../../model/ExamQuestion";
 
 @Component({
   selector: 'app-exam-detail',
@@ -19,6 +20,8 @@ export class ExamDetailComponent implements OnInit {
   logName: string;
   question: Question[];
   exam:Exam;
+  ex_Qs:ExamQuestion= new ExamQuestion();
+  coutQS:number=0;
   constructor(private examService: ExamserviceService, private route: ActivatedRoute,
               private  router: Router) { }
 
@@ -28,13 +31,15 @@ export class ExamDetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.examService.get(this.id).subscribe(data => {
       this.exam = data;
-
-      console.log(this.exam.level);
       this.examService.QsnotExam(this.exam.level).subscribe(data => {
         this.question = data;
-        console.log(this.question);
       }, error => console.log(error));
     });
+      this.examService.Dem(this.id).subscribe(data=>{
+        this.coutQS=data;
+      })
+  }
+  addQsInExam(){
 
   }
 }

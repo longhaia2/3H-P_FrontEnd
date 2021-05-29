@@ -4,4 +4,5 @@ export class ResultTop {
   content:string;
   score:number;
   totalQuestion: number;
+  finalPercentage:number;
 }
