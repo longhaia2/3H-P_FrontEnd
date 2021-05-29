@@ -32,7 +32,6 @@ export class TestjlptComponent implements OnInit {
   x:number;
   a: number=0;
   b: number=0;
-  x:number;
   rs: Result;
   dem = 0;
   selectedAS: string[];
