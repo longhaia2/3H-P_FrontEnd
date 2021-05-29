@@ -132,6 +132,10 @@ import { N5TuvungOntapComponent } from './Hai/study/study-n5/n5-tuvung-ontap/n5-
 import { ExamDetailComponent } from './Hai/admin/managerexam/exam-detail/exam-detail.component';
 import { ListQuestionByExamComponent } from './Hai/admin/managerexam/list-question-by-exam/list-question-by-exam.component';
 import { DialogExitRoomComponent } from './Hai/challenge/dialog-exit-room/dialog-exit-room.component';
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import { ListnewsComponent } from './Manh/listnews/listnews.component';
+import { ContentnewComponent } from './Manh/contentnew/contentnew.component';
 
 
 
@@ -249,6 +253,8 @@ import { DialogExitRoomComponent } from './Hai/challenge/dialog-exit-room/dialog
     ExamDetailComponent,
     ListQuestionByExamComponent,
     DialogExitRoomComponent,
+    ListnewsComponent,
+    ContentnewComponent,
   ],
 
   imports: [
@@ -273,7 +279,9 @@ import { DialogExitRoomComponent } from './Hai/challenge/dialog-exit-room/dialog
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
+
   ],
   entryComponents: [DialogInputPassComponent, DialogJoinRoomComponent, QuanlibaihocComponent, DialogComponent, ConfirmLogoutComponent,DialogExitRoomComponent],
   providers: [authInterceptorProviders, Title, ChatService, WebsocketService],

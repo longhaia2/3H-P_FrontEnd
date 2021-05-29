@@ -9,5 +9,4 @@ export class User {
   gender: string;
   image:string;
   created_at:string;
-
 }

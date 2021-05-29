@@ -4,6 +4,16 @@
 
 export const environment = {
   production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyC4hmmLFfUoAj7FAMlLLkpRXzMrUfiI_vU",
+    authDomain: "fir-upload-firebase-4285b.firebaseapp.com",
+    projectId: "fir-upload-firebase-4285b",
+    storageBucket: "fir-upload-firebase-4285b.appspot.com",
+    messagingSenderId: "994903254869",
+    appId: "1:994903254869:web:24990c8a501de5d3ae31dc",
+    measurementId: "G-VVCHPPJTK6"
+
+  }
 
 };
 

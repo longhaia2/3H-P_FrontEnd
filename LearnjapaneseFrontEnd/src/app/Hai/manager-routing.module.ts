@@ -77,6 +77,8 @@ import {N5NguphapOntapComponent} from "./study/study-n5/n5-nguphap-ontap/n5-ngup
 import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component";
 import {ExamDetailComponent} from "./admin/managerexam/exam-detail/exam-detail.component";
 import {ListQuestionByExamComponent} from "./admin/managerexam/list-question-by-exam/list-question-by-exam.component";
+import {ListnewsComponent} from "../Manh/listnews/listnews.component";
+import {ContentnewComponent} from "../Manh/contentnew/contentnew.component";
 
 
 
@@ -170,6 +172,9 @@ const routes: Routes = [
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
   {path: 'unaccess', component: UnaccessComponent},
   {path: 'profile/edit/:id', component: ProfileComponent},
+  {path: 'listnews', component: ListnewsComponent},
+  {path: 'new/:id', component: ContentnewComponent},
+
   {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]},
 ];
 
