@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Exam} from '../model/Exam';
 import {Question} from "../../../Hien/model/question";
+import {ExamQuestion} from "../model/ExamQuestion";
 // import {url} from "inspector";
 
 @Injectable({
@@ -17,6 +18,9 @@ export class ExamserviceService {
 
   create(data): Observable<any> {
     return this.http.post<Exam>(this.url + '/add', data);
+  }
+  AddQsInExam(data): Observable<any> {
+    return this.http.post<ExamQuestion>(this.url + '/add-qs-in-exam', data);
   }
 
   get(id): Observable<any> {
@@ -62,5 +66,11 @@ export class ExamserviceService {
   }
   getlistExamOrderByIdDesc(): Observable<any>{
     return this.http.get(`${'http://localhost:8080/exam'}/all/exam`);
+  }
+  Dem(id:number):Observable<any>{
+    return this.http.get(`${'http://localhost:8080/exam/cout'}/${id}`)
+  }
+  deleteQS(id): Observable<any> {
+    return this.http.delete(`${'http://localhost:8080/exam/delete-qs'}/${id}`);
   }
 }

@@ -11,9 +11,20 @@
         <div class="page-title">
           <div class="title_left">
             <h3>Thêm mới câu hỏi cho đề thi</h3>
-            <h5>Mã đề: {{exam.codeExam}}</h5>
-            <h5>Trình độ: {{exam.level}}</h5>
-            <h5>Thông tin: {{exam.title}}</h5>
+            <div class="container">
+              <table>
+                <tbody>
+                <tr>
+                  <td> <h5>Mã đề: {{exam.codeExam}}</h5></td>
+                  <td> <h5>Trình độ: {{exam.level}}</h5></td>
+                </tr>
+                <tr>
+                  <td><h5>Thông tin: {{exam.title}}</h5></td>
+                  <td><h5>Số câu hỏi hiện tại: {{coutQS}}/{{exam.totalQuestion}}</h5></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
         </div>
