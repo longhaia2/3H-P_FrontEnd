@@ -100,7 +100,6 @@ export class ProfileComponent implements OnInit {
 
   updateUser() {
     this.UserService.update(this.id, this.us).subscribe(data => {
-      console.log(data);
       this.router.navigate(['list']);
       this.tsv.success('Cập nhật thành công', 'Cập nhật thông tin');
     }, error => console.log(error));

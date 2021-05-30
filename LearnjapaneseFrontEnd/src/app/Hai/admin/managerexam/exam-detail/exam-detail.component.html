@@ -1,3 +1,6 @@
+<head>
+  <title>Thêm câu hỏi vào đề</title>
+</head>
 
 <body class="nav-md">
 <div class="container body">
@@ -7,20 +10,19 @@
 
     <div class="right_col" role="main">
       <!-- top tiles -->
-      <div class="">
         <div class="page-title">
           <div class="title_left">
             <h3>Thêm mới câu hỏi cho đề thi</h3>
             <div class="container">
-              <table>
+              <table >
                 <tbody>
-                <tr>
-                  <td> <h5>Mã đề: {{exam.codeExam}}</h5></td>
-                  <td> <h5>Trình độ: {{exam.level}}</h5></td>
+                <tr >
+                  <td style="border: 1px none  #fffafc  ;text-align: left!important;width:370px"> <h5>Mã đề: {{exam.codeExam}}</h5></td>
+                  <td style="border: 1px none  #fffafc ;text-align: left!important; "> <h5>Trình độ: {{exam.level}}</h5></td>
                 </tr>
-                <tr>
-                  <td><h5>Thông tin: {{exam.title}}</h5></td>
-                  <td><h5>Số câu hỏi hiện tại: {{coutQS}}/{{exam.totalQuestion}}</h5></td>
+                <tr >
+                  <td style="border: 1px none   #fffafc; text-align: left!important;"><h5>Thông tin: {{exam.title}}</h5></td>
+                  <td style="border: 1px none  #fffafc ;"><h5>Số câu hỏi hiện tại: {{coutQS}}/{{exam.totalQuestion}}</h5></td>
                 </tr>
                 </tbody>
               </table>
@@ -32,17 +34,18 @@
         <div class="row alert alert-danger" id="errorProcess" style="color: white; display: none;"></div>
         <div class="row">
           <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
-            <label>&nbsp;</label>
-            <div>
-            </div>
+            <label>Học Phần</label>
+            <select [(ngModel)]="hocphan" class="form-control" name="subjectId">
+              <option value="">Tùy chọn</option>
+              <option value="Từ Vựng">Từ vựng</option>
+              <option value="Ngữ Pháp">Ngữ pháp</option>
+              <option value="Đề JLPT">Đề JLPT</option>
+              <option value="Thử Thách">Đề Thử Thách </option>
+            </select>
           </div>
-          <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12" style="margin-top: 10px">
             <div class="tile-body">
-              <div class="table-responsive">
+              <div >
                 <table class="table table-bordered" id="sampleTable">
                   <thead>
                   <tr >
@@ -53,20 +56,39 @@
                     <th>Đáp án C</th>
                     <th>Đáp án D</th>
                     <th>Đáp án Đúng</th>
-                    <th>Tùy chọn</th>
+                    <th  style="width: 100px;">Tùy chọn</th>
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let qs of question| filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:15, currentPage:p};let i=index">
+                  <tr *ngFor="let qs of question| filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:20, currentPage:p};let i=index">
                     <td>{{i+1}}</td>
-                    <td style="width: 600px;">{{qs.content}}</td>
+                    <td style="width: 600px;text-align: left!important">{{qs.content}}</td>
                     <td style="width: 130px;">{{qs.ansA}}</td>
                     <td style="width: 130px;">{{qs.ansB}}</td>
                     <td style="width: 130px;">{{qs.ansC}}</td>
                     <td style="width: 130px;">{{qs.ansD}}</td>
                     <td style="width: 130px;">{{qs.ansCorrect}}</td>
-                    <td style="width: 100px;">
-                          <input type="checkbox" class="form-check-input" value="">
+                    <td>
+                      <div *ngIf="setCB[i]==false" class="pretty p-icon p-curve  p-pulse" >
+                        <input  #saveUserNameCheckBox
+                               id="CheckBox"
+                               type="checkbox" (change)="selectAt(i,saveUserNameCheckBox.checked)" (click)="selectAtQS(qs.id)" />
+                        <div class="state p-success">
+                          <i class="icon fa fa-check" aria-hidden="true"></i>
+                          <label style="margin-left: -200px;"></label>
+                        </div>
+                      </div>
+                      <div *ngIf="setCB[i]==true" class="pretty p-icon p-curve  p-pulse" >
+                        <input  #saveUserNameCheckBox checked
+                                id="CheckBox2"
+                                type="checkbox"
+                                (change)="selectAt(i,saveUserNameCheckBox.checked)" (click)="selectAt2(qs.id)" />
+                        <div class="state p-success">
+                          <i class="icon fa fa-check" aria-hidden="true"></i>
+                          <label style="margin-left: -200px;"></label>
+                        </div>
+                      </div>
+
                     </td>
                   </tr>
                   </tbody>
@@ -76,12 +98,12 @@
             </div>
           </div>
         </div>
-        <div class="row" style="height: 555px;">
-          <div class="col-md-12 table-responsive">
-            <table class="display table table-bordered" id="example"></table>
+        <div class="row" style="height: 100px;">
+          <div class="col-md-12">
             <div class="d-flex justify-content-center mt-2">
-              <a class="btn btn-success" href="#" id="btnAddQuestionToExam">Thêm câu hỏi</a>
-              <a class="btn btn-danger" >Hủy bỏ</a>
+              <a class="btn btn-success" id="btnAddQuestionToExam" style="color: white" (click)="addQsInExam(id)">Thêm câu hỏi</a>
+              <a class="btn btn-danger" (click)="reloadData()" style="color: white" >Hủy chọn</a>
+              <a class="btn badge-primary" [routerLink]="['/admin/exam/list',exam.id]" style="color: white" >Trở lại</a>
             </div>
           </div>
         </div>
@@ -90,26 +112,4 @@
     </div>
     <!-- page content -->
   </div>
-</div>
-<div class="modal fade" id="removeModalCenter" tabindex="-1" role="dialog"
-     aria-labelledby="removeModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="removeModalCenterTitle">Thêm câu hỏi</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h6>Bạn có muốn thêm các câu hỏi vào đề thi ?</h6>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          <i class="fa fa-times"></i> Hủy bỏ</button>
-        <a href="" class="btn btn-success" id="delRef"><i class="fa fa-check"></i> Đồng ý</a>
-      </div>
-    </div>
-  </div>
-</div>
 

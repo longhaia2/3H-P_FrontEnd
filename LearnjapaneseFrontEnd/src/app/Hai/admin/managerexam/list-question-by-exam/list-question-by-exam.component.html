@@ -16,15 +16,15 @@
           <div class="title_left">
             <h3>Danh sách câu hỏi</h3>
             <div class="container">
-              <table>
+              <table >
                 <tbody>
-                <tr>
-                  <td> <h5>Mã đề: {{exam.codeExam}}</h5></td>
-                  <td> <h5>Trình độ: {{exam.level}}</h5></td>
+                <tr >
+                  <td style="border: 1px none  #fffafc  ;text-align: left!important;width:370px"> <h5>Mã đề: {{exam.codeExam}}</h5></td>
+                  <td style="border: 1px none  #fffafc ;text-align: left!important; "> <h5>Trình độ: {{exam.level}}</h5></td>
                 </tr>
-                <tr>
-                  <td><h5>Thông tin: {{exam.title}}</h5></td>
-                  <td><h5>Số câu hỏi hiện tại: {{coutQS}}/{{exam.totalQuestion}}</h5></td>
+                <tr >
+                  <td style="border: 1px none   #fffafc; text-align: left!important;"><h5>Thông tin: {{exam.title}}</h5></td>
+                  <td style="border: 1px none  #fffafc ;"><h5>Số câu hỏi hiện tại: {{coutQS}}/{{exam.totalQuestion}}</h5></td>
                 </tr>
                 </tbody>
               </table>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="clearfix"></div>
-        <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3" style="margin-top: 10px;">
+        <div class="col-lg-2 col-sm-12 col-sm-4 col-xs-3" style="margin-top: 10px;margin-left: 1270px">
               <div>
                 <a [routerLink]="['/admin/exam/detail/',id]" class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</a>
               </div>
@@ -61,7 +61,7 @@
                   <tbody >
                   <tr *ngFor="let qs of question| paginate:{itemsPerPage:8, currentPage:p};let i=index">
                     <td style="width: 100px">{{i+1}}</td>
-                    <td>{{qs.content}}</td>
+                    <td style="text-align: left!important">{{qs.content}}</td>
                     <td style="width: 150px">{{qs.ansA}}</td>
                     <td style="width: 150px">{{qs.ansB}}</td>
                     <td style="width: 150px">{{qs.ansC}}</td>
