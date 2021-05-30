@@ -77,7 +77,6 @@ export class ExamDetailComponent implements OnInit {
     this.setCB[index]=value;
   }
   selectAtQS(value) {
-
     for (var i=0;i<this.ex_QsList.length;i++){
       if(this.ex_QsList[i].question_id==value){
         this.tv.error('Câu này đã có trong đề');

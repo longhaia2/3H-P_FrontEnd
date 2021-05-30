@@ -136,6 +136,7 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import { ListnewsComponent } from './Manh/listnews/listnews.component';
 import { ContentnewComponent } from './Manh/contentnew/contentnew.component';
+import { ManagerResultComponent } from './Hai/admin/manager-result/manager-result.component';
 
 
 
@@ -255,6 +256,7 @@ import { ContentnewComponent } from './Manh/contentnew/contentnew.component';
     DialogExitRoomComponent,
     ListnewsComponent,
     ContentnewComponent,
+    ManagerResultComponent,
   ],
 
   imports: [

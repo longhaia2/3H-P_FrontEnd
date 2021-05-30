@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Lesson} from "../../Thuan/model/lesson";
+import {MGresultA} from "../../Hai/admin/model/MGresultA";
 @Injectable({
   providedIn: 'root'
 })
@@ -26,4 +28,26 @@ export class ScoreService {
   GetResultById(username): Observable<any> {
     return this.http.get(`http://localhost:8080/score/all?username=${username}`);
   }
+
+  findAll(): Observable<MGresultA[]> {
+    return this.http.get<MGresultA[]>(this.url + '/result-all');
+
+  }
+  delete(id): Observable<any> {
+    return this.http.delete(`${'http://localhost:8080/score/delete'}/${id}`);
+  }
+  findAllVoca(): Observable<MGresultA[]> {
+    return this.http.get<MGresultA[]>(this.url + '/result-voca-all');
+
+  }
+  deleteVoca(id): Observable<any> {
+    return this.http.delete(`${'http://localhost:8080/score/delete-voca'}/${id}`);
+  }
+  findByUserName(searchtext): Observable<MGresultA[]>{
+    return this.http.get<MGresultA[]>(`${'http://localhost:8080/result-grammar/search'}/${searchtext}`);
+  }
+  findBycodeExam(searchtext): Observable<MGresultA[]>{
+    return this.http.get<MGresultA[]>(`${'http://localhost:8080/result-grammar/search-code'}/${searchtext}`);
+  }
+
 }

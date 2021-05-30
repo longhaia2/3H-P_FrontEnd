@@ -40,7 +40,6 @@ export class HistoryResultComponent implements OnInit {
     this.scoresv.GetResultById(username).subscribe(data => {
       console.log(data);
       this.rs = data.dataResponse;
-      console.log(this.rs);
     })
   }
 }

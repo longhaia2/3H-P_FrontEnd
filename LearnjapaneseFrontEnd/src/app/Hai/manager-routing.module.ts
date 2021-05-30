@@ -79,6 +79,7 @@ import {ExamDetailComponent} from "./admin/managerexam/exam-detail/exam-detail.c
 import {ListQuestionByExamComponent} from "./admin/managerexam/list-question-by-exam/list-question-by-exam.component";
 import {ListnewsComponent} from "../Manh/listnews/listnews.component";
 import {ContentnewComponent} from "../Manh/contentnew/contentnew.component";
+import {ManagerResultComponent} from "./admin/manager-result/manager-result.component";
 
 
 
@@ -174,7 +175,7 @@ const routes: Routes = [
   {path: 'profile/edit/:id', component: ProfileComponent},
   {path: 'listnews', component: ListnewsComponent},
   {path: 'new/:id', component: ContentnewComponent},
-
+  {path: 'admin/result-exam', component: ManagerResultComponent,canActivate: [AdminAuthService]},
   {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]},
 ];
 
