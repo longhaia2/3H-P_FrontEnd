@@ -58,34 +58,13 @@ export class ProfileComponent implements OnInit {
       console.log(this.us);
     },error => console.log(error));
   }
-  // reloadData() {
-  //   this.userService.findAll().subscribe(data => {
-  //     this.Users = data;
-  //   });
-  // }
+
   showPreview(event:any){
     this.selectedImage=event.target.files[0];
   }
   save(){
-    // const name=this.selectedImage.name;
-    // const fileRef= this.storage.ref(name);
-    // this.storage.upload(name,this.selectedImage).snapshotChanges().pipe(
-    //   finalize(()=>{
-    //     fileRef.getDownloadURL().subscribe((url)=>{
-    //       this.url=url;
-    //       this.upFileService.insertImageDetails(this.id,this.url);
-    //       alert('Upload Succesful')
-    //     });
-    //     })
-    // ).subscribe();
-  }
-  // test(event:any){
-  //   const file: File=event.target.file[0];
-  //   const metaData={'contentType':file.type};
-  //   const storageRef: firebase.storage.Reference=firebase.storage().refFromURL('/photos')
-  //   storageRef.put(file,metaData);
-  // }
 
+  }
   view(){
     this.upFileService.getImage(this.file);
   }

@@ -37,8 +37,6 @@ export class HomepageComponent implements OnInit {
      this.logName = userName['username'];
      this.role=userName['role'];
    }
-
-
     this.getLesson();
     this.list();
     this.ListtopHigh();
