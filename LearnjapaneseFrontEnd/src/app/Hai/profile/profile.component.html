@@ -5,6 +5,23 @@
 </head>
 <body>
 <app-header></app-header>
+
+<app-menu [userNameDsp]="logName" [role]="role"></app-menu>
+  <main class="home">
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-md-5 border-right">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center text-center">
+              <form method="post" th:action="@{/profile/update-image-user}" enctype="multipart/form-data">
+                <input type="text" name="userId" th:value="${us.id}" hidden>
+                <h4 class="mb-5">Update hình ảnh</h4>
+                <input type="file" (change)="showPreview($event)"  style="overflow: hidden"/>
+                <div class="col-md-12 col-sm-12 mt-3">
+                  <input type="submit" value="Cập nhật ảnh" (click)="save()" id="btnUpdateImage" class="btn btn-success mt-3">
+                </div>
+              </form>
+
 <app-menu [userNameDsp]="logName"  [role]="role"></app-menu>
 <div class="right_col" role="main">
   <!-- top tiles -->
@@ -36,11 +53,19 @@
               <div class="d-flex flex-column align-items-center text-center">
                 <img src="{{us.image}}" /><span class="font-weight-bold mt-3" style="font-size: 16px">Ảnh đại diện</span>
               </div>
+
             </div>
 
           </form>
         </div>
 
+
+              <div class="row mt-6">
+                <div class="col-md-12 mt-2">
+                  <label class="labels">Tên đăng nhập</label>
+                  <input type="text" class="form-control" [ngModel]="us.username"   >
+
+<!--                  <input  type="text" [(ngModel)]="us.username" class="form-control"  formControlName="username"  name="username" id="username" ng-required="$scope.uid">-->
 
 
       </div>

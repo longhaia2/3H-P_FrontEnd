@@ -39,7 +39,8 @@ export class ReviewvocabularyComponent implements OnInit {
   }
   addResults(idResult){
     for (let i = 0; i < this.qs.length; i++) {
-      if (this.qs[i].ansCorrect === this.resultAS[i]) {
+      if (this.qs[i].ansA === this.resultAS[i]||this.qs[i].ansA === this.resultAS[i]||
+        this.qs[i].ansB === this.resultAS[i]||this.qs[i].ansC === this.resultAS[i]||this.qs[i].ansD === this.resultAS[i]) {
         this.dem++;
       }
     }
