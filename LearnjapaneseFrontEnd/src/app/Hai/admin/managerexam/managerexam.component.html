@@ -85,7 +85,15 @@
                   </thead>
                   <tbody >
                   <tr *ngFor="let exam of ex | filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:8, currentPage:p};let i=index">
-                    <td>{{i+1}}</td>
+                    <td *ngIf="p==1" >{{i+1}}</td>
+                    <td *ngIf="p==2" >{{i+9}}</td>
+                    <td *ngIf="p==3" >{{i+17}}</td>
+                    <td *ngIf="p==4" >{{i+25}}</td>
+                    <td *ngIf="p==5" >{{i+33}}</td>
+                    <td *ngIf="p==6" >{{i+41}}</td>
+                    <td *ngIf="p==7" >{{i+59}}</td>
+                    <td *ngIf="p==8" >{{i+67}}</td>
+                    <td *ngIf="p==9" >{{i+75}}</td>
                     <td>{{exam.codeExam}}</td>
                     <td>{{exam.term}}</td>
                     <td>{{exam.level}}</td>

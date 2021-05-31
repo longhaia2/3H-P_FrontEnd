@@ -78,8 +78,8 @@
                   </tr>
                   </thead>
                   <tbody >
-                  <tr *ngFor="let qs of question| filter:hocphan| filter: trinhdo | filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:8, currentPage:p};let i=index">
-                    <td>{{i+1}}</td>
+                  <tr *ngFor="let qs of question| filter:hocphan| filter: trinhdo | filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:10, currentPage:p};let i=index">
+                    <td  >{{qs.id}}</td>
                     <td>{{qs.term}}</td>
                     <td>{{qs.level}}</td>
                     <td style="text-align: left!important">{{qs.content}}</td>

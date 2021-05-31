@@ -35,6 +35,7 @@ export class ManagerResultComponent implements OnInit {
     this.scoresv.findAllVoca().subscribe(data => {
       this.result2=data;
     });
+
   }
   delete(id: number) {
 

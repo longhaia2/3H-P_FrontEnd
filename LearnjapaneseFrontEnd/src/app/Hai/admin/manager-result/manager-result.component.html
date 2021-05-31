@@ -80,7 +80,9 @@
                   </thead>
                   <tbody>
                   <tr  *ngFor="let rs of result| paginate:{itemsPerPage:8, currentPage:p};let i=index">
-                    <td>{{i+1}}</td>
+                    <td *ngIf="p==1" >{{i+1}}</td>
+                    <td *ngIf="p==2" >{{i+9}}</td>
+                    <td *ngIf="p==3" >{{i+17}}</td>
                     <td >{{rs[0]}}</td>
                     <td >{{rs[1]}}</td>
                     <td > {{rs[2]}}</td>
@@ -114,7 +116,9 @@
                   </thead>
                   <tbody>
                   <tr  *ngFor="let rs of result2| paginate:{itemsPerPage:8, currentPage:p};let i=index">
-                    <td>{{i+1}}</td>
+                    <td *ngIf="p==1" >{{i+1}}</td>
+                    <td *ngIf="p==2" >{{i+9}}</td>
+                    <td *ngIf="p==3" >{{i+17}}</td>
                     <td >{{rs[0]}}</td>
                     <td >{{rs[1]}}</td>
                     <td > {{rs[2]}}</td>
@@ -136,6 +140,8 @@
     </div>
     <!-- page content -->
   </div>
+
 </div>
 </body>
 </html>
+

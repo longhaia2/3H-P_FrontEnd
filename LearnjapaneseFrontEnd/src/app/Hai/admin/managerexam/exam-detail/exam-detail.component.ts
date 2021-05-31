@@ -23,6 +23,7 @@ export class ExamDetailComponent implements OnInit {
   selectedAS: number[]=new Array(0);
   logName: string;
   setCB:boolean[];
+  setCBCh:boolean[];
   question: Question[];
   question1: Question[];
   exam:Exam;
@@ -41,9 +42,22 @@ export class ExamDetailComponent implements OnInit {
       this.examService.QsnotExam(this.exam.level).subscribe(data => {
         this.question = data;
         this.setCB = new Array(this.question.length);
+        this.setCBCh = new Array(this.question.length);
         for (let i = 0; i <= this.question.length; i++) {
           this.setCB[i] = false;
+          this.setCBCh[i]=true;
         }
+        this.examService.getListByExam(this.id).subscribe(data=>{
+          this.ex_QsList=data;
+          for (var i=0;i<this.question.length;i++){
+            for (var j=0;j<this.ex_QsList.length;j++){
+              if(this.question[i].id==this.ex_QsList[j].question_id){
+                this.setCBCh[i]=false;
+              }
+            }
+          }
+
+        });
 
       }, error => console.log(error));
     });
@@ -76,7 +90,7 @@ export class ExamDetailComponent implements OnInit {
   selectAt(index,value) {
     this.setCB[index]=value;
   }
-  selectAtQS(value) {
+  selectAtQS(x:number,value) {
     for (var i=0;i<this.ex_QsList.length;i++){
       if(this.ex_QsList[i].question_id==value){
         this.tv.error('Câu này đã có trong đề');
@@ -84,6 +98,39 @@ export class ExamDetailComponent implements OnInit {
       }
     }
     this.selectedAS.push(value);
+
+
+  }
+  handlePageChange(event) {
+    this.p = event;
+    let i=0;
+    if(this.p==2){ i=21}
+    this.examService.get(this.id).subscribe(data => {
+      this.exam = data;
+      this.examService.QsnotExam(this.exam.level).subscribe(data => {
+        this.question = data;
+        this.setCB = new Array(this.question.length);
+        this.setCBCh = new Array(this.question.length);
+        for (i = 0; i <= this.question.length; i++) {
+          this.setCB[i] = false;
+          this.setCBCh[i]=true;
+        }
+        this.examService.getListByExam(this.id).subscribe(data=>{
+          this.ex_QsList=data;
+          for (i=0;i<this.question.length;i++){
+            for (var j=0;j<this.ex_QsList.length;j++){
+              if(this.question[i].id==this.ex_QsList[j].question_id){
+                this.setCBCh[i]=false;
+              }
+            }
+          }
+
+        });
+
+      }, error => console.log(error));
+    });
+  }
+  set(event){
 
   }
   selectAt2(value) {

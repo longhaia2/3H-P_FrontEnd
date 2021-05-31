@@ -61,7 +61,23 @@
                   </thead>
                   <tbody >
                   <tr *ngFor="let qs of question| filter:hocphan| filter: trinhdo| paginate:{itemsPerPage:20, currentPage:p};let i=index">
-                    <td>{{i+1}}</td>
+                    <td *ngIf="p==1" >{{i+1}}</td>
+                    <td *ngIf="p==2" >{{i+21}}</td>
+                    <td *ngIf="p==3" >{{i+41}}</td>
+                    <td *ngIf="p==4" >{{i+61}}</td>
+                    <td *ngIf="p==5" >{{i+81}}</td>
+                    <td *ngIf="p==6" >{{i+101}}</td>
+                    <td *ngIf="p==7" >{{i+121}}</td>
+                    <td *ngIf="p==8" >{{i+141}}</td>
+                    <td *ngIf="p==9" >{{i+161}}</td>
+                    <td *ngIf="p==10" >{{i+181}}</td>
+                    <td *ngIf="p==11" >{{i+201}}</td>
+                    <td *ngIf="p==12" >{{i+221}}</td>
+                    <td *ngIf="p==13" >{{i+241}}</td>
+                    <td *ngIf="p==14" >{{i+261}}</td>
+                    <td *ngIf="p==15" >{{i+281}}</td>
+                    <td *ngIf="p==16" >{{i+301}}</td>
+                    <td *ngIf="p==17" >{{i+321}}</td>
                     <td style="width: 600px;text-align: left!important">{{qs.content}}</td>
                     <td style="width: 130px;">{{qs.ansA}}</td>
                     <td style="width: 130px;">{{qs.ansB}}</td>
@@ -69,10 +85,10 @@
                     <td style="width: 130px;">{{qs.ansD}}</td>
                     <td style="width: 130px;">{{qs.ansCorrect}}</td>
                     <td>
-                      <div *ngIf="setCB[i]==false" class="pretty p-icon p-curve  p-pulse" >
+                      <div *ngIf="setCB[i]==false&&setCBCh[i]==true" class="pretty p-icon p-curve  p-pulse" >
                         <input  #saveUserNameCheckBox
                                id="CheckBox"
-                               type="checkbox" (change)="selectAt(i,saveUserNameCheckBox.checked)" (click)="selectAtQS(qs.id)" />
+                               type="checkbox" (change)="selectAt(i,saveUserNameCheckBox.checked)" (click)="selectAtQS(i,qs.id)" />
                         <div class="state p-success">
                           <i class="icon fa fa-check" aria-hidden="true"></i>
                           <label style="margin-left: -200px;"></label>
@@ -88,12 +104,18 @@
                           <label style="margin-left: -200px;"></label>
                         </div>
                       </div>
-
+                      <div *ngIf="setCBCh[i]==false" class="pretty p-icon p-round p-smooth p-plain">
+                        <input type="checkbox" checked />
+                        <div class="state p-success-o">
+                          <i class="icon fa fa-check" aria-hidden="true"></i>
+                          <label style="margin-left: -200px;"></label>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   </tbody>
                 </table>
-                <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
+                <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="handlePageChange($event)"></pagination-controls>
               </div>
             </div>
           </div>
