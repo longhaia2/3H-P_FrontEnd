@@ -141,6 +141,7 @@ import { ManagerResultComponent } from './Hai/admin/manager-result/manager-resul
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

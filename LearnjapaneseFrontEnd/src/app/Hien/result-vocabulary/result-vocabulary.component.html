@@ -51,7 +51,8 @@
                     <tr *ngFor="let review of qs; let i = index; let j = index" value="{{review}}">
                       <td>{{i + 1}}.{{review.content}}</td>
                       <td>{{review.ansCorrect}}</td>
-                      <td [ngStyle]="{'color': rs.ansSelects[i]== rs.ansCorrects[i] ? 'green' : 'red'}">{{rs.ansSelects[i]}}</td>
+
+                      <td  [ngStyle]="{'color': rs.ansSelects[i]== rs.ansCorrects[i]? 'green' : 'red'}">{{rs.ansSelects[i]}}</td>
                     </tr>
                   </table>
                   <br>
