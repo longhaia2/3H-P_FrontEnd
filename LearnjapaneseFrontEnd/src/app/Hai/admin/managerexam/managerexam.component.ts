@@ -4,6 +4,8 @@ import {Exam} from '../model/Exam';
 import {LessonServiceService} from "../../../Thuan/service/lesson-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {DialogComponent} from "../../../Thuan/dialog/dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-managerexam',
@@ -22,7 +24,7 @@ export class ManagerexamComponent implements OnInit {
 
   ex:Exam[];
   constructor(private examserviceService: ExamserviceService,private  trv: ToastrService,private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,private tsv: ToastrService, private dialog: MatDialog) { }
   ngOnInit(): void {
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     this.logName = userName['username'];
@@ -39,12 +41,25 @@ export class ManagerexamComponent implements OnInit {
       console.log(data);
     });
   }
-  delete(id: number){
-    this.examserviceService.delete(id).subscribe(data=>{console.log(data);this.list();},
-      error => console.log(error));
-    this.trv.success('Thành công', 'Xóa đề thi');
-    window.location.reload();
+  delete(id: number) {
+    const confirmDialog = this.dialog.open(DialogComponent, {
+      data: {
+        title: 'Confirm Remove Employee',
+        message: 'BẠN CÓ MUỐN XÓA HAY KHÔNG ? '
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result == true) {
+        this.examserviceService.delete(id).subscribe(
+          data => {
+            console.log(data);
+            window.location.reload();
+          });
+        this.tsv.success('Xóa thành công', 'Xóa bài học');
+      }
+    });
   }
+
   updateEx(id: number){
     this.router.navigate(['/edit',id])
   }

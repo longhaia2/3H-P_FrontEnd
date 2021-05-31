@@ -29,7 +29,9 @@ export class ResultTestComponent implements OnInit {
     this.rs = new Result();
     this.qs = this.route.snapshot.params.id;
     this.id = this.route.snapshot.params['id'];
-
+    if(userName['role']=="ROLE_ADMIN") {
+      this.Refresh()
+    }
     this.reviewService.getResult(this.id).subscribe(data => {
       console.log(data);
       this.rs = data;
@@ -41,6 +43,14 @@ export class ResultTestComponent implements OnInit {
   }
   selectAt(index, value) {
     this.selectedAS[index] = value
+  }
+  Refresh(){
+    if (localStorage.getItem('refreshed') === null) {
+      localStorage['refreshed'] = true;
+      window.location.reload(true);
+    } else {
+      localStorage.removeItem('refreshed');
+    }
   }
 
 }

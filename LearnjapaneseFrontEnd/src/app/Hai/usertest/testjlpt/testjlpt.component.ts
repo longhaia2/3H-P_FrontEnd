@@ -102,7 +102,7 @@ export class TestjlptComponent implements OnInit {
   local(){
 
 
-    let minutes = 2;
+    let minutes = 30;
     let currentTime = localStorage.getItem('currentTime');
     let targetTime = localStorage.getItem('targetTime');
     if (targetTime == null && currentTime == null) {

@@ -65,7 +65,7 @@ export class QuanlibaihocComponent implements OnInit {
     }
     if (this.ls== null)
     {
-      alert("thất bại")
+      this.tsv.error('Không có tên bài học như vậy.')
     }
       else{
       this.lessonService.findByLesson(searchtext).subscribe(data => {

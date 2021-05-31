@@ -7,14 +7,14 @@
       <a *ngFor="let us of userScore , let q= index" >
         <div class="test-listItem" style="margin-left: -30px; width: 97%;margin-top: 5px">
           <div class="content">
-            <h5><span style="color: yellow" *ngIf="q==0">Người chiến thắng {{us[0]}} đã đạt được  {{us[1]}} điểm</span>
+            <h5><span style="color: yellow" *ngIf="q==0">Người có điểm hiện tại cao nhất {{us[0]}} đã đạt được  {{us[1]}} điểm</span>
               <span *ngIf="q!=0" > {{us[0]}} đã đạt được  {{us[1]}} điểm xếp hạng thứ {{q+1}}  </span>
             </h5>
           </div>
         </div>
       </a>
     </li>
-  </ul>
+    </ul>
 </div>
 <div class="card mt-5">
   <div class="card-body">

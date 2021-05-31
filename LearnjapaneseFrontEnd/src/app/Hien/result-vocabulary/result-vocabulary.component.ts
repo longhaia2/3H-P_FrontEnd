@@ -28,6 +28,9 @@ export class ResultVocabularyComponent implements OnInit {
 
     let userName = JSON.parse(sessionStorage.getItem('auth-user'));
     this.logName = userName['username'];
+    if(userName['role']=="ROLE_ADMIN") {
+      this.Refresh()
+    }
     this.ex = new Exam();
     this.rs = new Result();
     this.qs = this.route.snapshot.params.id;
@@ -47,5 +50,14 @@ export class ResultVocabularyComponent implements OnInit {
   selectAt(index, value) {
     console.log('index: ' + index + ' -- value: ' + value);
     this.selectedAS[index] = value;
+  }
+
+  Refresh(){
+    if (localStorage.getItem('refreshed') === null) {
+      localStorage['refreshed'] = true;
+      window.location.reload(true);
+    } else {
+      localStorage.removeItem('refreshed');
+    }
   }
 }

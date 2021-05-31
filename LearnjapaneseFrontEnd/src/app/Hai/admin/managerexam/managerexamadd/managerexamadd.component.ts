@@ -25,7 +25,7 @@ export class ManagerexamaddComponent implements OnInit {
     thoigian: new  FormControl('',Validators.required),
     noidung: new  FormControl('',Validators.required),
 
-  })
+  });
   get tieude(){return this.AddForm.get('tieude') }
   get made(){return this.AddForm.get('made') }
   get loaide(){return this.AddForm.get('loaide') }

@@ -187,14 +187,27 @@
                       <img src="{{usr[0]}}" height="220" width="220"/></div>
 
                     <div class="content">
-
                       <h5 class="title" style="font-size: 100%">
-                        Tên: <span >  {{usr[1]}}  </span>
+                        Bạn: <span >  {{usr[1]}}  </span>
                       </h5>
-                      <h5 class="title" style="font-size: 100%">
-                        Điểm : <span>{{usr[2]}}</span>
-                      </h5>
-                      <h5 class="title" style="font-size: 100%">
+<!--                        Điểm : <span>{{usr[6]}}</span>-->
+                        <div class="title">
+                          <div style="width: 245px">
+                            <div class="progress">
+                              <div  style="background-color: #27b879;"
+                                class="progress-bar"
+                                role="progressbar"
+                                [style.width.%]="usr[6]"
+                                aria-valuenow="(currentIndex * 100) / questions.length"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                              >
+                                {{ usr[6] | number: "1.0-0" }}%
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <h5 class="title" style="font-size: 100%;margin-top: -10px;">
                         Mô tả : <span> {{usr[3]}}</span>
                       </h5>
                     </div>

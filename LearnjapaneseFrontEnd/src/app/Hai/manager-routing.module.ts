@@ -77,6 +77,9 @@ import {N5NguphapOntapComponent} from "./study/study-n5/n5-nguphap-ontap/n5-ngup
 import {N5TuvungOntapComponent} from "./study/study-n5/n5-tuvung-ontap/n5-tuvung-ontap.component";
 import {ExamDetailComponent} from "./admin/managerexam/exam-detail/exam-detail.component";
 import {ListQuestionByExamComponent} from "./admin/managerexam/list-question-by-exam/list-question-by-exam.component";
+import {ListnewsComponent} from "../Manh/listnews/listnews.component";
+import {ContentnewComponent} from "../Manh/contentnew/contentnew.component";
+import {ManagerResultComponent} from "./admin/manager-result/manager-result.component";
 
 
 
@@ -102,7 +105,7 @@ const routes: Routes = [
   {path: 'infor', component: InformationComponent},
   {path: 'admin/manage/user/add', component: AdduserComponent, canActivate: [AdminAuthService]},
   {path: 'admin/manage/user', component: ManageruserComponent, canActivate: [AdminAuthService]},
-  {path: 'admin/user/detail/:id', component: DetailuserComponent},
+  {path: 'admin/user/detail/:id', component: DetailuserComponent,canActivate: [AdminAuthService]},
   {path: 'admin/exam/detail/:id', component: ExamDetailComponent,canActivate: [AdminAuthService]},
   {path: 'listchalenge', component: ListchallengeComponent, canActivate: [CustomerAuthService]},
   {path: 'challenge/add', component: CreateroomComponent, canActivate: [CustomerAuthService]},
@@ -170,6 +173,9 @@ const routes: Routes = [
   {path: 'resultsvocabulary/:id/:id_exam', component: ResultVocabularyComponent, canActivate: [CustomerAuthService]},
   {path: 'unaccess', component: UnaccessComponent},
   {path: 'profile/edit/:id', component: ProfileComponent},
+  {path: 'listnews', component: ListnewsComponent},
+  {path: 'new/:id', component: ContentnewComponent},
+  {path: 'admin/result-exam', component: ManagerResultComponent,canActivate: [AdminAuthService]},
   {path: 'score', component: HistoryResultComponent, canActivate: [CustomerAuthService]},
 ];
 
