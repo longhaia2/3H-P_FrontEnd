@@ -74,15 +74,6 @@ export class ProfileComponent implements OnInit {
 
   }
 
-
-  showPreview(event:any){
-    this.selectedImage=event.target.files[0];
-  }
-  save(){
-
-  }
-  view(){
-
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
   }
@@ -105,7 +96,6 @@ export class ProfileComponent implements OnInit {
 
   view() {
     console.log(this.uploadFileService.getImage(this.file));
-
   }
 
   updateUser() {

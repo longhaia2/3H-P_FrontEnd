@@ -5,23 +5,6 @@
 </head>
 <body>
 <app-header></app-header>
-
-<app-menu [userNameDsp]="logName" [role]="role"></app-menu>
-  <main class="home">
-    <div class="container">
-      <div class="row mt-4">
-        <div class="col-md-5 border-right">
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="d-flex flex-column align-items-center text-center">
-              <form method="post" th:action="@{/profile/update-image-user}" enctype="multipart/form-data">
-                <input type="text" name="userId" th:value="${us.id}" hidden>
-                <h4 class="mb-5">Update hình ảnh</h4>
-                <input type="file" (change)="showPreview($event)"  style="overflow: hidden"/>
-                <div class="col-md-12 col-sm-12 mt-3">
-                  <input type="submit" value="Cập nhật ảnh" (click)="save()" id="btnUpdateImage" class="btn btn-success mt-3">
-                </div>
-              </form>
-
 <app-menu [userNameDsp]="logName"  [role]="role"></app-menu>
 <div class="right_col" role="main">
   <!-- top tiles -->
@@ -40,32 +23,24 @@
       <div class="col-md-5 border-right">
         <div class="d-flex flex-column align-items-center text-center">
           <form style="margin-left: 200px">
-          <span class="font-weight-bold mt-3" style="text-align: center;size: 70px">CẬP NHẬT ẢNH ĐẠI DIỆN</span>
+            <span class="font-weight-bold mt-3" style="text-align: center;size: 70px">CẬP NHẬT ẢNH ĐẠI DIỆN</span>
 
-<!--            <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">-->
-          <br><br>
-          <input type="file" (change)="showPreview($event)">
-          <br><br>
-          <button class="btn btn-success" id="save"  (click)="save()"  style="margin-right: 10px"  type="submit">Cập nhật ảnh</button>
+            <!--            <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">-->
+            <br><br>
+            <input type="file" (change)="showPreview($event)">
+            <br><br>
+            <button class="btn btn-success" id="save"  (click)="save()"  style="margin-right: 10px"  type="submit">Cập nhật ảnh</button>
             <input type="hidden"  [(ngModel)]="us.image" >
             <br><br>
             <div class="col-md-4 border-right" style="width: 600px;margin-left: 300px">
               <div class="d-flex flex-column align-items-center text-center">
                 <img src="{{us.image}}" /><span class="font-weight-bold mt-3" style="font-size: 16px">Ảnh đại diện</span>
               </div>
-
             </div>
 
           </form>
         </div>
 
-
-              <div class="row mt-6">
-                <div class="col-md-12 mt-2">
-                  <label class="labels">Tên đăng nhập</label>
-                  <input type="text" class="form-control" [ngModel]="us.username"   >
-
-<!--                  <input  type="text" [(ngModel)]="us.username" class="form-control"  formControlName="username"  name="username" id="username" ng-required="$scope.uid">-->
 
 
       </div>
@@ -73,60 +48,60 @@
       <div class="col-md-7 border-right">
 
         <div style="text-align: center" class="d-flex justify-content-between align-items-center mb-3">
-            <h4 style="text-align: center;margin-left: 200px;size: 70px;font-family: 'Times New Roman' " class="text-right">THÔNG TIN TÀI KHOẢN</h4>
-          </div>
+          <h4 style="text-align: center;margin-left: 200px;size: 70px;font-family: 'Times New Roman' " class="text-right">THÔNG TIN TÀI KHOẢN</h4>
+        </div>
         <form [formGroup]="registerForm" style="margin-left: 100px"  method="post" enctype="multipart/form-data">
 
-        <div class="col-md-6">
-          <div class="p-2" style="width: 470px;">
-          <div class="col-md-12 mt-2">
-            <b>  <label class="labels">Tên đăng nhập</label></b>
-              <input type="text" class="form-control" [(ngModel)]="us.username" class="form-control"  formControlName="username" name="username" id="username" ng-required="$scope.uid" readonly>
+          <div class="col-md-6">
+            <div class="p-2" style="width: 470px;">
+              <div class="col-md-12 mt-2">
+                <b>  <label class="labels">Tên đăng nhập</label></b>
+                <input type="text" class="form-control" [(ngModel)]="us.username" class="form-control"  formControlName="username" name="username" id="username" ng-required="$scope.uid" readonly>
                 <span class="error" *ngIf="username.invalid && username.touched">Không được để trống tên đăng nhập</span>
 
               </div>
               <div class="col-md-12 mt-2" >
                 <b> <label class="labels">Họ và tên</label></b>
-              <input type="text" class="form-control" [(ngModel)]="us.fullName" class="form-control"  formControlName="fullname" name="fullname" id="fullname" ng-required="$scope.uid"   >
+                <input type="text" class="form-control" [(ngModel)]="us.fullName" class="form-control"  formControlName="fullname" name="fullname" id="fullname" ng-required="$scope.uid"   >
                 <span class="error" *ngIf="fullname.invalid && fullname.touched">Không được để trống họ và tên</span>
 
               </div>
-                <div class="col-md-12 mt-2">
-                  <b><label class="labels">Email</label></b>
-              <input type="text" class="form-control"[(ngModel)]="us.email"class="form-control"  formControlName="email" name="email" id="email" ng-required="$scope.uid"  >
-                  <span class="error" *ngIf="email.invalid && email.touched"> email không đúng định dạng</span>
+              <div class="col-md-12 mt-2">
+                <b><label class="labels">Email</label></b>
+                <input type="text" class="form-control"[(ngModel)]="us.email"class="form-control"  formControlName="email" name="email" id="email" ng-required="$scope.uid"  >
+                <span class="error" *ngIf="email.invalid && email.touched"> email không đúng định dạng</span>
 
-                </div>
-                <div class="col-md-12 mt-2">
-                  <b><label class="labels">Số điện thoại </label></b>
-                  <input  type="text" [(ngModel)]="us.phoneNumber" class="form-control"  formControlName="phone"  name="phone" id="phone" ng-required="$scope.uid">
-                  <span class="error" *ngIf="phone.invalid && phone.touched">không được để trống số điện thoại</span>
+              </div>
+              <div class="col-md-12 mt-2">
+                <b><label class="labels">Số điện thoại </label></b>
+                <input  type="text" [(ngModel)]="us.phoneNumber" class="form-control"  formControlName="phone"  name="phone" id="phone" ng-required="$scope.uid">
+                <span class="error" *ngIf="phone.invalid && phone.touched">không được để trống số điện thoại</span>
 
-                </div>
-                <div class="col-md-12 mt-2">
-                  <b>  <label class="labels">Giới tính</label></b><br>
-                  <select  class="gt" name="gt" id="gtinh" [(ngModel)]="us.gender" class="form-control"  formControlName="gt"  name="classgt" id="classgt"  >
-                    <option value="Nam">Nam</option>`
-                    <option value="Nữ">Nữ</option>
-                  </select>
-                  <span class="error" *ngIf="gt.invalid && gt.touched"> Vui lòng chọn giới tính </span>
+              </div>
+              <div class="col-md-12 mt-2">
+                <b>  <label class="labels">Giới tính</label></b><br>
+                <select  class="gt" name="gt" id="gtinh" [(ngModel)]="us.gender" class="form-control"  formControlName="gt"  name="classgt" id="classgt"  >
+                  <option value="Nam">Nam</option>`
+                  <option value="Nữ">Nữ</option>
+                </select>
+                <span class="error" *ngIf="gt.invalid && gt.touched"> Vui lòng chọn giới tính </span>
 
-                </div>
+              </div>
 
               <div class="mt-3 text-center">
                 <button class="btn btn-success" id="updateuser"  (click)="updateUser()" [disabled]="registerForm.invalid" style="margin-right: 10px"  type="submit">Lưu thông tin</button>
                 <a class="btn btn-danger" style="color: white;" [routerLink]="['/page-home']">Hủy bỏ</a>
 
               </div>
-          </div>
+            </div>
 
-        </div>
+          </div>
         </form>
 
       </div>
 
     </div>
-    </div>
+  </div>
 </div>
 <app-footer></app-footer>
 </body>

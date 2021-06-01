@@ -85,7 +85,7 @@
                     <td style="width: 130px;">{{qs.ansD}}</td>
                     <td style="width: 130px;">{{qs.ansCorrect}}</td>
                     <td>
-                      <div *ngIf="setCB[i]==false&&setCBCh[i]==true" class="pretty p-icon p-curve  p-pulse" >
+                      <div *ngIf="setCB[i]==false" class="pretty p-icon p-curve  p-pulse" >
                         <input  #saveUserNameCheckBox
                                id="CheckBox"
                                type="checkbox" (change)="selectAt(i,saveUserNameCheckBox.checked)" (click)="selectAtQS(i,qs.id)" />
@@ -100,13 +100,6 @@
                                 type="checkbox"
                                 (change)="selectAt(i,saveUserNameCheckBox.checked)" (click)="selectAt2(qs.id)" />
                         <div class="state p-success">
-                          <i class="icon fa fa-check" aria-hidden="true"></i>
-                          <label style="margin-left: -200px;"></label>
-                        </div>
-                      </div>
-                      <div *ngIf="setCBCh[i]==false" class="pretty p-icon p-round p-smooth p-plain">
-                        <input type="checkbox" checked />
-                        <div class="state p-success-o">
                           <i class="icon fa fa-check" aria-hidden="true"></i>
                           <label style="margin-left: -200px;"></label>
                         </div>

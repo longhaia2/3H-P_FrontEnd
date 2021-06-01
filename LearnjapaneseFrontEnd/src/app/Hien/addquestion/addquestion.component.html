@@ -12,12 +12,13 @@
       <div class="">
         <div class="page-title">
           <div class="title_center">
-            <h1 style="font-size: larger">Thêm mới câu hỏi</h1>
+            <h1>Thêm mới câu hỏi</h1>
           </div>
           <div class="align-items-center mb-4">
-            <h4>Thông tin câu hỏi</h4>
+            <h4> Nhập thông tin câu hỏi</h4>
           </div>
           <div class="row">
+            <div class="col-md-8 border-right">
             <form [formGroup]="submitForm" method="post" enctype="multipart/form-data">
               <div class="col-md-6 mt-3">
                 <label class="labels">Nội dung câu hỏi</label>
@@ -80,16 +81,33 @@
               </div>
             </form>
             <br><br>
-            <div class="mt-6 " style="position: relative; left: 520px">
-              <br><br>
-
+            <div class="mt-6 " style="position: relative; left: 375px">
               <button class="btn btn-success" (click)="add()" type="submit" id="btnAddQuestiontoExam" [disabled]="submitForm.invalid" >Thêm câu hỏi</button>
 
               <a class="btn btn-danger"  [routerLink]="['/admin/question']">Hủy bỏ</a>
             </div>
           </div>
+
+          <div class="col-md-4 ">
+            <div class="align-items-center mt-3 mb-4">
+              <h4>Thêm câu hỏi theo tệp câu hỏi</h4>
+            </div>
+            <div class="mt-2 align-content-center border-bottom">
+              <a href="https://docs.google.com/spreadsheets/d/1zQ-CZKPGe09O_SqdNdpbEzXsqnfyW75K/edit#gid=159289957">Tải file mẫu (.xlsx) tại đây.</a>
+            </div>
+            <div class="mt-2 border-bottom">
+              <div class="form-group align-content-center">
+                <h4>Thêm câu hỏi </h4>
+                <input type="file" (change)="save($event)" style="overflow: hidden"/>
+              </div>
+              <div class="align-content-center">
+                <button (click)="import()" class="btn btn-success"><i class="fa fa-plus"></i> Thêm câu hỏi</button>
+              </div>
+            </div>
+
+          </div>
+          </div>
         </div>
-        <span class="span-vld hide" id="vldAddQuestion">Vui lòng nhập đầy đủ thông tin</span>
       </div>
     </div>
   </div>

@@ -43,19 +43,19 @@ export class ExamDetailComponent implements OnInit {
         this.question = data;
         this.setCB = new Array(this.question.length);
         this.setCBCh = new Array(this.question.length);
-        for (let i = 0; i <= this.question.length; i++) {
-          this.setCB[i] = false;
-          this.setCBCh[i]=true;
-        }
         this.examService.getListByExam(this.id).subscribe(data=>{
           this.ex_QsList=data;
           for (var i=0;i<this.question.length;i++){
+            this.setCB[i] = false;
+            this.setCBCh[i]=true;
             for (var j=0;j<this.ex_QsList.length;j++){
               if(this.question[i].id==this.ex_QsList[j].question_id){
-                this.setCBCh[i]=false;
+                // console.log(i);
+                this.question.splice(i, 1);
               }
             }
           }
+
 
         });
 
@@ -67,6 +67,7 @@ export class ExamDetailComponent implements OnInit {
     this.examService.getListByExam(this.id).subscribe(data=>{
       this.ex_QsList=data;
     });
+
   }
   addQsInExam(id){
     if(this.coutQS-this.exam.totalQuestion>=0){
@@ -91,37 +92,27 @@ export class ExamDetailComponent implements OnInit {
     this.setCB[index]=value;
   }
   selectAtQS(x:number,value) {
-    for (var i=0;i<this.ex_QsList.length;i++){
-      if(this.ex_QsList[i].question_id==value){
-        this.tv.error('Câu này đã có trong đề');
-        return this.setCB[i]=false;
-      }
-    }
     this.selectedAS.push(value);
+    console.log(this.selectedAS);
 
 
   }
   handlePageChange(event) {
     this.p = event;
     let i=0;
-    if(this.p==2){ i=21}
     this.examService.get(this.id).subscribe(data => {
       this.exam = data;
       this.examService.QsnotExam(this.exam.level).subscribe(data => {
         this.question = data;
         this.setCB = new Array(this.question.length);
-        this.setCBCh = new Array(this.question.length);
-        for (i = 0; i <= this.question.length; i++) {
-          this.setCB[i] = false;
-          this.setCBCh[i]=true;
-        }
         this.examService.getListByExam(this.id).subscribe(data=>{
           this.ex_QsList=data;
           for (i=0;i<this.question.length;i++){
             for (var j=0;j<this.ex_QsList.length;j++){
               if(this.question[i].id==this.ex_QsList[j].question_id){
-                this.setCBCh[i]=false;
+                this.question.splice(i, 1);
               }
+              this.setCB[i] = false;
             }
           }
 
@@ -142,11 +133,28 @@ export class ExamDetailComponent implements OnInit {
     })
   }
   public reloadData() {
+    let i=0;
     this.cout();
-    this.setCB = new Array(this.question.length);
-    for (let i = 0; i <= this.question.length; i++) {
-      this.setCB[i] = false;
-    }
+    this.examService.get(this.id).subscribe(data => {
+      this.exam = data;
+      this.examService.QsnotExam(this.exam.level).subscribe(data => {
+        this.question = data;
+        this.setCB = new Array(this.question.length);
+        this.examService.getListByExam(this.id).subscribe(data=>{
+          this.ex_QsList=data;
+          for (i=0;i<this.question.length;i++){
+            for (var j=0;j<this.ex_QsList.length;j++){
+              if(this.question[i].id==this.ex_QsList[j].question_id){
+                this.question.splice(i, 1);
+              }
+              this.setCB[i] = false;
+            }
+          }
+
+        });
+
+      }, error => console.log(error));
+    });
     this.selectedAS=new Array(0);
   }
 }
