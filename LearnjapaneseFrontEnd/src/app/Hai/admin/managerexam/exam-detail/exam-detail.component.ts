@@ -25,7 +25,7 @@ export class ExamDetailComponent implements OnInit {
   setCB:boolean[];
   setCBCh:boolean[];
   question: Question[];
-  question1: Question[];
+  x: number[]=new Array(0);
   exam:Exam;
   ex_QsList:ExamQuestion[];
   ex_Qs:ExamQuestion= new ExamQuestion();
@@ -93,33 +93,11 @@ export class ExamDetailComponent implements OnInit {
   }
   selectAtQS(x:number,value) {
     this.selectedAS.push(value);
-    console.log(this.selectedAS);
-
-
+    this.x.push(x);
   }
   handlePageChange(event) {
     this.p = event;
-    let i=0;
-    this.examService.get(this.id).subscribe(data => {
-      this.exam = data;
-      this.examService.QsnotExam(this.exam.level).subscribe(data => {
-        this.question = data;
-        this.setCB = new Array(this.question.length);
-        this.examService.getListByExam(this.id).subscribe(data=>{
-          this.ex_QsList=data;
-          for (i=0;i<this.question.length;i++){
-            for (var j=0;j<this.ex_QsList.length;j++){
-              if(this.question[i].id==this.ex_QsList[j].question_id){
-                this.question.splice(i, 1);
-              }
-              this.setCB[i] = false;
-            }
-          }
-
-        });
-
-      }, error => console.log(error));
-    });
+   this.reloadData();
   }
   set(event){
 
@@ -142,7 +120,7 @@ export class ExamDetailComponent implements OnInit {
         this.setCB = new Array(this.question.length);
         this.examService.getListByExam(this.id).subscribe(data=>{
           this.ex_QsList=data;
-          for (i=0;i<this.question.length;i++){
+          for (i=0;i<=this.question.length;i++){
             for (var j=0;j<this.ex_QsList.length;j++){
               if(this.question[i].id==this.ex_QsList[j].question_id){
                 this.question.splice(i, 1);
