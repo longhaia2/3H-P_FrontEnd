@@ -28,6 +28,7 @@ export class TestjlptComponent implements OnInit {
   logName: string;
   role:string;
   p:number=1;
+  dateStr:string;
   ex: Exam;
   x:number;
   a: number=0;
@@ -86,9 +87,21 @@ export class TestjlptComponent implements OnInit {
     this.rs.user_id = user_id.userId;
     this.rs.exam_id = this.route.snapshot.params.id;
     this.rs.ansSelects = this.selectedAS;
-
+    var date = new Date();
+    this.dateStr =
+      ("00" + date.getDate()).slice(-2) + "/" +
+      ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+      date.getFullYear() + " " +
+      ("00" + date.getHours()).slice(-2) + ":" +
+      ("00" + date.getMinutes()).slice(-2) + ":" +
+      ("00" + date.getSeconds()).slice(-2);
+    this.rs.date_test=this.dateStr;
     this.service.addResult(this.rs).subscribe(data => {
       idResult = data.dataResponse;
+      this.rs.id=idResult;
+      this.service.updategr(this.rs.id,this.rs).subscribe(data=>{
+        console.log(data);
+      });
       this.router.navigate(['resultsgrammar/', idResult, this.rs.exam_id]);
       localStorage.setItem('targetTime', null);
       localStorage.clear();

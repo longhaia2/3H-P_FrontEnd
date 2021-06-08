@@ -5,4 +5,5 @@ export class Result {
   user_id: number;
   ansSelects: string[];
   ansCorrects: string[];
+  date_test:string;
 }

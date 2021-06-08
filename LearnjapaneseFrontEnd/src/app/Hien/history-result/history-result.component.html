@@ -15,20 +15,53 @@
         <br><br>
       </div>
     </div>
-    <div class="row col-md-12  d-flex justify-content-center">
+    <div class="col-md-2 col-sm-12  col-xs-3">
+      <label style="margin-left: -15px;  font-size: 20px;">Loại đề</label>
+      <select (change)="selectAt($event.target.value)" class="form-control" name="classId" style="width: 250px;margin-left: -15px;margin-bottom: 20px" >
+        <option value="1">Đề JLPT, Đề Ôn Ngữ Pháp</option>
+        <option value="2">Đề Ôn Từ Vựng</option>
+
+      </select>
+    </div>
+    <div *ngIf="style=='1'" class="row col-md-12  d-flex justify-content-center">
 
         <table class="col-md-12">
           <tr>
             <th>STT</th>
             <th>Mã đề thi</th>
             <th>Tên đề thi</th>
+            <th>Ngày thi</th>
             <th>Số điểm </th>
+            <th style="width: 150px">Xem lại kết quả </th>
           </tr>
           <tr *ngFor="let e of rs,let i=index">
             <td>{{i+1}}</td>
             <td>{{e.codeExam}}</td>
             <td>{{e.content}}</td>
+            <td>{{e.date_test}}</td>
             <td>{{e.score}}</td>
+            <td><button [routerLink]="['/resultsgrammar/', e.id, e.exam_id]" class="btn-finish btn btn-success" style="margin-left: 30px">Xem</button></td>
+          </tr>
+        </table>
+      </div>
+    <div *ngIf="style=='2'" class="row col-md-12  d-flex justify-content-center">
+
+        <table class="col-md-12">
+          <tr>
+            <th>STT</th>
+            <th>Mã đề thi</th>
+            <th>Tên đề thi</th>
+            <th>Ngày thi</th>
+            <th>Số điểm </th>
+            <th style="width: 150px">Xem lại kết quả </th>
+          </tr>
+          <tr *ngFor="let e of rs1,let i=index">
+            <td>{{i+1}}</td>
+            <td>{{e.codeExam}}</td>
+            <td>{{e.content}}</td>
+            <td>{{e.date_test}}</td>
+            <td>{{e.score}}</td>
+            <td><button [routerLink]="['/resultsvocabulary/', e.id, e.exam_id]"  class="btn-finish btn btn-success" style="margin-left: 30px">Xem</button></td>
           </tr>
         </table>
       </div>

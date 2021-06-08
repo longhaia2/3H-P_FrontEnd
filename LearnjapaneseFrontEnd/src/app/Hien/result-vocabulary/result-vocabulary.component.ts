@@ -21,6 +21,7 @@ export class ResultVocabularyComponent implements OnInit {
   logName: string;
   check: boolean;
 
+
   constructor(private service: ReviewService, private reviewService: ReviewService, private  route: ActivatedRoute) {
   }
 
@@ -38,7 +39,6 @@ export class ResultVocabularyComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
 
     this.reviewService.getResults(this.id).subscribe(data => {
-      console.log(data);
       this.rs = data;
       // tslint:disable-next-line:no-shadowed-variable
       this.service.get(data.examId).subscribe(data => {

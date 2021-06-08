@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Result} from '../model/result';
 import {ScoreService} from '../servicesh/score.service';
 import {ResultByID} from '../model/ResultByID';
+import {MGresultA} from "../../Hai/admin/model/MGresultA";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-history-result',
@@ -12,10 +14,16 @@ import {ResultByID} from '../model/ResultByID';
 export class HistoryResultComponent implements OnInit {
 
   rs: ResultByID[];
+  rs1: ResultByID[];
   logName: string;
+  searchText;
   idNow:number;
+  result: MGresultA[];
+  result2: MGresultA[];
+  p:number=1;
+  style:string='1';
 
-  constructor(private scoresv: ScoreService) { }
+  constructor(private tsv: ToastrService,private scoresv: ScoreService) { }
 
   ngOnInit(): void {
     console.log(sessionStorage.getItem('auth-user'));
@@ -40,6 +48,13 @@ export class HistoryResultComponent implements OnInit {
     this.scoresv.GetResultById(username).subscribe(data => {
       console.log(data);
       this.rs = data.dataResponse;
+    });
+    this.scoresv.GetResultVocaById(username).subscribe(data => {
+      console.log(data);
+      this.rs1 = data.dataResponse;
     })
+  }
+  selectAt(value){
+    this.style=value;
   }
 }

@@ -26,7 +26,10 @@ export class ScoreService {
   }
 
   GetResultById(username): Observable<any> {
-    return this.http.get(`http://localhost:8080/score/all?username=${username}`);
+    return this.http.get(`http://localhost:8080/score/all-grammar?username=${username}`);
+  }
+  GetResultVocaById(username): Observable<any> {
+    return this.http.get(`http://localhost:8080/score/all-voca?username=${username}`);
   }
 
   findAll(): Observable<MGresultA[]> {

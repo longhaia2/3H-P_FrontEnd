@@ -5,4 +5,5 @@ export class MGresultA {
   score:number;
   id:number;
   exam_id:number;
+  date_test:string;
 }

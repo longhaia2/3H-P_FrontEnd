@@ -31,9 +31,11 @@ export class ManagerResultComponent implements OnInit {
     let idScore = JSON.parse(sessionStorage.getItem("auth-user"));
     this.scoresv.findAll().subscribe(data => {
       this.result=data;
+      console.log(data);
     });
     this.scoresv.findAllVoca().subscribe(data => {
       this.result2=data;
+      console.log(data);
     });
 
   }
@@ -109,7 +111,7 @@ export class ManagerResultComponent implements OnInit {
     }
     if (this.result== null)
     {
-      this.tsv.error('Không có tên người dùng như vậy.')
+      this.tsv.error('Không mã đề thi như vậy.')
     }
     else{
       this.scoresv.findBycodeExam(searchtext).subscribe(data => {

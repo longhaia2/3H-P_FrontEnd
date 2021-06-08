@@ -75,6 +75,7 @@
                     <th>Mã bài thi</th>
                     <th>Tên đề thi</th>
                     <th>Số điểm</th>
+                    <th>Ngày thi</th>
                     <th>Tùy chọn</th>
                   </tr>
                   </thead>
@@ -87,6 +88,7 @@
                     <td >{{rs[1]}}</td>
                     <td > {{rs[2]}}</td>
                     <td >{{rs[3]}}</td>
+                    <td >{{rs[6]}}</td>
                     <td>
                       <a [routerLink]="['/resultsgrammar/', rs[4], rs[5]]" class="btn btn-info" title="Chi tiết"><i class="fa fa-info-circle" ></i></a>
                       <a (click)="delete(rs[4])" class="btn btn-danger" id="confirmDelete" title="Xóa" ><i class="fa fa-trash-o"></i></a>
@@ -111,6 +113,7 @@
                     <th>Mã bài thi</th>
                     <th>Tên đề thi</th>
                     <th>Số điểm</th>
+                    <th>Ngày thi</th>
                     <th>Tùy chọn</th>
                   </tr>
                   </thead>
@@ -123,6 +126,7 @@
                     <td >{{rs[1]}}</td>
                     <td > {{rs[2]}}</td>
                     <td >{{rs[3]}}</td>
+                    <td >{{rs[6]}}</td>
                     <td>
                       <a [routerLink]="['/resultsvocabulary/', rs[4], rs[5]]" class="btn btn-info" title="Chi tiết"><i class="fa fa-info-circle" ></i></a>
                       <a (click)="deletevoca(rs[4])" class="btn btn-danger" id="confirmDelete1" title="Xóa" ><i class="fa fa-trash-o"></i></a>

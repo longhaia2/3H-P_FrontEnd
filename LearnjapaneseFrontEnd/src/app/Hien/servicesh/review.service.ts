@@ -18,7 +18,14 @@ export class ReviewService {
   addResults(data): Observable<any>{
     return this.http.post<Result>('http://localhost:8080/result-vocabulary/add', data);
   }
+  updateRs(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/result-vocabulary/add-date'}/${id}`, data);
+  }
   getResults(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/result-vocabulary'}/${id}`);
   }
+  updategr(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/result-grammar/add-date-gr'}/${id}`, data);
+  }
+
 }
